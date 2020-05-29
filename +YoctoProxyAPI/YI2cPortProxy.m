@@ -533,7 +533,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dds(726018167, slaveAddr, buff);
         end
 
-        function result = i2cSendArray(obj, slaveAddr, vector<int>(values))
+        function result = i2cSendArray(obj, slaveAddr, values)
             % Sends a one-way message (provided as a list of integer) to a device on the I2C bus.
             % This function checks and reports communication errors on the I2C bus.
             %
@@ -543,7 +543,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Ddxd(-1678174056, slaveAddr, vector<int>(values));
+            result = obj.InvokeMethod_Ddxd(-1678174056, slaveAddr, values);
         end
 
         function result = i2cSendAndReceiveBin(obj, slaveAddr, buff, rcvCount)
@@ -561,7 +561,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Sdsd(112074765, slaveAddr, buff, rcvCount);
         end
 
-        function result = i2cSendAndReceiveArray(obj, slaveAddr, vector<int>(values), rcvCount)
+        function result = i2cSendAndReceiveArray(obj, slaveAddr, values, rcvCount)
             % Sends a one-way message (provided as a list of integer) to a device on the I2C bus,
             % then read back the specified number of bytes from device.
             % This function checks and reports communication errors on the I2C bus.
@@ -573,7 +573,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a list of bytes with the data received from slave device.
             %
             % On failure, throws an exception or returns an empty array.
-            result = obj.InvokeMethod_xDdxdd(-544170875, slaveAddr, vector<int>(values), rcvCount);
+            result = obj.InvokeMethod_xDdxdd(-544170875, slaveAddr, values, rcvCount);
         end
 
         function result = writeStr(obj, codes)
@@ -658,7 +658,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Ds(2026149263, buff);
         end
 
-        function result = writeArray(obj, vector<int>(byteList))
+        function result = writeArray(obj, byteList)
             % Sends a byte sequence (provided as a list of bytes) to the I2C bus.
             % Depending on the I2C bus state, the first byte will be interpreted as an
             % address byte or a data byte.
@@ -668,7 +668,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxd(1790600172, vector<int>(byteList));
+            result = obj.InvokeMethod_Dxd(1790600172, byteList);
         end
 
         % //--- (end of YI2cPort accessors declaration)

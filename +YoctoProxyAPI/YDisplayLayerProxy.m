@@ -231,7 +231,7 @@ classdef YDisplayLayerProxy < matlab.System
             result = obj.InvokeMethod_Ds(-1097833423, fontname);
         end
 
-        function result = drawText(obj, x, y, (YoctoLib::Y_ALIGN)(anchor-1), text)
+        function result = drawText(obj, x, y, anchor, text)
             % Draws a text string at the specified position. The point of the text that is aligned
             % to the specified pixel position is called the anchor point, and can be chosen among
             % several options. Text is rendered from left to right, without implicit wrapping.
@@ -248,7 +248,7 @@ classdef YDisplayLayerProxy < matlab.System
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dddds(1488552655, x, y, (YoctoLib::Y_ALIGN)(anchor-1), text);
+            result = obj.InvokeMethod_Ddd?s(32900688, x, y, anchor, text);
         end
 
         function result = drawImage(obj, x, y, imagename)

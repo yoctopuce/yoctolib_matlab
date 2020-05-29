@@ -166,17 +166,17 @@ classdef YMultiAxisControllerProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_D(323098917);
         end
 
-        function result = findHomePosition(obj, vector<double>(speed))
+        function result = findHomePosition(obj, speed)
             % Starts all motors backward at the specified speeds, to search for the motor home position.
             %
             % @param speed : desired speed for all axis, in steps per second.
             %
             % @return 0 if the call succeeds.
             %         On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxf(-794690470, vector<double>(speed));
+            result = obj.InvokeMethod_Dxf(-794690470, speed);
         end
 
-        function result = moveTo(obj, vector<double>(absPos))
+        function result = moveTo(obj, absPos)
             % Starts all motors synchronously to reach a given absolute position.
             % The time needed to reach the requested position will depend on the lowest
             % acceleration and max speed parameters configured for all motors.
@@ -186,10 +186,10 @@ classdef YMultiAxisControllerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return 0 if the call succeeds.
             %         On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxf(-598739568, vector<double>(absPos));
+            result = obj.InvokeMethod_Dxf(-598739568, absPos);
         end
 
-        function result = moveRel(obj, vector<double>(relPos))
+        function result = moveRel(obj, relPos)
             % Starts all motors synchronously to reach a given relative position.
             % The time needed to reach the requested position will depend on the lowest
             % acceleration and max speed parameters configured for all motors.
@@ -199,7 +199,7 @@ classdef YMultiAxisControllerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return 0 if the call succeeds.
             %         On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxf(-589115154, vector<double>(relPos));
+            result = obj.InvokeMethod_Dxf(-589115154, relPos);
         end
 
         function result = pause(obj, waitMs)

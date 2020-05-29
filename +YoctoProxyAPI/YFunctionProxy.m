@@ -397,7 +397,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_S', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096));
+                    blanks(4096), SizePtr(4096));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_S', errmsg);
                     throw(ME)
@@ -482,7 +482,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Ssb', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), arg2, int32(arg3));
+                    blanks(4096), SizePtr(4096), arg2, int32(arg3));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Ssb', errmsg);
                     throw(ME)
@@ -555,7 +555,7 @@ classdef YFunctionProxy < matlab.System
                     ME = MException('YFunctionProxy:InvokeMethod_Bs', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = (pRes ~= 0);
             end
         end
 
@@ -567,12 +567,12 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xSs', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), arg2);
+                    blanks(4096), SizePtr(4096), arg2);
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xSs', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = transpose(regexp(pRes, '\|', 'split'));
             end
         end
 
@@ -584,7 +584,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Ss', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), arg2);
+                    blanks(4096), SizePtr(4096), arg2);
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Ss', errmsg);
                     throw(ME)
@@ -601,12 +601,12 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xS', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096));
+                    blanks(4096), SizePtr(4096));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xS', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = transpose(regexp(pRes, '\|', 'split'));
             end
         end
 
@@ -837,9 +837,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Dsxfxf', ...
+                [ resCode, errmsg, ~, pRes, ~, ~ ] = calllib('ypa', 'ypaInvokeMethod_Dsxfxf', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), arg2, double(arg3), double(arg4));
+                    libpointer('int32Ptr', int32(0)), arg2, libpointer('doublePtr', double(arg3)), SizeT(length(arg3)), libpointer('doublePtr', double(arg4)), SizeT(length(arg4)));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Dsxfxf', errmsg);
                     throw(ME)
@@ -888,9 +888,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Ddxd', ...
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Ddxd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3));
+                    libpointer('int32Ptr', int32(0)), int32(arg2), libpointer('int32Ptr', int32(arg3)), SizeT(length(arg3)));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Ddxd', errmsg);
                     throw(ME)
@@ -905,9 +905,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Ddxdd', ...
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Ddxdd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3), int32(arg4));
+                    libpointer('int32Ptr', int32(0)), int32(arg2), libpointer('int32Ptr', int32(arg3)), SizeT(length(arg3)), int32(arg4));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Ddxdd', errmsg);
                     throw(ME)
@@ -922,9 +922,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Dxdd', ...
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Dxdd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3));
+                    libpointer('int32Ptr', int32(0)), libpointer('int32Ptr', int32(arg2)), SizeT(length(arg2)), int32(arg3));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Dxdd', errmsg);
                     throw(ME)
@@ -941,7 +941,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Sdd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), int32(arg2), int32(arg3));
+                    blanks(4096), SizePtr(4096), int32(arg2), int32(arg3));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Sdd', errmsg);
                     throw(ME)
@@ -956,14 +956,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_xDdd', ...
+                [ resCode, errmsg, ~, pRes, pCount ] = calllib('ypa', 'ypaInvokeMethod_xDdd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3));
+                    libpointer('int32Ptr', zeros(1,1024,'int32')), SizeT(1024), int32(arg2), int32(arg3));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xDdd', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 
@@ -992,12 +992,12 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xSsd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), arg2, int32(arg3));
+                    blanks(4096), SizePtr(4096), arg2, int32(arg3));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xSsd', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = transpose(regexp(pRes, '\|', 'split'));
             end
         end
 
@@ -1009,7 +1009,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Ssd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), arg2, int32(arg3));
+                    blanks(4096), SizePtr(4096), arg2, int32(arg3));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Ssd', errmsg);
                     throw(ME)
@@ -1026,7 +1026,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Sdsd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), int32(arg2), arg3, int32(arg4));
+                    blanks(4096), SizePtr(4096), int32(arg2), arg3, int32(arg4));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Sdsd', errmsg);
                     throw(ME)
@@ -1041,14 +1041,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_xDdxdd', ...
+                [ resCode, errmsg, ~, pRes, pCount, ~ ] = calllib('ypa', 'ypaInvokeMethod_xDdxdd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3), int32(arg4));
+                    libpointer('int32Ptr', zeros(1,1024,'int32')), SizeT(1024), int32(arg2), libpointer('int32Ptr', int32(arg3)), SizeT(length(arg3)), int32(arg4));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xDdxdd', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 
@@ -1058,9 +1058,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Dxd', ...
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Dxd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2));
+                    libpointer('int32Ptr', int32(0)), libpointer('int32Ptr', int32(arg2)), SizeT(length(arg2)));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Dxd', errmsg);
                     throw(ME)
@@ -1075,9 +1075,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Dxf', ...
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Dxf', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), double(arg2));
+                    libpointer('int32Ptr', int32(0)), libpointer('doublePtr', double(arg2)), SizeT(length(arg2)));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Dxf', errmsg);
                     throw(ME)
@@ -1145,7 +1145,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Sd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), int32(arg2));
+                    blanks(4096), SizePtr(4096), int32(arg2));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Sd', errmsg);
                     throw(ME)
@@ -1160,14 +1160,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_xDd', ...
+                [ resCode, errmsg, ~, pRes, pCount ] = calllib('ypa', 'ypaInvokeMethod_xDd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2));
+                    libpointer('int32Ptr', zeros(1,1024,'int32')), SizeT(1024), int32(arg2));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xDd', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 
@@ -1177,14 +1177,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_xDdxd', ...
+                [ resCode, errmsg, ~, pRes, pCount, ~ ] = calllib('ypa', 'ypaInvokeMethod_xDdxd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3));
+                    libpointer('int32Ptr', zeros(1,1024,'int32')), SizeT(1024), int32(arg2), libpointer('int32Ptr', int32(arg3)), SizeT(length(arg3)));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xDdxd', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 
@@ -1194,14 +1194,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_xDddd', ...
+                [ resCode, errmsg, ~, pRes, pCount ] = calllib('ypa', 'ypaInvokeMethod_xDddd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3), int32(arg4));
+                    libpointer('int32Ptr', zeros(1,1024,'int32')), SizeT(1024), int32(arg2), int32(arg3), int32(arg4));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xDddd', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 
@@ -1211,9 +1211,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Dddxd', ...
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Dddxd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3), int32(arg4));
+                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3), libpointer('int32Ptr', int32(arg4)), SizeT(length(arg4)));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Dddxd', errmsg);
                     throw(ME)
@@ -1228,14 +1228,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_xDddxddd', ...
+                [ resCode, errmsg, ~, pRes, pCount, ~ ] = calllib('ypa', 'ypaInvokeMethod_xDddxddd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), int32(arg2), int32(arg3), int32(arg4), int32(arg5), int32(arg6));
+                    libpointer('int32Ptr', zeros(1,1024,'int32')), SizeT(1024), int32(arg2), int32(arg3), libpointer('int32Ptr', int32(arg4)), SizeT(length(arg4)), int32(arg5), int32(arg6));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xDddxddd', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 
@@ -1245,9 +1245,9 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Dxfxf', ...
+                [ resCode, errmsg, ~, pRes, ~, ~ ] = calllib('ypa', 'ypaInvokeMethod_Dxfxf', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)), double(arg2), double(arg3));
+                    libpointer('int32Ptr', int32(0)), libpointer('doublePtr', double(arg2)), SizeT(length(arg2)), libpointer('doublePtr', double(arg3)), SizeT(length(arg3)));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_Dxfxf', errmsg);
                     throw(ME)
@@ -1269,7 +1269,7 @@ classdef YFunctionProxy < matlab.System
                     ME = MException('YFunctionProxy:InvokeMethod_B', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = (pRes ~= 0);
             end
         end
 
@@ -1296,14 +1296,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_xH', ...
+                [ resCode, errmsg, ~, pRes, pCount ] = calllib('ypa', 'ypaInvokeMethod_xH', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    libpointer('int32Ptr', int32(0)));
+                    libpointer('int32Ptr', zeros(1,1024,'int32')), SizeT(1024));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xH', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 
@@ -1383,7 +1383,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xV', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096));
+                    blanks(4096), SizePtr(4096));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xV', errmsg);
                     throw(ME)
@@ -1400,7 +1400,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xUs', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), arg2);
+                    blanks(4096), SizePtr(4096), arg2);
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xUs', errmsg);
                     throw(ME)
@@ -1417,7 +1417,7 @@ classdef YFunctionProxy < matlab.System
             else
                 [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xTd', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096), int32(arg2));
+                    blanks(4096), SizePtr(4096), int32(arg2));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xTd', errmsg);
                     throw(ME)
@@ -1432,14 +1432,14 @@ classdef YFunctionProxy < matlab.System
             if obj.funcHandle == 0
                 result = 0;
             else
-                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xW', ...
+                [ resCode, errmsg, ~, pRes, pCount ] = calllib('ypa', 'ypaInvokeMethod_xW', ...
                     obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
-                    blanks(4096), SizePtr(5096));
+                    libpointer('YWlanRecordStruct', zeros(1,1024,'int32')), SizeT(1024));
                 if resCode ~= 0
                     ME = MException('YFunctionProxy:InvokeMethod_xW', errmsg);
                     throw(ME)
                 end
-                result = pRes;
+                result = pRes(1:pCount);
             end
         end
 

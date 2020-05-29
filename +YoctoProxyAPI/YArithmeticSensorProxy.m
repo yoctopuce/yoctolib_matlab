@@ -186,7 +186,7 @@ classdef YArithmeticSensorProxy < YoctoProxyAPI.YSensorProxy
             result = obj.InvokeMethod_S(-845603074);
         end
 
-        function result = defineAuxiliaryFunction(obj, name, vector<double>(inputValues), vector<double>(outputValues))
+        function result = defineAuxiliaryFunction(obj, name, inputValues, outputValues)
             % Defines a auxiliary function by means of a table of reference points. Intermediate values
             % will be interpolated between specified reference points. The reference points are given
             % as pairs of floating point numbers.
@@ -202,7 +202,7 @@ classdef YArithmeticSensorProxy < YoctoProxyAPI.YSensorProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dsxfxf(271307659, name, vector<double>(inputValues), vector<double>(outputValues));
+            result = obj.InvokeMethod_Dsxfxf(271307659, name, inputValues, outputValues);
         end
 
         % //--- (end of YArithmeticSensor accessors declaration)

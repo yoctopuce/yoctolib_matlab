@@ -51,7 +51,7 @@ classdef YAPIProxy
     %   object that provides interaction with the module.
     
     methods(Hidden, Static, Access = { ?YoctoProxyAPI.YFunctionProxy })
-        function [libPath,hPath] = GetDLLPath()
+        function [ libPath,hPath ] = GetDLLPath()
             %GetDLLPath Helper to locate the proper shared library
             thisDir = fileparts(mfilename('fullpath'));
             switch computer('arch')
@@ -84,18 +84,32 @@ classdef YAPIProxy
             end
         end
         
+        function result = SizeT(sz)
+            %SizeT Helper to return a size_t number
+            persistent arch64Bit
+            if isempty(arch64Bit)
+                [~,maxArraySize] = computer; 
+                arch64Bit = (maxArraySize > 2^31);
+            end
+            if arch64Bit
+                result = int64(sz);
+            else
+                result = int32(sz);
+            end
+        end
+        
         function result = SizePtr(sz)
             %SizePtr Helper to return a pointer to size_t
-            persistent typeName
-            if isempty(typeName)
+            persistent ptrTypeName
+            if isempty(ptrTypeName)
                 [~,maxArraySize] = computer; 
                 if maxArraySize > 2^31
-                    typeName = 'uint64Ptr';
+                    ptrTypeName = 'uint64Ptr';
                 else
-                    typeName = 'uint32Ptr';
+                    ptrTypeName = 'uint32Ptr';
                 end
             end
-            result = libpointer(typeName, sz);
+            result = libpointer(ptrTypeName, sz);
         end       
     end
     
@@ -111,7 +125,7 @@ classdef YAPIProxy
             import YoctoProxyAPI.YAPIProxy.*
             LoadDLL();
             [ ~, pRes, ~ ] = calllib('ypa', 'ypaGetAPIVersion', blanks(32), SizePtr(32));
-            result = [ '1.10.40758 (' pRes ')'];
+            result = [ '1.10.40785 (' pRes ')'];
         end
 
         function result = GetDllArchitecture()

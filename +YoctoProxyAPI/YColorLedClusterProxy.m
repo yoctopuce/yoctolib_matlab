@@ -585,7 +585,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dds(1769065556, ledIndex, buff);
         end
 
-        function result = set_rgbColorArray(obj, ledIndex, vector<int>(rgbList))
+        function result = set_rgbColorArray(obj, ledIndex, rgbList)
             % Sends 24bit RGB colors (provided as a list of integers) to the LED RGB buffer, as is.
             % The first number represents the RGB value of the LED specified as parameter, the second
             % number represents the RGB value of the next LED, etc.
@@ -596,10 +596,10 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Ddxd(1288010864, ledIndex, vector<int>(rgbList));
+            result = obj.InvokeMethod_Ddxd(1288010864, ledIndex, rgbList);
         end
 
-        function result = rgbArrayOfs_move(obj, ledIndex, vector<int>(rgbList), delay)
+        function result = rgbArrayOfs_move(obj, ledIndex, rgbList, delay)
             % Sets up a smooth RGB color transition to the specified pixel-by-pixel list of RGB
             % color codes. The first color code represents the target RGB value of the first LED,
             % the next color code represents the target value of the next LED, etc.
@@ -611,10 +611,10 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Ddxdd(1662707560, ledIndex, vector<int>(rgbList), delay);
+            result = obj.InvokeMethod_Ddxdd(1662707560, ledIndex, rgbList, delay);
         end
 
-        function result = rgbArray_move(obj, vector<int>(rgbList), delay)
+        function result = rgbArray_move(obj, rgbList, delay)
             % Sets up a smooth RGB color transition to the specified pixel-by-pixel list of RGB
             % color codes. The first color code represents the target RGB value of the first LED,
             % the next color code represents the target value of the next LED, etc.
@@ -625,7 +625,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxdd(1457534503, vector<int>(rgbList), delay);
+            result = obj.InvokeMethod_Dxdd(1457534503, rgbList, delay);
         end
 
         function result = set_hslColorBuffer(obj, ledIndex, buff)
@@ -642,7 +642,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dds(294395354, ledIndex, buff);
         end
 
-        function result = set_hslColorArray(obj, ledIndex, vector<int>(hslList))
+        function result = set_hslColorArray(obj, ledIndex, hslList)
             % Sends 24bit HSL colors (provided as a list of integers) to the LED HSL buffer, as is.
             % The first number represents the HSL value of the LED specified as parameter, the second
             % number represents
@@ -654,10 +654,10 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Ddxd(876129790, ledIndex, vector<int>(hslList));
+            result = obj.InvokeMethod_Ddxd(876129790, ledIndex, hslList);
         end
 
-        function result = hslArray_move(obj, vector<int>(hslList), delay)
+        function result = hslArray_move(obj, hslList, delay)
             % Sets up a smooth HSL color transition to the specified pixel-by-pixel list of HSL
             % color codes. The first color code represents the target HSL value of the first LED,
             % the second color code represents the target value of the second LED, etc.
@@ -668,10 +668,10 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxdd(773711785, vector<int>(hslList), delay);
+            result = obj.InvokeMethod_Dxdd(773711785, hslList, delay);
         end
 
-        function result = hslArrayOfs_move(obj, ledIndex, vector<int>(hslList), delay)
+        function result = hslArrayOfs_move(obj, ledIndex, hslList, delay)
             % Sets up a smooth HSL color transition to the specified pixel-by-pixel list of HSL
             % color codes. The first color code represents the target HSL value of the first LED,
             % the second color code represents the target value of the second LED, etc.
@@ -683,7 +683,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Ddxdd(488316825, ledIndex, vector<int>(hslList), delay);
+            result = obj.InvokeMethod_Ddxdd(488316825, ledIndex, hslList, delay);
         end
 
         function result = get_rgbColorBuffer(obj, ledIndex, count)

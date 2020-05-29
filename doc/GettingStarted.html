@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB R2020a"><title>Yoctopuce Toolbox for MATLAB</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: center;  }
+.S1 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: center;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S3 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S6 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px 4px 0px 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.embeddedOutputsMatrixElement,.eoOutputWrapper .matrixElement {min-height: 18px; box-sizing: border-box;}
+.embeddedOutputsMatrixElement .matrixElement,.eoOutputWrapper .matrixElement,.rtcDataTipElement .matrixElement {position: relative;}
+.matrixElement .variableValue,.rtcDataTipElement .matrixElement .variableValue {white-space: pre; display: inline-block; vertical-align: top; overflow: hidden;}
+.embeddedOutputsMatrixElement.inlineElement {}
+.embeddedOutputsMatrixElement.inlineElement .topHeaderWrapper {display: none;}
+.embeddedOutputsMatrixElement.inlineElement .veTable .body {padding-top: 0 !important; max-height: 100px;}
+.inlineElement .matrixElement {max-height: 300px;}
+.embeddedOutputsMatrixElement.rightPaneElement {}
+.rightPaneElement .matrixElement,.rtcDataTipElement .matrixElement {overflow: hidden; padding-left: 9px;}
+.rightPaneElement .matrixElement {margin-bottom: -1px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer,.eoOutputWrapper .matrixElement .valueContainer,.rtcDataTipElement .matrixElement .valueContainer {white-space: nowrap; margin-bottom: 3px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis.hide,.embeddedOutputsMatrixElement .matrixElement .verticalEllipsis.hide,.eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis.hide,.eoOutputWrapper .matrixElement .verticalEllipsis.hide,.rtcDataTipElement .matrixElement .valueContainer .horizontalEllipsis.hide,.rtcDataTipElement .matrixElement .verticalEllipsis.hide {display: none;}
+.embeddedOutputsVariableMatrixElement .matrixElement .valueContainer.hideEllipses .verticalEllipsis, .embeddedOutputsVariableMatrixElement .matrixElement .valueContainer.hideEllipses .horizontalEllipsis {display:none;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis,.eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis {margin-bottom: -3px;}
+.eoOutputWrapper .embeddedOutputsVariableMatrixElement .matrixElement .valueContainer {cursor: default !important;}
+.embeddedOutputsVariableElement {white-space: pre-wrap; word-wrap: break-word; min-height: 18px; max-height: 250px; overflow: auto;}
+.variableElement {}
+.embeddedOutputsVariableElement.inlineElement {}
+.inlineElement .variableElement {}
+.embeddedOutputsVariableElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .variableElement {padding-top: 2px; padding-left: 9px;}
+.variableNameElement {margin-bottom: 3px; display: inline-block;}
+.matrixElement .horizontalEllipsis,.rtcDataTipElement .matrixElement .horizontalEllipsis {display: inline-block; margin-top: 3px; width: 30px; height: 12px; background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAJCAYAAADO1CeCAAAAJUlEQVR42mP4//8/A70xw0i29BUDFPxnAEtTW37wWDqakIa4pQDvOOG89lHX2gAAAABJRU5ErkJggg==");}
+.matrixElement .verticalEllipsis,.textElement .verticalEllipsis,.rtcDataTipElement .matrixElement .verticalEllipsis,.rtcDataTipElement .textElement .verticalEllipsis {margin-left: 35px; width: 12px; height: 30px; background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAZCAYAAAAIcL+IAAAALklEQVR42mP4//8/AzGYgWyFMECMwv8QddRS+P//KyimlmcGUOFoOI6GI/UVAgDnd8Dd4+NCwgAAAABJRU5ErkJggg==");}
+.S8 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S9 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S10 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S11 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S12 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S13 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S14 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span style=' font-weight: bold;'>Yoctopuce Toolbox for MATLAB</span></h1><h3  class = 'S1'><span>(version Beta)</span></h3><div  class = 'S2'><span></span></div><div  class = 'S2'><span>This library implements a set of classes enabling you to use Yoctopuce sensors and actuators within MATLAB. It includes a dynamic library written in C++ to take care of low level communications with the modules without requiring extra device drivers.</span></div><h3  class = 'S3'><span>First steps</span></h3><div  class = 'S2'><span>All the classes are assembled in a package named </span><span style=' font-weight: bold;'>YoctoProxyAPI</span><span>. To simplify the code below, we import all the classes of the package, but it is obviously not compulsory:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>import </span><span style="color: rgb(160, 32, 240);">YoctoProxyAPI.*</span></span></div></div></div><div  class = 'S5'><span>All the general functions of the library are gathered in the </span><span style=' font-family: monospace;'>YAPIProxy</span><span> class in the shape of static methods. The first method that you must call, </span><span style=' font-weight: bold; font-family: monospace;'>RegisterHub()</span><span>, is used to indicate where the Yoctopuce modules are located. The library can use modules connected through the network or directly connected by USB.</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>YAPIProxy.RegisterHub(</span><span style="color: rgb(160, 32, 240);">'usb'</span><span>)</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="F5FBE690" data-scroll-top="null" data-scroll-left="null" contenteditable="false" data-width="1178" data-height="46" data-hashorizontaloverflow="false" data-testid="output_0" style="max-height: 261px; width: 1208px; opacity: 1;"><div class="textElement">ans =
+
+  0×0 empty char array</div></div></div></div></div><div  class = 'S5'><span>If we had wanted to use modules connected via a</span><span> </span><a href = "https://www.yoctopuce.com/EN/products/extensions-and-networking/yoctohub-wireless-n"><span>YoctoHub-Wireless-n</span></a><span> </span><span>for example, we would have replaced the</span><span> </span><span style=' font-weight: bold; font-family: monospace;'>'usb'</span><span> </span><span>string with an IP address such as</span><span> </span><span style=' font-weight: bold; font-family: monospace;'>'192.168.1.100'</span><span>.</span></div><div  class = 'S2'><span>Let's now see how to list all the detected modules:</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>YModuleProxy.GetSimilarFunctions()</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsTextMatrixElement embeddedOutputsVariableMatrixElement" uid="088C2A29" data-scroll-top="null" data-scroll-left="null" contenteditable="false" data-width="1178" data-testid="output_1" style="width: 1208px; opacity: 1; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="matrixElement veSpecifier" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="veVariableName variableNameElement" style="width: 1178px; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="headerElementClickToInteract" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><span style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">ans = </span><span class="veVariableValueSummary headerElement" style="white-space: normal; font-style: normal; color: rgb(179, 179, 179); font-size: 12px;">2×1 cell</span></div></div><div class="valueContainer" data-layout="{&quot;totalRows&quot;:2,&quot;totalColumns&quot;:1}" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="variableValue" style="width: 178px; white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">'THRMCPL1-13405C.module'    <br>'MXPWRRLY-FA815.module'     <br></div><div class="horizontalEllipsis hide" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div><div class="verticalEllipsis hide" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div></div></div></div></div></div></div><div  class = 'S5'><span>This function returns a list of hardware identifiers, corresponding to each module that was found. In a similar way, we can list all the temperature sensors, whatever their type or their distribution on physical modules, in the case of modules with several inputs:</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>YTemperatureProxy.GetSimilarFunctions()</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsTextMatrixElement embeddedOutputsVariableMatrixElement" uid="9E82F2D1" data-scroll-top="null" data-scroll-left="null" contenteditable="false" data-width="1178" data-testid="output_2" style="width: 1208px; opacity: 1; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="matrixElement veSpecifier" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="veVariableName variableNameElement" style="width: 1178px; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="headerElementClickToInteract" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><span style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">ans = </span><span class="veVariableValueSummary headerElement" style="white-space: normal; font-style: normal; color: rgb(179, 179, 179); font-size: 12px;">2×1 cell</span></div></div><div class="valueContainer" data-layout="{&quot;totalRows&quot;:2,&quot;totalColumns&quot;:1}" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="variableValue" style="width: 198px; white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">'THRMCPL1-13405C.temperature2' <br>'THRMCPL1-13405C.temperature1' <br></div><div class="horizontalEllipsis hide" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div><div class="verticalEllipsis hide" style="white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div></div></div></div></div></div></div><h3  class = 'S3'><span>Driving command modules</span></h3><div  class = 'S2'><span>The Yoctopuce library provides distinct classes enabling you to drive the outputs of command modules through properties. For example, with the </span><span style=' font-weight: bold; font-family: monospace;'>YRelayProxy</span><span> class, you can drive relay outputs, and with the </span><span style=' font-weight: bold; font-family: monospace;'>YCurrentLoopOutputProxy</span><span> class you can drive outputs in 4-20mA current loop. Here is a first example of use:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre;"><span>pump = YRelayProxy.FindRelay(</span><span style="color: rgb(160, 32, 240);">'MXPWRRLY-FA815.relay3'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre;"><span>pump.State = </span><span style="color: rgb(160, 32, 240);">'State_B'</span><span>;</span></span></div></div></div><div  class = 'S5'><span>If you have given a logical name to the output, for example with the VirtualHub, you can also find the relay through its name:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre;"><span>pump = YRelayProxy.FindRelay(</span><span style="color: rgb(160, 32, 240);">'WaterPump'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre;"><span>pump.pulse(2000);</span></span></div></div></div><div  class = 'S5'><span>In this second example, rather than commuting the relay in a definitive manner, we requested it to switch to the B state for a 2000ms duration only.</span></div><div  class = 'S2'><span>You can easily consult the interesting properties of the interface objects:</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>pump</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="9D829832" contenteditable="false" data-testid="output_3" data-width="1178" data-height="150" data-hashorizontaloverflow="false" style="width: 1208px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">pump = </span></div><div>  YoctoProxyAPI.YRelayProxy with properties:
+
+   General
+    TargetFunction: 'WaterPump'
+        HardwareId: 'MXPWRRLY-FA815.relay3'
+      FriendlyName: 'MXPWRRLY-FA815.WaterPump'
+             State: State_A
+
+  Show all properties
+</div></div></div></div></div></div><h3  class = 'S3'><span>Using sensor type modules</span></h3><div  class = 'S2'><span>To use sensors, the principle is very similar: you look for the wanted function through its hardware name or the logical name that you have previously assigned to it, then you can read its value in the </span><span style=' font-weight: bold; font-family: monospace;'>CurrentValue</span><span> property. The measuring unit is available in the </span><span style=' font-weight: bold; font-family: monospace;'>Unit</span><span> property. If you display the object, you can find other useful properties of the sensor, such as here in the case of a</span><span> </span><a href = "https://www.yoctopuce.com/EN/products/usb-environmental-sensors/yocto-thermocouple"><span>Yocto-Thermocouple</span></a><span>:</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S6'><span style="white-space: pre;"><span>tc = YTemperatureProxy.FindTemperature(</span><span style="color: rgb(160, 32, 240);">''</span><span>)</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="C1C7C476" contenteditable="false" data-testid="output_4" style="width: 1208px; max-height: 261px;" data-width="1178" data-height="164" data-hashorizontaloverflow="false"><div class="textElement"><div><span class="variableNameElement">tc = </span></div><div>  YoctoProxyAPI.YTemperatureProxy with properties:
+
+   General
+    TargetFunction: '(any)'
+        HardwareId: 'THRMCPL1-13405C.temperature2'
+      FriendlyName: 'THRMCPL1-13405C.temperature2'
+      CurrentValue: 27.6200
+              Unit: ''C'
+
+  Show all properties
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S10'><span style="white-space: pre;"><span>measure = sprintf(</span><span style="color: rgb(160, 32, 240);">"%f %s"</span><span>, tc.CurrentValue, tc.Unit)</span></span></div><div  class = 'S7'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="1B39F4BC" contenteditable="false" data-testid="output_5" style="width: 1208px; max-height: 261px;" data-width="1178" data-height="20" data-hashorizontaloverflow="false"><div class="textElement"><div><span class="variableNameElement">measure = </span>"27.620000 'C"</div></div></div></div></div></div><div  class = 'S5'><span>You can note that the description of the object includes not only the measured temperature, but also the kind of thermocouple which has been configured.</span></div><h3  class = 'S3'><span>A complete example</span></h3><div  class = 'S2'><span>Here is a short example of a control process:</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre;"><span>import </span><span style="color: rgb(160, 32, 240);">YoctoProxyAPI.*</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>YAPIProxy.RegisterHub(</span><span style="color: rgb(160, 32, 240);">'usb'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>light = YLightSensorProxy.FindLightSensor(</span><span style="color: rgb(160, 32, 240);">'diningRoom'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>lightControl = YRelayProxy.FindRelay(</span><span style="color: rgb(160, 32, 240);">'lightSwitch'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>redButton = YAnButtonProxy.FindAnButton(</span><span style="color: rgb(160, 32, 240);">'redButton'</span><span>);</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">while </span><span>~redButton.IsPressed</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 0, 255);">if </span><span>light.CurrentValue &lt; 30</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>        </span><span style="color: rgb(60, 118, 61);">% turn on the light</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>        lightControl.State = </span><span style="color: rgb(160, 32, 240);">'State_B'</span><span>;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span style="color: rgb(0, 0, 255);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span style="color: rgb(60, 118, 61);">% Frees all the resources</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre;"><span>YAPIProxy.FreeAPI();</span></span></div></div></div><div  class = 'S5'><span>A few comments on the code:</span></div><ul  class = 'S12'><li  class = 'S13'><span>As you can see, most of the interaction with the Yoctopuce modules is performed through the properties, which makes reading the code easier.</span></li><li  class = 'S13'><span>Moreover, we guaranty that access to properties is almost instantaneous, as the properties are refreshed in a background task through an independent process. It's the specificity of our "Proxy" libraries.</span></li><li  class = 'S13'><span>The call to </span><span style=' font-weight: bold; font-family: monospace;'>FreeAPI()</span><span> at the end frees the USB port and disconnect the MATLAB objects from the Yoctopuce modules.</span></li></ul><h3  class = 'S3'><span>Supported platforms</span></h3><div  class = 'S2'><span>All the classes are defined in MATLAB language, but they delegate a large amount of the work to the C++ Proxy library, provided as a dynamic library. The toolbox distribution includes the dynamic library binaries for Windows, and Linux in 32/64 bits, and for MacOS in 64 bits, which should enable you to use it on all these platforms (we haven't tested MacOS yet). The source code of the dynamic library is available.</span></div><h2  class = 'S14'><span>What is not yet available in this Beta version</span></h2><h3  class = 'S3'><span style=' font-weight: bold;'>Examples for each Yoctopuce module</span></h3><div  class = 'S2'><span>All the Yoctopuce libraries include an example of use for each module. The MATLAB library won't make exception, you're entitled to a Live Script for each module when the library is officially available. In the mean time, you'll have to make do with the examples in this file. Online help in MATLAB should however enable you to find what you need during the Beta-test period.</span></div><h3  class = 'S3'><span style=' font-weight: bold;'>Exhaustive documentation</span></h3><div  class = 'S2'><span>We haven't yet generated the reference file detailing the use of each class. However, you already have the online help in MATLAB. If you want explanations on the properties and the list of classes, you can meanwhile read the documentation of the ".NET Proxy" library which is based on the same structure.</span></div><h3  class = 'S3'><span style=' font-weight: bold;'>Use of the data logger</span></h3><div  class = 'S2'><span>Yoctopuce sensors are able to record measures on their embedded flash memory. We have planned to allow easy access to it as </span><span style=' font-style: italic;'>TimeTables</span><span>, but this isn't yet available. The only problem with </span><span style=' font-style: italic;'>Time Tables</span><span> is that they appeared only in MATLAB 2016b. If possible, we will therefore provide an interface based on </span><span style=' font-style: italic;'>Time Series</span><span> as well.</span></div><h3  class = 'S3'><span style=' font-weight: bold;'>Use with Simulink</span></h3><div  class = 'S2'><span>We have decided to implement our library classes as MATLAB System Objects. This should enable you to use them directly in Simulink with System Blocks, but we will come back to this topic later when we will have made more headway in this matter.</span></div><div  class = 'S2'></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% *Yoctopuce Toolbox for MATLAB*
+% (version Beta)
+% 
+% 
+% This library implements a set of classes enabling you to use Yoctopuce sensors 
+% and actuators within MATLAB. It includes a dynamic library written in C++ to 
+% take care of low level communications with the modules without requiring extra 
+% device drivers.
+% First steps
+% All the classes are assembled in a package named *YoctoProxyAPI*. To simplify 
+% the code below, we import all the classes of the package, but it is obviously 
+% not compulsory:
+
+import YoctoProxyAPI.*
+%% 
+% All the general functions of the library are gathered in the |YAPIProxy| class 
+% in the shape of static methods. The first method that you must call, |*RegisterHub()*|, 
+% is used to indicate where the Yoctopuce modules are located. The library can 
+% use modules connected through the network or directly connected by USB.
+
+YAPIProxy.RegisterHub('usb')
+%% 
+% If we had wanted to use modules connected via a <https://www.yoctopuce.com/EN/products/extensions-and-networking/yoctohub-wireless-n 
+% YoctoHub-Wireless-n> for example, we would have replaced the |*'usb'*| string 
+% with an IP address such as |*'192.168.1.100'*|.
+% 
+% Let's now see how to list all the detected modules:
+
+YModuleProxy.GetSimilarFunctions()
+%% 
+% This function returns a list of hardware identifiers, corresponding to each 
+% module that was found. In a similar way, we can list all the temperature sensors, 
+% whatever their type or their distribution on physical modules, in the case of 
+% modules with several inputs:
+
+YTemperatureProxy.GetSimilarFunctions()
+% Driving command modules
+% The Yoctopuce library provides distinct classes enabling you to drive the 
+% outputs of command modules through properties. For example, with the |*YRelayProxy*| 
+% class, you can drive relay outputs, and with the |*YCurrentLoopOutputProxy*| 
+% class you can drive outputs in 4-20mA current loop. Here is a first example 
+% of use:
+
+pump = YRelayProxy.FindRelay('MXPWRRLY-FA815.relay3');
+pump.State = 'State_B';
+%% 
+% If you have given a logical name to the output, for example with the VirtualHub, 
+% you can also find the relay through its name:
+
+pump = YRelayProxy.FindRelay('WaterPump');
+pump.pulse(2000);
+%% 
+% In this second example, rather than commuting the relay in a definitive manner, 
+% we requested it to switch to the B state for a 2000ms duration only.
+% 
+% You can easily consult the interesting properties of the interface objects:
+
+pump
+% Using sensor type modules
+% To use sensors, the principle is very similar: you look for the wanted function 
+% through its hardware name or the logical name that you have previously assigned 
+% to it, then you can read its value in the |*CurrentValue*| property. The measuring 
+% unit is available in the |*Unit*| property. If you display the object, you can 
+% find other useful properties of the sensor, such as here in the case of a <https://www.yoctopuce.com/EN/products/usb-environmental-sensors/yocto-thermocouple 
+% Yocto-Thermocouple>:
+
+tc = YTemperatureProxy.FindTemperature('')
+measure = sprintf("%f %s", tc.CurrentValue, tc.Unit)
+%% 
+% You can note that the description of the object includes not only the measured 
+% temperature, but also the kind of thermocouple which has been configured.
+% A complete example
+% Here is a short example of a control process:
+
+import YoctoProxyAPI.*
+YAPIProxy.RegisterHub('usb');
+light = YLightSensorProxy.FindLightSensor('diningRoom');
+lightControl = YRelayProxy.FindRelay('lightSwitch');
+redButton = YAnButtonProxy.FindAnButton('redButton');
+
+while ~redButton.IsPressed
+    if light.CurrentValue < 30
+        % turn on the light
+        lightControl.State = 'State_B';
+    end
+end
+
+% Frees all the resources
+YAPIProxy.FreeAPI();
+%% 
+% A few comments on the code:
+%% 
+% * As you can see, most of the interaction with the Yoctopuce modules is performed 
+% through the properties, which makes reading the code easier.
+% * Moreover, we guaranty that access to properties is almost instantaneous, 
+% as the properties are refreshed in a background task through an independent 
+% process. It's the specificity of our "Proxy" libraries.
+% * The call to |*FreeAPI()*| at the end frees the USB port and disconnect the 
+% MATLAB objects from the Yoctopuce modules.
+% Supported platforms
+% All the classes are defined in MATLAB language, but they delegate a large 
+% amount of the work to the C++ Proxy library, provided as a dynamic library. 
+% The toolbox distribution includes the dynamic library binaries for Windows, 
+% and Linux in 32/64 bits, and for MacOS in 64 bits, which should enable you to 
+% use it on all these platforms (we haven't tested MacOS yet). The source code 
+% of the dynamic library is available.
+%% What is not yet available in this Beta version
+% *Examples for each Yoctopuce module*
+% All the Yoctopuce libraries include an example of use for each module. The 
+% MATLAB library won't make exception, you're entitled to a Live Script for each 
+% module when the library is officially available. In the mean time, you'll have 
+% to make do with the examples in this file. Online help in MATLAB should however 
+% enable you to find what you need during the Beta-test period.
+% *Exhaustive documentation*
+% We haven't yet generated the reference file detailing the use of each class. 
+% However, you already have the online help in MATLAB. If you want explanations 
+% on the properties and the list of classes, you can meanwhile read the documentation 
+% of the ".NET Proxy" library which is based on the same structure.
+% *Use of the data logger*
+% Yoctopuce sensors are able to record measures on their embedded flash memory. 
+% We have planned to allow easy access to it as _TimeTables_, but this isn't yet 
+% available. The only problem with _Time Tables_ is that they appeared only in 
+% MATLAB 2016b. If possible, we will therefore provide an interface based on _Time 
+% Series_ as well.
+% *Use with Simulink*
+% We have decided to implement our library classes as MATLAB System Objects. 
+% This should enable you to use them directly in Simulink with System Blocks, 
+% but we will come back to this topic later when we will have made more headway 
+% in this matter.
+% 
+%
+##### SOURCE END #####
+--></body></html>

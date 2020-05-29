@@ -82,14 +82,14 @@ classdef YSmsProxy < matlab.System
             result = obj.InvokeMethod_Ds(270824787, val);
         end
 
-        function result = addUnicodeData(obj, vector<int>(val))
+        function result = addUnicodeData(obj, val)
             % Add a unicode text to the SMS. This function support messages
             % of more than 160 characters, using SMS concatenation.
             %
             % @param val : an array of special unicode characters
             %
             % @return 0 when the call succeeds.
-            result = obj.InvokeMethod_Dxd(1577720391, vector<int>(val));
+            result = obj.InvokeMethod_Dxd(1577720391, val);
         end
 
         function result = send(obj)

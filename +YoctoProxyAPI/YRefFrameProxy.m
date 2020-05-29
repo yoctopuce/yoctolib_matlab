@@ -252,7 +252,7 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_D(331967861);
         end
 
-        function result = set_mountPosition(obj, (YoctoLib::Y_MOUNTPOSITION)(position-1), (YoctoLib::Y_MOUNTORIENTATION)(orientation-1))
+        function result = set_mountPosition(obj, position, orientation)
             % Changes the compass and tilt sensor frame of reference. The magnetic compass
             % and the tilt sensors (pitch and roll) naturally work in the plane
             % parallel to the earth surface. In case the device is not installed upright
@@ -276,7 +276,7 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
             % method of the module if the modification must be kept.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Ddd(1866493237, (YoctoLib::Y_MOUNTPOSITION)(position-1), (YoctoLib::Y_MOUNTORIENTATION)(orientation-1));
+            result = obj.InvokeMethod_D??(-894017066, position, orientation);
         end
 
         function result = get_calibrationState(obj)

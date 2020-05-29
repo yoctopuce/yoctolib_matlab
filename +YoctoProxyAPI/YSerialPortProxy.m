@@ -575,7 +575,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Ds(2026149263, buff);
         end
 
-        function result = writeArray(obj, vector<int>(byteList))
+        function result = writeArray(obj, byteList)
             % Sends a byte sequence (provided as a list of bytes) to the serial port.
             %
             % @param byteList : a list of byte codes
@@ -583,7 +583,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxd(1790600172, vector<int>(byteList));
+            result = obj.InvokeMethod_Dxd(1790600172, byteList);
         end
 
         function result = writeHex(obj, hexString)
@@ -724,7 +724,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Ds(1987706032, hexString);
         end
 
-        function result = queryMODBUS(obj, slaveNo, vector<int>(pduBytes))
+        function result = queryMODBUS(obj, slaveNo, pduBytes)
             % Sends a message to a specified MODBUS slave connected to the serial port, and reads the
             % reply, if any. The message is the PDU, provided as a vector of bytes.
             %
@@ -735,7 +735,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return the received reply, as a vector of bytes.
             %
             % On failure, throws an exception or returns an empty array (or a MODBUS error reply).
-            result = obj.InvokeMethod_xDdxd(-1992142193, slaveNo, vector<int>(pduBytes));
+            result = obj.InvokeMethod_xDdxd(-1992142193, slaveNo, pduBytes);
         end
 
         function result = modbusReadBits(obj, slaveNo, pduAddr, nBits)
@@ -808,7 +808,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dddd(-1157259743, slaveNo, pduAddr, value);
         end
 
-        function result = modbusWriteBits(obj, slaveNo, pduAddr, vector<int>(bits))
+        function result = modbusWriteBits(obj, slaveNo, pduAddr, bits)
             % Sets several contiguous internal bits (or coils) on a MODBUS serial device.
             % This method uses the MODBUS function code 0x0f (Write Multiple Coils).
             %
@@ -819,7 +819,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return the number of bits/coils affected on the device
             %
             % On failure, throws an exception or returns zero.
-            result = obj.InvokeMethod_Dddxd(-687482287, slaveNo, pduAddr, vector<int>(bits));
+            result = obj.InvokeMethod_Dddxd(-687482287, slaveNo, pduAddr, bits);
         end
 
         function result = modbusWriteRegister(obj, slaveNo, pduAddr, value)
@@ -836,7 +836,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dddd(1789190180, slaveNo, pduAddr, value);
         end
 
-        function result = modbusWriteRegisters(obj, slaveNo, pduAddr, vector<int>(values))
+        function result = modbusWriteRegisters(obj, slaveNo, pduAddr, values)
             % Sets several contiguous internal registers (or holding registers) on a MODBUS serial device.
             % This method uses the MODBUS function code 0x10 (Write Multiple Registers).
             %
@@ -847,10 +847,10 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return the number of registers affected on the device
             %
             % On failure, throws an exception or returns zero.
-            result = obj.InvokeMethod_Dddxd(500147086, slaveNo, pduAddr, vector<int>(values));
+            result = obj.InvokeMethod_Dddxd(500147086, slaveNo, pduAddr, values);
         end
 
-        function result = modbusWriteAndReadRegisters(obj, slaveNo, pduWriteAddr, vector<int>(values), pduReadAddr, nReadWords)
+        function result = modbusWriteAndReadRegisters(obj, slaveNo, pduWriteAddr, values, pduReadAddr, nReadWords)
             % Sets several contiguous internal registers (holding registers) on a MODBUS serial device,
             % then performs a contiguous read of a set of (possibly different) internal registers.
             % This method uses the MODBUS function code 0x17 (Read/Write Multiple Registers).
@@ -864,7 +864,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a vector of integers, each corresponding to one 16-bit register value read.
             %
             % On failure, throws an exception or returns an empty array.
-            result = obj.InvokeMethod_xDddxddd(-1609629652, slaveNo, pduWriteAddr, vector<int>(values), pduReadAddr, nReadWords);
+            result = obj.InvokeMethod_xDddxddd(-1609629652, slaveNo, pduWriteAddr, values, pduReadAddr, nReadWords);
         end
 
         % //--- (end of YSerialPort accessors declaration)

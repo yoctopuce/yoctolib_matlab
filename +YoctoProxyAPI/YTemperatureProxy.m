@@ -245,7 +245,7 @@ classdef YTemperatureProxy < YoctoProxyAPI.YSensorProxy
             result = obj.InvokeMethod_Dff(1783917392, res25, beta);
         end
 
-        function result = set_thermistorResponseTable(obj, vector<double>(tempValues), vector<double>(resValues))
+        function result = set_thermistorResponseTable(obj, tempValues, resValues)
             % Records a thermistor response table, in order to interpolate the temperature from
             % the measured resistance. This function can only be used with a temperature
             % sensor based on thermistors.
@@ -260,7 +260,7 @@ classdef YTemperatureProxy < YoctoProxyAPI.YSensorProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxfxf(1743863036, vector<double>(tempValues), vector<double>(resValues));
+            result = obj.InvokeMethod_Dxfxf(1743863036, tempValues, resValues);
         end
 
         % //--- (end of YTemperature accessors declaration)

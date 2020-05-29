@@ -359,7 +359,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             result = obj.InvokeMethod_Dff(-1218190639, currWeight, maxWeight);
         end
 
-        function result = set_offsetAvgCompensationTable(obj, vector<double>(tempValues), vector<double>(compValues))
+        function result = set_offsetAvgCompensationTable(obj, tempValues, compValues)
             % Records a weight offset thermal compensation table, in order to automatically correct the
             % measured weight based on the averaged compensation temperature.
             % The weight correction will be applied by linear interpolation between specified points.
@@ -373,10 +373,10 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxfxf(-1100997934, vector<double>(tempValues), vector<double>(compValues));
+            result = obj.InvokeMethod_Dxfxf(-1100997934, tempValues, compValues);
         end
 
-        function result = set_offsetChgCompensationTable(obj, vector<double>(tempValues), vector<double>(compValues))
+        function result = set_offsetChgCompensationTable(obj, tempValues, compValues)
             % Records a weight offset thermal compensation table, in order to automatically correct the
             % measured weight based on the variation of temperature.
             % The weight correction will be applied by linear interpolation between specified points.
@@ -390,10 +390,10 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxfxf(-1259501118, vector<double>(tempValues), vector<double>(compValues));
+            result = obj.InvokeMethod_Dxfxf(-1259501118, tempValues, compValues);
         end
 
-        function result = set_spanAvgCompensationTable(obj, vector<double>(tempValues), vector<double>(compValues))
+        function result = set_spanAvgCompensationTable(obj, tempValues, compValues)
             % Records a weight span thermal compensation table, in order to automatically correct the
             % measured weight based on the compensation temperature.
             % The weight correction will be applied by linear interpolation between specified points.
@@ -407,10 +407,10 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxfxf(-1314931078, vector<double>(tempValues), vector<double>(compValues));
+            result = obj.InvokeMethod_Dxfxf(-1314931078, tempValues, compValues);
         end
 
-        function result = set_spanChgCompensationTable(obj, vector<double>(tempValues), vector<double>(compValues))
+        function result = set_spanChgCompensationTable(obj, tempValues, compValues)
             % Records a weight span thermal compensation table, in order to automatically correct the
             % measured weight based on the variation of temperature.
             % The weight correction will be applied by linear interpolation between specified points.
@@ -424,7 +424,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxfxf(-1156436630, vector<double>(tempValues), vector<double>(compValues));
+            result = obj.InvokeMethod_Dxfxf(-1156436630, tempValues, compValues);
         end
 
         % //--- (end of YWeighScale accessors declaration)

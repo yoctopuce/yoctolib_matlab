@@ -1,3 +1,3 @@
-Matlab v1.10.40758
+Matlab v1.10.40785
 
--First release
+- Initial Beta release, see Getting Started document for limitations

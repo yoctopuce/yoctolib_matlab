@@ -630,7 +630,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Ds(2026149263, buff);
         end
 
-        function result = writeArray(obj, vector<int>(byteList))
+        function result = writeArray(obj, byteList)
             % Sends a byte sequence (provided as a list of bytes) to the serial port.
             %
             % @param byteList : a list of byte codes
@@ -638,7 +638,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxd(1790600172, vector<int>(byteList));
+            result = obj.InvokeMethod_Dxd(1790600172, byteList);
         end
 
         function result = writeHex(obj, hexString)

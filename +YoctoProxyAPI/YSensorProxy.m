@@ -473,7 +473,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Hff(-86168835, startTime, endTime);
         end
 
-        function result = calibrateFromPoints(obj, vector<double>(rawValues), vector<double>(refValues))
+        function result = calibrateFromPoints(obj, rawValues, refValues)
             % Configures error correction data points, in particular to compensate for
             % a possible perturbation of the measure caused by an enclosure. It is possible
             % to configure up to five correction points. Correction points must be provided
@@ -493,7 +493,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            result = obj.InvokeMethod_Dxfxf(470454055, vector<double>(rawValues), vector<double>(refValues));
+            result = obj.InvokeMethod_Dxfxf(470454055, rawValues, refValues);
         end
 
         % //--- (end of generated code: YSensor accessors declaration)
