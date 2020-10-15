@@ -671,6 +671,21 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dxd(1790600172, byteList);
         end
 
+        function result = snoopMessages(obj, maxWait)
+            % Retrieves messages (both direction) in the I2C port buffer, starting at current position.
+            %
+            % If no message is found, the search waits for one up to the specified maximum timeout
+            % (in milliseconds).
+            %
+            % @param maxWait : the maximum number of milliseconds to wait for a message if none is found
+            %         in the receive buffer.
+            %
+            % @return an array of YI2cSnoopingRecord objects containing the messages found, if any.
+            %
+            % On failure, throws an exception or returns an empty array.
+            result = obj.InvokeMethod_xYd(-1775820716, maxWait);
+        end
+
         % //--- (end of YI2cPort accessors declaration)
     end
 end

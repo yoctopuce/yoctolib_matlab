@@ -1,5 +1,5 @@
 % YAnButtonProxy: analog input control interface, available for instance in the Yocto-Buzzer, the
-% Yocto-Display, the Yocto-Knob or the Yocto-MaxiDisplay
+% Yocto-Knob, the Yocto-MaxiBuzzer or the Yocto-MaxiDisplay
 % 
 % The YAnButtonProxy class provide access to basic resistive inputs. Such inputs can be used to
 % measure the state of a simple button as well as to read an analog potentiometer (variable
@@ -49,7 +49,7 @@
 % //--- (YAnButton declaration)
 classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
     % YAnButtonProxy: analog input control interface, available for instance in the Yocto-Buzzer, the
-    % Yocto-Display, the Yocto-Knob or the Yocto-MaxiDisplay
+    % Yocto-Knob, the Yocto-MaxiBuzzer or the Yocto-MaxiDisplay
     % 
     % The YAnButtonProxy class provide access to basic resistive inputs. Such inputs can be used to
     % measure the state of a simple button as well as to read an analog potentiometer (variable
@@ -67,6 +67,8 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
         CalibrationMin (1,1) int32
         % Sensitivity Sensibility for the input (between 1 and 1000) for triggering user callbacks
         Sensitivity (1,1) int32
+        % InputType Decoding method applied to the input (analog or multiplexed binary switches)
+        InputType (1,1) YoctoProxyAPI.EnumInputType
     end
 
     properties (Transient, Nontunable, SetAccess = private)
@@ -127,7 +129,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {'CalibratedValue','IsPressed'});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'AnButton settings', ...
-                'PropertyList', {'AnalogCalibration','CalibrationMax','CalibrationMin','Sensitivity'});
+                'PropertyList', {'AnalogCalibration','CalibrationMax','CalibrationMin','Sensitivity','InputType'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -375,6 +377,38 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns Y_PULSETIMER_INVALID.
             result = obj.InvokeMethod_Q(1447258781);
+        end
+
+        function result = get_inputType(obj)
+            % Returns the decoding method applied to the input (analog or multiplexed binary switches).
+            %
+            % @return either Y_INPUTTYPE_ANALOG or Y_INPUTTYPE_DIGITAL4, according to the decoding
+            % method applied to the input (analog or multiplexed binary switches)
+            %
+            % On failure, throws an exception or returns Y_INPUTTYPE_INVALID.
+            result = YoctoProxyAPI.EnumInputType(obj.InvokeMethod_D(-790631864));
+        end
+
+        function set_inputType(obj, newVal)
+            % Changes the decoding method applied to the input (analog or multiplexed binary switches).
+            % Remember to call the saveToFlash() method of the module if the modification must be kept.
+            %
+            % @param newval : either Y_INPUTTYPE_ANALOG or Y_INPUTTYPE_DIGITAL4, according to the
+            % decoding method applied to the input (analog or multiplexed binary switches)
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(632238252, newVal);
+        end
+
+        function result = get.InputType(obj)
+            result = YoctoProxyAPI.EnumInputType(obj.GetPropInt32(-417055194));
+        end
+
+        function set.InputType(obj, newVal)
+            obj.InputType = newVal;
+            obj.SetPropInt32(-417055194, newVal);
         end
 
         function result = resetCounter(obj)

@@ -51,5 +51,6 @@ classdef EnumPwmReportMode < int32
         PwmReportMode_PWM_STATE (8)
         PwmReportMode_PWM_FREQ_CPS (9)
         PwmReportMode_PWM_FREQ_CPM (10)
+        PwmReportMode_PWM_PERIODCOUNT (11)
     end
 end

@@ -1,5 +1,5 @@
 % YFilesProxy: filesystem control interface, available for instance in the Yocto-Buzzer, the
-% Yocto-Color-V2, the YoctoHub-Ethernet or the YoctoHub-Wireless-g
+% Yocto-Color-V2, the YoctoHub-Ethernet or the YoctoHub-Wireless-n
 % 
 % The YFiles class is used to access the filesystem embedded on some Yoctopuce devices. This
 % filesystem makes it possible for instance to design a custom web UI (for networked devices) or to
@@ -46,7 +46,7 @@
 % //--- (YFiles declaration)
 classdef YFilesProxy < YoctoProxyAPI.YFunctionProxy
     % YFilesProxy: filesystem control interface, available for instance in the Yocto-Buzzer, the
-    % Yocto-Color-V2, the YoctoHub-Ethernet or the YoctoHub-Wireless-g
+    % Yocto-Color-V2, the YoctoHub-Ethernet or the YoctoHub-Wireless-n
     % 
     % The YFiles class is used to access the filesystem embedded on some Yoctopuce devices. This
     % filesystem makes it possible for instance to design a custom web UI (for networked devices) or to

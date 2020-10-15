@@ -1,5 +1,5 @@
 % YHubPortProxy: YoctoHub slave port control interface, available for instance in the
-% YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-Shield or the YoctoHub-Wireless-g
+% YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-Shield or the YoctoHub-Wireless-n
 % 
 % The YHubPortProxy class provides control over the power supply for slave ports on a YoctoHub. It
 % provide information about the device connected to it. The logical name of a YHubPort is always
@@ -46,7 +46,7 @@
 % //--- (YHubPort declaration)
 classdef YHubPortProxy < YoctoProxyAPI.YFunctionProxy
     % YHubPortProxy: YoctoHub slave port control interface, available for instance in the
-    % YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-Shield or the YoctoHub-Wireless-g
+    % YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-Shield or the YoctoHub-Wireless-n
     % 
     % The YHubPortProxy class provides control over the power supply for slave ports on a YoctoHub. It
     % provide information about the device connected to it. The logical name of a YHubPort is always

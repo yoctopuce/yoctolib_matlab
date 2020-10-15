@@ -1,4 +1,6 @@
-% YLedProxy: monochrome LED control interface, available for instance in the Yocto-Buzzer
+% YLedProxy: monochrome LED control interface, available for instance in the Yocto-Buzzer, the
+% YoctoBox-Short-Thin-Black-Prox, the YoctoBox-Short-Thin-Transp or the
+% YoctoBox-Short-Thin-Transp-Prox
 % 
 % The YLedProxy class allows you to drive a monocolor LED. You can not only to drive the intensity of
 % the LED, but also to have it blink at various preset frequencies.
@@ -43,7 +45,9 @@
 
 % //--- (YLed declaration)
 classdef YLedProxy < YoctoProxyAPI.YFunctionProxy
-    % YLedProxy: monochrome LED control interface, available for instance in the Yocto-Buzzer
+    % YLedProxy: monochrome LED control interface, available for instance in the Yocto-Buzzer, the
+    % YoctoBox-Short-Thin-Black-Prox, the YoctoBox-Short-Thin-Transp or the
+    % YoctoBox-Short-Thin-Transp-Prox
     % 
     % The YLedProxy class allows you to drive a monocolor LED. You can not only to drive the intensity of
     % the LED, but also to have it blink at various preset frequencies.

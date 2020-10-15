@@ -57,6 +57,8 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
         PwmReportMode (1,1) YoctoProxyAPI.EnumPwmReportMode
         % DebouncePeriod Shortest expected pulse duration, in ms
         DebouncePeriod (1,1) int32
+        % Bandwidth Input signal sampling rate, in kHz
+        Bandwidth (1,1) int32
     end
 
     properties (Transient, Nontunable, SetAccess = private)
@@ -113,7 +115,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'PwmInput settings', ...
-                'PropertyList', {'PwmReportMode','DebouncePeriod'});
+                'PropertyList', {'PwmReportMode','DebouncePeriod','Bandwidth'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -221,9 +223,9 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             % @return a value among Y_PWMREPORTMODE_PWM_DUTYCYCLE, Y_PWMREPORTMODE_PWM_FREQUENCY,
             % Y_PWMREPORTMODE_PWM_PULSEDURATION, Y_PWMREPORTMODE_PWM_EDGECOUNT,
             % Y_PWMREPORTMODE_PWM_PULSECOUNT, Y_PWMREPORTMODE_PWM_CPS, Y_PWMREPORTMODE_PWM_CPM,
-            % Y_PWMREPORTMODE_PWM_STATE, Y_PWMREPORTMODE_PWM_FREQ_CPS and
-            % Y_PWMREPORTMODE_PWM_FREQ_CPM corresponding to the parameter (frequency/duty cycle,
-            % pulse width, edges count) returned by the get_currentValue function and callbacks
+            % Y_PWMREPORTMODE_PWM_STATE, Y_PWMREPORTMODE_PWM_FREQ_CPS, Y_PWMREPORTMODE_PWM_FREQ_CPM
+            % and Y_PWMREPORTMODE_PWM_PERIODCOUNT corresponding to the parameter (frequency/duty
+            % cycle, pulse width, edges count) returned by the get_currentValue function and callbacks
             %
             % On failure, throws an exception or returns Y_PWMREPORTMODE_INVALID.
             result = YoctoProxyAPI.EnumPwmReportMode(obj.InvokeMethod_D(97078582));
@@ -239,9 +241,10 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             % @param newval : a value among Y_PWMREPORTMODE_PWM_DUTYCYCLE,
             % Y_PWMREPORTMODE_PWM_FREQUENCY, Y_PWMREPORTMODE_PWM_PULSEDURATION,
             % Y_PWMREPORTMODE_PWM_EDGECOUNT, Y_PWMREPORTMODE_PWM_PULSECOUNT, Y_PWMREPORTMODE_PWM_CPS,
-            % Y_PWMREPORTMODE_PWM_CPM, Y_PWMREPORTMODE_PWM_STATE, Y_PWMREPORTMODE_PWM_FREQ_CPS and
-            % Y_PWMREPORTMODE_PWM_FREQ_CPM corresponding to the  parameter  type (frequency/duty
-            % cycle, pulse width, or edge count) returned by the get_currentValue function and callbacks
+            % Y_PWMREPORTMODE_PWM_CPM, Y_PWMREPORTMODE_PWM_STATE, Y_PWMREPORTMODE_PWM_FREQ_CPS,
+            % Y_PWMREPORTMODE_PWM_FREQ_CPM and Y_PWMREPORTMODE_PWM_PERIODCOUNT corresponding to the 
+            % parameter  type (frequency/duty cycle, pulse width, or edge count) returned by the
+            % get_currentValue function and callbacks
             %
             % @return 0 if the call succeeds.
             %
@@ -288,6 +291,49 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
         function set.DebouncePeriod(obj, newVal)
             obj.DebouncePeriod = newVal;
             obj.SetPropInt32(-305491294, newVal);
+        end
+
+        function result = get_bandwidth(obj)
+            % Returns the input signal sampling rate, in kHz.
+            %
+            % @return an integer corresponding to the input signal sampling rate, in kHz
+            %
+            % On failure, throws an exception or returns Y_BANDWIDTH_INVALID.
+            result = obj.InvokeMethod_D(1075889934);
+        end
+
+        function set_bandwidth(obj, newVal)
+            % Changes the input signal sampling rate, measured in kHz.
+            % A lower sampling frequency can be used to hide hide-frequency bounce effects,
+            % for instance on electromechanical contacts, but limits the measure resolution.
+            % Remember to call the saveToFlash()
+            % method of the module if the modification must be kept.
+            %
+            % @param newval : an integer corresponding to the input signal sampling rate, measured in kHz
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-1253040662, newVal);
+        end
+
+        function result = get.Bandwidth(obj)
+            result = obj.GetPropInt32(150493132);
+        end
+
+        function set.Bandwidth(obj, newVal)
+            obj.Bandwidth = newVal;
+            obj.SetPropInt32(150493132, newVal);
+        end
+
+        function result = get_edgesPerPeriod(obj)
+            % Returns the number of edges detected per preiod. For a clean PWM signal, this should be exactly two,
+            % but in cas the signal is created by a mechanical contact with bounces, it can get higher.
+            %
+            % @return an integer corresponding to the number of edges detected per preiod
+            %
+            % On failure, throws an exception or returns Y_EDGESPERPERIOD_INVALID.
+            result = obj.InvokeMethod_D(1472768428);
         end
 
         function result = resetCounter(obj)

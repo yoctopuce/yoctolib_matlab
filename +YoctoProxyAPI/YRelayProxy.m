@@ -1,4 +1,4 @@
-% YRelayProxy: relay control interface, available for instance in the Yocto-MaxiCoupler-V2, the
+% YRelayProxy: relay control interface, available for instance in the Yocto-LatchedRelay, the
 % Yocto-MaxiPowerRelay, the Yocto-PowerRelay-V3 or the Yocto-Relay
 % 
 % The YRelayProxy class allows you to drive a Yoctopuce relay or optocoupled output. It can be used
@@ -47,7 +47,7 @@
 
 % //--- (YRelay declaration)
 classdef YRelayProxy < YoctoProxyAPI.YFunctionProxy
-    % YRelayProxy: relay control interface, available for instance in the Yocto-MaxiCoupler-V2, the
+    % YRelayProxy: relay control interface, available for instance in the Yocto-LatchedRelay, the
     % Yocto-MaxiPowerRelay, the Yocto-PowerRelay-V3 or the Yocto-Relay
     % 
     % The YRelayProxy class allows you to drive a Yoctopuce relay or optocoupled output. It can be used

@@ -1,5 +1,5 @@
 % YColorLedClusterProxy: RGB LED cluster control interface, available for instance in the
-% Yocto-Color-V2
+% Yocto-Color-V2 or the Yocto-MaxiBuzzer
 % 
 % The YColorLedClusterProxy class allows you to drive a color LED cluster. Unlike the
 % <tt>ColorLed</tt> class, the YColorLedClusterProxy class allows to handle several LEDs at once.
@@ -49,7 +49,7 @@
 % //--- (YColorLedCluster declaration)
 classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
     % YColorLedClusterProxy: RGB LED cluster control interface, available for instance in the
-    % Yocto-Color-V2
+    % Yocto-Color-V2 or the Yocto-MaxiBuzzer
     % 
     % The YColorLedClusterProxy class allows you to drive a color LED cluster. Unlike the
     % <tt>ColorLed</tt> class, the YColorLedClusterProxy class allows to handle several LEDs at once.

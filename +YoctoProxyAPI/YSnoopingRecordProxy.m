@@ -1,4 +1,4 @@
-% YSnoopingRecordProxy: Intercepted message description, returned by
+% YSnoopingRecordProxy: Intercepted serial message description, returned by
 % <tt>serialPort.snoopMessages</tt> method
 % 
 % 
@@ -43,7 +43,8 @@
 
 % //--- (YSnoopingRecord declaration)
 classdef YSnoopingRecordProxy
-    % YSnoopingRecordProxy Intercepted message description, returned by serialPort.snoopMessages method
+    % YSnoopingRecordProxy Intercepted serial message description, returned by
+    % serialPort.snoopMessages method
     %
     %
 

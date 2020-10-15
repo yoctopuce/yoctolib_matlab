@@ -284,6 +284,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_protocol(obj)
             % Returns the type of protocol used over the serial line, as a string.
             % Possible values are "Line" for ASCII messages separated by CR and/or LF,
+            % "StxEtx" for ASCII messages delimited by STX/ETX codes,
             % "Frame:[timeout]ms" for binary messages separated by a delay time,
             % "Modbus-ASCII" for MODBUS messages in ASCII mode,
             % "Modbus-RTU" for MODBUS messages in RTU mode,
@@ -301,6 +302,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
         function set_protocol(obj, newVal)
             % Changes the type of protocol used over the serial line.
             % Possible values are "Line" for ASCII messages separated by CR and/or LF,
+            % "StxEtx" for ASCII messages delimited by STX/ETX codes,
             % "Frame:[timeout]ms" for binary messages separated by a delay time,
             % "Modbus-ASCII" for MODBUS messages in ASCII mode,
             % "Modbus-RTU" for MODBUS messages in RTU mode,
@@ -709,6 +711,18 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns an empty array.
             result = obj.InvokeMethod_xTd(596205081, maxWait);
+        end
+
+        function result = writeStxEtx(obj, text)
+            % Sends an ASCII string to the serial port, preceeded with an STX code and
+            % followed by an ETX code.
+            %
+            % @param text : the text string to send
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_Ds(864615277, text);
         end
 
         function result = writeMODBUS(obj, hexString)

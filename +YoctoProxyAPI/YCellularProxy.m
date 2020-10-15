@@ -1,5 +1,5 @@
 % YCellularProxy: cellular interface control interface, available for instance in the
-% YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU or the YoctoHub-GSM-3G-NA
+% YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-GSM-4G
 % 
 % The YCellularProxy class provides control over cellular network parameters and status for devices
 % that are GSM-enabled. Note that TCP/IP parameters are configured separately, using class
@@ -46,7 +46,7 @@
 % //--- (YCellular declaration)
 classdef YCellularProxy < YoctoProxyAPI.YFunctionProxy
     % YCellularProxy: cellular interface control interface, available for instance in the
-    % YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU or the YoctoHub-GSM-3G-NA
+    % YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-GSM-4G
     % 
     % The YCellularProxy class provides control over cellular network parameters and status for devices
     % that are GSM-enabled. Note that TCP/IP parameters are configured separately, using class
@@ -597,6 +597,15 @@ classdef YCellularProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a list of YCellRecords.
             result = obj.InvokeMethod_xV(-938711712);
+        end
+
+        function result = decodePLMN(obj, mccmnc)
+            % Returns the cell operator brand for a given MCC/MNC pair.
+            %
+            % @param mccmnc : a string starting with a MCC code followed by a MNC code,
+            %
+            % @return a string containing the corresponding cell operator brand name.
+            result = obj.InvokeMethod_Ss(-1106449621, mccmnc);
         end
 
         % //--- (end of YCellular accessors declaration)

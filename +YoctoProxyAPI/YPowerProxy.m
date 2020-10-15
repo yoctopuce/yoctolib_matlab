@@ -152,14 +152,41 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
 
         function result = get_meter(obj)
             % Returns the energy counter, maintained by the wattmeter by integrating the power
-            % consumption over time.
-            % Note that this counter is reset at each start of the device.
+            % consumption over time,
+            % but only when positive. Note that this counter is reset at each start of the device.
             %
             % @return a floating point number corresponding to the energy counter, maintained by the
-            % wattmeter by integrating the power consumption over time
+            % wattmeter by integrating the power consumption over time,
+            %         but only when positive
             %
             % On failure, throws an exception or returns Y_METER_INVALID.
             result = obj.InvokeMethod_F(1140090146);
+        end
+
+        function result = get_deliveredEnergyMeter(obj)
+            % Returns the energy counter, maintained by the wattmeter by integrating the power
+            % consumption over time,
+            % but only when positive. Note that this counter is reset at each start of the device.
+            %
+            % @return a floating point number corresponding to the energy counter, maintained by the
+            % wattmeter by integrating the power consumption over time,
+            %         but only when positive
+            %
+            % On failure, throws an exception or returns Y_DELIVEREDENERGYMETER_INVALID.
+            result = obj.InvokeMethod_F(559481782);
+        end
+
+        function result = get_receivedEnergyMeter(obj)
+            % Returns the energy counter, maintained by the wattmeter by integrating the power
+            % consumption over time,
+            % but only when negative. Note that this counter is reset at each start of the device.
+            %
+            % @return a floating point number corresponding to the energy counter, maintained by the
+            % wattmeter by integrating the power consumption over time,
+            %         but only when negative
+            %
+            % On failure, throws an exception or returns Y_RECEIVEDENERGYMETER_INVALID.
+            result = obj.InvokeMethod_F(1842528545);
         end
 
         function result = get_meterTimer(obj)
@@ -172,7 +199,7 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
         end
 
         function result = reset(obj)
-            % Resets the energy counter.
+            % Resets the energy counters.
             %
             % @return 0 if the call succeeds.
             %

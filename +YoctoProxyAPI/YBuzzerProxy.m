@@ -1,4 +1,5 @@
-% YBuzzerProxy: buzzer control interface, available for instance in the Yocto-Buzzer
+% YBuzzerProxy: buzzer control interface, available for instance in the Yocto-Buzzer or the
+% Yocto-MaxiBuzzer
 % 
 % The YBuzzerProxy class allows you to drive a buzzer. You can choose the frequency and the volume at
 % which the buzzer must sound. You can also pre-program a play sequence.
@@ -43,7 +44,8 @@
 
 % //--- (YBuzzer declaration)
 classdef YBuzzerProxy < YoctoProxyAPI.YFunctionProxy
-    % YBuzzerProxy: buzzer control interface, available for instance in the Yocto-Buzzer
+    % YBuzzerProxy: buzzer control interface, available for instance in the Yocto-Buzzer or the
+    % Yocto-MaxiBuzzer
     % 
     % The YBuzzerProxy class allows you to drive a buzzer. You can choose the frequency and the volume at
     % which the buzzer must sound. You can also pre-program a play sequence.

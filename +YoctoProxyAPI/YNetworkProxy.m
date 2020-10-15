@@ -1,5 +1,5 @@
 % YNetworkProxy: network interface control interface, available for instance in the
-% YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-Wireless-g
+% YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-Wireless-n
 % 
 % YNetworkProxy objects provide access to TCP/IP parameters of Yoctopuce devices that include a
 % built-in network interface.
@@ -45,7 +45,7 @@
 % //--- (YNetwork declaration)
 classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
     % YNetworkProxy: network interface control interface, available for instance in the
-    % YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-Wireless-g
+    % YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-Wireless-n
     % 
     % YNetworkProxy objects provide access to TCP/IP parameters of Yoctopuce devices that include a
     % built-in network interface.

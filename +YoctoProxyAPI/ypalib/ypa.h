@@ -208,6 +208,7 @@ typedef int32_t ypaHandle;
 #define YPA_HttpPort                    ((ypaHandle)754675967)      // Int32
 #define YPA_I2cMode                     ((ypaHandle)-849120410)     // String
 #define YPA_I2cVoltageLevel             ((ypaHandle)1933961956)     // Int32
+#define YPA_InputType                   ((ypaHandle)-417055194)     // Int32
 #define YPA_InstanceId                  ((ypaHandle)-969053799)     // Int32
 #define YPA_IpAddress                   ((ypaHandle)1744288001)     // String
 #define YPA_IsFixed                     ((ypaHandle)1482917520)     // Int32
@@ -364,6 +365,7 @@ typedef int32_t ypaHandle;
 #define YPA_consoleOut_Ds               ((ypaHandle)903822282)      // e.g. DisplayLayer: int32_t* resPtr, char* text
 #define YPA_copyLayerContent_Ddd        ((ypaHandle)492890742)      // e.g. Display: int32_t* resPtr, int32_t srcLayerId, int32_t dstLayerId
 #define YPA_currentMove_Dfd             ((ypaHandle)1697453512)     // e.g. CurrentLoopOutput: int32_t* resPtr, double mA_target, int32_t ms_duration
+#define YPA_decodePLMN_Ss               ((ypaHandle)-1106449621)    // e.g. Cellular: char* resPtr, size_t* resSize, char* mccmnc
 #define YPA_defineAuxiliaryFunction_Dsxfxf ((ypaHandle)271307659)      // e.g. ArithmeticSensor: int32_t* resPtr, char* name, double* inputValuesPtr, size_t inputValuesSize, double* outputValuesPtr, size_t outputValuesSize
 #define YPA_defineExpression_Fss        ((ypaHandle)949736265)      // e.g. ArithmeticSensor: double* resPtr, char* expr, char* descr
 #define YPA_delayedPulse_Dddd           ((ypaHandle)1525073260)     // e.g. DigitalIO: int32_t* resPtr, int32_t bitno, int32_t ms_delay, int32_t ms_duration
@@ -472,6 +474,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_debouncePeriod_D        ((ypaHandle)-1371967077)    // e.g. PwmInput: int32_t* resPtr
 #define YPA_get_decoding_D              ((ypaHandle)-676619192)     // e.g. QuadratureDecoder: int32_t* resPtr
 #define YPA_get_defaultPage_S           ((ypaHandle)1994900688)     // e.g. Network: char* resPtr, size_t* resSize
+#define YPA_get_deliveredEnergyMeter_F  ((ypaHandle)559481782)      // e.g. Power: double* resPtr
 #define YPA_get_description_S           ((ypaHandle)282193973)      // e.g. ArithmeticSensor: char* resPtr, size_t* resSize
 #define YPA_get_detectedWlans_xW        ((ypaHandle)2075795762)     // e.g. Wireless: YWlanRecordStruct* resPtr, size_t* resSize
 #define YPA_get_detectionHysteresis_D   ((ypaHandle)703291101)      // e.g. Proximity: int32_t* resPtr
@@ -489,6 +492,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_drivingForce_F          ((ypaHandle)541265739)      // e.g. Motor: double* resPtr
 #define YPA_get_dutyCycleAtPowerOn_F    ((ypaHandle)-1827887971)    // e.g. PwmOutput: double* resPtr
 #define YPA_get_dutyCycle_F             ((ypaHandle)-970911217)     // e.g. PwmOutput: double* resPtr
+#define YPA_get_edgesPerPeriod_D        ((ypaHandle)1472768428)     // e.g. PwmInput: int32_t* resPtr
 #define YPA_get_enableData_D            ((ypaHandle)-169088672)     // e.g. Cellular: int32_t* resPtr
 #define YPA_get_enabledAtPowerOn_D      ((ypaHandle)-2086316212)    // e.g. Servo: int32_t* resPtr
 #define YPA_get_enabled_D               ((ypaHandle)587192537)      // e.g. Voltage: int32_t* resPtr
@@ -516,6 +520,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_i2cVoltageLevel_D       ((ypaHandle)746157149)      // e.g. I2cPort: int32_t* resPtr
 #define YPA_get_icon2d_S                ((ypaHandle)607279519)      // e.g. Module: char* resPtr, size_t* resSize
 #define YPA_get_imsi_S                  ((ypaHandle)-2074679610)    // e.g. Cellular: char* resPtr, size_t* resSize
+#define YPA_get_inputType_D             ((ypaHandle)-790631864)     // e.g. AnButton: int32_t* resPtr
 #define YPA_get_inputVoltage_F          ((ypaHandle)-1879749387)    // e.g. PowerSupply: double* resPtr
 #define YPA_get_ipAddress_S             ((ypaHandle)-99267654)      // e.g. Network: char* resPtr, size_t* resSize
 #define YPA_get_ipConfig_S              ((ypaHandle)12286809)       // e.g. Network: char* resPtr, size_t* resSize
@@ -645,6 +650,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_rawValue_D              ((ypaHandle)2035087752)     // e.g. AnButton: int32_t* resPtr
 #define YPA_get_readiness_D             ((ypaHandle)-1566251299)    // e.g. Network: int32_t* resPtr
 #define YPA_get_rebootCountdown_D       ((ypaHandle)152939681)      // e.g. Module: int32_t* resPtr
+#define YPA_get_receivedEnergyMeter_F   ((ypaHandle)1842528545)     // e.g. Power: double* resPtr
 #define YPA_get_recordedData_Hff        ((ypaHandle)-86168835)      // e.g. Sensor: int32_t* resHdlPtr, double startTime, double endTime
 #define YPA_get_relHum_F                ((ypaHandle)-890677710)     // e.g. Humidity: double* resPtr
 #define YPA_get_remoteAddress_S         ((ypaHandle)1895368578)     // e.g. BluetoothLink: char* resPtr, size_t* resSize
@@ -916,6 +922,7 @@ typedef int32_t ypaHandle;
 #define YPA_set_httpPort_d              ((ypaHandle)-1045419957)    // e.g. Network: int32_t newval
 #define YPA_set_i2cMode_s               ((ypaHandle)-1778748081)    // e.g. I2cPort: char* newval
 #define YPA_set_i2cVoltageLevel_d       ((ypaHandle)1309295298)     // e.g. I2cPort: int32_t newval
+#define YPA_set_inputType_d             ((ypaHandle)632238252)      // e.g. AnButton: int32_t newval
 #define YPA_set_ledType_d               ((ypaHandle)-755466193)     // e.g. ColorLedCluster: int32_t newval
 #define YPA_set_lockedOperator_s        ((ypaHandle)-968249388)     // e.g. Cellular: char* newval
 #define YPA_set_logFrequency_s          ((ypaHandle)1025597622)     // e.g. Sensor: char* newval
@@ -1040,6 +1047,8 @@ typedef int32_t ypaHandle;
 #define YPA_sleepUntil_Ddd              ((ypaHandle)-1915838630)    // e.g. WakeUpMonitor: int32_t* resPtr, int32_t wakeUpTime, int32_t secBeforeSleep
 #define YPA_sleep_Dd                    ((ypaHandle)-803868914)     // e.g. WakeUpMonitor: int32_t* resPtr, int32_t secBeforeSleep
 #define YPA_snoopMessages_xTd           ((ypaHandle)596205081)      // e.g. SerialPort: YSnoopingRecordStruct* resPtr, size_t* resSize, int32_t maxWait
+#define YPA_snoopMessages_xYd           ((ypaHandle)-1775820716)    // e.g. I2cPort: YI2cSnoopingRecordStruct* resPtr, size_t* resSize, int32_t maxWait
+#define YPA_snoopMessages_xZd           ((ypaHandle)-1123388521)    // e.g. SpiPort: YSpiSnoopingRecordStruct* resPtr, size_t* resSize, int32_t maxWait
 #define YPA_softAPNetwork_Dss           ((ypaHandle)-1036902186)    // e.g. Wireless: int32_t* resPtr, char* ssid, char* securityKey
 #define YPA_start3DCalibration_D        ((ypaHandle)-734831571)     // e.g. RefFrame: int32_t* resPtr
 #define YPA_startBlinkSeq_D             ((ypaHandle)1513230446)     // e.g. ColorLed: int32_t* resPtr
@@ -1089,6 +1098,7 @@ typedef int32_t ypaHandle;
 #define YPA_writeLine_Ds                ((ypaHandle)699144722)      // e.g. SerialPort: int32_t* resPtr, char* text
 #define YPA_writeMODBUS_Ds              ((ypaHandle)1987706032)     // e.g. SerialPort: int32_t* resPtr, char* hexString
 #define YPA_writeStr_Ds                 ((ypaHandle)854720421)      // e.g. SerialPort: int32_t* resPtr, char* text
+#define YPA_writeStxEtx_Ds              ((ypaHandle)864615277)      // e.g. SerialPort: int32_t* resPtr, char* text
 #define YPA_zeroAdjust_D                ((ypaHandle)-2126615366)    // e.g. GenericSensor: int32_t* resPtr
 //--- (end of generated code: Method Handles)
 
@@ -1371,9 +1381,21 @@ typedef struct {
 
 typedef struct {
     int Time;               // the elapsed time, in ms, since the beginning of the preceding message.
-    int Direction;          // the message direction (RX=0 , TX=1) .
+    int Direction;          // the message direction (RX=0, TX=1).
     char Message[516];      // the message content.
 } YSnoopingRecordStruct;
+
+typedef struct {
+    int Time;               // the elapsed time, in ms, since the beginning of the preceding message.
+    int Direction;          // the message direction (RX=0, TX=1).
+    char Message[516];      // the message content.
+} YSpiSnoopingRecordStruct;
+
+typedef struct {
+    int Time;               // the elapsed time, in ms, since the beginning of the preceding message.
+    int Direction;          // the message direction (RX=0, TX=1).
+    char Message[516];      // the message content.
+} YI2cSnoopingRecordStruct;
 
 int YPA_FUNCTION_EXPORT ypaFind(ypaHandle classHandle, const char *deviceName, char *errmsg, size_t *errmsgSize, ypaHandle *result);
 int YPA_FUNCTION_EXPORT ypaGetSimilarFunctions(ypaHandle classHandle, char *errmsg, size_t *errmsgSize, char *resPtr, size_t *resSize);
@@ -1452,6 +1474,8 @@ int YPA_FUNCTION_EXPORT ypaInvokeMethod_xV(ypaHandle funcHandle, ypaHandle metho
 int YPA_FUNCTION_EXPORT ypaInvokeMethod_xUs(ypaHandle funcHandle, ypaHandle methodHandle, char *errmsg, size_t *errmsgSize, YFileRecordStruct* arg1, size_t* arg2, char* arg3);
 int YPA_FUNCTION_EXPORT ypaInvokeMethod_xTd(ypaHandle funcHandle, ypaHandle methodHandle, char *errmsg, size_t *errmsgSize, YSnoopingRecordStruct* arg1, size_t* arg2, int32_t arg3);
 int YPA_FUNCTION_EXPORT ypaInvokeMethod_xW(ypaHandle funcHandle, ypaHandle methodHandle, char *errmsg, size_t *errmsgSize, YWlanRecordStruct* arg1, size_t* arg2);
+int YPA_FUNCTION_EXPORT ypaInvokeMethod_xZd(ypaHandle funcHandle, ypaHandle methodHandle, char *errmsg, size_t *errmsgSize, YSpiSnoopingRecordStruct* arg1, size_t* arg2, int32_t arg3);
+int YPA_FUNCTION_EXPORT ypaInvokeMethod_xYd(ypaHandle funcHandle, ypaHandle methodHandle, char *errmsg, size_t *errmsgSize, YI2cSnoopingRecordStruct* arg1, size_t* arg2, int32_t arg3);
 //--- (end of generated code: Invoke Helpers)
 
 

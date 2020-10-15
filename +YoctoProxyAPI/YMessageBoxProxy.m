@@ -1,5 +1,5 @@
 % YMessageBoxProxy: SMS message box interface control interface, available for instance in the
-% YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU or the YoctoHub-GSM-3G-NA
+% YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-GSM-4G
 % 
 % The YMessageBoxProxy class provides SMS sending and receiving capability for GSM-enabled Yoctopuce
 % devices.
@@ -45,7 +45,7 @@
 % //--- (YMessageBox declaration)
 classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
     % YMessageBoxProxy: SMS message box interface control interface, available for instance in the
-    % YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU or the YoctoHub-GSM-3G-NA
+    % YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-GSM-4G
     % 
     % The YMessageBoxProxy class provides SMS sending and receiving capability for GSM-enabled Yoctopuce
     % devices.

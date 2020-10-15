@@ -1,5 +1,5 @@
-% YColorLedProxy: RGB LED control interface, available for instance in the Yocto-Color-V2 or the
-% Yocto-PowerColor
+% YColorLedProxy: RGB LED control interface, available for instance in the Yocto-Color-V2, the
+% Yocto-MaxiBuzzer or the Yocto-PowerColor
 % 
 % The <tt>ColorLed</tt> class allows you to drive a color LED. The color can be specified using RGB
 % coordinates as well as HSL coordinates. The module performs all conversions form RGB to HSL
@@ -47,8 +47,8 @@
 
 % //--- (YColorLed declaration)
 classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
-    % YColorLedProxy: RGB LED control interface, available for instance in the Yocto-Color-V2 or the
-    % Yocto-PowerColor
+    % YColorLedProxy: RGB LED control interface, available for instance in the Yocto-Color-V2, the
+    % Yocto-MaxiBuzzer or the Yocto-PowerColor
     % 
     % The <tt>ColorLed</tt> class allows you to drive a color LED. The color can be specified using RGB
     % coordinates as well as HSL coordinates. The module performs all conversions form RGB to HSL

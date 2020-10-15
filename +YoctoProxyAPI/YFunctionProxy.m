@@ -1443,6 +1443,40 @@ classdef YFunctionProxy < matlab.System
             end
         end
 
+        function result = InvokeMethod_xZd(obj, methodHandle, arg2)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~ ] = calllib('ypa', 'ypaInvokeMethod_xZd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    int32(arg2));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_xZd', errmsg);
+                    throw(ME)
+                end
+                result = 0;
+            end
+        end
+
+        function result = InvokeMethod_xYd(obj, methodHandle, arg2)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~ ] = calllib('ypa', 'ypaInvokeMethod_xYd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    int32(arg2));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_xYd', errmsg);
+                    throw(ME)
+                end
+                result = 0;
+            end
+        end
+
         % //--- (end of generated code: YFunction yapiwrapper)
         
     end

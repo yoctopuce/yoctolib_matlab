@@ -738,6 +738,21 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dd(1307728097, val);
         end
 
+        function result = snoopMessages(obj, maxWait)
+            % Retrieves messages (both direction) in the SPI port buffer, starting at current position.
+            %
+            % If no message is found, the search waits for one up to the specified maximum timeout
+            % (in milliseconds).
+            %
+            % @param maxWait : the maximum number of milliseconds to wait for a message if none is found
+            %         in the receive buffer.
+            %
+            % @return an array of YSpiSnoopingRecord objects containing the messages found, if any.
+            %
+            % On failure, throws an exception or returns an empty array.
+            result = obj.InvokeMethod_xZd(-1123388521, maxWait);
+        end
+
         % //--- (end of YSpiPort accessors declaration)
     end
 end

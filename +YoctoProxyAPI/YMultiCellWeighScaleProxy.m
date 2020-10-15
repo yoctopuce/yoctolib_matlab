@@ -372,7 +372,8 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
 
         function result = tare(obj)
             % Adapts the load cell signal bias (stored in the corresponding genericSensor)
-            % so that the current signal corresponds to a zero weight.
+            % so that the current signal corresponds to a zero weight. Remember to call the
+            % saveToFlash() method of the module if the modification must be kept.
             %
             % @return 0 if the call succeeds.
             %
