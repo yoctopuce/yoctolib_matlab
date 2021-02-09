@@ -153,16 +153,17 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_enabled(obj)
             % Returns the state of the PWM generators.
             %
-            % @return either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the state of the PWM generators
+            % @return either YPwmOutput.ENABLED_FALSE or YPwmOutput.ENABLED_TRUE, according to the
+            % state of the PWM generators
             %
-            % On failure, throws an exception or returns Y_ENABLED_INVALID.
+            % On failure, throws an exception or returns YPwmOutput.ENABLED_INVALID.
             result = YoctoProxyAPI.EnumEnabled(obj.InvokeMethod_D(587192537));
         end
 
         function set_enabled(obj, newVal)
             % Stops or starts the PWM.
             %
-            % @param newval : either Y_ENABLED_FALSE or Y_ENABLED_TRUE
+            % @param newval : either YPwmOutput.ENABLED_FALSE or YPwmOutput.ENABLED_TRUE
             %
             % @return 0 if the call succeeds.
             %
@@ -192,7 +193,7 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the PWM frequency in Hz
             %
-            % On failure, throws an exception or returns Y_FREQUENCY_INVALID.
+            % On failure, throws an exception or returns YPwmOutput.FREQUENCY_INVALID.
             result = obj.InvokeMethod_F(514269515);
         end
 
@@ -225,7 +226,7 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the PWM period in milliseconds
             %
-            % On failure, throws an exception or returns Y_PERIOD_INVALID.
+            % On failure, throws an exception or returns YPwmOutput.PERIOD_INVALID.
             result = obj.InvokeMethod_F(2110044260);
         end
 
@@ -254,7 +255,7 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the PWM duty cycle, in per cents
             %
-            % On failure, throws an exception or returns Y_DUTYCYCLE_INVALID.
+            % On failure, throws an exception or returns YPwmOutput.DUTYCYCLE_INVALID.
             result = obj.InvokeMethod_F(-970911217);
         end
 
@@ -294,17 +295,17 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the PWM pulse length in milliseconds,
             % as a floating point number
             %
-            % On failure, throws an exception or returns Y_PULSEDURATION_INVALID.
+            % On failure, throws an exception or returns YPwmOutput.PULSEDURATION_INVALID.
             result = obj.InvokeMethod_F(1322923076);
         end
 
         function result = get_enabledAtPowerOn(obj)
             % Returns the state of the PWM at device power on.
             %
-            % @return either Y_ENABLEDATPOWERON_FALSE or Y_ENABLEDATPOWERON_TRUE, according to the
-            % state of the PWM at device power on
+            % @return either YPwmOutput.ENABLEDATPOWERON_FALSE or YPwmOutput.ENABLEDATPOWERON_TRUE,
+            % according to the state of the PWM at device power on
             %
-            % On failure, throws an exception or returns Y_ENABLEDATPOWERON_INVALID.
+            % On failure, throws an exception or returns YPwmOutput.ENABLEDATPOWERON_INVALID.
             result = YoctoProxyAPI.EnumEnabledAtPowerOn(obj.InvokeMethod_D(-2086316212));
         end
 
@@ -312,8 +313,8 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the state of the PWM at device power on. Remember to call the matching module saveToFlash()
             % method, otherwise this call will have no effect.
             %
-            % @param newval : either Y_ENABLEDATPOWERON_FALSE or Y_ENABLEDATPOWERON_TRUE, according
-            % to the state of the PWM at device power on
+            % @param newval : either YPwmOutput.ENABLEDATPOWERON_FALSE or
+            % YPwmOutput.ENABLEDATPOWERON_TRUE, according to the state of the PWM at device power on
             %
             % @return 0 if the call succeeds.
             %
@@ -349,7 +350,7 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the PWM generators duty cycle at
             % device power on as a floating point number between 0 and 100
             %
-            % On failure, throws an exception or returns Y_DUTYCYCLEATPOWERON_INVALID.
+            % On failure, throws an exception or returns YPwmOutput.DUTYCYCLEATPOWERON_INVALID.
             result = obj.InvokeMethod_F(-1827887971);
         end
 

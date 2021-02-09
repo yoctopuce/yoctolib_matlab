@@ -159,11 +159,11 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             % When an error condition occurred (LOVOLT, HICURR, HIHEAT, FAILSF), the controller
             % status must be explicitly reset using the resetStatus function.
             %
-            % @return a value among Y_MOTORSTATUS_IDLE, Y_MOTORSTATUS_BRAKE, Y_MOTORSTATUS_FORWD,
-            % Y_MOTORSTATUS_BACKWD, Y_MOTORSTATUS_LOVOLT, Y_MOTORSTATUS_HICURR, Y_MOTORSTATUS_HIHEAT
-            % and Y_MOTORSTATUS_FAILSF
+            % @return a value among YMotor.MOTORSTATUS_IDLE, YMotor.MOTORSTATUS_BRAKE,
+            % YMotor.MOTORSTATUS_FORWD, YMotor.MOTORSTATUS_BACKWD, YMotor.MOTORSTATUS_LOVOLT,
+            % YMotor.MOTORSTATUS_HICURR, YMotor.MOTORSTATUS_HIHEAT and YMotor.MOTORSTATUS_FAILSF
             %
-            % On failure, throws an exception or returns Y_MOTORSTATUS_INVALID.
+            % On failure, throws an exception or returns YMotor.MOTORSTATUS_INVALID.
             result = YoctoProxyAPI.EnumMotorStatus(obj.InvokeMethod_D(-841724397));
         end
 
@@ -197,7 +197,7 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the power sent to the motor, as a
             % percentage between -100% and +100%
             %
-            % On failure, throws an exception or returns Y_DRIVINGFORCE_INVALID.
+            % On failure, throws an exception or returns YMotor.DRIVINGFORCE_INVALID.
             result = obj.InvokeMethod_F(541265739);
         end
 
@@ -222,7 +222,7 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the braking force applied to the
             % motor, as a percentage
             %
-            % On failure, throws an exception or returns Y_BRAKINGFORCE_INVALID.
+            % On failure, throws an exception or returns YMotor.BRAKINGFORCE_INVALID.
             result = obj.InvokeMethod_F(-1141916721);
         end
 
@@ -254,7 +254,7 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             % controller automatically switches to error state
             %         and prevents further current draw
             %
-            % On failure, throws an exception or returns Y_CUTOFFVOLTAGE_INVALID.
+            % On failure, throws an exception or returns YMotor.CUTOFFVOLTAGE_INVALID.
             result = obj.InvokeMethod_F(-231994049);
         end
 
@@ -275,7 +275,7 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             % controller automatically
             %         switches to error state
             %
-            % On failure, throws an exception or returns Y_OVERCURRENTLIMIT_INVALID.
+            % On failure, throws an exception or returns YMotor.OVERCURRENTLIMIT_INVALID.
             result = obj.InvokeMethod_D(702063410);
         end
 
@@ -325,7 +325,7 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the PWM frequency used to control the motor
             %
-            % On failure, throws an exception or returns Y_FREQUENCY_INVALID.
+            % On failure, throws an exception or returns YMotor.FREQUENCY_INVALID.
             result = obj.InvokeMethod_F(514269515);
         end
 
@@ -346,7 +346,7 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             % driven at low frequency to help
             %         it start up
             %
-            % On failure, throws an exception or returns Y_STARTERTIME_INVALID.
+            % On failure, throws an exception or returns YMotor.STARTERTIME_INVALID.
             result = obj.InvokeMethod_D(-504906609);
         end
 
@@ -384,7 +384,7 @@ classdef YMotorProxy < YoctoProxyAPI.YFunctionProxy
             % controller to run autonomously without
             %         receiving any instruction from the control process
             %
-            % On failure, throws an exception or returns Y_FAILSAFETIMEOUT_INVALID.
+            % On failure, throws an exception or returns YMotor.FAILSAFETIMEOUT_INVALID.
             result = obj.InvokeMethod_D(-274932807);
         end
 

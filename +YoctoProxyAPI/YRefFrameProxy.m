@@ -1,10 +1,11 @@
 % YRefFrameProxy: 3D reference frame configuration interface, available for instance in the
-% Yocto-3D-V2
+% Yocto-3D-V2 or the Yocto-Inclinometer
 % 
 % The YRefFrameProxy class is used to setup the base orientation of the Yoctopuce inertial sensors.
 % Thanks to this, orientation functions relative to the earth surface plane can use the proper
-% reference frame. The class also implements a tridimensional sensor calibration process, which can
-% compensate for local variations of standard gravity and improve the precision of the tilt sensors.
+% reference frame. For some devices, the class also implements a tridimensional sensor calibration
+% process, which can compensate for local variations of standard gravity and improve the precision of
+% the tilt sensors.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -47,17 +48,18 @@
 % //--- (YRefFrame declaration)
 classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
     % YRefFrameProxy: 3D reference frame configuration interface, available for instance in the
-    % Yocto-3D-V2
+    % Yocto-3D-V2 or the Yocto-Inclinometer
     % 
     % The YRefFrameProxy class is used to setup the base orientation of the Yoctopuce inertial sensors.
     % Thanks to this, orientation functions relative to the earth surface plane can use the proper
-    % reference frame. The class also implements a tridimensional sensor calibration process, which can
-    % compensate for local variations of standard gravity and improve the precision of the tilt sensors.
+    % reference frame. For some devices, the class also implements a tridimensional sensor calibration
+    % process, which can compensate for local variations of standard gravity and improve the precision of
+    % the tilt sensors.
 
     properties (Transient, Nontunable)
         % Bearing Reference bearing used by the compass
         Bearing (1,1) double
-        % FusionMode BNO055 fusion mode
+        % FusionMode Sensor fusion mode
         FusionMode (1,1) YoctoProxyAPI.EnumFusionMode
     end
 
@@ -175,7 +177,7 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the reference bearing used by the compass
             %
-            % On failure, throws an exception or returns Y_BEARING_INVALID.
+            % On failure, throws an exception or returns YRefFrame.BEARING_INVALID.
             result = obj.InvokeMethod_F(-343180071);
         end
 
@@ -189,21 +191,26 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
         end
 
         function result = get_fusionMode(obj)
-            % Returns the BNO055 fusion mode. Note this feature is only availabe on Yocto-3D-V2.
+            % Returns the sensor fusion mode. Note that available sensor fusion modes depend on the sensor type.
             %
-            % @return a value among Y_FUSIONMODE_NDOF, Y_FUSIONMODE_NDOF_FMC_OFF, Y_FUSIONMODE_M4G,
-            % Y_FUSIONMODE_COMPASS and Y_FUSIONMODE_IMU corresponding to the BNO055 fusion mode
+            % @return a value among YRefFrame.FUSIONMODE_NDOF, YRefFrame.FUSIONMODE_NDOF_FMC_OFF,
+            % YRefFrame.FUSIONMODE_M4G, YRefFrame.FUSIONMODE_COMPASS, YRefFrame.FUSIONMODE_IMU,
+            % YRefFrame.FUSIONMODE_INCLIN_90DEG_1G8, YRefFrame.FUSIONMODE_INCLIN_90DEG_3G6 and
+            % YRefFrame.FUSIONMODE_INCLIN_10DEG corresponding to the sensor fusion mode
             %
-            % On failure, throws an exception or returns Y_FUSIONMODE_INVALID.
+            % On failure, throws an exception or returns YRefFrame.FUSIONMODE_INVALID.
             result = YoctoProxyAPI.EnumFusionMode(obj.InvokeMethod_D(-317983516));
         end
 
         function set_fusionMode(obj, newVal)
-            % Change the BNO055 fusion mode. Note: this feature is only availabe on Yocto-3D-V2.
+            % Change the sensor fusion mode. Note that available sensor fusion modes depend on the sensor type.
             % Remember to call the matching module saveToFlash() method to save the setting permanently.
             %
-            % @param newval : a value among Y_FUSIONMODE_NDOF, Y_FUSIONMODE_NDOF_FMC_OFF,
-            % Y_FUSIONMODE_M4G, Y_FUSIONMODE_COMPASS and Y_FUSIONMODE_IMU
+            % @param newval : a value among YRefFrame.FUSIONMODE_NDOF,
+            % YRefFrame.FUSIONMODE_NDOF_FMC_OFF, YRefFrame.FUSIONMODE_M4G,
+            % YRefFrame.FUSIONMODE_COMPASS, YRefFrame.FUSIONMODE_IMU,
+            % YRefFrame.FUSIONMODE_INCLIN_90DEG_1G8, YRefFrame.FUSIONMODE_INCLIN_90DEG_3G6 and
+            % YRefFrame.FUSIONMODE_INCLIN_10DEG
             %
             % @return 0 if the call succeeds.
             %
@@ -225,10 +232,10 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
             % in order to define the reference frame for the compass and the
             % pitch/roll tilt sensors.
             %
-            % @return a value among the Y_MOUNTPOSITION enumeration
-            %         (Y_MOUNTPOSITION_BOTTOM,   Y_MOUNTPOSITION_TOP,
-            %         Y_MOUNTPOSITION_FRONT,    Y_MOUNTPOSITION_RIGHT,
-            %         Y_MOUNTPOSITION_REAR,     Y_MOUNTPOSITION_LEFT),
+            % @return a value among the YRefFrame.MOUNTPOSITION enumeration
+            %         (YRefFrame.MOUNTPOSITION_BOTTOM,  YRefFrame.MOUNTPOSITION_TOP,
+            %         YRefFrame.MOUNTPOSITION_FRONT,    YRefFrame.MOUNTPOSITION_RIGHT,
+            %         YRefFrame.MOUNTPOSITION_REAR,     YRefFrame.MOUNTPOSITION_LEFT),
             %         corresponding to the installation in a box, on one of the six faces.
             %
             % On failure, throws an exception or returns Y_MOUNTPOSITION_INVALID.
@@ -240,9 +247,9 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
             % in order to define the reference frame for the compass and the
             % pitch/roll tilt sensors.
             %
-            % @return a value among the enumeration Y_MOUNTORIENTATION
-            %         (Y_MOUNTORIENTATION_TWELVE, Y_MOUNTORIENTATION_THREE,
-            %         Y_MOUNTORIENTATION_SIX,     Y_MOUNTORIENTATION_NINE)
+            % @return a value among the enumeration YRefFrame.MOUNTORIENTATION
+            %         (YRefFrame.MOUNTORIENTATION_TWELVE, YRefFrame.MOUNTORIENTATION_THREE,
+            %         YRefFrame.MOUNTORIENTATION_SIX,     YRefFrame.MOUNTORIENTATION_NINE)
             %         corresponding to the orientation of the "X" arrow on the device,
             %         as on a clock dial seen from an observer in the center of the box.
             %         On the bottom face, the 12H orientation points to the front, while
@@ -259,14 +266,14 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
             % and horizontally, you must select its reference orientation (parallel to
             % the earth surface) so that the measures are made relative to this position.
             %
-            % @param position : a value among the Y_MOUNTPOSITION enumeration
-            %         (Y_MOUNTPOSITION_BOTTOM,   Y_MOUNTPOSITION_TOP,
-            %         Y_MOUNTPOSITION_FRONT,    Y_MOUNTPOSITION_RIGHT,
-            %         Y_MOUNTPOSITION_REAR,     Y_MOUNTPOSITION_LEFT),
+            % @param position : a value among the YRefFrame.MOUNTPOSITION enumeration
+            %         (YRefFrame.MOUNTPOSITION_BOTTOM,  YRefFrame.MOUNTPOSITION_TOP,
+            %         YRefFrame.MOUNTPOSITION_FRONT,    YRefFrame.MOUNTPOSITION_RIGHT,
+            %         YRefFrame.MOUNTPOSITION_REAR,     YRefFrame.MOUNTPOSITION_LEFT),
             %         corresponding to the installation in a box, on one of the six faces.
-            % @param orientation : a value among the enumeration Y_MOUNTORIENTATION
-            %         (Y_MOUNTORIENTATION_TWELVE, Y_MOUNTORIENTATION_THREE,
-            %         Y_MOUNTORIENTATION_SIX,     Y_MOUNTORIENTATION_NINE)
+            % @param orientation : a value among the enumeration YRefFrame.MOUNTORIENTATION
+            %         (YRefFrame.MOUNTORIENTATION_TWELVE, YRefFrame.MOUNTORIENTATION_THREE,
+            %         YRefFrame.MOUNTORIENTATION_SIX,     YRefFrame.MOUNTORIENTATION_NINE)
             %         corresponding to the orientation of the "X" arrow on the device,
             %         as on a clock dial seen from an observer in the center of the box.
             %         On the bottom face, the 12H orientation points to the front, while

@@ -152,7 +152,7 @@ classdef YVoltageOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the output voltage set point, in V
             %
-            % On failure, throws an exception or returns Y_CURRENTVOLTAGE_INVALID.
+            % On failure, throws an exception or returns YVoltageOutput.CURRENTVOLTAGE_INVALID.
             result = obj.InvokeMethod_F(1506404409);
         end
 
@@ -182,7 +182,7 @@ classdef YVoltageOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the selected voltage output at device startup, in V
             %
-            % On failure, throws an exception or returns Y_VOLTAGEATSTARTUP_INVALID.
+            % On failure, throws an exception or returns YVoltageOutput.VOLTAGEATSTARTUP_INVALID.
             result = obj.InvokeMethod_F(-1457210740);
         end
 

@@ -1477,6 +1477,23 @@ classdef YFunctionProxy < matlab.System
             end
         end
 
+        function result = InvokeMethod_Hd(obj, methodHandle, arg2)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_Hd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    libpointer('int32Ptr', int32(0)), int32(arg2));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_Hd', errmsg);
+                    throw(ME)
+                end
+                result = pRes;
+            end
+        end
+
         % //--- (end of generated code: YFunction yapiwrapper)
         
     end
@@ -1540,7 +1557,7 @@ classdef YFunctionProxy < matlab.System
             %
             % @return a string corresponding to the logical name of the function
             %
-            % On failure, throws an exception or returns Y_LOGICALNAME_INVALID.
+            % On failure, throws an exception or returns YFunction.LOGICALNAME_INVALID.
             result = obj.InvokeMethod_S(1376067556);
         end
 
@@ -1572,7 +1589,7 @@ classdef YFunctionProxy < matlab.System
             %
             % @return a string corresponding to a short string representing the current state of the function
             %
-            % On failure, throws an exception or returns Y_ADVERTISEDVALUE_INVALID.
+            % On failure, throws an exception or returns YFunction.ADVERTISEDVALUE_INVALID.
             result = obj.InvokeMethod_S(48074797);
         end
 
@@ -1626,7 +1643,7 @@ classdef YFunctionProxy < matlab.System
             %
             % @return a string corresponding to the serial number of the module, as set by the factory.
             %
-            % On failure, throws an exception or returns YModule.SERIALNUMBER_INVALID.
+            % On failure, throws an exception or returns YFunction.SERIALNUMBER_INVALID.
             result = obj.InvokeMethod_S(-1800874479);
         end
 

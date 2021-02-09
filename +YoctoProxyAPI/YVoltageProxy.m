@@ -143,9 +143,10 @@ classdef YVoltageProxy < YoctoProxyAPI.YSensorProxy
         function result = get_enabled(obj)
             % Returns the activation state of this input.
             %
-            % @return either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the activation state of this input
+            % @return either YVoltage.ENABLED_FALSE or YVoltage.ENABLED_TRUE, according to the
+            % activation state of this input
             %
-            % On failure, throws an exception or returns Y_ENABLED_INVALID.
+            % On failure, throws an exception or returns YVoltage.ENABLED_INVALID.
             result = YoctoProxyAPI.EnumEnabled(obj.InvokeMethod_D(587192537));
         end
 
@@ -157,8 +158,8 @@ classdef YVoltageProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the activation
-            % state of this voltage input
+            % @param newval : either YVoltage.ENABLED_FALSE or YVoltage.ENABLED_TRUE, according to
+            % the activation state of this voltage input
             %
             % @return 0 if the call succeeds.
             %

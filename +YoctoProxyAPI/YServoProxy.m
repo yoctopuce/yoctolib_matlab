@@ -155,7 +155,7 @@ classdef YServoProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current servo position
             %
-            % On failure, throws an exception or returns Y_POSITION_INVALID.
+            % On failure, throws an exception or returns YServo.POSITION_INVALID.
             result = obj.InvokeMethod_D(-955224796);
         end
 
@@ -191,16 +191,17 @@ classdef YServoProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_enabled(obj)
             % Returns the state of the RC servo motors.
             %
-            % @return either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the state of the RC servo motors
+            % @return either YServo.ENABLED_FALSE or YServo.ENABLED_TRUE, according to the state of
+            % the RC servo motors
             %
-            % On failure, throws an exception or returns Y_ENABLED_INVALID.
+            % On failure, throws an exception or returns YServo.ENABLED_INVALID.
             result = YoctoProxyAPI.EnumEnabled(obj.InvokeMethod_D(587192537));
         end
 
         function set_enabled(obj, newVal)
             % Stops or starts the RC servo motor.
             %
-            % @param newval : either Y_ENABLED_FALSE or Y_ENABLED_TRUE
+            % @param newval : either YServo.ENABLED_FALSE or YServo.ENABLED_TRUE
             %
             % @return 0 if the call succeeds.
             %
@@ -213,7 +214,7 @@ classdef YServoProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current range of use of the servo
             %
-            % On failure, throws an exception or returns Y_RANGE_INVALID.
+            % On failure, throws an exception or returns YServo.RANGE_INVALID.
             result = obj.InvokeMethod_D(1053644898);
         end
 
@@ -248,7 +249,7 @@ classdef YServoProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the duration in microseconds of a neutral pulse for the servo
             %
-            % On failure, throws an exception or returns Y_NEUTRAL_INVALID.
+            % On failure, throws an exception or returns YServo.NEUTRAL_INVALID.
             result = obj.InvokeMethod_D(-444601339);
         end
 
@@ -295,7 +296,7 @@ classdef YServoProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the servo position at device power up
             %
-            % On failure, throws an exception or returns Y_POSITIONATPOWERON_INVALID.
+            % On failure, throws an exception or returns YServo.POSITIONATPOWERON_INVALID.
             result = obj.InvokeMethod_D(-915671155);
         end
 
@@ -323,10 +324,10 @@ classdef YServoProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_enabledAtPowerOn(obj)
             % Returns the servo signal generator state at power up.
             %
-            % @return either Y_ENABLEDATPOWERON_FALSE or Y_ENABLEDATPOWERON_TRUE, according to the
-            % servo signal generator state at power up
+            % @return either YServo.ENABLEDATPOWERON_FALSE or YServo.ENABLEDATPOWERON_TRUE, according
+            % to the servo signal generator state at power up
             %
-            % On failure, throws an exception or returns Y_ENABLEDATPOWERON_INVALID.
+            % On failure, throws an exception or returns YServo.ENABLEDATPOWERON_INVALID.
             result = YoctoProxyAPI.EnumEnabledAtPowerOn(obj.InvokeMethod_D(-2086316212));
         end
 
@@ -335,7 +336,7 @@ classdef YServoProxy < YoctoProxyAPI.YFunctionProxy
             % module saveToFlash()
             % method, otherwise this call will have no effect.
             %
-            % @param newval : either Y_ENABLEDATPOWERON_FALSE or Y_ENABLEDATPOWERON_TRUE
+            % @param newval : either YServo.ENABLEDATPOWERON_FALSE or YServo.ENABLEDATPOWERON_TRUE
             %
             % @return 0 if the call succeeds.
             %

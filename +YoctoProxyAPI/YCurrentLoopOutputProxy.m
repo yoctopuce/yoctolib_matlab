@@ -168,7 +168,7 @@ classdef YCurrentLoopOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the loop current set point in mA
             %
-            % On failure, throws an exception or returns Y_CURRENT_INVALID.
+            % On failure, throws an exception or returns YCurrentLoopOutput.CURRENT_INVALID.
             result = obj.InvokeMethod_F(233648074);
         end
 
@@ -202,7 +202,7 @@ classdef YCurrentLoopOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the current in the loop at device startup, in mA
             %
-            % On failure, throws an exception or returns Y_CURRENTATSTARTUP_INVALID.
+            % On failure, throws an exception or returns YCurrentLoopOutput.CURRENTATSTARTUP_INVALID.
             result = obj.InvokeMethod_F(-1411646992);
         end
 
@@ -220,10 +220,11 @@ classdef YCurrentLoopOutputProxy < YoctoProxyAPI.YFunctionProxy
             % is powered. NOPWR: the loop in not powered. LOWPWR: the loop is not
             % powered enough to maintain the current required (insufficient voltage).
             %
-            % @return a value among Y_LOOPPOWER_NOPWR, Y_LOOPPOWER_LOWPWR and Y_LOOPPOWER_POWEROK
+            % @return a value among YCurrentLoopOutput.LOOPPOWER_NOPWR,
+            % YCurrentLoopOutput.LOOPPOWER_LOWPWR and YCurrentLoopOutput.LOOPPOWER_POWEROK
             % corresponding to the loop powerstate
             %
-            % On failure, throws an exception or returns Y_LOOPPOWER_INVALID.
+            % On failure, throws an exception or returns YCurrentLoopOutput.LOOPPOWER_INVALID.
             result = YoctoProxyAPI.EnumLoopPower(obj.InvokeMethod_D(-519903192));
         end
 

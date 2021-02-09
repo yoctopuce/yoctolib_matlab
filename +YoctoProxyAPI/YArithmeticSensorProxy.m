@@ -158,7 +158,7 @@ classdef YArithmeticSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a string corresponding to a short informative description of the formula
             %
-            % On failure, throws an exception or returns Y_DESCRIPTION_INVALID.
+            % On failure, throws an exception or returns YArithmeticSensor.DESCRIPTION_INVALID.
             result = obj.InvokeMethod_S(282193973);
         end
 

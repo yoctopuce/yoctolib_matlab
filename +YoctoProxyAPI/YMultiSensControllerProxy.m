@@ -138,7 +138,7 @@ classdef YMultiSensControllerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of sensors to poll
             %
-            % On failure, throws an exception or returns Y_NSENSORS_INVALID.
+            % On failure, throws an exception or returns YMultiSensController.NSENSORS_INVALID.
             result = obj.InvokeMethod_D(1841927138);
         end
 
@@ -171,17 +171,17 @@ classdef YMultiSensControllerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum configurable sensor count allowed on this device
             %
-            % On failure, throws an exception or returns Y_MAXSENSORS_INVALID.
+            % On failure, throws an exception or returns YMultiSensController.MAXSENSORS_INVALID.
             result = obj.InvokeMethod_D(52493196);
         end
 
         function result = get_maintenanceMode(obj)
             % Returns true when the device is in maintenance mode.
             %
-            % @return either Y_MAINTENANCEMODE_FALSE or Y_MAINTENANCEMODE_TRUE, according to true
-            % when the device is in maintenance mode
+            % @return either YMultiSensController.MAINTENANCEMODE_FALSE or
+            % YMultiSensController.MAINTENANCEMODE_TRUE, according to true when the device is in maintenance mode
             %
-            % On failure, throws an exception or returns Y_MAINTENANCEMODE_INVALID.
+            % On failure, throws an exception or returns YMultiSensController.MAINTENANCEMODE_INVALID.
             result = YoctoProxyAPI.EnumMaintenanceMode(obj.InvokeMethod_D(-1026204954));
         end
 
@@ -190,8 +190,9 @@ classdef YMultiSensControllerProxy < YoctoProxyAPI.YFunctionProxy
             % This way, the device does not automatically restart when it cannot
             % communicate with one of the sensors.
             %
-            % @param newval : either Y_MAINTENANCEMODE_FALSE or Y_MAINTENANCEMODE_TRUE, according to
-            % the device mode to enable maintenance and to stop sensor polling
+            % @param newval : either YMultiSensController.MAINTENANCEMODE_FALSE or
+            % YMultiSensController.MAINTENANCEMODE_TRUE, according to the device mode to enable
+            % maintenance and to stop sensor polling
             %
             % @return 0 if the call succeeds.
             %

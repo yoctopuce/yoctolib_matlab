@@ -181,7 +181,7 @@ classdef YAltitudeProxy < YoctoProxyAPI.YSensorProxy
             % sea level used to compute
             %         the altitude (QNH)
             %
-            % On failure, throws an exception or returns Y_QNH_INVALID.
+            % On failure, throws an exception or returns YAltitude.QNH_INVALID.
             result = obj.InvokeMethod_F(1491889903);
         end
 
@@ -201,7 +201,7 @@ classdef YAltitudeProxy < YoctoProxyAPI.YSensorProxy
             % @return a string corresponding to the technology used by the sesnor to compute
             %         altitude
             %
-            % On failure, throws an exception or returns Y_TECHNOLOGY_INVALID.
+            % On failure, throws an exception or returns YAltitude.TECHNOLOGY_INVALID.
             result = obj.InvokeMethod_S(-1317242013);
         end
 

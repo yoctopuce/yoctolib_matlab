@@ -136,11 +136,11 @@ classdef YPowerOutputProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_voltage(obj)
             % Returns the voltage on the power output featured by the module.
             %
-            % @return a value among Y_VOLTAGE_OFF, Y_VOLTAGE_OUT3V3, Y_VOLTAGE_OUT5V,
-            % Y_VOLTAGE_OUT4V7 and Y_VOLTAGE_OUT1V8 corresponding to the voltage on the power output
-            % featured by the module
+            % @return a value among YPowerOutput.VOLTAGE_OFF, YPowerOutput.VOLTAGE_OUT3V3,
+            % YPowerOutput.VOLTAGE_OUT5V, YPowerOutput.VOLTAGE_OUT4V7 and YPowerOutput.VOLTAGE_OUT1V8
+            % corresponding to the voltage on the power output featured by the module
             %
-            % On failure, throws an exception or returns Y_VOLTAGE_INVALID.
+            % On failure, throws an exception or returns YPowerOutput.VOLTAGE_INVALID.
             result = YoctoProxyAPI.EnumVoltage(obj.InvokeMethod_D(-1675935560));
         end
 
@@ -149,9 +149,9 @@ classdef YPowerOutputProxy < YoctoProxyAPI.YFunctionProxy
             % module. Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_VOLTAGE_OFF, Y_VOLTAGE_OUT3V3, Y_VOLTAGE_OUT5V,
-            % Y_VOLTAGE_OUT4V7 and Y_VOLTAGE_OUT1V8 corresponding to the voltage on the power output
-            % provided by the
+            % @param newval : a value among YPowerOutput.VOLTAGE_OFF, YPowerOutput.VOLTAGE_OUT3V3,
+            % YPowerOutput.VOLTAGE_OUT5V, YPowerOutput.VOLTAGE_OUT4V7 and YPowerOutput.VOLTAGE_OUT1V8
+            % corresponding to the voltage on the power output provided by the
             %         module
             %
             % @return 0 if the call succeeds.

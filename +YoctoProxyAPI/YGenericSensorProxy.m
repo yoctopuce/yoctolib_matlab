@@ -1,5 +1,5 @@
 % YGenericSensorProxy: GenericSensor control interface, available for instance in the Yocto-0-10V-Rx,
-% the Yocto-4-20mA-Rx, the Yocto-RS485-V2 or the Yocto-milliVolt-Rx
+% the Yocto-4-20mA-Rx, the Yocto-Serial or the Yocto-milliVolt-Rx
 % 
 % The YGenericSensorProxy class allows you to read and configure Yoctopuce signal transducers. It
 % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
@@ -47,7 +47,7 @@
 % //--- (YGenericSensor declaration)
 classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
     % YGenericSensorProxy: GenericSensor control interface, available for instance in the Yocto-0-10V-Rx,
-    % the Yocto-4-20mA-Rx, the Yocto-RS485-V2 or the Yocto-milliVolt-Rx
+    % the Yocto-4-20mA-Rx, the Yocto-Serial or the Yocto-milliVolt-Rx
     % 
     % The YGenericSensorProxy class allows you to read and configure Yoctopuce signal transducers. It
     % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
@@ -171,7 +171,7 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current value of the electrical
             % signal measured by the sensor
             %
-            % On failure, throws an exception or returns Y_SIGNALVALUE_INVALID.
+            % On failure, throws an exception or returns YGenericSensor.SIGNALVALUE_INVALID.
             result = obj.InvokeMethod_F(-2090205936);
         end
 
@@ -180,7 +180,7 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a string corresponding to the measuring unit of the electrical signal used by the sensor
             %
-            % On failure, throws an exception or returns Y_SIGNALUNIT_INVALID.
+            % On failure, throws an exception or returns YGenericSensor.SIGNALUNIT_INVALID.
             result = obj.InvokeMethod_S(-1412085153);
         end
 
@@ -193,7 +193,7 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a string corresponding to the input signal range used by the sensor
             %
-            % On failure, throws an exception or returns Y_SIGNALRANGE_INVALID.
+            % On failure, throws an exception or returns YGenericSensor.SIGNALRANGE_INVALID.
             result = obj.InvokeMethod_S(-1708396132);
         end
 
@@ -233,7 +233,7 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a string corresponding to the physical value range measured by the sensor
             %
-            % On failure, throws an exception or returns Y_VALUERANGE_INVALID.
+            % On failure, throws an exception or returns YGenericSensor.VALUERANGE_INVALID.
             result = obj.InvokeMethod_S(1090965611);
         end
 
@@ -289,7 +289,7 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the electric signal bias for zero shift adjustment
             %
-            % On failure, throws an exception or returns Y_SIGNALBIAS_INVALID.
+            % On failure, throws an exception or returns YGenericSensor.SIGNALBIAS_INVALID.
             result = obj.InvokeMethod_F(-1442808083);
         end
 
@@ -310,11 +310,13 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             % The LOW_NOISE_FILTERED method combines a reduced frequency with the median filter
             % to get measures as stable as possible when working on a noisy signal.
             %
-            % @return a value among Y_SIGNALSAMPLING_HIGH_RATE, Y_SIGNALSAMPLING_HIGH_RATE_FILTERED,
-            % Y_SIGNALSAMPLING_LOW_NOISE, Y_SIGNALSAMPLING_LOW_NOISE_FILTERED and
-            % Y_SIGNALSAMPLING_HIGHEST_RATE corresponding to the electric signal sampling method to use
+            % @return a value among YGenericSensor.SIGNALSAMPLING_HIGH_RATE,
+            % YGenericSensor.SIGNALSAMPLING_HIGH_RATE_FILTERED, YGenericSensor.SIGNALSAMPLING_LOW_NOISE,
+            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED and
+            % YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE corresponding to the electric signal
+            % sampling method to use
             %
-            % On failure, throws an exception or returns Y_SIGNALSAMPLING_INVALID.
+            % On failure, throws an exception or returns YGenericSensor.SIGNALSAMPLING_INVALID.
             result = YoctoProxyAPI.EnumSignalSampling(obj.InvokeMethod_D(1665292824));
         end
 
@@ -328,10 +330,11 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : a value among Y_SIGNALSAMPLING_HIGH_RATE,
-            % Y_SIGNALSAMPLING_HIGH_RATE_FILTERED, Y_SIGNALSAMPLING_LOW_NOISE,
-            % Y_SIGNALSAMPLING_LOW_NOISE_FILTERED and Y_SIGNALSAMPLING_HIGHEST_RATE corresponding to
-            % the electric signal sampling method to use
+            % @param newval : a value among YGenericSensor.SIGNALSAMPLING_HIGH_RATE,
+            % YGenericSensor.SIGNALSAMPLING_HIGH_RATE_FILTERED, YGenericSensor.SIGNALSAMPLING_LOW_NOISE,
+            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED and
+            % YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE corresponding to the electric signal
+            % sampling method to use
             %
             % @return 0 if the call succeeds.
             %
@@ -351,9 +354,10 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
         function result = get_enabled(obj)
             % Returns the activation state of this input.
             %
-            % @return either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the activation state of this input
+            % @return either YGenericSensor.ENABLED_FALSE or YGenericSensor.ENABLED_TRUE, according
+            % to the activation state of this input
             %
-            % On failure, throws an exception or returns Y_ENABLED_INVALID.
+            % On failure, throws an exception or returns YGenericSensor.ENABLED_INVALID.
             result = YoctoProxyAPI.EnumEnabled(obj.InvokeMethod_D(587192537));
         end
 
@@ -364,8 +368,8 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the activation
-            % state of this input
+            % @param newval : either YGenericSensor.ENABLED_FALSE or YGenericSensor.ENABLED_TRUE,
+            % according to the activation state of this input
             %
             % @return 0 if the call succeeds.
             %

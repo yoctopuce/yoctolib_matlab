@@ -134,7 +134,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the commercial name of the module, as set by the factory
             %
-            % On failure, throws an exception or returns Y_PRODUCTNAME_INVALID.
+            % On failure, throws an exception or returns YModule.PRODUCTNAME_INVALID.
             result = obj.InvokeMethod_S(1761372173);
         end
 
@@ -147,7 +147,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the USB device identifier of the module
             %
-            % On failure, throws an exception or returns Y_PRODUCTID_INVALID.
+            % On failure, throws an exception or returns YModule.PRODUCTID_INVALID.
             result = obj.InvokeMethod_D(820504697);
         end
 
@@ -162,7 +162,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the release number of the module hardware,
             % preprogrammed at the factory
             %
-            % On failure, throws an exception or returns Y_PRODUCTRELEASE_INVALID.
+            % On failure, throws an exception or returns YModule.PRODUCTRELEASE_INVALID.
             result = obj.InvokeMethod_D(986891674);
         end
 
@@ -175,7 +175,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the version of the firmware embedded in the module
             %
-            % On failure, throws an exception or returns Y_FIRMWARERELEASE_INVALID.
+            % On failure, throws an exception or returns YModule.FIRMWARERELEASE_INVALID.
             result = obj.InvokeMethod_S(1884340311);
         end
 
@@ -186,10 +186,11 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_persistentSettings(obj)
             % Returns the current state of persistent module settings.
             %
-            % @return a value among Y_PERSISTENTSETTINGS_LOADED, Y_PERSISTENTSETTINGS_SAVED and
-            % Y_PERSISTENTSETTINGS_MODIFIED corresponding to the current state of persistent module settings
+            % @return a value among YModule.PERSISTENTSETTINGS_LOADED,
+            % YModule.PERSISTENTSETTINGS_SAVED and YModule.PERSISTENTSETTINGS_MODIFIED corresponding
+            % to the current state of persistent module settings
             %
-            % On failure, throws an exception or returns Y_PERSISTENTSETTINGS_INVALID.
+            % On failure, throws an exception or returns YModule.PERSISTENTSETTINGS_INVALID.
             result = YoctoProxyAPI.EnumPersistentSettings(obj.InvokeMethod_D(-1370941034));
         end
 
@@ -198,7 +199,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the luminosity of the  module informative LEDs (from 0 to 100)
             %
-            % On failure, throws an exception or returns Y_LUMINOSITY_INVALID.
+            % On failure, throws an exception or returns YModule.LUMINOSITY_INVALID.
             result = obj.InvokeMethod_D(-1600964606);
         end
 
@@ -228,16 +229,17 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_beacon(obj)
             % Returns the state of the localization beacon.
             %
-            % @return either Y_BEACON_OFF or Y_BEACON_ON, according to the state of the localization beacon
+            % @return either YModule.BEACON_OFF or YModule.BEACON_ON, according to the state of the
+            % localization beacon
             %
-            % On failure, throws an exception or returns Y_BEACON_INVALID.
+            % On failure, throws an exception or returns YModule.BEACON_INVALID.
             result = YoctoProxyAPI.EnumBeacon(obj.InvokeMethod_D(1865482844));
         end
 
         function set_beacon(obj, newVal)
             % Turns on or off the module localization beacon.
             %
-            % @param newval : either Y_BEACON_OFF or Y_BEACON_ON
+            % @param newval : either YModule.BEACON_OFF or YModule.BEACON_ON
             %
             % @return 0 if the call succeeds.
             %
@@ -250,7 +252,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of milliseconds spent since the module was powered on
             %
-            % On failure, throws an exception or returns Y_UPTIME_INVALID.
+            % On failure, throws an exception or returns YModule.UPTIME_INVALID.
             result = obj.InvokeMethod_Q(-114310087);
         end
 
@@ -259,7 +261,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current consumed by the module on the USB bus, in milli-amps
             %
-            % On failure, throws an exception or returns Y_USBCURRENT_INVALID.
+            % On failure, throws an exception or returns YModule.USBCURRENT_INVALID.
             result = obj.InvokeMethod_D(558611683);
         end
 
@@ -271,7 +273,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             % restarts, or zero when no
             %         reboot has been scheduled
             %
-            % On failure, throws an exception or returns Y_REBOOTCOUNTDOWN_INVALID.
+            % On failure, throws an exception or returns YModule.REBOOTCOUNTDOWN_INVALID.
             result = obj.InvokeMethod_D(152939681);
         end
 
@@ -281,7 +283,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the value previously stored in this attribute
             %
-            % On failure, throws an exception or returns Y_USERVAR_INVALID.
+            % On failure, throws an exception or returns YModule.USERVAR_INVALID.
             result = obj.InvokeMethod_D(-499093400);
         end
 

@@ -164,18 +164,18 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_enabled(obj)
             % Returns true if the screen is powered, false otherwise.
             %
-            % @return either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to true if the screen is
-            % powered, false otherwise
+            % @return either YDisplay.ENABLED_FALSE or YDisplay.ENABLED_TRUE, according to true if
+            % the screen is powered, false otherwise
             %
-            % On failure, throws an exception or returns Y_ENABLED_INVALID.
+            % On failure, throws an exception or returns YDisplay.ENABLED_INVALID.
             result = YoctoProxyAPI.EnumEnabled(obj.InvokeMethod_D(587192537));
         end
 
         function set_enabled(obj, newVal)
             % Changes the power state of the display.
             %
-            % @param newval : either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the power state
-            % of the display
+            % @param newval : either YDisplay.ENABLED_FALSE or YDisplay.ENABLED_TRUE, according to
+            % the power state of the display
             %
             % @return 0 if the call succeeds.
             %
@@ -188,7 +188,7 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the name of the sequence to play when the displayed is powered on
             %
-            % On failure, throws an exception or returns Y_STARTUPSEQ_INVALID.
+            % On failure, throws an exception or returns YDisplay.STARTUPSEQ_INVALID.
             result = obj.InvokeMethod_S(227373314);
         end
 
@@ -220,7 +220,7 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the luminosity of the  module informative LEDs (from 0 to 100)
             %
-            % On failure, throws an exception or returns Y_BRIGHTNESS_INVALID.
+            % On failure, throws an exception or returns YDisplay.BRIGHTNESS_INVALID.
             result = obj.InvokeMethod_D(-386005521);
         end
 
@@ -249,10 +249,11 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_orientation(obj)
             % Returns the currently selected display orientation.
             %
-            % @return a value among Y_ORIENTATION_LEFT, Y_ORIENTATION_UP, Y_ORIENTATION_RIGHT and
-            % Y_ORIENTATION_DOWN corresponding to the currently selected display orientation
+            % @return a value among YDisplay.ORIENTATION_LEFT, YDisplay.ORIENTATION_UP,
+            % YDisplay.ORIENTATION_RIGHT and YDisplay.ORIENTATION_DOWN corresponding to the currently
+            % selected display orientation
             %
-            % On failure, throws an exception or returns Y_ORIENTATION_INVALID.
+            % On failure, throws an exception or returns YDisplay.ORIENTATION_INVALID.
             result = YoctoProxyAPI.EnumOrientation(obj.InvokeMethod_D(569319631));
         end
 
@@ -260,8 +261,8 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the display orientation. Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : a value among Y_ORIENTATION_LEFT, Y_ORIENTATION_UP, Y_ORIENTATION_RIGHT
-            % and Y_ORIENTATION_DOWN corresponding to the display orientation
+            % @param newval : a value among YDisplay.ORIENTATION_LEFT, YDisplay.ORIENTATION_UP,
+            % YDisplay.ORIENTATION_RIGHT and YDisplay.ORIENTATION_DOWN corresponding to the display orientation
             %
             % @return 0 if the call succeeds.
             %
@@ -283,7 +284,7 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the display width, in pixels
             %
-            % On failure, throws an exception or returns Y_DISPLAYWIDTH_INVALID.
+            % On failure, throws an exception or returns YDisplay.DISPLAYWIDTH_INVALID.
             result = obj.InvokeMethod_D(-16878212);
         end
 
@@ -296,7 +297,7 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the display height, in pixels
             %
-            % On failure, throws an exception or returns Y_DISPLAYHEIGHT_INVALID.
+            % On failure, throws an exception or returns YDisplay.DISPLAYHEIGHT_INVALID.
             result = obj.InvokeMethod_D(-1640661886);
         end
 
@@ -307,10 +308,10 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_displayType(obj)
             % Returns the display type: monochrome, gray levels or full color.
             %
-            % @return a value among Y_DISPLAYTYPE_MONO, Y_DISPLAYTYPE_GRAY and Y_DISPLAYTYPE_RGB
-            % corresponding to the display type: monochrome, gray levels or full color
+            % @return a value among YDisplay.DISPLAYTYPE_MONO, YDisplay.DISPLAYTYPE_GRAY and
+            % YDisplay.DISPLAYTYPE_RGB corresponding to the display type: monochrome, gray levels or full color
             %
-            % On failure, throws an exception or returns Y_DISPLAYTYPE_INVALID.
+            % On failure, throws an exception or returns YDisplay.DISPLAYTYPE_INVALID.
             result = YoctoProxyAPI.EnumDisplayType(obj.InvokeMethod_D(462290817));
         end
 
@@ -323,7 +324,7 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the width of the layers to draw on, in pixels
             %
-            % On failure, throws an exception or returns Y_LAYERWIDTH_INVALID.
+            % On failure, throws an exception or returns YDisplay.LAYERWIDTH_INVALID.
             result = obj.InvokeMethod_D(-2123579753);
         end
 
@@ -336,7 +337,7 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the height of the layers to draw on, in pixels
             %
-            % On failure, throws an exception or returns Y_LAYERHEIGHT_INVALID.
+            % On failure, throws an exception or returns YDisplay.LAYERHEIGHT_INVALID.
             result = obj.InvokeMethod_D(-1449994823);
         end
 
@@ -349,7 +350,7 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of available layers to draw on
             %
-            % On failure, throws an exception or returns Y_LAYERCOUNT_INVALID.
+            % On failure, throws an exception or returns YDisplay.LAYERCOUNT_INVALID.
             result = obj.InvokeMethod_D(-1279478134);
         end
 
@@ -488,6 +489,19 @@ classdef YDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns a negative error code.
             result = obj.InvokeMethod_Ddd(1191315960, layerIdA, layerIdB);
+        end
+
+        function result = get_displayLayer(obj, layerId)
+            % Returns a YDisplayLayer object that can be used to draw on the specified
+            % layer. The content is displayed only when the layer is active on the
+            % screen (and not masked by other overlapping layers).
+            %
+            % @param layerId : the identifier of the layer (a number in range 0..layerCount-1)
+            %
+            % @return an YDisplayLayer object
+            %
+            % On failure, throws an exception or returns null.
+            result = obj.InvokeMethod_Hd(-1569211084, layerId);
         end
 
         % //--- (end of YDisplay accessors declaration)

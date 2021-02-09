@@ -55,7 +55,7 @@ classdef YGyroProxy < YoctoProxyAPI.YSensorProxy
     % quaternion-based orientation estimates.
 
     properties (Transient, Nontunable)
-        % Bandwidth Measure update frequency, measured in Hz (Yocto-3D-V2 only)
+        % Bandwidth Measure update frequency, measured in Hz
         Bandwidth (1,1) int32
     end
 
@@ -143,22 +143,21 @@ classdef YGyroProxy < YoctoProxyAPI.YSensorProxy
         % //--- (YGyro accessors declaration)
 
         function result = get_bandwidth(obj)
-            % Returns the measure update frequency, measured in Hz (Yocto-3D-V2 only).
+            % Returns the measure update frequency, measured in Hz.
             %
-            % @return an integer corresponding to the measure update frequency, measured in Hz (Yocto-3D-V2 only)
+            % @return an integer corresponding to the measure update frequency, measured in Hz
             %
-            % On failure, throws an exception or returns Y_BANDWIDTH_INVALID.
+            % On failure, throws an exception or returns YGyro.BANDWIDTH_INVALID.
             result = obj.InvokeMethod_D(1075889934);
         end
 
         function set_bandwidth(obj, newVal)
-            % Changes the measure update frequency, measured in Hz (Yocto-3D-V2 only). When the
+            % Changes the measure update frequency, measured in Hz. When the
             % frequency is lower, the device performs averaging.
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : an integer corresponding to the measure update frequency, measured in
-            % Hz (Yocto-3D-V2 only)
+            % @param newval : an integer corresponding to the measure update frequency, measured in Hz
             %
             % @return 0 if the call succeeds.
             %
@@ -181,7 +180,7 @@ classdef YGyroProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the angular velocity around the X axis
             % of the device, as a floating point number
             %
-            % On failure, throws an exception or returns Y_XVALUE_INVALID.
+            % On failure, throws an exception or returns YGyro.XVALUE_INVALID.
             result = obj.InvokeMethod_F(1148075671);
         end
 
@@ -191,7 +190,7 @@ classdef YGyroProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the angular velocity around the Y axis
             % of the device, as a floating point number
             %
-            % On failure, throws an exception or returns Y_YVALUE_INVALID.
+            % On failure, throws an exception or returns YGyro.YVALUE_INVALID.
             result = obj.InvokeMethod_F(-2000404983);
         end
 
@@ -201,7 +200,7 @@ classdef YGyroProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the angular velocity around the Z axis
             % of the device, as a floating point number
             %
-            % On failure, throws an exception or returns Y_ZVALUE_INVALID.
+            % On failure, throws an exception or returns YGyro.ZVALUE_INVALID.
             result = obj.InvokeMethod_F(105593322);
         end
 

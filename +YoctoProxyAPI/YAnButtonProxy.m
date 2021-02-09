@@ -169,7 +169,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the current calibrated input value (between 0 and
             % 1000, included)
             %
-            % On failure, throws an exception or returns Y_CALIBRATEDVALUE_INVALID.
+            % On failure, throws an exception or returns YAnButton.CALIBRATEDVALUE_INVALID.
             result = obj.InvokeMethod_D(634835529);
         end
 
@@ -187,16 +187,16 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the current measured input value as-is (between 0
             % and 4095, included)
             %
-            % On failure, throws an exception or returns Y_RAWVALUE_INVALID.
+            % On failure, throws an exception or returns YAnButton.RAWVALUE_INVALID.
             result = obj.InvokeMethod_D(2035087752);
         end
 
         function result = get_analogCalibration(obj)
             % Tells if a calibration process is currently ongoing.
             %
-            % @return either Y_ANALOGCALIBRATION_OFF or Y_ANALOGCALIBRATION_ON
+            % @return either YAnButton.ANALOGCALIBRATION_OFF or YAnButton.ANALOGCALIBRATION_ON
             %
-            % On failure, throws an exception or returns Y_ANALOGCALIBRATION_INVALID.
+            % On failure, throws an exception or returns YAnButton.ANALOGCALIBRATION_INVALID.
             result = YoctoProxyAPI.EnumAnalogCalibration(obj.InvokeMethod_D(1381456541));
         end
 
@@ -204,7 +204,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % Starts or stops the calibration process. Remember to call the saveToFlash()
             % method of the module at the end of the calibration if the modification must be kept.
             %
-            % @param newval : either Y_ANALOGCALIBRATION_OFF or Y_ANALOGCALIBRATION_ON
+            % @param newval : either YAnButton.ANALOGCALIBRATION_OFF or YAnButton.ANALOGCALIBRATION_ON
             %
             % @return 0 if the call succeeds.
             %
@@ -227,7 +227,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the maximal value measured during the calibration
             % (between 0 and 4095, included)
             %
-            % On failure, throws an exception or returns Y_CALIBRATIONMAX_INVALID.
+            % On failure, throws an exception or returns YAnButton.CALIBRATIONMAX_INVALID.
             result = obj.InvokeMethod_D(1520747451);
         end
 
@@ -261,7 +261,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the minimal value measured during the calibration
             % (between 0 and 4095, included)
             %
-            % On failure, throws an exception or returns Y_CALIBRATIONMIN_INVALID.
+            % On failure, throws an exception or returns YAnButton.CALIBRATIONMIN_INVALID.
             result = obj.InvokeMethod_D(-2017774442);
         end
 
@@ -295,7 +295,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the sensibility for the input (between 1 and 1000)
             % for triggering user callbacks
             %
-            % On failure, throws an exception or returns Y_SENSITIVITY_INVALID.
+            % On failure, throws an exception or returns YAnButton.SENSITIVITY_INVALID.
             result = obj.InvokeMethod_D(-261212033);
         end
 
@@ -328,10 +328,10 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_isPressed(obj)
             % Returns true if the input (considered as binary) is active (closed contact), and false otherwise.
             %
-            % @return either Y_ISPRESSED_FALSE or Y_ISPRESSED_TRUE, according to true if the input
-            % (considered as binary) is active (closed contact), and false otherwise
+            % @return either YAnButton.ISPRESSED_FALSE or YAnButton.ISPRESSED_TRUE, according to true
+            % if the input (considered as binary) is active (closed contact), and false otherwise
             %
-            % On failure, throws an exception or returns Y_ISPRESSED_INVALID.
+            % On failure, throws an exception or returns YAnButton.ISPRESSED_INVALID.
             result = YoctoProxyAPI.EnumIsPressed(obj.InvokeMethod_D(2098076773));
         end
 
@@ -343,7 +343,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % module power on and the last time
             %         the input button was pressed (the input contact transitioned from open to closed)
             %
-            % On failure, throws an exception or returns Y_LASTTIMEPRESSED_INVALID.
+            % On failure, throws an exception or returns YAnButton.LASTTIMEPRESSED_INVALID.
             result = obj.InvokeMethod_Q(-305690090);
         end
 
@@ -355,7 +355,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % module power on and the last time
             %         the input button was released (the input contact transitioned from closed to open)
             %
-            % On failure, throws an exception or returns Y_LASTTIMERELEASED_INVALID.
+            % On failure, throws an exception or returns YAnButton.LASTTIMERELEASED_INVALID.
             result = obj.InvokeMethod_Q(1123889222);
         end
 
@@ -366,7 +366,7 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the pulse counter value
             %
-            % On failure, throws an exception or returns Y_PULSECOUNTER_INVALID.
+            % On failure, throws an exception or returns YAnButton.PULSECOUNTER_INVALID.
             result = obj.InvokeMethod_Q(335219165);
         end
 
@@ -375,17 +375,18 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the timer of the pulses counter (ms)
             %
-            % On failure, throws an exception or returns Y_PULSETIMER_INVALID.
+            % On failure, throws an exception or returns YAnButton.PULSETIMER_INVALID.
             result = obj.InvokeMethod_Q(1447258781);
         end
 
         function result = get_inputType(obj)
             % Returns the decoding method applied to the input (analog or multiplexed binary switches).
             %
-            % @return either Y_INPUTTYPE_ANALOG or Y_INPUTTYPE_DIGITAL4, according to the decoding
-            % method applied to the input (analog or multiplexed binary switches)
+            % @return a value among YAnButton.INPUTTYPE_ANALOG_FAST, YAnButton.INPUTTYPE_DIGITAL4 and
+            % YAnButton.INPUTTYPE_ANALOG_SMOOTH corresponding to the decoding method applied to the
+            % input (analog or multiplexed binary switches)
             %
-            % On failure, throws an exception or returns Y_INPUTTYPE_INVALID.
+            % On failure, throws an exception or returns YAnButton.INPUTTYPE_INVALID.
             result = YoctoProxyAPI.EnumInputType(obj.InvokeMethod_D(-790631864));
         end
 
@@ -393,7 +394,8 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the decoding method applied to the input (analog or multiplexed binary switches).
             % Remember to call the saveToFlash() method of the module if the modification must be kept.
             %
-            % @param newval : either Y_INPUTTYPE_ANALOG or Y_INPUTTYPE_DIGITAL4, according to the
+            % @param newval : a value among YAnButton.INPUTTYPE_ANALOG_FAST,
+            % YAnButton.INPUTTYPE_DIGITAL4 and YAnButton.INPUTTYPE_ANALOG_SMOOTH corresponding to the
             % decoding method applied to the input (analog or multiplexed binary switches)
             %
             % @return 0 if the call succeeds.

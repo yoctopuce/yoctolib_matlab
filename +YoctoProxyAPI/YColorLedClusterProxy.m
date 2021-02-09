@@ -154,7 +154,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of LEDs currently handled by the device
             %
-            % On failure, throws an exception or returns Y_ACTIVELEDCOUNT_INVALID.
+            % On failure, throws an exception or returns YColorLedCluster.ACTIVELEDCOUNT_INVALID.
             result = obj.InvokeMethod_D(835593059);
         end
 
@@ -183,10 +183,10 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_ledType(obj)
             % Returns the RGB LED type currently handled by the device.
             %
-            % @return either Y_LEDTYPE_RGB or Y_LEDTYPE_RGBW, according to the RGB LED type currently
-            % handled by the device
+            % @return either YColorLedCluster.LEDTYPE_RGB or YColorLedCluster.LEDTYPE_RGBW, according
+            % to the RGB LED type currently handled by the device
             %
-            % On failure, throws an exception or returns Y_LEDTYPE_INVALID.
+            % On failure, throws an exception or returns YColorLedCluster.LEDTYPE_INVALID.
             result = YoctoProxyAPI.EnumLedType(obj.InvokeMethod_D(-1658295125));
         end
 
@@ -195,8 +195,8 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the matching module
             % saveToFlash() method to save the setting permanently.
             %
-            % @param newval : either Y_LEDTYPE_RGB or Y_LEDTYPE_RGBW, according to the RGB LED type
-            % currently handled by the device
+            % @param newval : either YColorLedCluster.LEDTYPE_RGB or YColorLedCluster.LEDTYPE_RGBW,
+            % according to the RGB LED type currently handled by the device
             %
             % @return 0 if the call succeeds.
             %
@@ -218,7 +218,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum number of LEDs that the device can handle
             %
-            % On failure, throws an exception or returns Y_MAXLEDCOUNT_INVALID.
+            % On failure, throws an exception or returns YColorLedCluster.MAXLEDCOUNT_INVALID.
             result = obj.InvokeMethod_D(633722818);
         end
 
@@ -231,7 +231,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum number of sequences that the device can handle
             %
-            % On failure, throws an exception or returns Y_BLINKSEQMAXCOUNT_INVALID.
+            % On failure, throws an exception or returns YColorLedCluster.BLINKSEQMAXCOUNT_INVALID.
             result = obj.InvokeMethod_D(1823846814);
         end
 
@@ -244,7 +244,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum length of sequences
             %
-            % On failure, throws an exception or returns Y_BLINKSEQMAXSIZE_INVALID.
+            % On failure, throws an exception or returns YColorLedCluster.BLINKSEQMAXSIZE_INVALID.
             result = obj.InvokeMethod_D(-1728364737);
         end
 

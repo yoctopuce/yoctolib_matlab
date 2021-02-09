@@ -1,5 +1,5 @@
 % YWakeUpMonitorProxy: wake-up monitor control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
+% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
 % 
 % The YWakeUpMonitorProxy class handles globally all wake-up sources, as well as automated sleep mode.
 
@@ -44,7 +44,7 @@
 % //--- (YWakeUpMonitor declaration)
 classdef YWakeUpMonitorProxy < YoctoProxyAPI.YFunctionProxy
     % YWakeUpMonitorProxy: wake-up monitor control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
     % 
     % The YWakeUpMonitorProxy class handles globally all wake-up sources, as well as automated sleep mode.
 
@@ -144,7 +144,7 @@ classdef YWakeUpMonitorProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the maximal wake up time (in seconds) before
             % automatically going to sleep
             %
-            % On failure, throws an exception or returns Y_POWERDURATION_INVALID.
+            % On failure, throws an exception or returns YWakeUpMonitor.POWERDURATION_INVALID.
             result = obj.InvokeMethod_D(595014578);
         end
 
@@ -176,7 +176,7 @@ classdef YWakeUpMonitorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the delay before the  next sleep period
             %
-            % On failure, throws an exception or returns Y_SLEEPCOUNTDOWN_INVALID.
+            % On failure, throws an exception or returns YWakeUpMonitor.SLEEPCOUNTDOWN_INVALID.
             result = obj.InvokeMethod_D(1816871795);
         end
 
@@ -196,7 +196,7 @@ classdef YWakeUpMonitorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the next scheduled wake up date/time (UNIX format)
             %
-            % On failure, throws an exception or returns Y_NEXTWAKEUP_INVALID.
+            % On failure, throws an exception or returns YWakeUpMonitor.NEXTWAKEUP_INVALID.
             result = obj.InvokeMethod_Q(-467876833);
         end
 
@@ -223,21 +223,22 @@ classdef YWakeUpMonitorProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_wakeUpReason(obj)
             % Returns the latest wake up reason.
             %
-            % @return a value among Y_WAKEUPREASON_USBPOWER, Y_WAKEUPREASON_EXTPOWER,
-            % Y_WAKEUPREASON_ENDOFSLEEP, Y_WAKEUPREASON_EXTSIG1, Y_WAKEUPREASON_SCHEDULE1 and
-            % Y_WAKEUPREASON_SCHEDULE2 corresponding to the latest wake up reason
+            % @return a value among YWakeUpMonitor.WAKEUPREASON_USBPOWER,
+            % YWakeUpMonitor.WAKEUPREASON_EXTPOWER, YWakeUpMonitor.WAKEUPREASON_ENDOFSLEEP,
+            % YWakeUpMonitor.WAKEUPREASON_EXTSIG1, YWakeUpMonitor.WAKEUPREASON_SCHEDULE1 and
+            % YWakeUpMonitor.WAKEUPREASON_SCHEDULE2 corresponding to the latest wake up reason
             %
-            % On failure, throws an exception or returns Y_WAKEUPREASON_INVALID.
+            % On failure, throws an exception or returns YWakeUpMonitor.WAKEUPREASON_INVALID.
             result = YoctoProxyAPI.EnumWakeUpReason(obj.InvokeMethod_D(1646271557));
         end
 
         function result = get_wakeUpState(obj)
             % Returns  the current state of the monitor.
             %
-            % @return either Y_WAKEUPSTATE_SLEEPING or Y_WAKEUPSTATE_AWAKE, according to  the current
-            % state of the monitor
+            % @return either YWakeUpMonitor.WAKEUPSTATE_SLEEPING or YWakeUpMonitor.WAKEUPSTATE_AWAKE,
+            % according to  the current state of the monitor
             %
-            % On failure, throws an exception or returns Y_WAKEUPSTATE_INVALID.
+            % On failure, throws an exception or returns YWakeUpMonitor.WAKEUPSTATE_INVALID.
             result = YoctoProxyAPI.EnumWakeUpState(obj.InvokeMethod_D(1089356677));
         end
 

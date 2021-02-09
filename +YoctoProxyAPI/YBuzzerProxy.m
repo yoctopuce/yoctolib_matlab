@@ -160,7 +160,7 @@ classdef YBuzzerProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the  frequency of the signal sent to
             % the buzzer/speaker
             %
-            % On failure, throws an exception or returns Y_FREQUENCY_INVALID.
+            % On failure, throws an exception or returns YBuzzer.FREQUENCY_INVALID.
             result = obj.InvokeMethod_F(514269515);
         end
 
@@ -178,7 +178,7 @@ classdef YBuzzerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the volume of the signal sent to the buzzer/speaker
             %
-            % On failure, throws an exception or returns Y_VOLUME_INVALID.
+            % On failure, throws an exception or returns YBuzzer.VOLUME_INVALID.
             result = obj.InvokeMethod_D(-959302571);
         end
 
@@ -208,7 +208,7 @@ classdef YBuzzerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current length of the playing sequence
             %
-            % On failure, throws an exception or returns Y_PLAYSEQSIZE_INVALID.
+            % On failure, throws an exception or returns YBuzzer.PLAYSEQSIZE_INVALID.
             result = obj.InvokeMethod_D(-1452664099);
         end
 
@@ -217,7 +217,7 @@ classdef YBuzzerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum length of the playing sequence
             %
-            % On failure, throws an exception or returns Y_PLAYSEQMAXSIZE_INVALID.
+            % On failure, throws an exception or returns YBuzzer.PLAYSEQMAXSIZE_INVALID.
             result = obj.InvokeMethod_D(-1457883673);
         end
 
@@ -233,7 +233,7 @@ classdef YBuzzerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the playing sequence signature
             %
-            % On failure, throws an exception or returns Y_PLAYSEQSIGNATURE_INVALID.
+            % On failure, throws an exception or returns YBuzzer.PLAYSEQSIGNATURE_INVALID.
             result = obj.InvokeMethod_D(-1137764101);
         end
 

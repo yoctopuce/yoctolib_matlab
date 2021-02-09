@@ -46,5 +46,8 @@ classdef EnumFusionMode < int32
         FusionMode_M4G (3)
         FusionMode_COMPASS (4)
         FusionMode_IMU (5)
+        FusionMode_INCLIN_90DEG_1G8 (6)
+        FusionMode_INCLIN_90DEG_3G6 (7)
+        FusionMode_INCLIN_10DEG (8)
     end
 end

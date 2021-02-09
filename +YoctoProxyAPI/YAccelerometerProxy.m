@@ -1,4 +1,5 @@
-% YAccelerometerProxy: accelerometer control interface, available for instance in the Yocto-3D-V2
+% YAccelerometerProxy: accelerometer control interface, available for instance in the Yocto-3D-V2 or
+% the Yocto-Inclinometer
 % 
 % The YAccelerometerProxy class allows you to read and configure Yoctopuce accelerometers. It
 % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
@@ -45,7 +46,8 @@
 
 % //--- (YAccelerometer declaration)
 classdef YAccelerometerProxy < YoctoProxyAPI.YSensorProxy
-    % YAccelerometerProxy: accelerometer control interface, available for instance in the Yocto-3D-V2
+    % YAccelerometerProxy: accelerometer control interface, available for instance in the Yocto-3D-V2 or
+    % the Yocto-Inclinometer
     % 
     % The YAccelerometerProxy class allows you to read and configure Yoctopuce accelerometers. It
     % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
@@ -53,7 +55,7 @@ classdef YAccelerometerProxy < YoctoProxyAPI.YSensorProxy
     % and z components of the acceleration vector separately.
 
     properties (Transient, Nontunable)
-        % Bandwidth Measure update frequency, measured in Hz (Yocto-3D-V2 only)
+        % Bandwidth Measure update frequency, measured in Hz
         Bandwidth (1,1) int32
     end
 
@@ -141,22 +143,21 @@ classdef YAccelerometerProxy < YoctoProxyAPI.YSensorProxy
         % //--- (YAccelerometer accessors declaration)
 
         function result = get_bandwidth(obj)
-            % Returns the measure update frequency, measured in Hz (Yocto-3D-V2 only).
+            % Returns the measure update frequency, measured in Hz.
             %
-            % @return an integer corresponding to the measure update frequency, measured in Hz (Yocto-3D-V2 only)
+            % @return an integer corresponding to the measure update frequency, measured in Hz
             %
-            % On failure, throws an exception or returns Y_BANDWIDTH_INVALID.
+            % On failure, throws an exception or returns YAccelerometer.BANDWIDTH_INVALID.
             result = obj.InvokeMethod_D(1075889934);
         end
 
         function set_bandwidth(obj, newVal)
-            % Changes the measure update frequency, measured in Hz (Yocto-3D-V2 only). When the
+            % Changes the measure update frequency, measured in Hz. When the
             % frequency is lower, the device performs averaging.
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : an integer corresponding to the measure update frequency, measured in
-            % Hz (Yocto-3D-V2 only)
+            % @param newval : an integer corresponding to the measure update frequency, measured in Hz
             %
             % @return 0 if the call succeeds.
             %
@@ -179,7 +180,7 @@ classdef YAccelerometerProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the X component of the acceleration,
             % as a floating point number
             %
-            % On failure, throws an exception or returns Y_XVALUE_INVALID.
+            % On failure, throws an exception or returns YAccelerometer.XVALUE_INVALID.
             result = obj.InvokeMethod_F(1148075671);
         end
 
@@ -189,7 +190,7 @@ classdef YAccelerometerProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the Y component of the acceleration,
             % as a floating point number
             %
-            % On failure, throws an exception or returns Y_YVALUE_INVALID.
+            % On failure, throws an exception or returns YAccelerometer.YVALUE_INVALID.
             result = obj.InvokeMethod_F(-2000404983);
         end
 
@@ -199,7 +200,7 @@ classdef YAccelerometerProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the Z component of the acceleration,
             % as a floating point number
             %
-            % On failure, throws an exception or returns Y_ZVALUE_INVALID.
+            % On failure, throws an exception or returns YAccelerometer.ZVALUE_INVALID.
             result = obj.InvokeMethod_F(105593322);
         end
 

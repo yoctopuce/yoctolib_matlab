@@ -164,7 +164,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the PWM duty cycle, in per cents
             %
-            % On failure, throws an exception or returns Y_DUTYCYCLE_INVALID.
+            % On failure, throws an exception or returns YPwmInput.DUTYCYCLE_INVALID.
             result = obj.InvokeMethod_F(-970911217);
         end
 
@@ -174,7 +174,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the PWM pulse length in milliseconds,
             % as a floating point number
             %
-            % On failure, throws an exception or returns Y_PULSEDURATION_INVALID.
+            % On failure, throws an exception or returns YPwmInput.PULSEDURATION_INVALID.
             result = obj.InvokeMethod_F(1322923076);
         end
 
@@ -183,7 +183,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the PWM frequency in Hz
             %
-            % On failure, throws an exception or returns Y_FREQUENCY_INVALID.
+            % On failure, throws an exception or returns YPwmInput.FREQUENCY_INVALID.
             result = obj.InvokeMethod_F(514269515);
         end
 
@@ -192,7 +192,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the PWM period in milliseconds
             %
-            % On failure, throws an exception or returns Y_PERIOD_INVALID.
+            % On failure, throws an exception or returns YPwmInput.PERIOD_INVALID.
             result = obj.InvokeMethod_F(2110044260);
         end
 
@@ -203,7 +203,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the pulse counter value
             %
-            % On failure, throws an exception or returns Y_PULSECOUNTER_INVALID.
+            % On failure, throws an exception or returns YPwmInput.PULSECOUNTER_INVALID.
             result = obj.InvokeMethod_Q(335219165);
         end
 
@@ -212,7 +212,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the timer of the pulses counter (ms)
             %
-            % On failure, throws an exception or returns Y_PULSETIMER_INVALID.
+            % On failure, throws an exception or returns YPwmInput.PULSETIMER_INVALID.
             result = obj.InvokeMethod_Q(1447258781);
         end
 
@@ -220,14 +220,16 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             % Returns the parameter (frequency/duty cycle, pulse width, edges count) returned by the
             % get_currentValue function and callbacks. Attention
             %
-            % @return a value among Y_PWMREPORTMODE_PWM_DUTYCYCLE, Y_PWMREPORTMODE_PWM_FREQUENCY,
-            % Y_PWMREPORTMODE_PWM_PULSEDURATION, Y_PWMREPORTMODE_PWM_EDGECOUNT,
-            % Y_PWMREPORTMODE_PWM_PULSECOUNT, Y_PWMREPORTMODE_PWM_CPS, Y_PWMREPORTMODE_PWM_CPM,
-            % Y_PWMREPORTMODE_PWM_STATE, Y_PWMREPORTMODE_PWM_FREQ_CPS, Y_PWMREPORTMODE_PWM_FREQ_CPM
-            % and Y_PWMREPORTMODE_PWM_PERIODCOUNT corresponding to the parameter (frequency/duty
-            % cycle, pulse width, edges count) returned by the get_currentValue function and callbacks
+            % @return a value among YPwmInput.PWMREPORTMODE_PWM_DUTYCYCLE,
+            % YPwmInput.PWMREPORTMODE_PWM_FREQUENCY, YPwmInput.PWMREPORTMODE_PWM_PULSEDURATION,
+            % YPwmInput.PWMREPORTMODE_PWM_EDGECOUNT, YPwmInput.PWMREPORTMODE_PWM_PULSECOUNT,
+            % YPwmInput.PWMREPORTMODE_PWM_CPS, YPwmInput.PWMREPORTMODE_PWM_CPM,
+            % YPwmInput.PWMREPORTMODE_PWM_STATE, YPwmInput.PWMREPORTMODE_PWM_FREQ_CPS,
+            % YPwmInput.PWMREPORTMODE_PWM_FREQ_CPM and YPwmInput.PWMREPORTMODE_PWM_PERIODCOUNT
+            % corresponding to the parameter (frequency/duty cycle, pulse width, edges count)
+            % returned by the get_currentValue function and callbacks
             %
-            % On failure, throws an exception or returns Y_PWMREPORTMODE_INVALID.
+            % On failure, throws an exception or returns YPwmInput.PWMREPORTMODE_INVALID.
             result = YoctoProxyAPI.EnumPwmReportMode(obj.InvokeMethod_D(97078582));
         end
 
@@ -238,13 +240,14 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             % million, use get_pulseCounter().
             % Remember to call the saveToFlash() method of the module if the modification must be kept.
             %
-            % @param newval : a value among Y_PWMREPORTMODE_PWM_DUTYCYCLE,
-            % Y_PWMREPORTMODE_PWM_FREQUENCY, Y_PWMREPORTMODE_PWM_PULSEDURATION,
-            % Y_PWMREPORTMODE_PWM_EDGECOUNT, Y_PWMREPORTMODE_PWM_PULSECOUNT, Y_PWMREPORTMODE_PWM_CPS,
-            % Y_PWMREPORTMODE_PWM_CPM, Y_PWMREPORTMODE_PWM_STATE, Y_PWMREPORTMODE_PWM_FREQ_CPS,
-            % Y_PWMREPORTMODE_PWM_FREQ_CPM and Y_PWMREPORTMODE_PWM_PERIODCOUNT corresponding to the 
-            % parameter  type (frequency/duty cycle, pulse width, or edge count) returned by the
-            % get_currentValue function and callbacks
+            % @param newval : a value among YPwmInput.PWMREPORTMODE_PWM_DUTYCYCLE,
+            % YPwmInput.PWMREPORTMODE_PWM_FREQUENCY, YPwmInput.PWMREPORTMODE_PWM_PULSEDURATION,
+            % YPwmInput.PWMREPORTMODE_PWM_EDGECOUNT, YPwmInput.PWMREPORTMODE_PWM_PULSECOUNT,
+            % YPwmInput.PWMREPORTMODE_PWM_CPS, YPwmInput.PWMREPORTMODE_PWM_CPM,
+            % YPwmInput.PWMREPORTMODE_PWM_STATE, YPwmInput.PWMREPORTMODE_PWM_FREQ_CPS,
+            % YPwmInput.PWMREPORTMODE_PWM_FREQ_CPM and YPwmInput.PWMREPORTMODE_PWM_PERIODCOUNT
+            % corresponding to the  parameter  type (frequency/duty cycle, pulse width, or edge
+            % count) returned by the get_currentValue function and callbacks
             %
             % @return 0 if the call succeeds.
             %
@@ -267,7 +270,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the shortest expected pulse duration, in ms
             %
-            % On failure, throws an exception or returns Y_DEBOUNCEPERIOD_INVALID.
+            % On failure, throws an exception or returns YPwmInput.DEBOUNCEPERIOD_INVALID.
             result = obj.InvokeMethod_D(-1371967077);
         end
 
@@ -298,7 +301,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the input signal sampling rate, in kHz
             %
-            % On failure, throws an exception or returns Y_BANDWIDTH_INVALID.
+            % On failure, throws an exception or returns YPwmInput.BANDWIDTH_INVALID.
             result = obj.InvokeMethod_D(1075889934);
         end
 
@@ -332,7 +335,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the number of edges detected per preiod
             %
-            % On failure, throws an exception or returns Y_EDGESPERPERIOD_INVALID.
+            % On failure, throws an exception or returns YPwmInput.EDGESPERPERIOD_INVALID.
             result = obj.InvokeMethod_D(1472768428);
         end
 

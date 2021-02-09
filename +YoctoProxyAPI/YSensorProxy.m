@@ -173,7 +173,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the measuring unit for the measure
             %
-            % On failure, throws an exception or returns Y_UNIT_INVALID.
+            % On failure, throws an exception or returns YSensor.UNIT_INVALID.
             result = obj.InvokeMethod_S(-1665607378);
         end
 
@@ -190,7 +190,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the current value of the measure, in
             % the specified unit, as a floating point number
             %
-            % On failure, throws an exception or returns Y_CURRENTVALUE_INVALID.
+            % On failure, throws an exception or returns YSensor.CURRENTVALUE_INVALID.
             result = obj.InvokeMethod_F(-355429381);
         end
 
@@ -213,7 +213,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the minimal value observed for the
             % measure since the device was started
             %
-            % On failure, throws an exception or returns Y_LOWESTVALUE_INVALID.
+            % On failure, throws an exception or returns YSensor.LOWESTVALUE_INVALID.
             result = obj.InvokeMethod_F(-2074258358);
         end
 
@@ -236,7 +236,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the maximal value observed for the
             % measure since the device was started
             %
-            % On failure, throws an exception or returns Y_HIGHESTVALUE_INVALID.
+            % On failure, throws an exception or returns YSensor.HIGHESTVALUE_INVALID.
             result = obj.InvokeMethod_F(238556338);
         end
 
@@ -248,7 +248,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % returned by the
             %         sensor, in the specified unit, as a floating point number
             %
-            % On failure, throws an exception or returns Y_CURRENTRAWVALUE_INVALID.
+            % On failure, throws an exception or returns YSensor.CURRENTRAWVALUE_INVALID.
             result = obj.InvokeMethod_F(1057921848);
         end
 
@@ -259,7 +259,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the datalogger recording frequency for this function, or "OFF"
             %         when measures are not stored in the data logger flash memory
             %
-            % On failure, throws an exception or returns Y_LOGFREQUENCY_INVALID.
+            % On failure, throws an exception or returns YSensor.LOGFREQUENCY_INVALID.
             result = obj.InvokeMethod_S(591711072);
         end
 
@@ -297,7 +297,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the timed value notification frequency, or "OFF" if timed
             %         value notifications are disabled for this function
             %
-            % On failure, throws an exception or returns Y_REPORTFREQUENCY_INVALID.
+            % On failure, throws an exception or returns YSensor.REPORTFREQUENCY_INVALID.
             result = obj.InvokeMethod_S(-1459322260);
         end
 
@@ -332,11 +332,11 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_advMode(obj)
             % Returns the measuring mode used for the advertised value pushed to the parent hub.
             %
-            % @return a value among Y_ADVMODE_IMMEDIATE, Y_ADVMODE_PERIOD_AVG, Y_ADVMODE_PERIOD_MIN
-            % and Y_ADVMODE_PERIOD_MAX corresponding to the measuring mode used for the advertised
-            % value pushed to the parent hub
+            % @return a value among YSensor.ADVMODE_IMMEDIATE, YSensor.ADVMODE_PERIOD_AVG,
+            % YSensor.ADVMODE_PERIOD_MIN and YSensor.ADVMODE_PERIOD_MAX corresponding to the
+            % measuring mode used for the advertised value pushed to the parent hub
             %
-            % On failure, throws an exception or returns Y_ADVMODE_INVALID.
+            % On failure, throws an exception or returns YSensor.ADVMODE_INVALID.
             result = YoctoProxyAPI.EnumAdvMode(obj.InvokeMethod_D(1150220092));
         end
 
@@ -344,9 +344,9 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the measuring mode used for the advertised value pushed to the parent hub.
             % Remember to call the saveToFlash() method of the module if the modification must be kept.
             %
-            % @param newval : a value among Y_ADVMODE_IMMEDIATE, Y_ADVMODE_PERIOD_AVG,
-            % Y_ADVMODE_PERIOD_MIN and Y_ADVMODE_PERIOD_MAX corresponding to the measuring mode used
-            % for the advertised value pushed to the parent hub
+            % @param newval : a value among YSensor.ADVMODE_IMMEDIATE, YSensor.ADVMODE_PERIOD_AVG,
+            % YSensor.ADVMODE_PERIOD_MIN and YSensor.ADVMODE_PERIOD_MAX corresponding to the
+            % measuring mode used for the advertised value pushed to the parent hub
             %
             % @return 0 if the call succeeds.
             %
@@ -385,7 +385,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the resolution of the measured values
             %
-            % On failure, throws an exception or returns Y_RESOLUTION_INVALID.
+            % On failure, throws an exception or returns YSensor.RESOLUTION_INVALID.
             result = obj.InvokeMethod_F(1304492792);
         end
 
@@ -406,7 +406,7 @@ classdef YSensorProxy < YoctoProxyAPI.YFunctionProxy
             % there is an up-to-date measure
             %         available or a positive code if the sensor is not able to provide a measure right now
             %
-            % On failure, throws an exception or returns Y_SENSORSTATE_INVALID.
+            % On failure, throws an exception or returns YSensor.SENSORSTATE_INVALID.
             result = obj.InvokeMethod_D(562823856);
         end
 

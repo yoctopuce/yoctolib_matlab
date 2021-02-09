@@ -51,7 +51,7 @@ classdef YCompassProxy < YoctoProxyAPI.YSensorProxy
     % functions, and to access the autonomous datalogger.
 
     properties (Transient, Nontunable)
-        % Bandwidth Measure update frequency, measured in Hz (Yocto-3D-V2 only)
+        % Bandwidth Measure update frequency, measured in Hz
         Bandwidth (1,1) int32
     end
 
@@ -139,22 +139,21 @@ classdef YCompassProxy < YoctoProxyAPI.YSensorProxy
         % //--- (YCompass accessors declaration)
 
         function result = get_bandwidth(obj)
-            % Returns the measure update frequency, measured in Hz (Yocto-3D-V2 only).
+            % Returns the measure update frequency, measured in Hz.
             %
-            % @return an integer corresponding to the measure update frequency, measured in Hz (Yocto-3D-V2 only)
+            % @return an integer corresponding to the measure update frequency, measured in Hz
             %
-            % On failure, throws an exception or returns Y_BANDWIDTH_INVALID.
+            % On failure, throws an exception or returns YCompass.BANDWIDTH_INVALID.
             result = obj.InvokeMethod_D(1075889934);
         end
 
         function set_bandwidth(obj, newVal)
-            % Changes the measure update frequency, measured in Hz (Yocto-3D-V2 only). When the
+            % Changes the measure update frequency, measured in Hz. When the
             % frequency is lower, the device performs averaging.
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : an integer corresponding to the measure update frequency, measured in
-            % Hz (Yocto-3D-V2 only)
+            % @param newval : an integer corresponding to the measure update frequency, measured in Hz
             %
             % @return 0 if the call succeeds.
             %
@@ -177,7 +176,7 @@ classdef YCompassProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the magnetic heading, regardless of
             % the configured bearing
             %
-            % On failure, throws an exception or returns Y_MAGNETICHEADING_INVALID.
+            % On failure, throws an exception or returns YCompass.MAGNETICHEADING_INVALID.
             result = obj.InvokeMethod_F(307985188);
         end
 

@@ -154,7 +154,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of bytes received since last reset
             %
-            % On failure, throws an exception or returns Y_RXCOUNT_INVALID.
+            % On failure, throws an exception or returns YSpiPort.RXCOUNT_INVALID.
             result = obj.InvokeMethod_D(316744996);
         end
 
@@ -163,7 +163,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of bytes transmitted since last reset
             %
-            % On failure, throws an exception or returns Y_TXCOUNT_INVALID.
+            % On failure, throws an exception or returns YSpiPort.TXCOUNT_INVALID.
             result = obj.InvokeMethod_D(1643863214);
         end
 
@@ -173,7 +173,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the total number of communication errors detected
             % since last reset
             %
-            % On failure, throws an exception or returns Y_ERRCOUNT_INVALID.
+            % On failure, throws an exception or returns YSpiPort.ERRCOUNT_INVALID.
             result = obj.InvokeMethod_D(-1720504838);
         end
 
@@ -182,7 +182,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of messages received since last reset
             %
-            % On failure, throws an exception or returns Y_RXMSGCOUNT_INVALID.
+            % On failure, throws an exception or returns YSpiPort.RXMSGCOUNT_INVALID.
             result = obj.InvokeMethod_D(163009744);
         end
 
@@ -191,7 +191,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of messages send since last reset
             %
-            % On failure, throws an exception or returns Y_TXMSGCOUNT_INVALID.
+            % On failure, throws an exception or returns YSpiPort.TXMSGCOUNT_INVALID.
             result = obj.InvokeMethod_D(-427101904);
         end
 
@@ -200,7 +200,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the latest message fully received (for Line and Frame protocols)
             %
-            % On failure, throws an exception or returns Y_LASTMSG_INVALID.
+            % On failure, throws an exception or returns YSpiPort.LASTMSG_INVALID.
             result = obj.InvokeMethod_S(2062820646);
         end
 
@@ -209,7 +209,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the name of the job file currently in use
             %
-            % On failure, throws an exception or returns Y_CURRENTJOB_INVALID.
+            % On failure, throws an exception or returns YSpiPort.CURRENTJOB_INVALID.
             result = obj.InvokeMethod_S(1593232124);
         end
 
@@ -230,7 +230,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the job file to use when the device is powered on
             %
-            % On failure, throws an exception or returns Y_STARTUPJOB_INVALID.
+            % On failure, throws an exception or returns YSpiPort.STARTUPJOB_INVALID.
             result = obj.InvokeMethod_S(295729596);
         end
 
@@ -261,7 +261,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum number of tasks in a job that the device can handle
             %
-            % On failure, throws an exception or returns Y_JOBMAXTASK_INVALID.
+            % On failure, throws an exception or returns YSpiPort.JOBMAXTASK_INVALID.
             result = obj.InvokeMethod_D(-32241525);
         end
 
@@ -274,7 +274,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to maximum size allowed for job files
             %
-            % On failure, throws an exception or returns Y_JOBMAXSIZE_INVALID.
+            % On failure, throws an exception or returns YSpiPort.JOBMAXSIZE_INVALID.
             result = obj.InvokeMethod_D(-1527312014);
         end
 
@@ -291,7 +291,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the type of protocol used over the serial line, as a string
             %
-            % On failure, throws an exception or returns Y_PROTOCOL_INVALID.
+            % On failure, throws an exception or returns YSpiPort.PROTOCOL_INVALID.
             result = obj.InvokeMethod_S(343190072);
         end
 
@@ -326,11 +326,12 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_voltageLevel(obj)
             % Returns the voltage level used on the serial line.
             %
-            % @return a value among Y_VOLTAGELEVEL_OFF, Y_VOLTAGELEVEL_TTL3V, Y_VOLTAGELEVEL_TTL3VR,
-            % Y_VOLTAGELEVEL_TTL5V, Y_VOLTAGELEVEL_TTL5VR, Y_VOLTAGELEVEL_RS232, Y_VOLTAGELEVEL_RS485
-            % and Y_VOLTAGELEVEL_TTL1V8 corresponding to the voltage level used on the serial line
+            % @return a value among YSpiPort.VOLTAGELEVEL_OFF, YSpiPort.VOLTAGELEVEL_TTL3V,
+            % YSpiPort.VOLTAGELEVEL_TTL3VR, YSpiPort.VOLTAGELEVEL_TTL5V,
+            % YSpiPort.VOLTAGELEVEL_TTL5VR, YSpiPort.VOLTAGELEVEL_RS232, YSpiPort.VOLTAGELEVEL_RS485
+            % and YSpiPort.VOLTAGELEVEL_TTL1V8 corresponding to the voltage level used on the serial line
             %
-            % On failure, throws an exception or returns Y_VOLTAGELEVEL_INVALID.
+            % On failure, throws an exception or returns YSpiPort.VOLTAGELEVEL_INVALID.
             result = YoctoProxyAPI.EnumVoltageLevel(obj.InvokeMethod_D(1576391098));
         end
 
@@ -343,10 +344,10 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_VOLTAGELEVEL_OFF, Y_VOLTAGELEVEL_TTL3V,
-            % Y_VOLTAGELEVEL_TTL3VR, Y_VOLTAGELEVEL_TTL5V, Y_VOLTAGELEVEL_TTL5VR,
-            % Y_VOLTAGELEVEL_RS232, Y_VOLTAGELEVEL_RS485 and Y_VOLTAGELEVEL_TTL1V8 corresponding to
-            % the voltage type used on the serial line
+            % @param newval : a value among YSpiPort.VOLTAGELEVEL_OFF, YSpiPort.VOLTAGELEVEL_TTL3V,
+            % YSpiPort.VOLTAGELEVEL_TTL3VR, YSpiPort.VOLTAGELEVEL_TTL5V,
+            % YSpiPort.VOLTAGELEVEL_TTL5VR, YSpiPort.VOLTAGELEVEL_RS232, YSpiPort.VOLTAGELEVEL_RS485
+            % and YSpiPort.VOLTAGELEVEL_TTL1V8 corresponding to the voltage type used on the serial line
             %
             % @return 0 if the call succeeds.
             %
@@ -371,7 +372,7 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the SPI port communication parameters, as a string such as
             %         "125000,0,msb"
             %
-            % On failure, throws an exception or returns Y_SPIMODE_INVALID.
+            % On failure, throws an exception or returns YSpiPort.SPIMODE_INVALID.
             result = obj.InvokeMethod_S(739036154);
         end
 
@@ -404,10 +405,10 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_ssPolarity(obj)
             % Returns the SS line polarity.
             %
-            % @return either Y_SSPOLARITY_ACTIVE_LOW or Y_SSPOLARITY_ACTIVE_HIGH, according to the SS
-            % line polarity
+            % @return either YSpiPort.SSPOLARITY_ACTIVE_LOW or YSpiPort.SSPOLARITY_ACTIVE_HIGH,
+            % according to the SS line polarity
             %
-            % On failure, throws an exception or returns Y_SSPOLARITY_INVALID.
+            % On failure, throws an exception or returns YSpiPort.SSPOLARITY_INVALID.
             result = YoctoProxyAPI.EnumSsPolarity(obj.InvokeMethod_D(33251147));
         end
 
@@ -416,8 +417,8 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : either Y_SSPOLARITY_ACTIVE_LOW or Y_SSPOLARITY_ACTIVE_HIGH, according
-            % to the SS line polarity
+            % @param newval : either YSpiPort.SSPOLARITY_ACTIVE_LOW or
+            % YSpiPort.SSPOLARITY_ACTIVE_HIGH, according to the SS line polarity
             %
             % @return 0 if the call succeeds.
             %
@@ -437,10 +438,10 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_shiftSampling(obj)
             % Returns true when the SDI line phase is shifted with regards to the SDO line.
             %
-            % @return either Y_SHIFTSAMPLING_OFF or Y_SHIFTSAMPLING_ON, according to true when the
-            % SDI line phase is shifted with regards to the SDO line
+            % @return either YSpiPort.SHIFTSAMPLING_OFF or YSpiPort.SHIFTSAMPLING_ON, according to
+            % true when the SDI line phase is shifted with regards to the SDO line
             %
-            % On failure, throws an exception or returns Y_SHIFTSAMPLING_INVALID.
+            % On failure, throws an exception or returns YSpiPort.SHIFTSAMPLING_INVALID.
             result = YoctoProxyAPI.EnumShiftSampling(obj.InvokeMethod_D(-1903583009));
         end
 
@@ -451,8 +452,8 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : either Y_SHIFTSAMPLING_OFF or Y_SHIFTSAMPLING_ON, according to the SDI
-            % line sampling shift
+            % @param newval : either YSpiPort.SHIFTSAMPLING_OFF or YSpiPort.SHIFTSAMPLING_ON,
+            % according to the SDI line sampling shift
             %
             % @return 0 if the call succeeds.
             %

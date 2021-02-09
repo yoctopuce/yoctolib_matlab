@@ -46,5 +46,6 @@ classdef EnumMeasureType < int32
         MeasureType_INFRARED (3)
         MeasureType_HIGH_RATE (4)
         MeasureType_HIGH_ENERGY (5)
+        MeasureType_HIGH_RESOLUTION (6)
     end
 end

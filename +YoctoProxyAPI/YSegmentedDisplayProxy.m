@@ -132,7 +132,7 @@ classdef YSegmentedDisplayProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the text currently displayed on the screen
             %
-            % On failure, throws an exception or returns Y_DISPLAYEDTEXT_INVALID.
+            % On failure, throws an exception or returns YSegmentedDisplay.DISPLAYEDTEXT_INVALID.
             result = obj.InvokeMethod_S(1272944122);
         end
 

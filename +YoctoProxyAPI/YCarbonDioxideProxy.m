@@ -146,7 +146,7 @@ classdef YCarbonDioxideProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the Automatic Baseline Calibration period, in hours
             %
-            % On failure, throws an exception or returns Y_ABCPERIOD_INVALID.
+            % On failure, throws an exception or returns YCarbonDioxide.ABCPERIOD_INVALID.
             result = obj.InvokeMethod_D(771699240);
         end
 

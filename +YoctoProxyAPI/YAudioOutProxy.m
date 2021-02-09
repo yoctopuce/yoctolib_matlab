@@ -138,7 +138,7 @@ classdef YAudioOutProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to audio output volume, in per cents
             %
-            % On failure, throws an exception or returns Y_VOLUME_INVALID.
+            % On failure, throws an exception or returns YAudioOut.VOLUME_INVALID.
             result = obj.InvokeMethod_D(-959302571);
         end
 
@@ -167,9 +167,10 @@ classdef YAudioOutProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_mute(obj)
             % Returns the state of the mute function.
             %
-            % @return either Y_MUTE_FALSE or Y_MUTE_TRUE, according to the state of the mute function
+            % @return either YAudioOut.MUTE_FALSE or YAudioOut.MUTE_TRUE, according to the state of
+            % the mute function
             %
-            % On failure, throws an exception or returns Y_MUTE_INVALID.
+            % On failure, throws an exception or returns YAudioOut.MUTE_INVALID.
             result = YoctoProxyAPI.EnumMute(obj.InvokeMethod_D(1481194633));
         end
 
@@ -177,7 +178,8 @@ classdef YAudioOutProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the state of the mute function. Remember to call the matching module
             % saveToFlash() method to save the setting permanently.
             %
-            % @param newval : either Y_MUTE_FALSE or Y_MUTE_TRUE, according to the state of the mute function
+            % @param newval : either YAudioOut.MUTE_FALSE or YAudioOut.MUTE_TRUE, according to the
+            % state of the mute function
             %
             % @return 0 if the call succeeds.
             %
@@ -202,7 +204,7 @@ classdef YAudioOutProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the supported volume range
             %
-            % On failure, throws an exception or returns Y_VOLUMERANGE_INVALID.
+            % On failure, throws an exception or returns YAudioOut.VOLUMERANGE_INVALID.
             result = obj.InvokeMethod_S(1831727627);
         end
 
@@ -211,7 +213,7 @@ classdef YAudioOutProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the detected output current level
             %
-            % On failure, throws an exception or returns Y_SIGNAL_INVALID.
+            % On failure, throws an exception or returns YAudioOut.SIGNAL_INVALID.
             result = obj.InvokeMethod_D(-720183956);
         end
 
@@ -224,7 +226,7 @@ classdef YAudioOutProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of seconds elapsed without detecting a signal
             %
-            % On failure, throws an exception or returns Y_NOSIGNALFOR_INVALID.
+            % On failure, throws an exception or returns YAudioOut.NOSIGNALFOR_INVALID.
             result = obj.InvokeMethod_D(1187454913);
         end
 

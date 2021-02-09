@@ -147,16 +147,16 @@ classdef YLedProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_power(obj)
             % Returns the current LED state.
             %
-            % @return either Y_POWER_OFF or Y_POWER_ON, according to the current LED state
+            % @return either YLed.POWER_OFF or YLed.POWER_ON, according to the current LED state
             %
-            % On failure, throws an exception or returns Y_POWER_INVALID.
+            % On failure, throws an exception or returns YLed.POWER_INVALID.
             result = YoctoProxyAPI.EnumPower(obj.InvokeMethod_D(1304993974));
         end
 
         function set_power(obj, newVal)
             % Changes the state of the LED.
             %
-            % @param newval : either Y_POWER_OFF or Y_POWER_ON, according to the state of the LED
+            % @param newval : either YLed.POWER_OFF or YLed.POWER_ON, according to the state of the LED
             %
             % @return 0 if the call succeeds.
             %
@@ -169,7 +169,7 @@ classdef YLedProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current LED intensity (in per cent)
             %
-            % On failure, throws an exception or returns Y_LUMINOSITY_INVALID.
+            % On failure, throws an exception or returns YLed.LUMINOSITY_INVALID.
             result = obj.InvokeMethod_D(-1600964606);
         end
 
@@ -197,18 +197,20 @@ classdef YLedProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_blinking(obj)
             % Returns the current LED signaling mode.
             %
-            % @return a value among Y_BLINKING_STILL, Y_BLINKING_RELAX, Y_BLINKING_AWARE,
-            % Y_BLINKING_RUN, Y_BLINKING_CALL and Y_BLINKING_PANIC corresponding to the current LED signaling mode
+            % @return a value among YLed.BLINKING_STILL, YLed.BLINKING_RELAX, YLed.BLINKING_AWARE,
+            % YLed.BLINKING_RUN, YLed.BLINKING_CALL and YLed.BLINKING_PANIC corresponding to the
+            % current LED signaling mode
             %
-            % On failure, throws an exception or returns Y_BLINKING_INVALID.
+            % On failure, throws an exception or returns YLed.BLINKING_INVALID.
             result = YoctoProxyAPI.EnumBlinking(obj.InvokeMethod_D(-1325924355));
         end
 
         function set_blinking(obj, newVal)
             % Changes the current LED signaling mode.
             %
-            % @param newval : a value among Y_BLINKING_STILL, Y_BLINKING_RELAX, Y_BLINKING_AWARE,
-            % Y_BLINKING_RUN, Y_BLINKING_CALL and Y_BLINKING_PANIC corresponding to the current LED signaling mode
+            % @param newval : a value among YLed.BLINKING_STILL, YLed.BLINKING_RELAX,
+            % YLed.BLINKING_AWARE, YLed.BLINKING_RUN, YLed.BLINKING_CALL and YLed.BLINKING_PANIC
+            % corresponding to the current LED signaling mode
             %
             % @return 0 if the call succeeds.
             %

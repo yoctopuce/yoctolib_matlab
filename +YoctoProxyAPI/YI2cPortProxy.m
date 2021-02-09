@@ -150,7 +150,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of bytes received since last reset
             %
-            % On failure, throws an exception or returns Y_RXCOUNT_INVALID.
+            % On failure, throws an exception or returns YI2cPort.RXCOUNT_INVALID.
             result = obj.InvokeMethod_D(316744996);
         end
 
@@ -159,7 +159,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of bytes transmitted since last reset
             %
-            % On failure, throws an exception or returns Y_TXCOUNT_INVALID.
+            % On failure, throws an exception or returns YI2cPort.TXCOUNT_INVALID.
             result = obj.InvokeMethod_D(1643863214);
         end
 
@@ -169,7 +169,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the total number of communication errors detected
             % since last reset
             %
-            % On failure, throws an exception or returns Y_ERRCOUNT_INVALID.
+            % On failure, throws an exception or returns YI2cPort.ERRCOUNT_INVALID.
             result = obj.InvokeMethod_D(-1720504838);
         end
 
@@ -178,7 +178,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of messages received since last reset
             %
-            % On failure, throws an exception or returns Y_RXMSGCOUNT_INVALID.
+            % On failure, throws an exception or returns YI2cPort.RXMSGCOUNT_INVALID.
             result = obj.InvokeMethod_D(163009744);
         end
 
@@ -187,7 +187,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of messages send since last reset
             %
-            % On failure, throws an exception or returns Y_TXMSGCOUNT_INVALID.
+            % On failure, throws an exception or returns YI2cPort.TXMSGCOUNT_INVALID.
             result = obj.InvokeMethod_D(-427101904);
         end
 
@@ -196,7 +196,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the latest message fully received (for Line and Frame protocols)
             %
-            % On failure, throws an exception or returns Y_LASTMSG_INVALID.
+            % On failure, throws an exception or returns YI2cPort.LASTMSG_INVALID.
             result = obj.InvokeMethod_S(2062820646);
         end
 
@@ -205,7 +205,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the name of the job file currently in use
             %
-            % On failure, throws an exception or returns Y_CURRENTJOB_INVALID.
+            % On failure, throws an exception or returns YI2cPort.CURRENTJOB_INVALID.
             result = obj.InvokeMethod_S(1593232124);
         end
 
@@ -226,7 +226,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the job file to use when the device is powered on
             %
-            % On failure, throws an exception or returns Y_STARTUPJOB_INVALID.
+            % On failure, throws an exception or returns YI2cPort.STARTUPJOB_INVALID.
             result = obj.InvokeMethod_S(295729596);
         end
 
@@ -257,7 +257,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum number of tasks in a job that the device can handle
             %
-            % On failure, throws an exception or returns Y_JOBMAXTASK_INVALID.
+            % On failure, throws an exception or returns YI2cPort.JOBMAXTASK_INVALID.
             result = obj.InvokeMethod_D(-32241525);
         end
 
@@ -270,7 +270,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to maximum size allowed for job files
             %
-            % On failure, throws an exception or returns Y_JOBMAXSIZE_INVALID.
+            % On failure, throws an exception or returns YI2cPort.JOBMAXSIZE_INVALID.
             result = obj.InvokeMethod_D(-1527312014);
         end
 
@@ -286,7 +286,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the type of protocol used to send I2C messages, as a string
             %
-            % On failure, throws an exception or returns Y_PROTOCOL_INVALID.
+            % On failure, throws an exception or returns YI2cPort.PROTOCOL_INVALID.
             result = obj.InvokeMethod_S(343190072);
         end
 
@@ -320,10 +320,10 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_i2cVoltageLevel(obj)
             % Returns the voltage level used on the I2C bus.
             %
-            % @return a value among Y_I2CVOLTAGELEVEL_OFF, Y_I2CVOLTAGELEVEL_3V3 and
-            % Y_I2CVOLTAGELEVEL_1V8 corresponding to the voltage level used on the I2C bus
+            % @return a value among YI2cPort.I2CVOLTAGELEVEL_OFF, YI2cPort.I2CVOLTAGELEVEL_3V3 and
+            % YI2cPort.I2CVOLTAGELEVEL_1V8 corresponding to the voltage level used on the I2C bus
             %
-            % On failure, throws an exception or returns Y_I2CVOLTAGELEVEL_INVALID.
+            % On failure, throws an exception or returns YI2cPort.I2CVOLTAGELEVEL_INVALID.
             result = YoctoProxyAPI.EnumI2cVoltageLevel(obj.InvokeMethod_D(746157149));
         end
 
@@ -332,8 +332,9 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_I2CVOLTAGELEVEL_OFF, Y_I2CVOLTAGELEVEL_3V3 and
-            % Y_I2CVOLTAGELEVEL_1V8 corresponding to the voltage level used on the I2C bus
+            % @param newval : a value among YI2cPort.I2CVOLTAGELEVEL_OFF,
+            % YI2cPort.I2CVOLTAGELEVEL_3V3 and YI2cPort.I2CVOLTAGELEVEL_1V8 corresponding to the
+            % voltage level used on the I2C bus
             %
             % @return 0 if the call succeeds.
             %
@@ -360,7 +361,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the I2C port communication parameters, as a string such as
             %         "400kbps,2000ms,NoRestart"
             %
-            % On failure, throws an exception or returns Y_I2CMODE_INVALID.
+            % On failure, throws an exception or returns YI2cPort.I2CMODE_INVALID.
             result = obj.InvokeMethod_S(-634742325);
         end
 

@@ -1,4 +1,5 @@
-% YTiltProxy: tilt sensor control interface, available for instance in the Yocto-3D-V2
+% YTiltProxy: tilt sensor control interface, available for instance in the Yocto-3D-V2 or the
+% Yocto-Inclinometer
 % 
 % The <tt>YSensor</tt> class is the parent class for all Yoctopuce sensor types. It can be used to
 % read the current value and unit of any sensor, read the min/max value, configure autonomous
@@ -48,7 +49,8 @@
 
 % //--- (YTilt declaration)
 classdef YTiltProxy < YoctoProxyAPI.YSensorProxy
-    % YTiltProxy: tilt sensor control interface, available for instance in the Yocto-3D-V2
+    % YTiltProxy: tilt sensor control interface, available for instance in the Yocto-3D-V2 or the
+    % Yocto-Inclinometer
     % 
     % The <tt>YSensor</tt> class is the parent class for all Yoctopuce sensor types. It can be used to
     % read the current value and unit of any sensor, read the min/max value, configure autonomous
@@ -59,7 +61,7 @@ classdef YTiltProxy < YoctoProxyAPI.YSensorProxy
     % analog input which does not inherit from <tt>YSensor</tt>.
 
     properties (Transient, Nontunable)
-        % Bandwidth Measure update frequency, measured in Hz (Yocto-3D-V2 only)
+        % Bandwidth Measure update frequency, measured in Hz
         Bandwidth (1,1) int32
     end
 
@@ -147,22 +149,21 @@ classdef YTiltProxy < YoctoProxyAPI.YSensorProxy
         % //--- (YTilt accessors declaration)
 
         function result = get_bandwidth(obj)
-            % Returns the measure update frequency, measured in Hz (Yocto-3D-V2 only).
+            % Returns the measure update frequency, measured in Hz.
             %
-            % @return an integer corresponding to the measure update frequency, measured in Hz (Yocto-3D-V2 only)
+            % @return an integer corresponding to the measure update frequency, measured in Hz
             %
-            % On failure, throws an exception or returns Y_BANDWIDTH_INVALID.
+            % On failure, throws an exception or returns YTilt.BANDWIDTH_INVALID.
             result = obj.InvokeMethod_D(1075889934);
         end
 
         function set_bandwidth(obj, newVal)
-            % Changes the measure update frequency, measured in Hz (Yocto-3D-V2 only). When the
+            % Changes the measure update frequency, measured in Hz. When the
             % frequency is lower, the device performs averaging.
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : an integer corresponding to the measure update frequency, measured in
-            % Hz (Yocto-3D-V2 only)
+            % @param newval : an integer corresponding to the measure update frequency, measured in Hz
             %
             % @return 0 if the call succeeds.
             %
@@ -177,6 +178,28 @@ classdef YTiltProxy < YoctoProxyAPI.YSensorProxy
         function set.Bandwidth(obj, newVal)
             obj.Bandwidth = newVal;
             obj.SetPropInt32(150493132, newVal);
+        end
+
+        function result = calibrateToZero(obj)
+            % Performs a zero calibration for the tilt measurement (Yocto-Inclinometer only).
+            % When this method is invoked, a simple shift (translation)
+            % is applied so that the current position is reported as a zero angle.
+            % Be aware that this shift will also affect the measurement boundaries.
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_D(458331972);
+        end
+
+        function result = restoreZeroCalibration(obj)
+            % Cancels any previous zero calibration for the tilt measurement (Yocto-Inclinometer only).
+            % This function restores the factory zero calibration.
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_D(-1506560007);
         end
 
         % //--- (end of YTilt accessors declaration)

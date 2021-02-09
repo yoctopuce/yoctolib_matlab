@@ -132,7 +132,7 @@ classdef YMultiAxisControllerProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of synchronized controllers
             %
-            % On failure, throws an exception or returns Y_NAXIS_INVALID.
+            % On failure, throws an exception or returns YMultiAxisController.NAXIS_INVALID.
             result = obj.InvokeMethod_D(-1899273923);
         end
 
@@ -150,11 +150,12 @@ classdef YMultiAxisControllerProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_globalState(obj)
             % Returns the stepper motor set overall state.
             %
-            % @return a value among Y_GLOBALSTATE_ABSENT, Y_GLOBALSTATE_ALERT, Y_GLOBALSTATE_HI_Z,
-            % Y_GLOBALSTATE_STOP, Y_GLOBALSTATE_RUN and Y_GLOBALSTATE_BATCH corresponding to the
-            % stepper motor set overall state
+            % @return a value among YMultiAxisController.GLOBALSTATE_ABSENT,
+            % YMultiAxisController.GLOBALSTATE_ALERT, YMultiAxisController.GLOBALSTATE_HI_Z,
+            % YMultiAxisController.GLOBALSTATE_STOP, YMultiAxisController.GLOBALSTATE_RUN and
+            % YMultiAxisController.GLOBALSTATE_BATCH corresponding to the stepper motor set overall state
             %
-            % On failure, throws an exception or returns Y_GLOBALSTATE_INVALID.
+            % On failure, throws an exception or returns YMultiAxisController.GLOBALSTATE_INVALID.
             result = YoctoProxyAPI.EnumGlobalState(obj.InvokeMethod_D(1619671536));
         end
 

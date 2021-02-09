@@ -146,7 +146,7 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
             % the real power consumed,
             %         measured in W, and the apparent power provided, measured in VA)
             %
-            % On failure, throws an exception or returns Y_COSPHI_INVALID.
+            % On failure, throws an exception or returns YPower.COSPHI_INVALID.
             result = obj.InvokeMethod_F(-639470758);
         end
 
@@ -159,7 +159,7 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
             % wattmeter by integrating the power consumption over time,
             %         but only when positive
             %
-            % On failure, throws an exception or returns Y_METER_INVALID.
+            % On failure, throws an exception or returns YPower.METER_INVALID.
             result = obj.InvokeMethod_F(1140090146);
         end
 
@@ -172,7 +172,7 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
             % wattmeter by integrating the power consumption over time,
             %         but only when positive
             %
-            % On failure, throws an exception or returns Y_DELIVEREDENERGYMETER_INVALID.
+            % On failure, throws an exception or returns YPower.DELIVEREDENERGYMETER_INVALID.
             result = obj.InvokeMethod_F(559481782);
         end
 
@@ -185,7 +185,7 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
             % wattmeter by integrating the power consumption over time,
             %         but only when negative
             %
-            % On failure, throws an exception or returns Y_RECEIVEDENERGYMETER_INVALID.
+            % On failure, throws an exception or returns YPower.RECEIVEDENERGYMETER_INVALID.
             result = obj.InvokeMethod_F(1842528545);
         end
 
@@ -194,7 +194,7 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the elapsed time since last energy counter reset, in seconds
             %
-            % On failure, throws an exception or returns Y_METERTIMER_INVALID.
+            % On failure, throws an exception or returns YPower.METERTIMER_INVALID.
             result = obj.InvokeMethod_D(-1711119238);
         end
 

@@ -152,7 +152,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of bytes received since last reset
             %
-            % On failure, throws an exception or returns Y_RXCOUNT_INVALID.
+            % On failure, throws an exception or returns YSerialPort.RXCOUNT_INVALID.
             result = obj.InvokeMethod_D(316744996);
         end
 
@@ -161,7 +161,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of bytes transmitted since last reset
             %
-            % On failure, throws an exception or returns Y_TXCOUNT_INVALID.
+            % On failure, throws an exception or returns YSerialPort.TXCOUNT_INVALID.
             result = obj.InvokeMethod_D(1643863214);
         end
 
@@ -171,7 +171,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the total number of communication errors detected
             % since last reset
             %
-            % On failure, throws an exception or returns Y_ERRCOUNT_INVALID.
+            % On failure, throws an exception or returns YSerialPort.ERRCOUNT_INVALID.
             result = obj.InvokeMethod_D(-1720504838);
         end
 
@@ -180,7 +180,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of messages received since last reset
             %
-            % On failure, throws an exception or returns Y_RXMSGCOUNT_INVALID.
+            % On failure, throws an exception or returns YSerialPort.RXMSGCOUNT_INVALID.
             result = obj.InvokeMethod_D(163009744);
         end
 
@@ -189,7 +189,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of messages send since last reset
             %
-            % On failure, throws an exception or returns Y_TXMSGCOUNT_INVALID.
+            % On failure, throws an exception or returns YSerialPort.TXMSGCOUNT_INVALID.
             result = obj.InvokeMethod_D(-427101904);
         end
 
@@ -199,7 +199,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the latest message fully received (for Line, Frame
             % and Modbus protocols)
             %
-            % On failure, throws an exception or returns Y_LASTMSG_INVALID.
+            % On failure, throws an exception or returns YSerialPort.LASTMSG_INVALID.
             result = obj.InvokeMethod_S(2062820646);
         end
 
@@ -208,7 +208,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the name of the job file currently in use
             %
-            % On failure, throws an exception or returns Y_CURRENTJOB_INVALID.
+            % On failure, throws an exception or returns YSerialPort.CURRENTJOB_INVALID.
             result = obj.InvokeMethod_S(1593232124);
         end
 
@@ -229,7 +229,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the job file to use when the device is powered on
             %
-            % On failure, throws an exception or returns Y_STARTUPJOB_INVALID.
+            % On failure, throws an exception or returns YSerialPort.STARTUPJOB_INVALID.
             result = obj.InvokeMethod_S(295729596);
         end
 
@@ -260,7 +260,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum number of tasks in a job that the device can handle
             %
-            % On failure, throws an exception or returns Y_JOBMAXTASK_INVALID.
+            % On failure, throws an exception or returns YSerialPort.JOBMAXTASK_INVALID.
             result = obj.InvokeMethod_D(-32241525);
         end
 
@@ -273,7 +273,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to maximum size allowed for job files
             %
-            % On failure, throws an exception or returns Y_JOBMAXSIZE_INVALID.
+            % On failure, throws an exception or returns YSerialPort.JOBMAXSIZE_INVALID.
             result = obj.InvokeMethod_D(-1527312014);
         end
 
@@ -295,7 +295,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the type of protocol used over the serial line, as a string
             %
-            % On failure, throws an exception or returns Y_PROTOCOL_INVALID.
+            % On failure, throws an exception or returns YSerialPort.PROTOCOL_INVALID.
             result = obj.InvokeMethod_S(343190072);
         end
 
@@ -335,11 +335,13 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_voltageLevel(obj)
             % Returns the voltage level used on the serial line.
             %
-            % @return a value among Y_VOLTAGELEVEL_OFF, Y_VOLTAGELEVEL_TTL3V, Y_VOLTAGELEVEL_TTL3VR,
-            % Y_VOLTAGELEVEL_TTL5V, Y_VOLTAGELEVEL_TTL5VR, Y_VOLTAGELEVEL_RS232, Y_VOLTAGELEVEL_RS485
-            % and Y_VOLTAGELEVEL_TTL1V8 corresponding to the voltage level used on the serial line
+            % @return a value among YSerialPort.VOLTAGELEVEL_OFF, YSerialPort.VOLTAGELEVEL_TTL3V,
+            % YSerialPort.VOLTAGELEVEL_TTL3VR, YSerialPort.VOLTAGELEVEL_TTL5V,
+            % YSerialPort.VOLTAGELEVEL_TTL5VR, YSerialPort.VOLTAGELEVEL_RS232,
+            % YSerialPort.VOLTAGELEVEL_RS485 and YSerialPort.VOLTAGELEVEL_TTL1V8 corresponding to the
+            % voltage level used on the serial line
             %
-            % On failure, throws an exception or returns Y_VOLTAGELEVEL_INVALID.
+            % On failure, throws an exception or returns YSerialPort.VOLTAGELEVEL_INVALID.
             result = YoctoProxyAPI.EnumVoltageLevel(obj.InvokeMethod_D(1576391098));
         end
 
@@ -352,10 +354,11 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_VOLTAGELEVEL_OFF, Y_VOLTAGELEVEL_TTL3V,
-            % Y_VOLTAGELEVEL_TTL3VR, Y_VOLTAGELEVEL_TTL5V, Y_VOLTAGELEVEL_TTL5VR,
-            % Y_VOLTAGELEVEL_RS232, Y_VOLTAGELEVEL_RS485 and Y_VOLTAGELEVEL_TTL1V8 corresponding to
-            % the voltage type used on the serial line
+            % @param newval : a value among YSerialPort.VOLTAGELEVEL_OFF,
+            % YSerialPort.VOLTAGELEVEL_TTL3V, YSerialPort.VOLTAGELEVEL_TTL3VR,
+            % YSerialPort.VOLTAGELEVEL_TTL5V, YSerialPort.VOLTAGELEVEL_TTL5VR,
+            % YSerialPort.VOLTAGELEVEL_RS232, YSerialPort.VOLTAGELEVEL_RS485 and
+            % YSerialPort.VOLTAGELEVEL_TTL1V8 corresponding to the voltage type used on the serial line
             %
             % @return 0 if the call succeeds.
             %
@@ -383,7 +386,7 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the serial port communication parameters, as a string such as
             %         "9600,8N1"
             %
-            % On failure, throws an exception or returns Y_SERIALMODE_INVALID.
+            % On failure, throws an exception or returns YSerialPort.SERIALMODE_INVALID.
             result = obj.InvokeMethod_S(960644897);
         end
 

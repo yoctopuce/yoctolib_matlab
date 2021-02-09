@@ -139,7 +139,7 @@ classdef YOsControlProxy < YoctoProxyAPI.YFunctionProxy
             % shutdown, or zero when no
             %         shutdown has been scheduled
             %
-            % On failure, throws an exception or returns Y_SHUTDOWNCOUNTDOWN_INVALID.
+            % On failure, throws an exception or returns YOsControl.SHUTDOWNCOUNTDOWN_INVALID.
             result = obj.InvokeMethod_D(1163616040);
         end
 

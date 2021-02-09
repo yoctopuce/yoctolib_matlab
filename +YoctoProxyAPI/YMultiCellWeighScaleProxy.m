@@ -59,6 +59,8 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
     properties (Transient, Nontunable)
         % CellCount Number of load cells in use
         CellCount (1,1) int32
+        % ExternalSense True if entry 4 is used as external sense for 6-wires load cells
+        ExternalSense (1,1) YoctoProxyAPI.EnumExternalSense
         % Excitation Current load cell bridge excitation method
         Excitation (1,1) YoctoProxyAPI.EnumExcitation
         % TempAvgAdaptRatio Averaged temperature update rate, in per mille
@@ -123,7 +125,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'MultiCellWeighScale settings', ...
-                'PropertyList', {'CellCount','Excitation','TempAvgAdaptRatio','TempChgAdaptRatio','ZeroTracking'});
+                'PropertyList', {'CellCount','ExternalSense','Excitation','TempAvgAdaptRatio','TempChgAdaptRatio','ZeroTracking'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -170,7 +172,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the number of load cells in use
             %
-            % On failure, throws an exception or returns Y_CELLCOUNT_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.CELLCOUNT_INVALID.
             result = obj.InvokeMethod_D(-2009351674);
         end
 
@@ -195,13 +197,50 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             obj.SetPropInt32(671608952, newVal);
         end
 
+        function result = get_externalSense(obj)
+            % Returns true if entry 4 is used as external sense for 6-wires load cells.
+            %
+            % @return either YMultiCellWeighScale.EXTERNALSENSE_FALSE or
+            % YMultiCellWeighScale.EXTERNALSENSE_TRUE, according to true if entry 4 is used as
+            % external sense for 6-wires load cells
+            %
+            % On failure, throws an exception or returns YMultiCellWeighScale.EXTERNALSENSE_INVALID.
+            result = YoctoProxyAPI.EnumExternalSense(obj.InvokeMethod_D(2039084538));
+        end
+
+        function set_externalSense(obj, newVal)
+            % Changes the configuration to tell if entry 4 is used as external sense for
+            % 6-wires load cells. Remember to call the saveToFlash() method of the
+            % module if the modification must be kept.
+            %
+            % @param newval : either YMultiCellWeighScale.EXTERNALSENSE_FALSE or
+            % YMultiCellWeighScale.EXTERNALSENSE_TRUE, according to the configuration to tell if
+            % entry 4 is used as external sense for
+            %         6-wires load cells
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-1194466342, newVal);
+        end
+
+        function result = get.ExternalSense(obj)
+            result = YoctoProxyAPI.EnumExternalSense(obj.GetPropInt32(-1246869699));
+        end
+
+        function set.ExternalSense(obj, newVal)
+            obj.ExternalSense = newVal;
+            obj.SetPropInt32(-1246869699, newVal);
+        end
+
         function result = get_excitation(obj)
             % Returns the current load cell bridge excitation method.
             %
-            % @return a value among Y_EXCITATION_OFF, Y_EXCITATION_DC and Y_EXCITATION_AC
-            % corresponding to the current load cell bridge excitation method
+            % @return a value among YMultiCellWeighScale.EXCITATION_OFF,
+            % YMultiCellWeighScale.EXCITATION_DC and YMultiCellWeighScale.EXCITATION_AC corresponding
+            % to the current load cell bridge excitation method
             %
-            % On failure, throws an exception or returns Y_EXCITATION_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.EXCITATION_INVALID.
             result = YoctoProxyAPI.EnumExcitation(obj.InvokeMethod_D(-698909622));
         end
 
@@ -210,8 +249,9 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_EXCITATION_OFF, Y_EXCITATION_DC and Y_EXCITATION_AC
-            % corresponding to the current load cell bridge excitation method
+            % @param newval : a value among YMultiCellWeighScale.EXCITATION_OFF,
+            % YMultiCellWeighScale.EXCITATION_DC and YMultiCellWeighScale.EXCITATION_AC corresponding
+            % to the current load cell bridge excitation method
             %
             % @return 0 if the call succeeds.
             %
@@ -255,7 +295,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the averaged temperature update rate, in per mille
             %
-            % On failure, throws an exception or returns Y_TEMPAVGADAPTRATIO_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.TEMPAVGADAPTRATIO_INVALID.
             result = obj.InvokeMethod_F(-693964036);
         end
 
@@ -293,7 +333,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the temperature change update rate, in per mille
             %
-            % On failure, throws an exception or returns Y_TEMPCHGADAPTRATIO_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.TEMPCHGADAPTRATIO_INVALID.
             result = obj.InvokeMethod_F(-754111871);
         end
 
@@ -312,7 +352,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current averaged temperature, used
             % for thermal compensation
             %
-            % On failure, throws an exception or returns Y_COMPTEMPAVG_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.COMPTEMPAVG_INVALID.
             result = obj.InvokeMethod_F(855390688);
         end
 
@@ -322,7 +362,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current temperature variation,
             % used for thermal compensation
             %
-            % On failure, throws an exception or returns Y_COMPTEMPCHG_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.COMPTEMPCHG_INVALID.
             result = obj.InvokeMethod_F(-117814740);
         end
 
@@ -331,7 +371,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the current current thermal compensation value
             %
-            % On failure, throws an exception or returns Y_COMPENSATION_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.COMPENSATION_INVALID.
             result = obj.InvokeMethod_F(-1922871604);
         end
 
@@ -357,7 +397,7 @@ classdef YMultiCellWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the zero tracking threshold value
             %
-            % On failure, throws an exception or returns Y_ZEROTRACKING_INVALID.
+            % On failure, throws an exception or returns YMultiCellWeighScale.ZEROTRACKING_INVALID.
             result = obj.InvokeMethod_F(494091006);
         end
 

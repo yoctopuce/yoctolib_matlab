@@ -167,18 +167,18 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_state(obj)
             % Returns the state of the watchdog (A for the idle position, B for the active position).
             %
-            % @return either Y_STATE_A or Y_STATE_B, according to the state of the watchdog (A for
-            % the idle position, B for the active position)
+            % @return either YWatchdog.STATE_A or YWatchdog.STATE_B, according to the state of the
+            % watchdog (A for the idle position, B for the active position)
             %
-            % On failure, throws an exception or returns Y_STATE_INVALID.
+            % On failure, throws an exception or returns YWatchdog.STATE_INVALID.
             result = YoctoProxyAPI.EnumState(obj.InvokeMethod_D(190689118));
         end
 
         function set_state(obj, newVal)
             % Changes the state of the watchdog (A for the idle position, B for the active position).
             %
-            % @param newval : either Y_STATE_A or Y_STATE_B, according to the state of the watchdog
-            % (A for the idle position, B for the active position)
+            % @param newval : either YWatchdog.STATE_A or YWatchdog.STATE_B, according to the state
+            % of the watchdog (A for the idle position, B for the active position)
             %
             % @return 0 if the call succeeds.
             %
@@ -199,12 +199,12 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             % Returns the state of the watchdog at device startup (A for the idle position,
             % B for the active position, UNCHANGED to leave the relay state as is).
             %
-            % @return a value among Y_STATEATPOWERON_UNCHANGED, Y_STATEATPOWERON_A and
-            % Y_STATEATPOWERON_B corresponding to the state of the watchdog at device startup (A for
-            % the idle position,
+            % @return a value among YWatchdog.STATEATPOWERON_UNCHANGED, YWatchdog.STATEATPOWERON_A
+            % and YWatchdog.STATEATPOWERON_B corresponding to the state of the watchdog at device
+            % startup (A for the idle position,
             %         B for the active position, UNCHANGED to leave the relay state as is)
             %
-            % On failure, throws an exception or returns Y_STATEATPOWERON_INVALID.
+            % On failure, throws an exception or returns YWatchdog.STATEATPOWERON_INVALID.
             result = YoctoProxyAPI.EnumStateAtPowerOn(obj.InvokeMethod_D(-678218502));
         end
 
@@ -214,9 +214,9 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the matching module saveToFlash()
             % method, otherwise this call will have no effect.
             %
-            % @param newval : a value among Y_STATEATPOWERON_UNCHANGED, Y_STATEATPOWERON_A and
-            % Y_STATEATPOWERON_B corresponding to the state of the watchdog at device startup (A for
-            % the idle position,
+            % @param newval : a value among YWatchdog.STATEATPOWERON_UNCHANGED,
+            % YWatchdog.STATEATPOWERON_A and YWatchdog.STATEATPOWERON_B corresponding to the state of
+            % the watchdog at device startup (A for the idle position,
             %         B for the active position, UNCHANGED to leave the relay state as is)
             %
             % @return 0 if the call succeeds.
@@ -241,7 +241,7 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the maximum time (ms) allowed for the watchdog to stay in state
             %         A before automatically switching back in to B state
             %
-            % On failure, throws an exception or returns Y_MAXTIMEONSTATEA_INVALID.
+            % On failure, throws an exception or returns YWatchdog.MAXTIMEONSTATEA_INVALID.
             result = obj.InvokeMethod_Q(136334968);
         end
 
@@ -276,7 +276,7 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer
             %
-            % On failure, throws an exception or returns Y_MAXTIMEONSTATEB_INVALID.
+            % On failure, throws an exception or returns YWatchdog.MAXTIMEONSTATEB_INVALID.
             result = obj.InvokeMethod_Q(174518305);
         end
 
@@ -308,18 +308,18 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_output(obj)
             % Returns the output state of the watchdog, when used as a simple switch (single throw).
             %
-            % @return either Y_OUTPUT_OFF or Y_OUTPUT_ON, according to the output state of the
-            % watchdog, when used as a simple switch (single throw)
+            % @return either YWatchdog.OUTPUT_OFF or YWatchdog.OUTPUT_ON, according to the output
+            % state of the watchdog, when used as a simple switch (single throw)
             %
-            % On failure, throws an exception or returns Y_OUTPUT_INVALID.
+            % On failure, throws an exception or returns YWatchdog.OUTPUT_INVALID.
             result = YoctoProxyAPI.EnumOutput(obj.InvokeMethod_D(-911973276));
         end
 
         function set_output(obj, newVal)
             % Changes the output state of the watchdog, when used as a simple switch (single throw).
             %
-            % @param newval : either Y_OUTPUT_OFF or Y_OUTPUT_ON, according to the output state of
-            % the watchdog, when used as a simple switch (single throw)
+            % @param newval : either YWatchdog.OUTPUT_OFF or YWatchdog.OUTPUT_ON, according to the
+            % output state of the watchdog, when used as a simple switch (single throw)
             %
             % @return 0 if the call succeeds.
             %
@@ -335,7 +335,7 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             % watchdog is returned to idle position
             %         (state A), during a measured pulse generation
             %
-            % On failure, throws an exception or returns Y_PULSETIMER_INVALID.
+            % On failure, throws an exception or returns YWatchdog.PULSETIMER_INVALID.
             result = obj.InvokeMethod_Q(1447258781);
         end
 
@@ -371,17 +371,17 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             % (delayedPulse() call)
             %         When there is no scheduled pulse, returns zero
             %
-            % On failure, throws an exception or returns Y_COUNTDOWN_INVALID.
+            % On failure, throws an exception or returns YWatchdog.COUNTDOWN_INVALID.
             result = obj.InvokeMethod_Q(-1586370564);
         end
 
         function result = get_autoStart(obj)
             % Returns the watchdog running state at module power on.
             %
-            % @return either Y_AUTOSTART_OFF or Y_AUTOSTART_ON, according to the watchdog running
-            % state at module power on
+            % @return either YWatchdog.AUTOSTART_OFF or YWatchdog.AUTOSTART_ON, according to the
+            % watchdog running state at module power on
             %
-            % On failure, throws an exception or returns Y_AUTOSTART_INVALID.
+            % On failure, throws an exception or returns YWatchdog.AUTOSTART_INVALID.
             result = YoctoProxyAPI.EnumAutoStart(obj.InvokeMethod_D(-284241322));
         end
 
@@ -389,8 +389,8 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the watchdog running state at module power on. Remember to call the
             % saveToFlash() method and then to reboot the module to apply this setting.
             %
-            % @param newval : either Y_AUTOSTART_OFF or Y_AUTOSTART_ON, according to the watchdog
-            % running state at module power on
+            % @param newval : either YWatchdog.AUTOSTART_OFF or YWatchdog.AUTOSTART_ON, according to
+            % the watchdog running state at module power on
             %
             % @return 0 if the call succeeds.
             %
@@ -410,16 +410,18 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_running(obj)
             % Returns the watchdog running state.
             %
-            % @return either Y_RUNNING_OFF or Y_RUNNING_ON, according to the watchdog running state
+            % @return either YWatchdog.RUNNING_OFF or YWatchdog.RUNNING_ON, according to the watchdog
+            % running state
             %
-            % On failure, throws an exception or returns Y_RUNNING_INVALID.
+            % On failure, throws an exception or returns YWatchdog.RUNNING_INVALID.
             result = YoctoProxyAPI.EnumRunning(obj.InvokeMethod_D(1470291110));
         end
 
         function set_running(obj, newVal)
             % Changes the running state of the watchdog.
             %
-            % @param newval : either Y_RUNNING_OFF or Y_RUNNING_ON, according to the running state of the watchdog
+            % @param newval : either YWatchdog.RUNNING_OFF or YWatchdog.RUNNING_ON, according to the
+            % running state of the watchdog
             %
             % @return 0 if the call succeeds.
             %
@@ -454,7 +456,7 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to  the waiting duration before a reset is
             % automatically triggered by the watchdog, in milliseconds
             %
-            % On failure, throws an exception or returns Y_TRIGGERDELAY_INVALID.
+            % On failure, throws an exception or returns YWatchdog.TRIGGERDELAY_INVALID.
             result = obj.InvokeMethod_Q(1417459193);
         end
 
@@ -487,7 +489,7 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the duration of resets caused by the watchdog, in milliseconds
             %
-            % On failure, throws an exception or returns Y_TRIGGERDURATION_INVALID.
+            % On failure, throws an exception or returns YWatchdog.TRIGGERDURATION_INVALID.
             result = obj.InvokeMethod_Q(-1582727134);
         end
 

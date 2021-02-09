@@ -164,10 +164,10 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
         function result = get_excitation(obj)
             % Returns the current load cell bridge excitation method.
             %
-            % @return a value among Y_EXCITATION_OFF, Y_EXCITATION_DC and Y_EXCITATION_AC
-            % corresponding to the current load cell bridge excitation method
+            % @return a value among YWeighScale.EXCITATION_OFF, YWeighScale.EXCITATION_DC and
+            % YWeighScale.EXCITATION_AC corresponding to the current load cell bridge excitation method
             %
-            % On failure, throws an exception or returns Y_EXCITATION_INVALID.
+            % On failure, throws an exception or returns YWeighScale.EXCITATION_INVALID.
             result = YoctoProxyAPI.EnumExcitation(obj.InvokeMethod_D(-698909622));
         end
 
@@ -176,8 +176,8 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_EXCITATION_OFF, Y_EXCITATION_DC and Y_EXCITATION_AC
-            % corresponding to the current load cell bridge excitation method
+            % @param newval : a value among YWeighScale.EXCITATION_OFF, YWeighScale.EXCITATION_DC and
+            % YWeighScale.EXCITATION_AC corresponding to the current load cell bridge excitation method
             %
             % @return 0 if the call succeeds.
             %
@@ -221,7 +221,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the averaged temperature update rate, in per mille
             %
-            % On failure, throws an exception or returns Y_TEMPAVGADAPTRATIO_INVALID.
+            % On failure, throws an exception or returns YWeighScale.TEMPAVGADAPTRATIO_INVALID.
             result = obj.InvokeMethod_F(-693964036);
         end
 
@@ -259,7 +259,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the temperature change update rate, in per mille
             %
-            % On failure, throws an exception or returns Y_TEMPCHGADAPTRATIO_INVALID.
+            % On failure, throws an exception or returns YWeighScale.TEMPCHGADAPTRATIO_INVALID.
             result = obj.InvokeMethod_F(-754111871);
         end
 
@@ -278,7 +278,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current averaged temperature, used
             % for thermal compensation
             %
-            % On failure, throws an exception or returns Y_COMPTEMPAVG_INVALID.
+            % On failure, throws an exception or returns YWeighScale.COMPTEMPAVG_INVALID.
             result = obj.InvokeMethod_F(855390688);
         end
 
@@ -288,7 +288,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current temperature variation,
             % used for thermal compensation
             %
-            % On failure, throws an exception or returns Y_COMPTEMPCHG_INVALID.
+            % On failure, throws an exception or returns YWeighScale.COMPTEMPCHG_INVALID.
             result = obj.InvokeMethod_F(-117814740);
         end
 
@@ -297,7 +297,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the current current thermal compensation value
             %
-            % On failure, throws an exception or returns Y_COMPENSATION_INVALID.
+            % On failure, throws an exception or returns YWeighScale.COMPENSATION_INVALID.
             result = obj.InvokeMethod_F(-1922871604);
         end
 
@@ -323,7 +323,7 @@ classdef YWeighScaleProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the zero tracking threshold value
             %
-            % On failure, throws an exception or returns Y_ZEROTRACKING_INVALID.
+            % On failure, throws an exception or returns YWeighScale.ZEROTRACKING_INVALID.
             result = obj.InvokeMethod_F(494091006);
         end
 

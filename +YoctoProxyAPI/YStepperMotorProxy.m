@@ -130,10 +130,12 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_motorState(obj)
             % Returns the motor working state.
             %
-            % @return a value among Y_MOTORSTATE_ABSENT, Y_MOTORSTATE_ALERT, Y_MOTORSTATE_HI_Z,
-            % Y_MOTORSTATE_STOP, Y_MOTORSTATE_RUN and Y_MOTORSTATE_BATCH corresponding to the motor working state
+            % @return a value among YStepperMotor.MOTORSTATE_ABSENT, YStepperMotor.MOTORSTATE_ALERT,
+            % YStepperMotor.MOTORSTATE_HI_Z, YStepperMotor.MOTORSTATE_STOP,
+            % YStepperMotor.MOTORSTATE_RUN and YStepperMotor.MOTORSTATE_BATCH corresponding to the
+            % motor working state
             %
-            % On failure, throws an exception or returns Y_MOTORSTATE_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.MOTORSTATE_INVALID.
             result = YoctoProxyAPI.EnumMotorState(obj.InvokeMethod_D(-1554976347));
         end
 
@@ -142,7 +144,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the stepper motor controller diagnostics, as a bitmap
             %
-            % On failure, throws an exception or returns Y_DIAGS_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.DIAGS_INVALID.
             result = obj.InvokeMethod_D(1282096104);
         end
 
@@ -170,7 +172,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the current logical motor position,
             % measured in steps
             %
-            % On failure, throws an exception or returns Y_STEPPOS_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.STEPPOS_INVALID.
             result = obj.InvokeMethod_F(1443113080);
         end
 
@@ -180,7 +182,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to current motor speed, measured in steps per second
             %
-            % On failure, throws an exception or returns Y_SPEED_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.SPEED_INVALID.
             result = obj.InvokeMethod_F(1646620777);
         end
 
@@ -202,7 +204,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the motor speed immediately reachable
             % from stop state, measured in steps per second
             %
-            % On failure, throws an exception or returns Y_PULLINSPEED_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.PULLINSPEED_INVALID.
             result = obj.InvokeMethod_F(803300095);
         end
 
@@ -224,7 +226,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the maximal motor acceleration,
             % measured in steps per second^2
             %
-            % On failure, throws an exception or returns Y_MAXACCEL_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.MAXACCEL_INVALID.
             result = obj.InvokeMethod_F(-1427199769);
         end
 
@@ -246,27 +248,29 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the maximal motor speed, measured in
             % steps per second
             %
-            % On failure, throws an exception or returns Y_MAXSPEED_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.MAXSPEED_INVALID.
             result = obj.InvokeMethod_F(1589571885);
         end
 
         function result = get_stepping(obj)
             % Returns the stepping mode used to drive the motor.
             %
-            % @return a value among Y_STEPPING_MICROSTEP16, Y_STEPPING_MICROSTEP8,
-            % Y_STEPPING_MICROSTEP4, Y_STEPPING_HALFSTEP and Y_STEPPING_FULLSTEP corresponding to the
-            % stepping mode used to drive the motor
+            % @return a value among YStepperMotor.STEPPING_MICROSTEP16,
+            % YStepperMotor.STEPPING_MICROSTEP8, YStepperMotor.STEPPING_MICROSTEP4,
+            % YStepperMotor.STEPPING_HALFSTEP and YStepperMotor.STEPPING_FULLSTEP corresponding to
+            % the stepping mode used to drive the motor
             %
-            % On failure, throws an exception or returns Y_STEPPING_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.STEPPING_INVALID.
             result = YoctoProxyAPI.EnumStepping(obj.InvokeMethod_D(1725756870));
         end
 
         function set_stepping(obj, newVal)
             % Changes the stepping mode used to drive the motor.
             %
-            % @param newval : a value among Y_STEPPING_MICROSTEP16, Y_STEPPING_MICROSTEP8,
-            % Y_STEPPING_MICROSTEP4, Y_STEPPING_HALFSTEP and Y_STEPPING_FULLSTEP corresponding to the
-            % stepping mode used to drive the motor
+            % @param newval : a value among YStepperMotor.STEPPING_MICROSTEP16,
+            % YStepperMotor.STEPPING_MICROSTEP8, YStepperMotor.STEPPING_MICROSTEP4,
+            % YStepperMotor.STEPPING_HALFSTEP and YStepperMotor.STEPPING_FULLSTEP corresponding to
+            % the stepping mode used to drive the motor
             %
             % @return 0 if the call succeeds.
             %
@@ -280,7 +284,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the overcurrent alert and emergency stop threshold,
             % measured in mA
             %
-            % On failure, throws an exception or returns Y_OVERCURRENT_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.OVERCURRENT_INVALID.
             result = obj.InvokeMethod_D(1022770595);
         end
 
@@ -302,7 +306,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the torque regulation current when the motor is
             % stopped, measured in mA
             %
-            % On failure, throws an exception or returns Y_TCURRSTOP_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.TCURRSTOP_INVALID.
             result = obj.InvokeMethod_D(-610385709);
         end
 
@@ -324,7 +328,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the torque regulation current when the motor is
             % running, measured in mA
             %
-            % On failure, throws an exception or returns Y_TCURRRUN_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.TCURRRUN_INVALID.
             result = obj.InvokeMethod_D(914661419);
         end
 
@@ -346,7 +350,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the current value of the signal generated on the
             % auxiliary output
             %
-            % On failure, throws an exception or returns Y_AUXSIGNAL_INVALID.
+            % On failure, throws an exception or returns YStepperMotor.AUXSIGNAL_INVALID.
             result = obj.InvokeMethod_D(-2134872015);
         end
 

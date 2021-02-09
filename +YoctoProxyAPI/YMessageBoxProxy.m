@@ -138,7 +138,7 @@ classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of message storage slots currently in use
             %
-            % On failure, throws an exception or returns Y_SLOTSINUSE_INVALID.
+            % On failure, throws an exception or returns YMessageBox.SLOTSINUSE_INVALID.
             result = obj.InvokeMethod_D(1249889257);
         end
 
@@ -151,7 +151,7 @@ classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total number of message storage slots on the SIM card
             %
-            % On failure, throws an exception or returns Y_SLOTSCOUNT_INVALID.
+            % On failure, throws an exception or returns YMessageBox.SLOTSCOUNT_INVALID.
             result = obj.InvokeMethod_D(1527066115);
         end
 
@@ -160,7 +160,7 @@ classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of SMS units sent so far
             %
-            % On failure, throws an exception or returns Y_PDUSENT_INVALID.
+            % On failure, throws an exception or returns YMessageBox.PDUSENT_INVALID.
             result = obj.InvokeMethod_D(-806819334);
         end
 
@@ -180,7 +180,7 @@ classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of SMS units received so far
             %
-            % On failure, throws an exception or returns Y_PDURECEIVED_INVALID.
+            % On failure, throws an exception or returns YMessageBox.PDURECEIVED_INVALID.
             result = obj.InvokeMethod_D(1086857769);
         end
 

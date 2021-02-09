@@ -160,7 +160,7 @@ classdef YHumidityProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a floating point number corresponding to the current relative humidity, in per cents
             %
-            % On failure, throws an exception or returns Y_RELHUM_INVALID.
+            % On failure, throws an exception or returns YHumidity.RELHUM_INVALID.
             result = obj.InvokeMethod_F(-890677710);
         end
 
@@ -170,7 +170,7 @@ classdef YHumidityProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current absolute humidity, in
             % grams per cubic meter of air
             %
-            % On failure, throws an exception or returns Y_ABSHUM_INVALID.
+            % On failure, throws an exception or returns YHumidity.ABSHUM_INVALID.
             result = obj.InvokeMethod_F(268103226);
         end
 

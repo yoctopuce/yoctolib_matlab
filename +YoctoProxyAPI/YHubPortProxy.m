@@ -1,5 +1,5 @@
 % YHubPortProxy: YoctoHub slave port control interface, available for instance in the
-% YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-Shield or the YoctoHub-Wireless-n
+% YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Shield or the YoctoHub-Wireless-n
 % 
 % The YHubPortProxy class provides control over the power supply for slave ports on a YoctoHub. It
 % provide information about the device connected to it. The logical name of a YHubPort is always
@@ -46,7 +46,7 @@
 % //--- (YHubPort declaration)
 classdef YHubPortProxy < YoctoProxyAPI.YFunctionProxy
     % YHubPortProxy: YoctoHub slave port control interface, available for instance in the
-    % YoctoHub-Ethernet, the YoctoHub-GSM-3G-EU, the YoctoHub-Shield or the YoctoHub-Wireless-n
+    % YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Shield or the YoctoHub-Wireless-n
     % 
     % The YHubPortProxy class provides control over the power supply for slave ports on a YoctoHub. It
     % provide information about the device connected to it. The logical name of a YHubPort is always
@@ -145,10 +145,10 @@ classdef YHubPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_enabled(obj)
             % Returns true if the YoctoHub port is powered, false otherwise.
             %
-            % @return either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to true if the YoctoHub
-            % port is powered, false otherwise
+            % @return either YHubPort.ENABLED_FALSE or YHubPort.ENABLED_TRUE, according to true if
+            % the YoctoHub port is powered, false otherwise
             %
-            % On failure, throws an exception or returns Y_ENABLED_INVALID.
+            % On failure, throws an exception or returns YHubPort.ENABLED_INVALID.
             result = YoctoProxyAPI.EnumEnabled(obj.InvokeMethod_D(587192537));
         end
 
@@ -156,8 +156,8 @@ classdef YHubPortProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the activation of the YoctoHub port. If the port is enabled, the
             % connected module is powered. Otherwise, port power is shut down.
             %
-            % @param newval : either Y_ENABLED_FALSE or Y_ENABLED_TRUE, according to the activation
-            % of the YoctoHub port
+            % @param newval : either YHubPort.ENABLED_FALSE or YHubPort.ENABLED_TRUE, according to
+            % the activation of the YoctoHub port
             %
             % @return 0 if the call succeeds.
             %
@@ -168,10 +168,11 @@ classdef YHubPortProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_portState(obj)
             % Returns the current state of the YoctoHub port.
             %
-            % @return a value among Y_PORTSTATE_OFF, Y_PORTSTATE_OVRLD, Y_PORTSTATE_ON,
-            % Y_PORTSTATE_RUN and Y_PORTSTATE_PROG corresponding to the current state of the YoctoHub port
+            % @return a value among YHubPort.PORTSTATE_OFF, YHubPort.PORTSTATE_OVRLD,
+            % YHubPort.PORTSTATE_ON, YHubPort.PORTSTATE_RUN and YHubPort.PORTSTATE_PROG corresponding
+            % to the current state of the YoctoHub port
             %
-            % On failure, throws an exception or returns Y_PORTSTATE_INVALID.
+            % On failure, throws an exception or returns YHubPort.PORTSTATE_INVALID.
             result = YoctoProxyAPI.EnumPortState(obj.InvokeMethod_D(-625075696));
         end
 
@@ -195,7 +196,7 @@ classdef YHubPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current baud rate used by this YoctoHub port, in kbps
             %
-            % On failure, throws an exception or returns Y_BAUDRATE_INVALID.
+            % On failure, throws an exception or returns YHubPort.BAUDRATE_INVALID.
             result = obj.InvokeMethod_D(-503767631);
         end
 

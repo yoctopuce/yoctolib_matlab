@@ -1,5 +1,5 @@
 % YWakeUpScheduleProxy: wake up schedule control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
+% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
 % 
 % The YWakeUpScheduleProxy class implements a wake up condition. The wake up time is specified as a
 % set of months and/or days and/or hours and/or minutes when the wake up should happen.
@@ -45,7 +45,7 @@
 % //--- (YWakeUpSchedule declaration)
 classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
     % YWakeUpScheduleProxy: wake up schedule control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
     % 
     % The YWakeUpScheduleProxy class implements a wake up condition. The wake up time is specified as a
     % set of months and/or days and/or hours and/or minutes when the wake up should happen.
@@ -151,7 +151,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the minutes in the 00-29 interval of each hour
             % scheduled for wake up
             %
-            % On failure, throws an exception or returns Y_MINUTESA_INVALID.
+            % On failure, throws an exception or returns YWakeUpSchedule.MINUTESA_INVALID.
             result = obj.InvokeMethod_D(-843790259);
         end
 
@@ -184,7 +184,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the minutes in the 30-59 interval of each hour
             % scheduled for wake up
             %
-            % On failure, throws an exception or returns Y_MINUTESB_INVALID.
+            % On failure, throws an exception or returns YWakeUpSchedule.MINUTESB_INVALID.
             result = obj.InvokeMethod_D(-806193644);
         end
 
@@ -216,7 +216,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the hours scheduled for wake up
             %
-            % On failure, throws an exception or returns Y_HOURS_INVALID.
+            % On failure, throws an exception or returns YWakeUpSchedule.HOURS_INVALID.
             result = obj.InvokeMethod_D(-1355471762);
         end
 
@@ -247,7 +247,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the days of the week scheduled for wake up
             %
-            % On failure, throws an exception or returns Y_WEEKDAYS_INVALID.
+            % On failure, throws an exception or returns YWakeUpSchedule.WEEKDAYS_INVALID.
             result = obj.InvokeMethod_D(-936402614);
         end
 
@@ -278,7 +278,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the days of the month scheduled for wake up
             %
-            % On failure, throws an exception or returns Y_MONTHDAYS_INVALID.
+            % On failure, throws an exception or returns YWakeUpSchedule.MONTHDAYS_INVALID.
             result = obj.InvokeMethod_D(-1309158493);
         end
 
@@ -309,7 +309,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the months scheduled for wake up
             %
-            % On failure, throws an exception or returns Y_MONTHS_INVALID.
+            % On failure, throws an exception or returns YWakeUpSchedule.MONTHS_INVALID.
             result = obj.InvokeMethod_D(-1193361821);
         end
 
@@ -340,7 +340,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the date/time (seconds) of the next wake up occurrence
             %
-            % On failure, throws an exception or returns Y_NEXTOCCURENCE_INVALID.
+            % On failure, throws an exception or returns YWakeUpSchedule.NEXTOCCURENCE_INVALID.
             result = obj.InvokeMethod_Q(1950222634);
         end
 

@@ -155,7 +155,7 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current RGB color of the LED
             %
-            % On failure, throws an exception or returns Y_RGBCOLOR_INVALID.
+            % On failure, throws an exception or returns YColorLed.RGBCOLOR_INVALID.
             result = obj.InvokeMethod_D(388788058);
         end
 
@@ -193,7 +193,7 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current HSL color of the LED
             %
-            % On failure, throws an exception or returns Y_HSLCOLOR_INVALID.
+            % On failure, throws an exception or returns YColorLed.HSLCOLOR_INVALID.
             result = obj.InvokeMethod_D(-1022984396);
         end
 
@@ -238,7 +238,7 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the configured color to be displayed when the
             % module is turned on
             %
-            % On failure, throws an exception or returns Y_RGBCOLORATPOWERON_INVALID.
+            % On failure, throws an exception or returns YColorLed.RGBCOLORATPOWERON_INVALID.
             result = obj.InvokeMethod_D(-825082946);
         end
 
@@ -270,7 +270,7 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the current length of the blinking sequence
             %
-            % On failure, throws an exception or returns Y_BLINKSEQSIZE_INVALID.
+            % On failure, throws an exception or returns YColorLed.BLINKSEQSIZE_INVALID.
             result = obj.InvokeMethod_D(-777471876);
         end
 
@@ -279,7 +279,7 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the maximum length of the blinking sequence
             %
-            % On failure, throws an exception or returns Y_BLINKSEQMAXSIZE_INVALID.
+            % On failure, throws an exception or returns YColorLed.BLINKSEQMAXSIZE_INVALID.
             result = obj.InvokeMethod_D(-1728364737);
         end
 
@@ -295,7 +295,7 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer
             %
-            % On failure, throws an exception or returns Y_BLINKSEQSIGNATURE_INVALID.
+            % On failure, throws an exception or returns YColorLed.BLINKSEQSIGNATURE_INVALID.
             result = obj.InvokeMethod_D(1674038915);
         end
 

@@ -178,7 +178,7 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the digital IO port state as an integer with each bit
             %         representing a channel
             %
-            % On failure, throws an exception or returns Y_PORTSTATE_INVALID.
+            % On failure, throws an exception or returns YDigitalIO.PORTSTATE_INVALID.
             result = obj.InvokeMethod_D(-625075696);
         end
 
@@ -220,7 +220,7 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the I/O direction of all channels of the port
             % (bitmap): 0 makes a bit an input, 1 makes it an output
             %
-            % On failure, throws an exception or returns Y_PORTDIRECTION_INVALID.
+            % On failure, throws an exception or returns YDigitalIO.PORTDIRECTION_INVALID.
             result = obj.InvokeMethod_D(1444506847);
         end
 
@@ -254,7 +254,7 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the electrical interface for each bit of the port
             %
-            % On failure, throws an exception or returns Y_PORTOPENDRAIN_INVALID.
+            % On failure, throws an exception or returns YDigitalIO.PORTOPENDRAIN_INVALID.
             result = obj.InvokeMethod_D(-233799099);
         end
 
@@ -288,7 +288,7 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the polarity of all the bits of the port
             %
-            % On failure, throws an exception or returns Y_PORTPOLARITY_INVALID.
+            % On failure, throws an exception or returns YDigitalIO.PORTPOLARITY_INVALID.
             result = obj.InvokeMethod_D(-1007038570);
         end
 
@@ -325,7 +325,7 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the port state diagnostics (Yocto-IO and Yocto-MaxiIO-V2 only)
             %
-            % On failure, throws an exception or returns Y_PORTDIAGS_INVALID.
+            % On failure, throws an exception or returns YDigitalIO.PORTDIAGS_INVALID.
             result = obj.InvokeMethod_D(-1651994970);
         end
 
@@ -334,7 +334,7 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of bits (i.e
             %
-            % On failure, throws an exception or returns Y_PORTSIZE_INVALID.
+            % On failure, throws an exception or returns YDigitalIO.PORTSIZE_INVALID.
             result = obj.InvokeMethod_D(2089348470);
         end
 
@@ -345,10 +345,10 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_outputVoltage(obj)
             % Returns the voltage source used to drive output bits.
             %
-            % @return a value among Y_OUTPUTVOLTAGE_USB_5V, Y_OUTPUTVOLTAGE_USB_3V and
-            % Y_OUTPUTVOLTAGE_EXT_V corresponding to the voltage source used to drive output bits
+            % @return a value among YDigitalIO.OUTPUTVOLTAGE_USB_5V, YDigitalIO.OUTPUTVOLTAGE_USB_3V
+            % and YDigitalIO.OUTPUTVOLTAGE_EXT_V corresponding to the voltage source used to drive output bits
             %
-            % On failure, throws an exception or returns Y_OUTPUTVOLTAGE_INVALID.
+            % On failure, throws an exception or returns YDigitalIO.OUTPUTVOLTAGE_INVALID.
             result = YoctoProxyAPI.EnumOutputVoltage(obj.InvokeMethod_D(723885981));
         end
 
@@ -356,8 +356,9 @@ classdef YDigitalIOProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the voltage source used to drive output bits.
             % Remember to call the saveToFlash() method  to make sure the setting is kept after a reboot.
             %
-            % @param newval : a value among Y_OUTPUTVOLTAGE_USB_5V, Y_OUTPUTVOLTAGE_USB_3V and
-            % Y_OUTPUTVOLTAGE_EXT_V corresponding to the voltage source used to drive output bits
+            % @param newval : a value among YDigitalIO.OUTPUTVOLTAGE_USB_5V,
+            % YDigitalIO.OUTPUTVOLTAGE_USB_3V and YDigitalIO.OUTPUTVOLTAGE_EXT_V corresponding to the
+            % voltage source used to drive output bits
             %
             % @return 0 if the call succeeds.
             %

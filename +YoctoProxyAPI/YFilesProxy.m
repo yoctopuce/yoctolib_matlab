@@ -1,5 +1,5 @@
-% YFilesProxy: filesystem control interface, available for instance in the Yocto-Buzzer, the
-% Yocto-Color-V2, the YoctoHub-Ethernet or the YoctoHub-Wireless-n
+% YFilesProxy: filesystem control interface, available for instance in the Yocto-Color-V2, the
+% Yocto-Serial, the YoctoHub-Ethernet or the YoctoHub-Wireless-n
 % 
 % The YFiles class is used to access the filesystem embedded on some Yoctopuce devices. This
 % filesystem makes it possible for instance to design a custom web UI (for networked devices) or to
@@ -45,8 +45,8 @@
 
 % //--- (YFiles declaration)
 classdef YFilesProxy < YoctoProxyAPI.YFunctionProxy
-    % YFilesProxy: filesystem control interface, available for instance in the Yocto-Buzzer, the
-    % Yocto-Color-V2, the YoctoHub-Ethernet or the YoctoHub-Wireless-n
+    % YFilesProxy: filesystem control interface, available for instance in the Yocto-Color-V2, the
+    % Yocto-Serial, the YoctoHub-Ethernet or the YoctoHub-Wireless-n
     % 
     % The YFiles class is used to access the filesystem embedded on some Yoctopuce devices. This
     % filesystem makes it possible for instance to design a custom web UI (for networked devices) or to
@@ -140,7 +140,7 @@ classdef YFilesProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the number of files currently loaded in the filesystem
             %
-            % On failure, throws an exception or returns Y_FILESCOUNT_INVALID.
+            % On failure, throws an exception or returns YFiles.FILESCOUNT_INVALID.
             result = obj.InvokeMethod_D(-295307876);
         end
 
@@ -154,7 +154,7 @@ classdef YFilesProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the free space for uploading new files to the
             % filesystem, in bytes
             %
-            % On failure, throws an exception or returns Y_FREESPACE_INVALID.
+            % On failure, throws an exception or returns YFiles.FREESPACE_INVALID.
             result = obj.InvokeMethod_D(1614949885);
         end
 

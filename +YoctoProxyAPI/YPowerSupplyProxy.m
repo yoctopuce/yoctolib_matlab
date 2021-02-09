@@ -149,7 +149,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the voltage set point, in V
             %
-            % On failure, throws an exception or returns Y_VOLTAGESETPOINT_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.VOLTAGESETPOINT_INVALID.
             result = obj.InvokeMethod_F(-1699147063);
         end
 
@@ -169,25 +169,25 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the current limit, in mA
             %
-            % On failure, throws an exception or returns Y_CURRENTLIMIT_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.CURRENTLIMIT_INVALID.
             result = obj.InvokeMethod_F(-10036538);
         end
 
         function result = get_powerOutput(obj)
             % Returns the power supply output switch state.
             %
-            % @return either Y_POWEROUTPUT_OFF or Y_POWEROUTPUT_ON, according to the power supply
-            % output switch state
+            % @return either YPowerSupply.POWEROUTPUT_OFF or YPowerSupply.POWEROUTPUT_ON, according
+            % to the power supply output switch state
             %
-            % On failure, throws an exception or returns Y_POWEROUTPUT_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.POWEROUTPUT_INVALID.
             result = YoctoProxyAPI.EnumPowerOutput(obj.InvokeMethod_D(-1635224894));
         end
 
         function set_powerOutput(obj, newVal)
             % Changes the power supply output switch state.
             %
-            % @param newval : either Y_POWEROUTPUT_OFF or Y_POWEROUTPUT_ON, according to the power
-            % supply output switch state
+            % @param newval : either YPowerSupply.POWEROUTPUT_OFF or YPowerSupply.POWEROUTPUT_ON,
+            % according to the power supply output switch state
             %
             % @return 0 if the call succeeds.
             %
@@ -198,18 +198,18 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_voltageSense(obj)
             % Returns the output voltage control point.
             %
-            % @return either Y_VOLTAGESENSE_INT or Y_VOLTAGESENSE_EXT, according to the output
-            % voltage control point
+            % @return either YPowerSupply.VOLTAGESENSE_INT or YPowerSupply.VOLTAGESENSE_EXT,
+            % according to the output voltage control point
             %
-            % On failure, throws an exception or returns Y_VOLTAGESENSE_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.VOLTAGESENSE_INVALID.
             result = YoctoProxyAPI.EnumVoltageSense(obj.InvokeMethod_D(-430910958));
         end
 
         function set_voltageSense(obj, newVal)
             % Changes the voltage control point.
             %
-            % @param newval : either Y_VOLTAGESENSE_INT or Y_VOLTAGESENSE_EXT, according to the
-            % voltage control point
+            % @param newval : either YPowerSupply.VOLTAGESENSE_INT or YPowerSupply.VOLTAGESENSE_EXT,
+            % according to the voltage control point
             %
             % @return 0 if the call succeeds.
             %
@@ -222,7 +222,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the measured output voltage, in V
             %
-            % On failure, throws an exception or returns Y_MEASUREDVOLTAGE_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.MEASUREDVOLTAGE_INVALID.
             result = obj.InvokeMethod_F(1595610039);
         end
 
@@ -231,7 +231,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the measured output current, in mA
             %
-            % On failure, throws an exception or returns Y_MEASUREDCURRENT_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.MEASUREDCURRENT_INVALID.
             result = obj.InvokeMethod_F(551755241);
         end
 
@@ -240,7 +240,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the measured input voltage, in V
             %
-            % On failure, throws an exception or returns Y_INPUTVOLTAGE_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.INPUTVOLTAGE_INVALID.
             result = obj.InvokeMethod_F(-1879749387);
         end
 
@@ -249,7 +249,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the internal voltage, in V
             %
-            % On failure, throws an exception or returns Y_VINT_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.VINT_INVALID.
             result = obj.InvokeMethod_F(-1714977594);
         end
 
@@ -258,7 +258,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the LDO temperature, in Celsius
             %
-            % On failure, throws an exception or returns Y_LDOTEMPERATURE_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.LDOTEMPERATURE_INVALID.
             result = obj.InvokeMethod_F(454228482);
         end
 
@@ -280,7 +280,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the selected voltage set point at
             % device startup, in V
             %
-            % On failure, throws an exception or returns Y_VOLTAGEATSTARTUP_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.VOLTAGEATSTARTUP_INVALID.
             result = obj.InvokeMethod_F(-1457210740);
         end
 
@@ -310,7 +310,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the selected current limit at device startup, in mA
             %
-            % On failure, throws an exception or returns Y_CURRENTATSTARTUP_INVALID.
+            % On failure, throws an exception or returns YPowerSupply.CURRENTATSTARTUP_INVALID.
             result = obj.InvokeMethod_F(-1411646992);
         end
 

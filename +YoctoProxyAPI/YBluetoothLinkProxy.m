@@ -145,7 +145,7 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the MAC-48 address of the bluetooth interface, which
             % is unique on the bluetooth network
             %
-            % On failure, throws an exception or returns Y_OWNADDRESS_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.OWNADDRESS_INVALID.
             result = obj.InvokeMethod_S(-746092875);
         end
 
@@ -159,7 +159,7 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             %         the SIM card, or an empty string if none has been configured or if the code provided
             %         was rejected by the SIM card
             %
-            % On failure, throws an exception or returns Y_PAIRINGPIN_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.PAIRINGPIN_INVALID.
             result = obj.InvokeMethod_S(819819591);
         end
 
@@ -190,7 +190,7 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the MAC-48 address of the remote device to connect to
             %
-            % On failure, throws an exception or returns Y_REMOTEADDRESS_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.REMOTEADDRESS_INVALID.
             result = obj.InvokeMethod_S(1895368578);
         end
 
@@ -223,16 +223,17 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             % @return a string corresponding to the bluetooth name the remote device, if found on the
             % bluetooth network
             %
-            % On failure, throws an exception or returns Y_REMOTENAME_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.REMOTENAME_INVALID.
             result = obj.InvokeMethod_S(-499691144);
         end
 
         function result = get_mute(obj)
             % Returns the state of the mute function.
             %
-            % @return either Y_MUTE_FALSE or Y_MUTE_TRUE, according to the state of the mute function
+            % @return either YBluetoothLink.MUTE_FALSE or YBluetoothLink.MUTE_TRUE, according to the
+            % state of the mute function
             %
-            % On failure, throws an exception or returns Y_MUTE_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.MUTE_INVALID.
             result = YoctoProxyAPI.EnumMute(obj.InvokeMethod_D(1481194633));
         end
 
@@ -240,7 +241,8 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the state of the mute function. Remember to call the matching module
             % saveToFlash() method to save the setting permanently.
             %
-            % @param newval : either Y_MUTE_FALSE or Y_MUTE_TRUE, according to the state of the mute function
+            % @param newval : either YBluetoothLink.MUTE_FALSE or YBluetoothLink.MUTE_TRUE, according
+            % to the state of the mute function
             %
             % @return 0 if the call succeeds.
             %
@@ -262,7 +264,7 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the audio pre-amplifier volume, in per cents
             %
-            % On failure, throws an exception or returns Y_PREAMPLIFIER_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.PREAMPLIFIER_INVALID.
             result = obj.InvokeMethod_D(-1337737274);
         end
 
@@ -293,7 +295,7 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the connected headset volume, in per cents
             %
-            % On failure, throws an exception or returns Y_VOLUME_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.VOLUME_INVALID.
             result = obj.InvokeMethod_D(-959302571);
         end
 
@@ -311,11 +313,12 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_linkState(obj)
             % Returns the bluetooth link state.
             %
-            % @return a value among Y_LINKSTATE_DOWN, Y_LINKSTATE_FREE, Y_LINKSTATE_SEARCH,
-            % Y_LINKSTATE_EXISTS, Y_LINKSTATE_LINKED and Y_LINKSTATE_PLAY corresponding to the
+            % @return a value among YBluetoothLink.LINKSTATE_DOWN, YBluetoothLink.LINKSTATE_FREE,
+            % YBluetoothLink.LINKSTATE_SEARCH, YBluetoothLink.LINKSTATE_EXISTS,
+            % YBluetoothLink.LINKSTATE_LINKED and YBluetoothLink.LINKSTATE_PLAY corresponding to the
             % bluetooth link state
             %
-            % On failure, throws an exception or returns Y_LINKSTATE_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.LINKSTATE_INVALID.
             result = YoctoProxyAPI.EnumLinkState(obj.InvokeMethod_D(-1675383111));
         end
 
@@ -325,7 +328,7 @@ classdef YBluetoothLinkProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the bluetooth receiver signal strength, in
             % pourcents, or 0 if no connection is established
             %
-            % On failure, throws an exception or returns Y_LINKQUALITY_INVALID.
+            % On failure, throws an exception or returns YBluetoothLink.LINKQUALITY_INVALID.
             result = obj.InvokeMethod_D(-1702114621);
         end
 

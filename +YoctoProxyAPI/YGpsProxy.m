@@ -156,10 +156,10 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_isFixed(obj)
             % Returns TRUE if the receiver has found enough satellites to work.
             %
-            % @return either Y_ISFIXED_FALSE or Y_ISFIXED_TRUE, according to TRUE if the receiver has
-            % found enough satellites to work
+            % @return either YGps.ISFIXED_FALSE or YGps.ISFIXED_TRUE, according to TRUE if the
+            % receiver has found enough satellites to work
             %
-            % On failure, throws an exception or returns Y_ISFIXED_INVALID.
+            % On failure, throws an exception or returns YGps.ISFIXED_INVALID.
             result = YoctoProxyAPI.EnumIsFixed(obj.InvokeMethod_D(-691484252));
         end
 
@@ -168,7 +168,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return an integer corresponding to the total count of satellites used to compute GPS position
             %
-            % On failure, throws an exception or returns Y_SATCOUNT_INVALID.
+            % On failure, throws an exception or returns YGps.SATCOUNT_INVALID.
             result = obj.InvokeMethod_Q(-1925427315);
         end
 
@@ -188,7 +188,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the count of visible satellites per constellation encoded
             %         on a 32 bit integer: bits 0.
             %
-            % On failure, throws an exception or returns Y_SATPERCONST_INVALID.
+            % On failure, throws an exception or returns YGps.SATPERCONST_INVALID.
             result = obj.InvokeMethod_Q(1055292319);
         end
 
@@ -198,17 +198,17 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to effective GPS data refresh frequency
             %
-            % On failure, throws an exception or returns Y_GPSREFRESHRATE_INVALID.
+            % On failure, throws an exception or returns YGps.GPSREFRESHRATE_INVALID.
             result = obj.InvokeMethod_F(2087568270);
         end
 
         function result = get_coordSystem(obj)
             % Returns the representation system used for positioning data.
             %
-            % @return a value among Y_COORDSYSTEM_GPS_DMS, Y_COORDSYSTEM_GPS_DM and
-            % Y_COORDSYSTEM_GPS_D corresponding to the representation system used for positioning data
+            % @return a value among YGps.COORDSYSTEM_GPS_DMS, YGps.COORDSYSTEM_GPS_DM and
+            % YGps.COORDSYSTEM_GPS_D corresponding to the representation system used for positioning data
             %
-            % On failure, throws an exception or returns Y_COORDSYSTEM_INVALID.
+            % On failure, throws an exception or returns YGps.COORDSYSTEM_INVALID.
             result = YoctoProxyAPI.EnumCoordSystem(obj.InvokeMethod_D(-569955526));
         end
 
@@ -217,8 +217,8 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_COORDSYSTEM_GPS_DMS, Y_COORDSYSTEM_GPS_DM and
-            % Y_COORDSYSTEM_GPS_D corresponding to the representation system used for positioning data
+            % @param newval : a value among YGps.COORDSYSTEM_GPS_DMS, YGps.COORDSYSTEM_GPS_DM and
+            % YGps.COORDSYSTEM_GPS_D corresponding to the representation system used for positioning data
             %
             % @return 0 if the call succeeds.
             %
@@ -239,13 +239,13 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % Returns the the satellites constellation used to compute
             % positioning data.
             %
-            % @return a value among Y_CONSTELLATION_GNSS, Y_CONSTELLATION_GPS,
-            % Y_CONSTELLATION_GLONASS, Y_CONSTELLATION_GALILEO, Y_CONSTELLATION_GPS_GLONASS,
-            % Y_CONSTELLATION_GPS_GALILEO and Y_CONSTELLATION_GLONASS_GALILEO corresponding to the
-            % the satellites constellation used to compute
+            % @return a value among YGps.CONSTELLATION_GNSS, YGps.CONSTELLATION_GPS,
+            % YGps.CONSTELLATION_GLONASS, YGps.CONSTELLATION_GALILEO, YGps.CONSTELLATION_GPS_GLONASS,
+            % YGps.CONSTELLATION_GPS_GALILEO and YGps.CONSTELLATION_GLONASS_GALILEO corresponding to
+            % the the satellites constellation used to compute
             %         positioning data
             %
-            % On failure, throws an exception or returns Y_CONSTELLATION_INVALID.
+            % On failure, throws an exception or returns YGps.CONSTELLATION_INVALID.
             result = YoctoProxyAPI.EnumConstellation(obj.InvokeMethod_D(-2019076300));
         end
 
@@ -254,10 +254,10 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % positioning data. Possible  constellations are GNSS ( = all supported constellations),
             % GPS, Glonass, Galileo , and the 3 possible pairs. This setting has  no effect on Yocto-GPS (V1).
             %
-            % @param newval : a value among Y_CONSTELLATION_GNSS, Y_CONSTELLATION_GPS,
-            % Y_CONSTELLATION_GLONASS, Y_CONSTELLATION_GALILEO, Y_CONSTELLATION_GPS_GLONASS,
-            % Y_CONSTELLATION_GPS_GALILEO and Y_CONSTELLATION_GLONASS_GALILEO corresponding to the
-            % satellites constellation used to compute
+            % @param newval : a value among YGps.CONSTELLATION_GNSS, YGps.CONSTELLATION_GPS,
+            % YGps.CONSTELLATION_GLONASS, YGps.CONSTELLATION_GALILEO, YGps.CONSTELLATION_GPS_GLONASS,
+            % YGps.CONSTELLATION_GPS_GALILEO and YGps.CONSTELLATION_GLONASS_GALILEO corresponding to
+            % the satellites constellation used to compute
             %         positioning data
             %
             % @return 0 if the call succeeds.
@@ -271,7 +271,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the current latitude
             %
-            % On failure, throws an exception or returns Y_LATITUDE_INVALID.
+            % On failure, throws an exception or returns YGps.LATITUDE_INVALID.
             result = obj.InvokeMethod_S(-988657299);
         end
 
@@ -280,7 +280,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the current longitude
             %
-            % On failure, throws an exception or returns Y_LONGITUDE_INVALID.
+            % On failure, throws an exception or returns YGps.LONGITUDE_INVALID.
             result = obj.InvokeMethod_S(-1943285065);
         end
 
@@ -291,7 +291,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the current horizontal dilution of precision,
             %         the smaller that number is, the better
             %
-            % On failure, throws an exception or returns Y_DILUTION_INVALID.
+            % On failure, throws an exception or returns YGps.DILUTION_INVALID.
             result = obj.InvokeMethod_F(1906606381);
         end
 
@@ -301,7 +301,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the current altitude
             %
-            % On failure, throws an exception or returns Y_ALTITUDE_INVALID.
+            % On failure, throws an exception or returns YGps.ALTITUDE_INVALID.
             result = obj.InvokeMethod_F(-1400979103);
         end
 
@@ -310,7 +310,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a floating point number corresponding to the current ground speed in Km/h
             %
-            % On failure, throws an exception or returns Y_GROUNDSPEED_INVALID.
+            % On failure, throws an exception or returns YGps.GROUNDSPEED_INVALID.
             result = obj.InvokeMethod_F(636851920);
         end
 
@@ -321,7 +321,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % @return a floating point number corresponding to the current move bearing in degrees, zero
             %         is the true (geographic) north
             %
-            % On failure, throws an exception or returns Y_DIRECTION_INVALID.
+            % On failure, throws an exception or returns YGps.DIRECTION_INVALID.
             result = obj.InvokeMethod_F(-2066850709);
         end
 
@@ -332,7 +332,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the current time in Unix format (number of
             %         seconds elapsed since Jan 1st, 1970)
             %
-            % On failure, throws an exception or returns Y_UNIXTIME_INVALID.
+            % On failure, throws an exception or returns YGps.UNIXTIME_INVALID.
             result = obj.InvokeMethod_Q(-692204019);
         end
 
@@ -341,7 +341,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the current time in the form "YYYY/MM/DD hh:mm:ss"
             %
-            % On failure, throws an exception or returns Y_DATETIME_INVALID.
+            % On failure, throws an exception or returns YGps.DATETIME_INVALID.
             result = obj.InvokeMethod_S(-825142318);
         end
 
@@ -351,7 +351,7 @@ classdef YGpsProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the number of seconds between current time and UTC
             % time (time zone)
             %
-            % On failure, throws an exception or returns Y_UTCOFFSET_INVALID.
+            % On failure, throws an exception or returns YGps.UTCOFFSET_INVALID.
             result = obj.InvokeMethod_D(1285538158);
         end
 

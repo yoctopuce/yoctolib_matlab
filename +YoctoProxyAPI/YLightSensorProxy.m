@@ -164,11 +164,12 @@ classdef YLightSensorProxy < YoctoProxyAPI.YSensorProxy
         function result = get_measureType(obj)
             % Returns the type of light measure.
             %
-            % @return a value among Y_MEASURETYPE_HUMAN_EYE, Y_MEASURETYPE_WIDE_SPECTRUM,
-            % Y_MEASURETYPE_INFRARED, Y_MEASURETYPE_HIGH_RATE and Y_MEASURETYPE_HIGH_ENERGY
-            % corresponding to the type of light measure
+            % @return a value among YLightSensor.MEASURETYPE_HUMAN_EYE,
+            % YLightSensor.MEASURETYPE_WIDE_SPECTRUM, YLightSensor.MEASURETYPE_INFRARED,
+            % YLightSensor.MEASURETYPE_HIGH_RATE, YLightSensor.MEASURETYPE_HIGH_ENERGY and
+            % YLightSensor.MEASURETYPE_HIGH_RESOLUTION corresponding to the type of light measure
             %
-            % On failure, throws an exception or returns Y_MEASURETYPE_INVALID.
+            % On failure, throws an exception or returns YLightSensor.MEASURETYPE_INVALID.
             result = YoctoProxyAPI.EnumMeasureType(obj.InvokeMethod_D(-694793543));
         end
 
@@ -179,9 +180,10 @@ classdef YLightSensorProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
-            % @param newval : a value among Y_MEASURETYPE_HUMAN_EYE, Y_MEASURETYPE_WIDE_SPECTRUM,
-            % Y_MEASURETYPE_INFRARED, Y_MEASURETYPE_HIGH_RATE and Y_MEASURETYPE_HIGH_ENERGY
-            % corresponding to the light sensor type used in the device
+            % @param newval : a value among YLightSensor.MEASURETYPE_HUMAN_EYE,
+            % YLightSensor.MEASURETYPE_WIDE_SPECTRUM, YLightSensor.MEASURETYPE_INFRARED,
+            % YLightSensor.MEASURETYPE_HIGH_RATE, YLightSensor.MEASURETYPE_HIGH_ENERGY and
+            % YLightSensor.MEASURETYPE_HIGH_RESOLUTION corresponding to the light sensor type used in the device
             %
             % @return 0 if the call succeeds.
             %

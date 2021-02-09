@@ -154,7 +154,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current value of signal measured
             % by the proximity sensor
             %
-            % On failure, throws an exception or returns Y_SIGNALVALUE_INVALID.
+            % On failure, throws an exception or returns YProximity.SIGNALVALUE_INVALID.
             result = obj.InvokeMethod_F(-2090205936);
         end
 
@@ -166,7 +166,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % of the proximity sensor, when considered
             %         as a binary input (on/off)
             %
-            % On failure, throws an exception or returns Y_DETECTIONTHRESHOLD_INVALID.
+            % On failure, throws an exception or returns YProximity.DETECTIONTHRESHOLD_INVALID.
             result = obj.InvokeMethod_D(-1458419129);
         end
 
@@ -202,7 +202,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % of the proximity sensor, when considered
             %         as a binary input (on/off)
             %
-            % On failure, throws an exception or returns Y_DETECTIONHYSTERESIS_INVALID.
+            % On failure, throws an exception or returns YProximity.DETECTIONHYSTERESIS_INVALID.
             result = obj.InvokeMethod_D(703291101);
         end
 
@@ -237,7 +237,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % @return an integer corresponding to the minimal detection duration before signalling a
             % presence event
             %
-            % On failure, throws an exception or returns Y_PRESENCEMINTIME_INVALID.
+            % On failure, throws an exception or returns YProximity.PRESENCEMINTIME_INVALID.
             result = obj.InvokeMethod_D(-1203886537);
         end
 
@@ -270,7 +270,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the minimal detection duration before signalling a removal event
             %
-            % On failure, throws an exception or returns Y_REMOVALMINTIME_INVALID.
+            % On failure, throws an exception or returns YProximity.REMOVALMINTIME_INVALID.
             result = obj.InvokeMethod_D(-2082171092);
         end
 
@@ -301,11 +301,11 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % Returns true if the input (considered as binary) is active (detection value is smaller
             % than the specified threshold), and false otherwise.
             %
-            % @return either Y_ISPRESENT_FALSE or Y_ISPRESENT_TRUE, according to true if the input
-            % (considered as binary) is active (detection value is smaller than the specified
-            % threshold), and false otherwise
+            % @return either YProximity.ISPRESENT_FALSE or YProximity.ISPRESENT_TRUE, according to
+            % true if the input (considered as binary) is active (detection value is smaller than the
+            % specified threshold), and false otherwise
             %
-            % On failure, throws an exception or returns Y_ISPRESENT_INVALID.
+            % On failure, throws an exception or returns YProximity.ISPRESENT_INVALID.
             result = YoctoProxyAPI.EnumIsPresent(obj.InvokeMethod_D(1502173750));
         end
 
@@ -317,7 +317,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % module power on and the last observed
             %         detection (the input contact transitioned from absent to present)
             %
-            % On failure, throws an exception or returns Y_LASTTIMEAPPROACHED_INVALID.
+            % On failure, throws an exception or returns YProximity.LASTTIMEAPPROACHED_INVALID.
             result = obj.InvokeMethod_Q(-97771528);
         end
 
@@ -329,7 +329,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % module power on and the last observed
             %         detection (the input contact transitioned from present to absent)
             %
-            % On failure, throws an exception or returns Y_LASTTIMEREMOVED_INVALID.
+            % On failure, throws an exception or returns YProximity.LASTTIMEREMOVED_INVALID.
             result = obj.InvokeMethod_Q(978622805);
         end
 
@@ -340,7 +340,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the pulse counter value
             %
-            % On failure, throws an exception or returns Y_PULSECOUNTER_INVALID.
+            % On failure, throws an exception or returns YProximity.PULSECOUNTER_INVALID.
             result = obj.InvokeMethod_Q(335219165);
         end
 
@@ -349,7 +349,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to the timer of the pulse counter (ms)
             %
-            % On failure, throws an exception or returns Y_PULSETIMER_INVALID.
+            % On failure, throws an exception or returns YProximity.PULSETIMER_INVALID.
             result = obj.InvokeMethod_Q(1447258781);
         end
 
@@ -357,11 +357,12 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % Returns the parameter (sensor value, presence or pulse count) returned by the
             % get_currentValue function and callbacks.
             %
-            % @return a value among Y_PROXIMITYREPORTMODE_NUMERIC, Y_PROXIMITYREPORTMODE_PRESENCE and
-            % Y_PROXIMITYREPORTMODE_PULSECOUNT corresponding to the parameter (sensor value, presence
-            % or pulse count) returned by the get_currentValue function and callbacks
+            % @return a value among YProximity.PROXIMITYREPORTMODE_NUMERIC,
+            % YProximity.PROXIMITYREPORTMODE_PRESENCE and YProximity.PROXIMITYREPORTMODE_PULSECOUNT
+            % corresponding to the parameter (sensor value, presence or pulse count) returned by the
+            % get_currentValue function and callbacks
             %
-            % On failure, throws an exception or returns Y_PROXIMITYREPORTMODE_INVALID.
+            % On failure, throws an exception or returns YProximity.PROXIMITYREPORTMODE_INVALID.
             result = YoctoProxyAPI.EnumProximityReportMode(obj.InvokeMethod_D(-895025918));
         end
 
@@ -372,10 +373,10 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
             % million, use get_pulseCounter().
             % Remember to call the saveToFlash() method of the module if the modification must be kept.
             %
-            % @param newval : a value among Y_PROXIMITYREPORTMODE_NUMERIC,
-            % Y_PROXIMITYREPORTMODE_PRESENCE and Y_PROXIMITYREPORTMODE_PULSECOUNT corresponding to
-            % the  parameter  type (sensor value, presence or pulse count) returned by the
-            % get_currentValue function and callbacks
+            % @param newval : a value among YProximity.PROXIMITYREPORTMODE_NUMERIC,
+            % YProximity.PROXIMITYREPORTMODE_PRESENCE and YProximity.PROXIMITYREPORTMODE_PULSECOUNT
+            % corresponding to the  parameter  type (sensor value, presence or pulse count) returned
+            % by the get_currentValue function and callbacks
             %
             % @return 0 if the call succeeds.
             %

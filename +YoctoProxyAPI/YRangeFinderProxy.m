@@ -163,11 +163,11 @@ classdef YRangeFinderProxy < YoctoProxyAPI.YSensorProxy
             % Returns the range finder running mode. The rangefinder running mode
             % allows you to put priority on precision, speed or maximum range.
             %
-            % @return a value among Y_RANGEFINDERMODE_DEFAULT, Y_RANGEFINDERMODE_LONG_RANGE,
-            % Y_RANGEFINDERMODE_HIGH_ACCURACY and Y_RANGEFINDERMODE_HIGH_SPEED corresponding to the
-            % range finder running mode
+            % @return a value among YRangeFinder.RANGEFINDERMODE_DEFAULT,
+            % YRangeFinder.RANGEFINDERMODE_LONG_RANGE, YRangeFinder.RANGEFINDERMODE_HIGH_ACCURACY and
+            % YRangeFinder.RANGEFINDERMODE_HIGH_SPEED corresponding to the range finder running mode
             %
-            % On failure, throws an exception or returns Y_RANGEFINDERMODE_INVALID.
+            % On failure, throws an exception or returns YRangeFinder.RANGEFINDERMODE_INVALID.
             result = YoctoProxyAPI.EnumRangeFinderMode(obj.InvokeMethod_D(157751572));
         end
 
@@ -176,9 +176,10 @@ classdef YRangeFinderProxy < YoctoProxyAPI.YSensorProxy
             % precision, speed or maximum range.
             % Remember to call the saveToFlash() method of the module if the modification must be kept.
             %
-            % @param newval : a value among Y_RANGEFINDERMODE_DEFAULT, Y_RANGEFINDERMODE_LONG_RANGE,
-            % Y_RANGEFINDERMODE_HIGH_ACCURACY and Y_RANGEFINDERMODE_HIGH_SPEED corresponding to the
-            % rangefinder running mode, allowing you to put priority on
+            % @param newval : a value among YRangeFinder.RANGEFINDERMODE_DEFAULT,
+            % YRangeFinder.RANGEFINDERMODE_LONG_RANGE, YRangeFinder.RANGEFINDERMODE_HIGH_ACCURACY and
+            % YRangeFinder.RANGEFINDERMODE_HIGH_SPEED corresponding to the rangefinder running mode,
+            % allowing you to put priority on
             %         precision, speed or maximum range
             %
             % @return 0 if the call succeeds.
@@ -204,7 +205,7 @@ classdef YRangeFinderProxy < YoctoProxyAPI.YSensorProxy
             % estimate the measure
             %         reliability
             %
-            % On failure, throws an exception or returns Y_TIMEFRAME_INVALID.
+            % On failure, throws an exception or returns YRangeFinder.TIMEFRAME_INVALID.
             result = obj.InvokeMethod_Q(123865418);
         end
 
@@ -239,7 +240,7 @@ classdef YRangeFinderProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return an integer corresponding to a measure quality estimate, based on measured dispersion
             %
-            % On failure, throws an exception or returns Y_QUALITY_INVALID.
+            % On failure, throws an exception or returns YRangeFinder.QUALITY_INVALID.
             result = obj.InvokeMethod_D(-55375872);
         end
 
@@ -249,7 +250,7 @@ classdef YRangeFinderProxy < YoctoProxyAPI.YSensorProxy
             % @return a floating point number corresponding to the current sensor temperature, as a
             % floating point number
             %
-            % On failure, throws an exception or returns Y_CURRENTTEMPERATURE_INVALID.
+            % On failure, throws an exception or returns YRangeFinder.CURRENTTEMPERATURE_INVALID.
             result = obj.InvokeMethod_F(2058614777);
         end
 

@@ -1,5 +1,5 @@
 % YRealTimeClockProxy: real-time clock control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
+% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
 % 
 % The YRealTimeClockProxy class provide access to the embedded real-time clock available on some
 % Yoctopuce devices. It can provide current date and time, even after a power outage lasting several
@@ -48,7 +48,7 @@
 % //--- (YRealTimeClock declaration)
 classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
     % YRealTimeClockProxy: real-time clock control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
     % 
     % The YRealTimeClockProxy class provide access to the embedded real-time clock available on some
     % Yoctopuce devices. It can provide current date and time, even after a power outage lasting several
@@ -145,7 +145,7 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the current time in Unix format (number of elapsed
             % seconds since Jan 1st, 1970)
             %
-            % On failure, throws an exception or returns Y_UNIXTIME_INVALID.
+            % On failure, throws an exception or returns YRealTimeClock.UNIXTIME_INVALID.
             result = obj.InvokeMethod_Q(-692204019);
         end
 
@@ -166,7 +166,7 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a string corresponding to the current time in the form "YYYY/MM/DD hh:mm:ss"
             %
-            % On failure, throws an exception or returns Y_DATETIME_INVALID.
+            % On failure, throws an exception or returns YRealTimeClock.DATETIME_INVALID.
             result = obj.InvokeMethod_S(-825142318);
         end
 
@@ -176,7 +176,7 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
             % @return an integer corresponding to the number of seconds between current time and UTC
             % time (time zone)
             %
-            % On failure, throws an exception or returns Y_UTCOFFSET_INVALID.
+            % On failure, throws an exception or returns YRealTimeClock.UTCOFFSET_INVALID.
             result = obj.InvokeMethod_D(1285538158);
         end
 
@@ -207,10 +207,10 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_timeSet(obj)
             % Returns true if the clock has been set, and false otherwise.
             %
-            % @return either Y_TIMESET_FALSE or Y_TIMESET_TRUE, according to true if the clock has
-            % been set, and false otherwise
+            % @return either YRealTimeClock.TIMESET_FALSE or YRealTimeClock.TIMESET_TRUE, according
+            % to true if the clock has been set, and false otherwise
             %
-            % On failure, throws an exception or returns Y_TIMESET_INVALID.
+            % On failure, throws an exception or returns YRealTimeClock.TIMESET_INVALID.
             result = YoctoProxyAPI.EnumTimeSet(obj.InvokeMethod_D(1987268889));
         end
 
