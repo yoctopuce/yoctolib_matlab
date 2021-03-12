@@ -165,8 +165,9 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
         function result = get_decoding(obj)
             % Returns the current activation state of the quadrature decoder.
             %
-            % @return either YQuadratureDecoder.DECODING_OFF or YQuadratureDecoder.DECODING_ON,
-            % according to the current activation state of the quadrature decoder
+            % @return a value among YQuadratureDecoder.DECODING_OFF, YQuadratureDecoder.DECODING_ON,
+            % YQuadratureDecoder.DECODING_DIV2 and YQuadratureDecoder.DECODING_DIV4 corresponding to
+            % the current activation state of the quadrature decoder
             %
             % On failure, throws an exception or returns YQuadratureDecoder.DECODING_INVALID.
             result = YoctoProxyAPI.EnumDecoding(obj.InvokeMethod_D(-676619192));
@@ -177,8 +178,9 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : either YQuadratureDecoder.DECODING_OFF or
-            % YQuadratureDecoder.DECODING_ON, according to the activation state of the quadrature decoder
+            % @param newval : a value among YQuadratureDecoder.DECODING_OFF,
+            % YQuadratureDecoder.DECODING_ON, YQuadratureDecoder.DECODING_DIV2 and
+            % YQuadratureDecoder.DECODING_DIV4 corresponding to the activation state of the quadrature decoder
             %
             % @return 0 if the call succeeds.
             %

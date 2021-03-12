@@ -1076,6 +1076,7 @@ typedef int32_t ypaHandle;
 #define YPA_triggerCallback_D           ((ypaHandle)198977409)      // e.g. Network: int32_t* resPtr
 #define YPA_triggerConfigChangeCallback_D ((ypaHandle)1909607213)     // e.g. Module: int32_t* resPtr
 #define YPA_triggerFirmwareUpdate_Dd    ((ypaHandle)-924691982)     // e.g. Module: int32_t* resPtr, int32_t secBeforeReboot
+#define YPA_triggerForcedCalibration_Df ((ypaHandle)-1324587585)    // e.g. CarbonDioxide: int32_t* resPtr, double refVal
 #define YPA_triggerOffsetCalibration_Df ((ypaHandle)-506750790)     // e.g. RangeFinder: int32_t* resPtr, double targetDist
 #define YPA_triggerPulsesByDuration_Dfd ((ypaHandle)-150447958)     // e.g. PwmOutput: int32_t* resPtr, double ms_target, int32_t n_pulses
 #define YPA_triggerPulsesByDutyCycle_Dfd ((ypaHandle)-1424960313)    // e.g. PwmOutput: int32_t* resPtr, double target, int32_t n_pulses
