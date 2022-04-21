@@ -1,4 +1,4 @@
-% YLightSensorProxy: light sensor control interface, available for instance in the Yocto-Light-V3,
+% YLightSensorProxy: light sensor control interface, available for instance in the Yocto-Light-V4,
 % the Yocto-Proximity or the Yocto-RangeFinder
 % 
 % The YLightSensorProxy class allows you to read and configure Yoctopuce light sensors. It inherits
@@ -48,7 +48,7 @@
 
 % //--- (YLightSensor declaration)
 classdef YLightSensorProxy < YoctoProxyAPI.YSensorProxy
-    % YLightSensorProxy: light sensor control interface, available for instance in the Yocto-Light-V3,
+    % YLightSensorProxy: light sensor control interface, available for instance in the Yocto-Light-V4,
     % the Yocto-Proximity or the Yocto-RangeFinder
     % 
     % The YLightSensorProxy class allows you to read and configure Yoctopuce light sensors. It inherits

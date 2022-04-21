@@ -1,5 +1,5 @@
 % YWakeUpScheduleProxy: wake up schedule control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+% YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
 % 
 % The YWakeUpScheduleProxy class implements a wake up condition. The wake up time is specified as a
 % set of months and/or days and/or hours and/or minutes when the wake up should happen.
@@ -45,7 +45,7 @@
 % //--- (YWakeUpSchedule declaration)
 classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
     % YWakeUpScheduleProxy: wake up schedule control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
     % 
     % The YWakeUpScheduleProxy class implements a wake up condition. The wake up time is specified as a
     % set of months and/or days and/or hours and/or minutes when the wake up should happen.

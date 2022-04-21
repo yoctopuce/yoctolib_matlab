@@ -1,5 +1,5 @@
 % YColorLedClusterProxy: RGB LED cluster control interface, available for instance in the
-% Yocto-Color-V2 or the Yocto-MaxiBuzzer
+% Yocto-Color-V2, the Yocto-MaxiBuzzer or the Yocto-MaxiKnob
 % 
 % The YColorLedClusterProxy class allows you to drive a color LED cluster. Unlike the
 % <tt>ColorLed</tt> class, the YColorLedClusterProxy class allows to handle several LEDs at once.
@@ -49,7 +49,7 @@
 % //--- (YColorLedCluster declaration)
 classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
     % YColorLedClusterProxy: RGB LED cluster control interface, available for instance in the
-    % Yocto-Color-V2 or the Yocto-MaxiBuzzer
+    % Yocto-Color-V2, the Yocto-MaxiBuzzer or the Yocto-MaxiKnob
     % 
     % The YColorLedClusterProxy class allows you to drive a color LED cluster. Unlike the
     % <tt>ColorLed</tt> class, the YColorLedClusterProxy class allows to handle several LEDs at once.
@@ -183,8 +183,8 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_ledType(obj)
             % Returns the RGB LED type currently handled by the device.
             %
-            % @return either YColorLedCluster.LEDTYPE_RGB or YColorLedCluster.LEDTYPE_RGBW, according
-            % to the RGB LED type currently handled by the device
+            % @return a value among YColorLedCluster.LEDTYPE_RGB, YColorLedCluster.LEDTYPE_RGBW and
+            % YColorLedCluster.LEDTYPE_WS2811 corresponding to the RGB LED type currently handled by the device
             %
             % On failure, throws an exception or returns YColorLedCluster.LEDTYPE_INVALID.
             result = YoctoProxyAPI.EnumLedType(obj.InvokeMethod_D(-1658295125));
@@ -195,8 +195,9 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the matching module
             % saveToFlash() method to save the setting permanently.
             %
-            % @param newval : either YColorLedCluster.LEDTYPE_RGB or YColorLedCluster.LEDTYPE_RGBW,
-            % according to the RGB LED type currently handled by the device
+            % @param newval : a value among YColorLedCluster.LEDTYPE_RGB,
+            % YColorLedCluster.LEDTYPE_RGBW and YColorLedCluster.LEDTYPE_WS2811 corresponding to the
+            % RGB LED type currently handled by the device
             %
             % @return 0 if the call succeeds.
             %

@@ -96,6 +96,7 @@ typedef int32_t ypaHandle;
 #define YPA_HubPort                     ((ypaHandle)-1871547951)    // YoctoHub slave port control
 #define YPA_Humidity                    ((ypaHandle)-1869998700)    // humidity sensor control
 #define YPA_I2cPort                     ((ypaHandle)423127297)      // I2C port control
+#define YPA_InputChain                  ((ypaHandle)567738162)      // InputChain function
 #define YPA_Latitude                    ((ypaHandle)-1200704651)    // latitude sensor control
 #define YPA_Led                         ((ypaHandle)-728459499)     // monochrome LED control
 #define YPA_LightSensor                 ((ypaHandle)-1276902144)    // light sensor control
@@ -191,10 +192,13 @@ typedef int32_t ypaHandle;
 #define YPA_DisplayWidth                ((ypaHandle)-2086327159)    // Int32
 #define YPA_DutyCycle                   ((ypaHandle)44595434)       // Double
 #define YPA_DutyCycleAtPowerOn          ((ypaHandle)-113709649)     // Double
+#define YPA_EdgePerCycle                ((ypaHandle)1810894099)     // Int32
+#define YPA_EdgesPerCycle               ((ypaHandle)2125116694)     // Int32
 #define YPA_EnableData                  ((ypaHandle)229750544)      // Int32
 #define YPA_Enabled                     ((ypaHandle)-1622900200)    // Int32
 #define YPA_EnabledAtPowerOn            ((ypaHandle)1248577487)     // Int32
 #define YPA_Excitation                  ((ypaHandle)1342015048)     // Int32
+#define YPA_ExpectedNodes               ((ypaHandle)1505615639)     // Int32
 #define YPA_ExternalSense               ((ypaHandle)-1246869699)    // Int32
 #define YPA_FailSafeTimeout             ((ypaHandle)832905954)      // Int32
 #define YPA_FilesCount                  ((ypaHandle)-777511476)     // Int32
@@ -279,6 +283,7 @@ typedef int32_t ypaHandle;
 #define YPA_RangeFinderMode             ((ypaHandle)2099892640)     // Int32
 #define YPA_Readiness                   ((ypaHandle)1356550120)     // Int32
 #define YPA_Recording                   ((ypaHandle)966961648)      // Int32
+#define YPA_RefreshRate                 ((ypaHandle)511122244)      // Int32
 #define YPA_RemoteAddress               ((ypaHandle)119860743)      // String
 #define YPA_RemovalMinTime              ((ypaHandle)-2078298610)    // Int32
 #define YPA_ReportFrequency             ((ypaHandle)49010739)       // String
@@ -322,6 +327,7 @@ typedef int32_t ypaHandle;
 #define YPA_VoltageAtStartUp            ((ypaHandle)-2107764019)    // Double
 #define YPA_VoltageLevel                ((ypaHandle)-1706330633)    // Int32
 #define YPA_Volume                      ((ypaHandle)-1103705880)    // Int32
+#define YPA_WatchdogPeriod              ((ypaHandle)1506918392)     // Int32
 #define YPA_WeekDays                    ((ypaHandle)1057362437)     // Int32
 #define YPA_WwwWatchdogDelay            ((ypaHandle)380497578)      // Int32
 #define YPA_ZeroTracking                ((ypaHandle)-917206389)     // Double
@@ -372,6 +378,7 @@ typedef int32_t ypaHandle;
 #define YPA_defineExpression_Fss        ((ypaHandle)949736265)      // e.g. ArithmeticSensor: double* resPtr, char* expr, char* descr
 #define YPA_delayedPulse_Dddd           ((ypaHandle)1525073260)     // e.g. DigitalIO: int32_t* resPtr, int32_t bitno, int32_t ms_delay, int32_t ms_duration
 #define YPA_delayedPulse_dd             ((ypaHandle)-1994666463)    // e.g. Watchdog: int32_t ms_delay, int32_t ms_duration
+#define YPA_detectAddress_D             ((ypaHandle)2111931039)     // e.g. MultiSensController: int32_t* resPtr
 #define YPA_disconnect_D                ((ypaHandle)-2078280300)    // e.g. BluetoothLink: int32_t* resPtr
 #define YPA_download_Ss                 ((ypaHandle)1612576021)     // e.g. Files: char* resPtr, size_t* resSize, char* pathname
 #define YPA_drawBar_Ddddd               ((ypaHandle)-80922497)      // e.g. DisplayLayer: int32_t* resPtr, int32_t x1, int32_t y1, int32_t x2, int32_t y2
@@ -417,6 +424,13 @@ typedef int32_t ypaHandle;
 #define YPA_get_baudRate_D              ((ypaHandle)-503767631)     // e.g. HubPort: int32_t* resPtr
 #define YPA_get_beacon_D                ((ypaHandle)1865482844)     // e.g. Module: int32_t* resPtr
 #define YPA_get_bearing_F               ((ypaHandle)-343180071)     // e.g. RefFrame: double* resPtr
+#define YPA_get_bitChain1_S             ((ypaHandle)-1008359006)    // e.g. InputChain: char* resPtr, size_t* resSize
+#define YPA_get_bitChain2_S             ((ypaHandle)-1046276101)    // e.g. InputChain: char* resPtr, size_t* resSize
+#define YPA_get_bitChain3_S             ((ypaHandle)-1067352628)    // e.g. InputChain: char* resPtr, size_t* resSize
+#define YPA_get_bitChain4_S             ((ypaHandle)-986813623)     // e.g. InputChain: char* resPtr, size_t* resSize
+#define YPA_get_bitChain5_S             ((ypaHandle)-991166082)     // e.g. InputChain: char* resPtr, size_t* resSize
+#define YPA_get_bitChain6_S             ((ypaHandle)-961888473)     // e.g. InputChain: char* resPtr, size_t* resSize
+#define YPA_get_bitChain7_S             ((ypaHandle)-949431024)     // e.g. InputChain: char* resPtr, size_t* resSize
 #define YPA_get_bitDirection_Dd         ((ypaHandle)-146326613)     // e.g. DigitalIO: int32_t* resPtr, int32_t bitno
 #define YPA_get_bitOpenDrain_Dd         ((ypaHandle)-415676385)     // e.g. DigitalIO: int32_t* resPtr, int32_t bitno
 #define YPA_get_bitPolarity_Dd          ((ypaHandle)-43159685)      // e.g. DigitalIO: int32_t* resPtr, int32_t bitno
@@ -449,6 +463,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_cellIdentifier_S        ((ypaHandle)-1891073777)    // e.g. Cellular: char* resPtr, size_t* resSize
 #define YPA_get_cellOperator_S          ((ypaHandle)-345966488)     // e.g. Cellular: char* resPtr, size_t* resSize
 #define YPA_get_cellType_D              ((ypaHandle)174582765)      // e.g. Cellular: int32_t* resPtr
+#define YPA_get_chainDiags_D            ((ypaHandle)-1109019444)    // e.g. InputChain: int32_t* resPtr
 #define YPA_get_channel_D               ((ypaHandle)-1801753993)    // e.g. Wireless: int32_t* resPtr
 #define YPA_get_childCount_D            ((ypaHandle)-1950607263)    // e.g. DaisyChain: int32_t* resPtr
 #define YPA_get_compTempAvg_F           ((ypaHandle)855390688)      // e.g. WeighScale: double* resPtr
@@ -460,6 +475,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_countdown_Q             ((ypaHandle)-1586370564)    // e.g. Watchdog: int64_t* resPtr
 #define YPA_get_crc_D                   ((ypaHandle)-1168585497)    // e.g. FileRecord: int32_t* resPtr
 #define YPA_get_currentAtStartUp_F      ((ypaHandle)-1411646992)    // e.g. PowerSupply: double* resPtr
+#define YPA_get_currentDNS_S            ((ypaHandle)-589221023)     // e.g. Network: char* resPtr, size_t* resSize
 #define YPA_get_currentJob_S            ((ypaHandle)1593232124)     // e.g. SpiPort: char* resPtr, size_t* resSize
 #define YPA_get_currentLimit_F          ((ypaHandle)-10036538)      // e.g. PowerSupply: double* resPtr
 #define YPA_get_currentRawValue_F       ((ypaHandle)1057921848)     // e.g. Sensor: double* resPtr
@@ -478,6 +494,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_defaultPage_S           ((ypaHandle)1994900688)     // e.g. Network: char* resPtr, size_t* resSize
 #define YPA_get_deliveredEnergyMeter_F  ((ypaHandle)559481782)      // e.g. Power: double* resPtr
 #define YPA_get_description_S           ((ypaHandle)282193973)      // e.g. ArithmeticSensor: char* resPtr, size_t* resSize
+#define YPA_get_detectedNodes_D         ((ypaHandle)1077687294)     // e.g. InputChain: int32_t* resPtr
 #define YPA_get_detectedWlans_xW        ((ypaHandle)2075795762)     // e.g. Wireless: YWlanRecordStruct* resPtr, size_t* resSize
 #define YPA_get_detectionHysteresis_D   ((ypaHandle)703291101)      // e.g. Proximity: int32_t* resPtr
 #define YPA_get_detectionThreshold_D    ((ypaHandle)-1458419129)    // e.g. Proximity: int32_t* resPtr
@@ -495,12 +512,15 @@ typedef int32_t ypaHandle;
 #define YPA_get_drivingForce_F          ((ypaHandle)541265739)      // e.g. Motor: double* resPtr
 #define YPA_get_dutyCycleAtPowerOn_F    ((ypaHandle)-1827887971)    // e.g. PwmOutput: double* resPtr
 #define YPA_get_dutyCycle_F             ((ypaHandle)-970911217)     // e.g. PwmOutput: double* resPtr
+#define YPA_get_edgePerCycle_D          ((ypaHandle)960098279)      // e.g. QuadratureDecoder: int32_t* resPtr
+#define YPA_get_edgesPerCycle_D         ((ypaHandle)1548374183)     // e.g. QuadratureDecoder: int32_t* resPtr
 #define YPA_get_edgesPerPeriod_D        ((ypaHandle)1472768428)     // e.g. PwmInput: int32_t* resPtr
 #define YPA_get_enableData_D            ((ypaHandle)-169088672)     // e.g. Cellular: int32_t* resPtr
 #define YPA_get_enabledAtPowerOn_D      ((ypaHandle)-2086316212)    // e.g. Servo: int32_t* resPtr
 #define YPA_get_enabled_D               ((ypaHandle)587192537)      // e.g. Voltage: int32_t* resPtr
 #define YPA_get_errCount_D              ((ypaHandle)-1720504838)    // e.g. SpiPort: int32_t* resPtr
 #define YPA_get_excitation_D            ((ypaHandle)-698909622)     // e.g. WeighScale: int32_t* resPtr
+#define YPA_get_expectedNodes_D         ((ypaHandle)-399061321)     // e.g. InputChain: int32_t* resPtr
 #define YPA_get_extVoltage_D            ((ypaHandle)1530538410)     // e.g. DualPower: int32_t* resPtr
 #define YPA_get_externalSense_D         ((ypaHandle)2039084538)     // e.g. MultiCellWeighScale: int32_t* resPtr
 #define YPA_get_failSafeTimeout_D       ((ypaHandle)-274932807)     // e.g. Motor: int32_t* resPtr
@@ -533,12 +553,15 @@ typedef int32_t ypaHandle;
 #define YPA_get_isPressed_D             ((ypaHandle)2098076773)     // e.g. AnButton: int32_t* resPtr
 #define YPA_get_jobMaxSize_D            ((ypaHandle)-1527312014)    // e.g. SpiPort: int32_t* resPtr
 #define YPA_get_jobMaxTask_D            ((ypaHandle)-32241525)      // e.g. SpiPort: int32_t* resPtr
+#define YPA_get_lastAddressDetected_D   ((ypaHandle)-1943903437)    // e.g. MultiSensController: int32_t* resPtr
+#define YPA_get_lastEvents_S            ((ypaHandle)1709506988)     // e.g. InputChain: char* resPtr, size_t* resSize
 #define YPA_get_lastLogs_S              ((ypaHandle)28952501)       // e.g. Module: char* resPtr, size_t* resSize
 #define YPA_get_lastMsg_S               ((ypaHandle)2062820646)     // e.g. SpiPort: char* resPtr, size_t* resSize
 #define YPA_get_lastTimeApproached_Q    ((ypaHandle)-97771528)      // e.g. Proximity: int64_t* resPtr
 #define YPA_get_lastTimePressed_Q       ((ypaHandle)-305690090)     // e.g. AnButton: int64_t* resPtr
 #define YPA_get_lastTimeReleased_Q      ((ypaHandle)1123889222)     // e.g. AnButton: int64_t* resPtr
 #define YPA_get_lastTimeRemoved_Q       ((ypaHandle)978622805)      // e.g. Proximity: int64_t* resPtr
+#define YPA_get_lastTrigger_D           ((ypaHandle)1845132316)     // e.g. Watchdog: int32_t* resPtr
 #define YPA_get_latitude_S              ((ypaHandle)-988657299)     // e.g. Gps: char* resPtr, size_t* resSize
 #define YPA_get_layerCount_D            ((ypaHandle)-1279478134)    // e.g. Display: int32_t* resPtr
 #define YPA_get_layerHeight_D           ((ypaHandle)-1449994823)    // e.g. Display: int32_t* resPtr
@@ -555,6 +578,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_logicalName_S           ((ypaHandle)1376067556)     // e.g. Function: char* resPtr, size_t* resSize
 #define YPA_get_longitude_S             ((ypaHandle)-1943285065)    // e.g. Gps: char* resPtr, size_t* resSize
 #define YPA_get_loopPower_D             ((ypaHandle)-519903192)     // e.g. CurrentLoopOutput: int32_t* resPtr
+#define YPA_get_loopbackTest_D          ((ypaHandle)-179398158)     // e.g. InputChain: int32_t* resPtr
 #define YPA_get_lowestValue_F           ((ypaHandle)-2074258358)    // e.g. Sensor: double* resPtr
 #define YPA_get_luminosity_D            ((ypaHandle)-1600964606)    // e.g. Led: int32_t* resPtr
 #define YPA_get_macAddress_S            ((ypaHandle)-1946051310)    // e.g. Network: char* resPtr, size_t* resSize
@@ -656,6 +680,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_rebootCountdown_D       ((ypaHandle)152939681)      // e.g. Module: int32_t* resPtr
 #define YPA_get_receivedEnergyMeter_F   ((ypaHandle)1842528545)     // e.g. Power: double* resPtr
 #define YPA_get_recordedData_Hff        ((ypaHandle)-86168835)      // e.g. Sensor: int32_t* resHdlPtr, double startTime, double endTime
+#define YPA_get_refreshRate_D           ((ypaHandle)-1961964339)    // e.g. InputChain: int32_t* resPtr
 #define YPA_get_relHum_F                ((ypaHandle)-890677710)     // e.g. Humidity: double* resPtr
 #define YPA_get_remoteAddress_S         ((ypaHandle)1895368578)     // e.g. BluetoothLink: char* resPtr, size_t* resSize
 #define YPA_get_remoteName_S            ((ypaHandle)-499691144)     // e.g. BluetoothLink: char* resPtr, size_t* resSize
@@ -679,6 +704,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_security_D              ((ypaHandle)769924446)      // e.g. Wireless: int32_t* resPtr
 #define YPA_get_security_S              ((ypaHandle)-1372088167)    // e.g. WlanRecord: char* resPtr, size_t* resSize
 #define YPA_get_sensitivity_D           ((ypaHandle)-261212033)     // e.g. AnButton: int32_t* resPtr
+#define YPA_get_sensorAddress_D         ((ypaHandle)-1230222336)    // e.g. MultiSensController: int32_t* resPtr
 #define YPA_get_sensorState_D           ((ypaHandle)562823856)      // e.g. Sensor: int32_t* resPtr
 #define YPA_get_sensorType_D            ((ypaHandle)-2004586633)    // e.g. Temperature: int32_t* resPtr
 #define YPA_get_serialMode_S            ((ypaHandle)960644897)      // e.g. SerialPort: char* resPtr, size_t* resSize
@@ -742,6 +768,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_volume_D                ((ypaHandle)-959302571)     // e.g. Buzzer: int32_t* resPtr
 #define YPA_get_wakeUpReason_D          ((ypaHandle)1646271557)     // e.g. WakeUpMonitor: int32_t* resPtr
 #define YPA_get_wakeUpState_D           ((ypaHandle)1089356677)     // e.g. WakeUpMonitor: int32_t* resPtr
+#define YPA_get_watchdogPeriod_D        ((ypaHandle)-1414386645)    // e.g. InputChain: int32_t* resPtr
 #define YPA_get_weekDays_D              ((ypaHandle)-936402614)     // e.g. WakeUpSchedule: int32_t* resPtr
 #define YPA_get_wlanState_D             ((ypaHandle)1619322823)     // e.g. Wireless: int32_t* resPtr
 #define YPA_get_wwwWatchdogDelay_D      ((ypaHandle)-644019196)     // e.g. Network: int32_t* resPtr
@@ -825,6 +852,7 @@ typedef int32_t ypaHandle;
 #define YPA_resetSleepCountDown_D       ((ypaHandle)-527920630)     // e.g. WakeUpMonitor: int32_t* resPtr
 #define YPA_resetStatus_D               ((ypaHandle)-757324526)     // e.g. Motor: int32_t* resPtr
 #define YPA_resetWatchdog_              ((ypaHandle)1464029032)     // e.g. Watchdog: 
+#define YPA_resetWatchdog_D             ((ypaHandle)-527581151)     // e.g. InputChain: int32_t* resPtr
 #define YPA_reset_D                     ((ypaHandle)323098917)      // e.g. StepperMotor: int32_t* resPtr
 #define YPA_restoreZeroCalibration_D    ((ypaHandle)-1506560007)    // e.g. Tilt: int32_t* resPtr
 #define YPA_revertFromFlash_D           ((ypaHandle)1616223927)     // e.g. Module: int32_t* resPtr
@@ -843,6 +871,7 @@ typedef int32_t ypaHandle;
 #define YPA_selectFont_Ds               ((ypaHandle)-1097833423)    // e.g. DisplayLayer: int32_t* resPtr, char* fontname
 #define YPA_selectGrayPen_Dd            ((ypaHandle)929213302)      // e.g. DisplayLayer: int32_t* resPtr, int32_t graylevel
 #define YPA_selectJob_Ds                ((ypaHandle)-1936070288)    // e.g. SpiPort: int32_t* resPtr, char* jobfile
+#define YPA_sendBreak_Dd                ((ypaHandle)2114631987)     // e.g. SerialPort: int32_t* resPtr, int32_t duration
 #define YPA_sendFlashMessage_Dss        ((ypaHandle)130508145)      // e.g. MessageBox: int32_t* resPtr, char* recipient, char* message
 #define YPA_sendPUK_Dss                 ((ypaHandle)-2099275859)    // e.g. Cellular: int32_t* resPtr, char* puk, char* newPin
 #define YPA_sendTextMessage_Dss         ((ypaHandle)-1747837246)    // e.g. MessageBox: int32_t* resPtr, char* recipient, char* message
@@ -910,10 +939,13 @@ typedef int32_t ypaHandle;
 #define YPA_set_drivingForce_f          ((ypaHandle)1042719901)     // e.g. Motor: double newval
 #define YPA_set_dutyCycleAtPowerOn_f    ((ypaHandle)-1106287305)    // e.g. PwmOutput: double newval
 #define YPA_set_dutyCycle_f             ((ypaHandle)860997867)      // e.g. PwmOutput: double newval
+#define YPA_set_edgePerCycle_d          ((ypaHandle)660358193)      // e.g. QuadratureDecoder: int32_t newval
+#define YPA_set_edgesPerCycle_d         ((ypaHandle)-1660008825)    // e.g. QuadratureDecoder: int32_t newval
 #define YPA_set_enableData_d            ((ypaHandle)-57427023)      // e.g. Cellular: int32_t newval
 #define YPA_set_enabledAtPowerOn_d      ((ypaHandle)1302179525)     // e.g. Servo: int32_t newval
 #define YPA_set_enabled_d               ((ypaHandle)1831810141)     // e.g. Voltage: int32_t newval
 #define YPA_set_excitation_d            ((ypaHandle)-550556005)     // e.g. WeighScale: int32_t newval
+#define YPA_set_expectedNodes_d         ((ypaHandle)695392407)      // e.g. InputChain: int32_t newval
 #define YPA_set_externalSense_d         ((ypaHandle)-1194466342)    // e.g. MultiCellWeighScale: int32_t newval
 #define YPA_set_failSafeTimeout_d       ((ypaHandle)-1913656026)    // e.g. Motor: int32_t newval
 #define YPA_set_frequency_f             ((ypaHandle)-338166865)     // e.g. PwmOutput: double newval
@@ -933,6 +965,7 @@ typedef int32_t ypaHandle;
 #define YPA_set_lockedOperator_s        ((ypaHandle)-968249388)     // e.g. Cellular: char* newval
 #define YPA_set_logFrequency_s          ((ypaHandle)1025597622)     // e.g. Sensor: char* newval
 #define YPA_set_logicalName_s           ((ypaHandle)221413790)      // e.g. Function: char* newval
+#define YPA_set_loopbackTest_d          ((ypaHandle)-349490652)     // e.g. InputChain: int32_t newval
 #define YPA_set_lowestValue_f           ((ypaHandle)-613758416)     // e.g. Sensor: double newval
 #define YPA_set_luminosity_d            ((ypaHandle)-1444189485)    // e.g. Led: int32_t newval
 #define YPA_set_maintenanceMode_d       ((ypaHandle)-1599705991)    // e.g. MultiSensController: int32_t newval
@@ -991,6 +1024,7 @@ typedef int32_t ypaHandle;
 #define YPA_set_radioConfig_s           ((ypaHandle)1726318678)     // e.g. Cellular: char* newval
 #define YPA_set_rangeFinderMode_d       ((ypaHandle)1796485003)     // e.g. RangeFinder: int32_t newval
 #define YPA_set_range_d                 ((ypaHandle)462213091)      // e.g. Servo: int32_t newval
+#define YPA_set_refreshRate_d           ((ypaHandle)-734440777)     // e.g. InputChain: int32_t newval
 #define YPA_set_remoteAddress_s         ((ypaHandle)-1313009246)    // e.g. BluetoothLink: char* newval
 #define YPA_set_removalMinTime_d        ((ypaHandle)379713432)      // e.g. Proximity: int32_t newval
 #define YPA_set_reportFrequency_s       ((ypaHandle)-881347341)     // e.g. Sensor: char* newval
@@ -1043,6 +1077,7 @@ typedef int32_t ypaHandle;
 #define YPA_set_voltageSetPoint_f       ((ypaHandle)-120970154)     // e.g. PowerSupply: double newval
 #define YPA_set_voltage_d               ((ypaHandle)-741626820)     // e.g. PowerOutput: int32_t newval
 #define YPA_set_volume_d                ((ypaHandle)-224214498)     // e.g. Buzzer: int32_t newval
+#define YPA_set_watchdogPeriod_d        ((ypaHandle)1056394399)     // e.g. InputChain: int32_t newval
 #define YPA_set_weekDays_d              ((ypaHandle)-1939918091)    // e.g. WakeUpSchedule: int32_t newval
 #define YPA_set_wwwWatchdogDelay_d      ((ypaHandle)396752269)      // e.g. Network: int32_t newval
 #define YPA_set_zeroTracking_f          ((ypaHandle)51810600)       // e.g. WeighScale: double newval

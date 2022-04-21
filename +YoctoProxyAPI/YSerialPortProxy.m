@@ -676,6 +676,20 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Sd(-998175745, nBytes);
         end
 
+        function result = sendBreak(obj, duration)
+            % Emits a BREAK condition on the serial interface. When the specified
+            % duration is 0, the BREAK signal will be exactly one character wide.
+            % When the duration is between 1 and 100, the BREAK condition will
+            % be hold for the specified number of milliseconds.
+            %
+            % @param duration : 0 for a standard BREAK, or duration between 1 and 100 ms
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_Dd(2114631987, duration);
+        end
+
         function result = set_RTS(obj, val)
             % Manually sets the state of the RTS line. This function has no effect when
             % hardware handshake is enabled, as the RTS line is driven automatically.

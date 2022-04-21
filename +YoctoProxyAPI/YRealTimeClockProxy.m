@@ -1,5 +1,5 @@
 % YRealTimeClockProxy: real-time clock control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+% YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
 % 
 % The YRealTimeClockProxy class provide access to the embedded real-time clock available on some
 % Yoctopuce devices. It can provide current date and time, even after a power outage lasting several
@@ -48,7 +48,7 @@
 % //--- (YRealTimeClock declaration)
 classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
     % YRealTimeClockProxy: real-time clock control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
     % 
     % The YRealTimeClockProxy class provide access to the embedded real-time clock available on some
     % Yoctopuce devices. It can provide current date and time, even after a power outage lasting several

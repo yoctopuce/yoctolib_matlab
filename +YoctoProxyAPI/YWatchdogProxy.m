@@ -516,6 +516,15 @@ classdef YWatchdogProxy < YoctoProxyAPI.YFunctionProxy
             obj.SetPropInt64(-2015086004, newVal);
         end
 
+        function result = get_lastTrigger(obj)
+            % Returns the number of seconds spent since the last output power-up event.
+            %
+            % @return an integer corresponding to the number of seconds spent since the last output power-up event
+            %
+            % On failure, throws an exception or returns YWatchdog.LASTTRIGGER_INVALID.
+            result = obj.InvokeMethod_D(1845132316);
+        end
+
         function result = toggle(obj)
             % Switch the relay to the opposite state.
             %

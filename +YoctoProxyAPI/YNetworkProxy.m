@@ -1,5 +1,5 @@
 % YNetworkProxy: network interface control interface, available for instance in the
-% YoctoHub-Ethernet, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+% YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR or the YoctoHub-Wireless-n
 % 
 % YNetworkProxy objects provide access to TCP/IP parameters of Yoctopuce devices that include a
 % built-in network interface.
@@ -45,7 +45,7 @@
 % //--- (YNetwork declaration)
 classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
     % YNetworkProxy: network interface control interface, available for instance in the
-    % YoctoHub-Ethernet, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+    % YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR or the YoctoHub-Wireless-n
     % 
     % YNetworkProxy objects provide access to TCP/IP parameters of Yoctopuce devices that include a
     % built-in network interface.
@@ -249,6 +249,15 @@ classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns YNetwork.ROUTER_INVALID.
             result = obj.InvokeMethod_S(70211729);
+        end
+
+        function result = get_currentDNS(obj)
+            % Returns the IP address of the DNS server currently used by the device.
+            %
+            % @return a string corresponding to the IP address of the DNS server currently used by the device
+            %
+            % On failure, throws an exception or returns YNetwork.CURRENTDNS_INVALID.
+            result = obj.InvokeMethod_S(-589221023);
         end
 
         function result = get_ipConfig(obj)

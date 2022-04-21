@@ -147,7 +147,7 @@ classdef YMultiSensControllerProxy < YoctoProxyAPI.YFunctionProxy
             % saveToFlash() method of the module if the
             % modification must be kept. It is recommended to restart the
             % device with  module->reboot() after modifying
-            % (and saving) this settings
+            % (and saving) this settings.
             %
             % @param newval : an integer corresponding to the number of sensors to poll
             %
@@ -200,13 +200,26 @@ classdef YMultiSensControllerProxy < YoctoProxyAPI.YFunctionProxy
             obj.InvokeMethod_d(-1599705991, newVal);
         end
 
+        function result = get_lastAddressDetected(obj)
+            % Returns the I2C address of the most recently detected sensor. This method can
+            % be used to in case of I2C communication error to determine what is the
+            % last sensor that can be reached, or after a call to setupAddress
+            % to make sure that the address change was properly processed.
+            %
+            % @return an integer corresponding to the I2C address of the most recently detected sensor
+            %
+            % On failure, throws an exception or returns YMultiSensController.LASTADDRESSDETECTED_INVALID.
+            result = obj.InvokeMethod_D(-1943903437);
+        end
+
         function result = setupAddress(obj, addr)
             % Configures the I2C address of the only sensor connected to the device.
             % It is recommended to put the the device in maintenance mode before
             % changing sensor addresses.  This method is only intended to work with a single
-            % sensor connected to the device, if several sensors are connected, the result
+            % sensor connected to the device. If several sensors are connected, the result
             % is unpredictable.
-            % Note that the device is probably expecting to find a string of sensors with specific
+            %
+            % Note that the device is expecting to find a sensor or a string of sensors with specific
             % addresses. Check the device documentation to find out which addresses should be used.
             %
             % @param addr : new address of the connected sensor
@@ -214,6 +227,17 @@ classdef YMultiSensControllerProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %         On failure, throws an exception or returns a negative error code.
             result = obj.InvokeMethod_Dd(-1992262065, addr);
+        end
+
+        function result = get_sensorAddress(obj)
+            % Triggers the I2C address detection procedure for the only sensor connected to the device.
+            % This method is only intended to work with a single sensor connected to the device.
+            % If several sensors are connected, the result is unpredictable.
+            %
+            % @return the I2C address of the detected sensor, or 0 if none is found
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_D(-1230222336);
         end
 
         % //--- (end of YMultiSensController accessors declaration)
