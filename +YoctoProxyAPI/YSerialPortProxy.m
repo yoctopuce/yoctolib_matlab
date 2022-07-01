@@ -338,8 +338,8 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a value among YSerialPort.VOLTAGELEVEL_OFF, YSerialPort.VOLTAGELEVEL_TTL3V,
             % YSerialPort.VOLTAGELEVEL_TTL3VR, YSerialPort.VOLTAGELEVEL_TTL5V,
             % YSerialPort.VOLTAGELEVEL_TTL5VR, YSerialPort.VOLTAGELEVEL_RS232,
-            % YSerialPort.VOLTAGELEVEL_RS485 and YSerialPort.VOLTAGELEVEL_TTL1V8 corresponding to the
-            % voltage level used on the serial line
+            % YSerialPort.VOLTAGELEVEL_RS485, YSerialPort.VOLTAGELEVEL_TTL1V8 and
+            % YSerialPort.VOLTAGELEVEL_SDI12 corresponding to the voltage level used on the serial line
             %
             % On failure, throws an exception or returns YSerialPort.VOLTAGELEVEL_INVALID.
             result = YoctoProxyAPI.EnumVoltageLevel(obj.InvokeMethod_D(1576391098));
@@ -357,8 +357,9 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @param newval : a value among YSerialPort.VOLTAGELEVEL_OFF,
             % YSerialPort.VOLTAGELEVEL_TTL3V, YSerialPort.VOLTAGELEVEL_TTL3VR,
             % YSerialPort.VOLTAGELEVEL_TTL5V, YSerialPort.VOLTAGELEVEL_TTL5VR,
-            % YSerialPort.VOLTAGELEVEL_RS232, YSerialPort.VOLTAGELEVEL_RS485 and
-            % YSerialPort.VOLTAGELEVEL_TTL1V8 corresponding to the voltage type used on the serial line
+            % YSerialPort.VOLTAGELEVEL_RS232, YSerialPort.VOLTAGELEVEL_RS485,
+            % YSerialPort.VOLTAGELEVEL_TTL1V8 and YSerialPort.VOLTAGELEVEL_SDI12 corresponding to the
+            % voltage type used on the serial line
             %
             % @return 0 if the call succeeds.
             %

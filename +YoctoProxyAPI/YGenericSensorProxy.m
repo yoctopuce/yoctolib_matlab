@@ -312,9 +312,8 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a value among YGenericSensor.SIGNALSAMPLING_HIGH_RATE,
             % YGenericSensor.SIGNALSAMPLING_HIGH_RATE_FILTERED, YGenericSensor.SIGNALSAMPLING_LOW_NOISE,
-            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED and
-            % YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE corresponding to the electric signal
-            % sampling method to use
+            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED, YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE
+            % and YGenericSensor.SIGNALSAMPLING_AC corresponding to the electric signal sampling method to use
             %
             % On failure, throws an exception or returns YGenericSensor.SIGNALSAMPLING_INVALID.
             result = YoctoProxyAPI.EnumSignalSampling(obj.InvokeMethod_D(1665292824));
@@ -332,9 +331,8 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @param newval : a value among YGenericSensor.SIGNALSAMPLING_HIGH_RATE,
             % YGenericSensor.SIGNALSAMPLING_HIGH_RATE_FILTERED, YGenericSensor.SIGNALSAMPLING_LOW_NOISE,
-            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED and
-            % YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE corresponding to the electric signal
-            % sampling method to use
+            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED, YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE
+            % and YGenericSensor.SIGNALSAMPLING_AC corresponding to the electric signal sampling method to use
             %
             % @return 0 if the call succeeds.
             %

@@ -68,6 +68,8 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
     properties (Transient, Nontunable, SetAccess = private)
         % MaxLedCount Maximum number of LEDs that the device can handle
         MaxLedCount (1,1) int32
+        % DynamicLedCount Maximum number of LEDs that can perform autonomous transitions and sequences
+        DynamicLedCount (1,1) int32
         % BlinkSeqMaxCount Maximum number of sequences that the device can handle
         BlinkSeqMaxCount (1,1) int32
         % BlinkSeqMaxSize Maximum length of sequences
@@ -124,7 +126,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'ColorLedCluster settings', ...
-                'PropertyList', {'ActiveLedCount','LedType','MaxLedCount','BlinkSeqMaxCount','BlinkSeqMaxSize'});
+                'PropertyList', {'ActiveLedCount','LedType','MaxLedCount','DynamicLedCount','BlinkSeqMaxCount','BlinkSeqMaxSize'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -225,6 +227,20 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
 
         function result = get.MaxLedCount(obj)
             result = obj.GetPropInt32(-1243181488);
+        end
+
+        function result = get_dynamicLedCount(obj)
+            % Returns the maximum number of LEDs that can perform autonomous transitions and sequences.
+            %
+            % @return an integer corresponding to the maximum number of LEDs that can perform
+            % autonomous transitions and sequences
+            %
+            % On failure, throws an exception or returns YColorLedCluster.DYNAMICLEDCOUNT_INVALID.
+            result = obj.InvokeMethod_D(-1963099763);
+        end
+
+        function result = get.DynamicLedCount(obj)
+            result = obj.GetPropInt32(-248476858);
         end
 
         function result = get_blinkSeqMaxCount(obj)

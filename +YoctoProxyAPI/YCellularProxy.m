@@ -609,6 +609,16 @@ classdef YCellularProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Ss(-1106449621, mccmnc);
         end
 
+        function result = get_communicationProfiles(obj)
+            % Returns the list available radio communication profiles, as a string array
+            % (YoctoHub-GSM-4G only).
+            % Each string is a made of a numerical ID, followed by a colon,
+            % followed by the profile description.
+            %
+            % @return a list of string describing available radio communication profiles.
+            result = obj.InvokeMethod_xS(1599782398);
+        end
+
         % //--- (end of YCellular accessors declaration)
     end
 end

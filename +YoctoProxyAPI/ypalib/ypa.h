@@ -192,6 +192,7 @@ typedef int32_t ypaHandle;
 #define YPA_DisplayWidth                ((ypaHandle)-2086327159)    // Int32
 #define YPA_DutyCycle                   ((ypaHandle)44595434)       // Double
 #define YPA_DutyCycleAtPowerOn          ((ypaHandle)-113709649)     // Double
+#define YPA_DynamicLedCount             ((ypaHandle)-248476858)     // Int32
 #define YPA_EdgePerCycle                ((ypaHandle)1810894099)     // Int32
 #define YPA_EdgesPerCycle               ((ypaHandle)2125116694)     // Int32
 #define YPA_EnableData                  ((ypaHandle)229750544)      // Int32
@@ -466,6 +467,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_chainDiags_D            ((ypaHandle)-1109019444)    // e.g. InputChain: int32_t* resPtr
 #define YPA_get_channel_D               ((ypaHandle)-1801753993)    // e.g. Wireless: int32_t* resPtr
 #define YPA_get_childCount_D            ((ypaHandle)-1950607263)    // e.g. DaisyChain: int32_t* resPtr
+#define YPA_get_communicationProfiles_xS ((ypaHandle)1599782398)     // e.g. Cellular: char* resPtr, size_t* resSize
 #define YPA_get_compTempAvg_F           ((ypaHandle)855390688)      // e.g. WeighScale: double* resPtr
 #define YPA_get_compTempChg_F           ((ypaHandle)-117814740)     // e.g. WeighScale: double* resPtr
 #define YPA_get_compensation_F          ((ypaHandle)-1922871604)    // e.g. WeighScale: double* resPtr
@@ -512,6 +514,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_drivingForce_F          ((ypaHandle)541265739)      // e.g. Motor: double* resPtr
 #define YPA_get_dutyCycleAtPowerOn_F    ((ypaHandle)-1827887971)    // e.g. PwmOutput: double* resPtr
 #define YPA_get_dutyCycle_F             ((ypaHandle)-970911217)     // e.g. PwmOutput: double* resPtr
+#define YPA_get_dynamicLedCount_D       ((ypaHandle)-1963099763)    // e.g. ColorLedCluster: int32_t* resPtr
 #define YPA_get_edgePerCycle_D          ((ypaHandle)960098279)      // e.g. QuadratureDecoder: int32_t* resPtr
 #define YPA_get_edgesPerCycle_D         ((ypaHandle)1548374183)     // e.g. QuadratureDecoder: int32_t* resPtr
 #define YPA_get_edgesPerPeriod_D        ((ypaHandle)1472768428)     // e.g. PwmInput: int32_t* resPtr
