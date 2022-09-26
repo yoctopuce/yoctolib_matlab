@@ -1,3 +1,4 @@
-Matlab v1.10.50357
+Matlab v1.10.51050
 
-- Add support for retrieving communication profiles list on YoctoHub-GSM-4G
+- Remove "SIM ICCID select" profile from list returned by get_communicationProfiles
+- Fix potential socket leak on Linux

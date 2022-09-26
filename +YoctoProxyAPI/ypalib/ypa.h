@@ -504,6 +504,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_dilution_F              ((ypaHandle)1906606381)     // e.g. Gps: double* resPtr
 #define YPA_get_direction_D             ((ypaHandle)1790983495)     // e.g. SnoopingRecord: int32_t* resPtr
 #define YPA_get_direction_F             ((ypaHandle)-2066850709)    // e.g. Gps: double* resPtr
+#define YPA_get_disableHostSync_D       ((ypaHandle)-1416702946)    // e.g. RealTimeClock: int32_t* resPtr
 #define YPA_get_discoverable_D          ((ypaHandle)-1567888708)    // e.g. Network: int32_t* resPtr
 #define YPA_get_displayHeight_D         ((ypaHandle)-1640661886)    // e.g. Display: int32_t* resPtr
 #define YPA_get_displayLayer_Hd         ((ypaHandle)-1569211084)    // e.g. Display: int32_t* resHdlPtr, int32_t layerId
@@ -937,6 +938,7 @@ typedef int32_t ypaHandle;
 #define YPA_set_defaultPage_s           ((ypaHandle)701520554)      // e.g. Network: char* newval
 #define YPA_set_detectionHysteresis_d   ((ypaHandle)-1322314880)    // e.g. Proximity: int32_t newval
 #define YPA_set_detectionThreshold_d    ((ypaHandle)-2079224851)    // e.g. Proximity: int32_t newval
+#define YPA_set_disableHostSync_d       ((ypaHandle)-906108287)     // e.g. RealTimeClock: int32_t newval
 #define YPA_set_discoverable_d          ((ypaHandle)-1125236374)    // e.g. Network: int32_t newval
 #define YPA_set_displayedText_s         ((ypaHandle)-1969519654)    // e.g. SegmentedDisplay: char* newval
 #define YPA_set_drivingForce_f          ((ypaHandle)1042719901)     // e.g. Motor: double newval

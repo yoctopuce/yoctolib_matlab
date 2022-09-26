@@ -214,6 +214,34 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
             result = YoctoProxyAPI.EnumTimeSet(obj.InvokeMethod_D(1987268889));
         end
 
+        function result = get_disableHostSync(obj)
+            % Returns true if the automatic clock synchronization with host has been disabled,
+            % and false otherwise.
+            %
+            % @return either YRealTimeClock.DISABLEHOSTSYNC_FALSE or
+            % YRealTimeClock.DISABLEHOSTSYNC_TRUE, according to true if the automatic clock
+            % synchronization with host has been disabled,
+            %         and false otherwise
+            %
+            % On failure, throws an exception or returns YRealTimeClock.DISABLEHOSTSYNC_INVALID.
+            result = YoctoProxyAPI.EnumDisableHostSync(obj.InvokeMethod_D(-1416702946));
+        end
+
+        function set_disableHostSync(obj, newVal)
+            % Changes the automatic clock synchronization with host working state.
+            % To disable automatic synchronization, set the value to true.
+            % To enable automatic synchronization (default), set the value to false.
+            %
+            % @param newval : either YRealTimeClock.DISABLEHOSTSYNC_FALSE or
+            % YRealTimeClock.DISABLEHOSTSYNC_TRUE, according to the automatic clock synchronization
+            % with host working state
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-906108287, newVal);
+        end
+
         % //--- (end of YRealTimeClock accessors declaration)
     end
 end
