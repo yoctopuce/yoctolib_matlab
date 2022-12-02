@@ -1,5 +1,5 @@
 % YGenericSensorProxy: GenericSensor control interface, available for instance in the Yocto-0-10V-Rx,
-% the Yocto-4-20mA-Rx, the Yocto-SPI or the Yocto-milliVolt-Rx
+% the Yocto-4-20mA-Rx, the Yocto-Bridge or the Yocto-milliVolt-Rx
 % 
 % The YGenericSensorProxy class allows you to read and configure Yoctopuce signal transducers. It
 % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
@@ -47,7 +47,7 @@
 % //--- (YGenericSensor declaration)
 classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
     % YGenericSensorProxy: GenericSensor control interface, available for instance in the Yocto-0-10V-Rx,
-    % the Yocto-4-20mA-Rx, the Yocto-SPI or the Yocto-milliVolt-Rx
+    % the Yocto-4-20mA-Rx, the Yocto-Bridge or the Yocto-milliVolt-Rx
     % 
     % The YGenericSensorProxy class allows you to read and configure Yoctopuce signal transducers. It
     % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback

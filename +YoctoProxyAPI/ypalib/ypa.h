@@ -341,6 +341,7 @@ typedef int32_t ypaHandle;
 #define YPA__AT_Ss                      ((ypaHandle)1386001681)     // e.g. Cellular: char* resPtr, size_t* resSize, char* cmd
 #define YPA_abortAndBrake_D             ((ypaHandle)-2142153652)    // e.g. StepperMotor: int32_t* resPtr
 #define YPA_abortAndHiZ_D               ((ypaHandle)711487166)      // e.g. StepperMotor: int32_t* resPtr
+#define YPA_addFileToHTTPCallback_Ds    ((ypaHandle)1703241451)     // e.g. Module: int32_t* resPtr, char* filename
 #define YPA_addFreqMoveToPlaySeq_Ddd    ((ypaHandle)-1172786252)    // e.g. Buzzer: int32_t* resPtr, int32_t freq, int32_t msDelay
 #define YPA_addHslMoveToBlinkSeq_Ddd    ((ypaHandle)1555703222)     // e.g. ColorLed: int32_t* resPtr, int32_t HSLcolor, int32_t msDelay
 #define YPA_addHslMoveToBlinkSeq_Dddd   ((ypaHandle)-1165760944)    // e.g. ColorLedCluster: int32_t* resPtr, int32_t seqIndex, int32_t hslValue, int32_t delay

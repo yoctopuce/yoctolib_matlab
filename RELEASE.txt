@@ -1,4 +1,4 @@
-Matlab v1.10.51050
+Matlab v1.10.52094
 
-- Remove "SIM ICCID select" profile from list returned by get_communicationProfiles
-- Fix potential socket leak on Linux
+- Add support for connecting to VirtualHub-4web
+- Improve error message when YoctoHub is not reacheable.
