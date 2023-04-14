@@ -1494,6 +1494,74 @@ classdef YFunctionProxy < matlab.System
             end
         end
 
+        function result = InvokeMethod_Dxs(obj, methodHandle, arg2)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_Dxs', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    libpointer('int32Ptr', int32(0)), arg2);
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_Dxs', errmsg);
+                    throw(ME)
+                end
+                result = pRes;
+            end
+        end
+
+        function result = InvokeMethod_xF(obj, methodHandle)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~, pRes, pCount ] = calllib('ypa', 'ypaInvokeMethod_xF', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    libpointer('doublePtr', zeros(1,1024,'double')), SizeT(1024));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_xF', errmsg);
+                    throw(ME)
+                end
+                result = pRes(1:pCount);
+            end
+        end
+
+        function result = InvokeMethod_C(obj, methodHandle)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~ ] = calllib('ypa', 'ypaInvokeMethod_C', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    );
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_C', errmsg);
+                    throw(ME)
+                end
+                result = 0;
+            end
+        end
+
+        function result = InvokeMethod_Cd(obj, methodHandle, arg2)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~ ] = calllib('ypa', 'ypaInvokeMethod_Cd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    int32(arg2));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_Cd', errmsg);
+                    throw(ME)
+                end
+                result = 0;
+            end
+        end
+
         % //--- (end of generated code: YFunction yapiwrapper)
         
     end
@@ -1631,10 +1699,11 @@ classdef YFunctionProxy < matlab.System
         end
 
         function result = isReadOnly(obj)
-            % Test if the function is readOnly. Return true if the function is write protected
-            % or that the function is not available.
+            % Indicates whether changes to the function are prohibited or allowed.
+            % Returns true if the function is blocked by an admin password
+            % or if the function is not available.
             %
-            % @return true if the function is readOnly or not online.
+            % @return true if the function is write-protected or not online.
             result = obj.InvokeMethod_B(913241503);
         end
 

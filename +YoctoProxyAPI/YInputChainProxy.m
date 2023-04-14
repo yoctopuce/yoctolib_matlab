@@ -49,6 +49,8 @@ classdef YInputChainProxy < YoctoProxyAPI.YFunctionProxy
     properties (Transient, Nontunable)
         % ExpectedNodes Number of nodes expected in the chain
         ExpectedNodes (1,1) int32
+        % LoopbackTest Activation state of the exhaustive chain connectivity test
+        LoopbackTest (1,1) YoctoProxyAPI.EnumLoopbackTest
         % RefreshRate Desired refresh rate, measured in Hz
         RefreshRate (1,1) int32
         % WatchdogPeriod Wait time in seconds before triggering an inactivity
@@ -108,7 +110,7 @@ classdef YInputChainProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'InputChain settings', ...
-                'PropertyList', {'ExpectedNodes','RefreshRate','WatchdogPeriod'});
+                'PropertyList', {'ExpectedNodes','LoopbackTest','RefreshRate','WatchdogPeriod'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -190,6 +192,9 @@ classdef YInputChainProxy < YoctoProxyAPI.YFunctionProxy
             % The connectivity test requires a cable connecting the end of the chain
             % to the loopback test connector.
             %
+            % If you want the change to be kept after a device reboot,
+            % make sure  to call the matching module saveToFlash().
+            %
             % @param newval : either YInputChain.LOOPBACKTEST_OFF or YInputChain.LOOPBACKTEST_ON,
             % according to the activation state of the exhaustive chain connectivity test
             %
@@ -197,6 +202,15 @@ classdef YInputChainProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns a negative error code.
             obj.InvokeMethod_d(-349490652, newVal);
+        end
+
+        function result = get.LoopbackTest(obj)
+            result = YoctoProxyAPI.EnumLoopbackTest(obj.GetPropInt32(-614787111));
+        end
+
+        function set.LoopbackTest(obj, newVal)
+            obj.LoopbackTest = newVal;
+            obj.SetPropInt32(-614787111, newVal);
         end
 
         function result = get_refreshRate(obj)
