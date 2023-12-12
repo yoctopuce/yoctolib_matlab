@@ -445,6 +445,17 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Ds(-1387417540, settings);
         end
 
+        function result = addFileToHTTPCallback(obj, filename)
+            % Adds a file to the uploaded data at the next HTTP callback.
+            % This function only affects the next HTTP callback and only works in
+            % HTTP callback mode.
+            %
+            % @param filename : the name of the file to upload at the next HTTP callback
+            %
+            % @return nothing.
+            result = obj.InvokeMethod_Ds(1703241451, filename);
+        end
+
         function result = get_hardwareId(obj)
             % Returns the unique hardware identifier of the module.
             % The unique hardware identifier is made of the device serial

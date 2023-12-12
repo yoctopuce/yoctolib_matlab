@@ -43,5 +43,6 @@ classdef EnumLedType < int32
         LedType_INVALID (0)
         LedType_RGB (1)
         LedType_RGBW (2)
+        LedType_WS2811 (3)
     end
 end

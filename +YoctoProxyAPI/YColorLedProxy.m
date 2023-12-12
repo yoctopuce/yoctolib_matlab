@@ -198,9 +198,10 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
         end
 
         function set_hslColor(obj, newVal)
-            % Changes the current color of the LED, using a color HSL. Encoding is done as follows: 0xHHSSLL.
+            % Changes the current color of the LED, using a specific HSL color. Encoding is done as
+            % follows: 0xHHSSLL.
             %
-            % @param newval : an integer corresponding to the current color of the LED, using a color HSL
+            % @param newval : an integer corresponding to the current color of the LED, using a specific HSL color
             %
             % @return 0 if the call succeeds.
             %
@@ -288,12 +289,12 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
         end
 
         function result = get_blinkSeqSignature(obj)
-            % Return the blinking sequence signature. Since blinking
+            % Returns the blinking sequence signature. Since blinking
             % sequences cannot be read from the device, this can be used
             % to detect if a specific blinking sequence is already
             % programmed.
             %
-            % @return an integer
+            % @return an integer corresponding to the blinking sequence signature
             %
             % On failure, throws an exception or returns YColorLed.BLINKSEQSIGNATURE_INVALID.
             result = obj.InvokeMethod_D(1674038915);

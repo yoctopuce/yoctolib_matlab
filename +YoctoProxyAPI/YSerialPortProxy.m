@@ -338,8 +338,8 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @return a value among YSerialPort.VOLTAGELEVEL_OFF, YSerialPort.VOLTAGELEVEL_TTL3V,
             % YSerialPort.VOLTAGELEVEL_TTL3VR, YSerialPort.VOLTAGELEVEL_TTL5V,
             % YSerialPort.VOLTAGELEVEL_TTL5VR, YSerialPort.VOLTAGELEVEL_RS232,
-            % YSerialPort.VOLTAGELEVEL_RS485 and YSerialPort.VOLTAGELEVEL_TTL1V8 corresponding to the
-            % voltage level used on the serial line
+            % YSerialPort.VOLTAGELEVEL_RS485, YSerialPort.VOLTAGELEVEL_TTL1V8 and
+            % YSerialPort.VOLTAGELEVEL_SDI12 corresponding to the voltage level used on the serial line
             %
             % On failure, throws an exception or returns YSerialPort.VOLTAGELEVEL_INVALID.
             result = YoctoProxyAPI.EnumVoltageLevel(obj.InvokeMethod_D(1576391098));
@@ -357,8 +357,9 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             % @param newval : a value among YSerialPort.VOLTAGELEVEL_OFF,
             % YSerialPort.VOLTAGELEVEL_TTL3V, YSerialPort.VOLTAGELEVEL_TTL3VR,
             % YSerialPort.VOLTAGELEVEL_TTL5V, YSerialPort.VOLTAGELEVEL_TTL5VR,
-            % YSerialPort.VOLTAGELEVEL_RS232, YSerialPort.VOLTAGELEVEL_RS485 and
-            % YSerialPort.VOLTAGELEVEL_TTL1V8 corresponding to the voltage type used on the serial line
+            % YSerialPort.VOLTAGELEVEL_RS232, YSerialPort.VOLTAGELEVEL_RS485,
+            % YSerialPort.VOLTAGELEVEL_TTL1V8 and YSerialPort.VOLTAGELEVEL_SDI12 corresponding to the
+            % voltage type used on the serial line
             %
             % @return 0 if the call succeeds.
             %
@@ -674,6 +675,20 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns a negative error code.
             result = obj.InvokeMethod_Sd(-998175745, nBytes);
+        end
+
+        function result = sendBreak(obj, duration)
+            % Emits a BREAK condition on the serial interface. When the specified
+            % duration is 0, the BREAK signal will be exactly one character wide.
+            % When the duration is between 1 and 100, the BREAK condition will
+            % be hold for the specified number of milliseconds.
+            %
+            % @param duration : 0 for a standard BREAK, or duration between 1 and 100 ms
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_Dd(2114631987, duration);
         end
 
         function result = set_RTS(obj, val)

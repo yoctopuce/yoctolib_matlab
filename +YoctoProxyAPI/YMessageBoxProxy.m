@@ -51,6 +51,8 @@ classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
     % devices.
 
     properties (Transient, Nontunable)
+        % Obey Phone number authorized to send remote management commands
+        Obey (1,:) char
     end
 
     properties (Transient, Nontunable, SetAccess = private)
@@ -108,7 +110,7 @@ classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'MessageBox settings', ...
-                'PropertyList', {'SlotsInUse'});
+                'PropertyList', {'SlotsInUse','Obey'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -193,6 +195,50 @@ classdef YMessageBoxProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns a negative error code.
             obj.InvokeMethod_d(536853587, newVal);
+        end
+
+        function result = get_obey(obj)
+            % Returns the phone number authorized to send remote management commands.
+            % When a phone number is specified, the hub will take contre of all incoming
+            % SMS messages: it will execute commands coming from the authorized number,
+            % and delete all messages once received (whether authorized or not).
+            % If you need to receive SMS messages using your own software, leave this
+            % attribute empty.
+            %
+            % @return a string corresponding to the phone number authorized to send remote management commands
+            %
+            % On failure, throws an exception or returns YMessageBox.OBEY_INVALID.
+            result = obj.InvokeMethod_S(-1190446791);
+        end
+
+        function set_obey(obj, newVal)
+            % Changes the phone number authorized to send remote management commands.
+            % The phone number usually starts with a '+' and does not include spacers.
+            % When a phone number is specified, the hub will take contre of all incoming
+            % SMS messages: it will execute commands coming from the authorized number,
+            % and delete all messages once received (whether authorized or not).
+            % If you need to receive SMS messages using your own software, leave this
+            % attribute empty. Remember to call the saveToFlash() method of the
+            % module if the modification must be kept.
+            %
+            % This feature is only available since YoctoHub-GSM-4G.
+            %
+            % @param newval : a string corresponding to the phone number authorized to send remote
+            % management commands
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_s(-1407174557, newVal);
+        end
+
+        function result = get.Obey(obj)
+            result = obj.GetPropString(-1741431229);
+        end
+
+        function set.Obey(obj, newVal)
+            obj.Obey = newVal;
+            obj.SetPropString(-1741431229, newVal);
         end
 
         function result = clearPduCounters(obj)

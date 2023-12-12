@@ -44,5 +44,6 @@ classdef EnumInputType < int32
         InputType_ANALOG_FAST (1)
         InputType_DIGITAL4 (2)
         InputType_ANALOG_SMOOTH (3)
+        InputType_DIGITAL_FAST (4)
     end
 end

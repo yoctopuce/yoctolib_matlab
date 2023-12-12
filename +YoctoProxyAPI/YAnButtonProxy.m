@@ -382,9 +382,9 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_inputType(obj)
             % Returns the decoding method applied to the input (analog or multiplexed binary switches).
             %
-            % @return a value among YAnButton.INPUTTYPE_ANALOG_FAST, YAnButton.INPUTTYPE_DIGITAL4 and
-            % YAnButton.INPUTTYPE_ANALOG_SMOOTH corresponding to the decoding method applied to the
-            % input (analog or multiplexed binary switches)
+            % @return a value among YAnButton.INPUTTYPE_ANALOG_FAST, YAnButton.INPUTTYPE_DIGITAL4,
+            % YAnButton.INPUTTYPE_ANALOG_SMOOTH and YAnButton.INPUTTYPE_DIGITAL_FAST corresponding to
+            % the decoding method applied to the input (analog or multiplexed binary switches)
             %
             % On failure, throws an exception or returns YAnButton.INPUTTYPE_INVALID.
             result = YoctoProxyAPI.EnumInputType(obj.InvokeMethod_D(-790631864));
@@ -395,8 +395,9 @@ classdef YAnButtonProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the saveToFlash() method of the module if the modification must be kept.
             %
             % @param newval : a value among YAnButton.INPUTTYPE_ANALOG_FAST,
-            % YAnButton.INPUTTYPE_DIGITAL4 and YAnButton.INPUTTYPE_ANALOG_SMOOTH corresponding to the
-            % decoding method applied to the input (analog or multiplexed binary switches)
+            % YAnButton.INPUTTYPE_DIGITAL4, YAnButton.INPUTTYPE_ANALOG_SMOOTH and
+            % YAnButton.INPUTTYPE_DIGITAL_FAST corresponding to the decoding method applied to the
+            % input (analog or multiplexed binary switches)
             %
             % @return 0 if the call succeeds.
             %

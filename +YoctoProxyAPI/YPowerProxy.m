@@ -138,26 +138,37 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
     methods
         % //--- (YPower accessors declaration)
 
-        function result = get_cosPhi(obj)
-            % Returns the power factor (the ratio between the real power consumed,
-            % measured in W, and the apparent power provided, measured in VA).
+        function result = get_powerFactor(obj)
+            % Returns the power factor (PF), i.e. ratio between the active power consumed (in W)
+            % and the apparent power provided (VA).
             %
-            % @return a floating point number corresponding to the power factor (the ratio between
-            % the real power consumed,
-            %         measured in W, and the apparent power provided, measured in VA)
+            % @return a floating point number corresponding to the power factor (PF), i.e
+            %
+            % On failure, throws an exception or returns YPower.POWERFACTOR_INVALID.
+            result = obj.InvokeMethod_F(740487090);
+        end
+
+        function result = get_cosPhi(obj)
+            % Returns the Displacement Power factor (DPF), i.e. cosine of the phase shift between
+            % the voltage and current fundamentals.
+            % On the Yocto-Watt (V1), the value returned by this method correponds to the
+            % power factor as this device is cannot estimate the true DPF.
+            %
+            % @return a floating point number corresponding to the Displacement Power factor (DPF), i.e
             %
             % On failure, throws an exception or returns YPower.COSPHI_INVALID.
             result = obj.InvokeMethod_F(-639470758);
         end
 
         function result = get_meter(obj)
-            % Returns the energy counter, maintained by the wattmeter by integrating the power
-            % consumption over time,
-            % but only when positive. Note that this counter is reset at each start of the device.
+            % Returns the energy counter, maintained by the wattmeter by integrating the
+            % power consumption over time. This is the sum of forward and backwad energy transfers,
+            % if you are insterested in only one direction, use  get_receivedEnergyMeter() or
+            % get_deliveredEnergyMeter(). Note that this counter is reset at each start of the device.
             %
             % @return a floating point number corresponding to the energy counter, maintained by the
-            % wattmeter by integrating the power consumption over time,
-            %         but only when positive
+            % wattmeter by integrating the
+            %         power consumption over time
             %
             % On failure, throws an exception or returns YPower.METER_INVALID.
             result = obj.InvokeMethod_F(1140090146);

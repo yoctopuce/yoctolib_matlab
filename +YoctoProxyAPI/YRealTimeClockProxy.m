@@ -1,5 +1,5 @@
 % YRealTimeClockProxy: real-time clock control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+% YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
 % 
 % The YRealTimeClockProxy class provide access to the embedded real-time clock available on some
 % Yoctopuce devices. It can provide current date and time, even after a power outage lasting several
@@ -48,7 +48,7 @@
 % //--- (YRealTimeClock declaration)
 classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
     % YRealTimeClockProxy: real-time clock control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
     % 
     % The YRealTimeClockProxy class provide access to the embedded real-time clock available on some
     % Yoctopuce devices. It can provide current date and time, even after a power outage lasting several
@@ -59,6 +59,8 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
     properties (Transient, Nontunable)
         % UtcOffset Number of seconds between current time and UTC time (time zone)
         UtcOffset (1,1) int32
+        % DisableHostSync True if the automatic clock synchronization with host has been disabled,
+        DisableHostSync (1,1) YoctoProxyAPI.EnumDisableHostSync
     end
 
     properties (Transient, Nontunable, SetAccess = private)
@@ -114,7 +116,7 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'RealTimeClock settings', ...
-                'PropertyList', {'UtcOffset'});
+                'PropertyList', {'UtcOffset','DisableHostSync'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -212,6 +214,46 @@ classdef YRealTimeClockProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns YRealTimeClock.TIMESET_INVALID.
             result = YoctoProxyAPI.EnumTimeSet(obj.InvokeMethod_D(1987268889));
+        end
+
+        function result = get_disableHostSync(obj)
+            % Returns true if the automatic clock synchronization with host has been disabled,
+            % and false otherwise.
+            %
+            % @return either YRealTimeClock.DISABLEHOSTSYNC_FALSE or
+            % YRealTimeClock.DISABLEHOSTSYNC_TRUE, according to true if the automatic clock
+            % synchronization with host has been disabled,
+            %         and false otherwise
+            %
+            % On failure, throws an exception or returns YRealTimeClock.DISABLEHOSTSYNC_INVALID.
+            result = YoctoProxyAPI.EnumDisableHostSync(obj.InvokeMethod_D(-1416702946));
+        end
+
+        function set_disableHostSync(obj, newVal)
+            % Changes the automatic clock synchronization with host working state.
+            % To disable automatic synchronization, set the value to true.
+            % To enable automatic synchronization (default), set the value to false.
+            %
+            % If you want the change to be kept after a device reboot,
+            % make sure  to call the matching module saveToFlash().
+            %
+            % @param newval : either YRealTimeClock.DISABLEHOSTSYNC_FALSE or
+            % YRealTimeClock.DISABLEHOSTSYNC_TRUE, according to the automatic clock synchronization
+            % with host working state
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-906108287, newVal);
+        end
+
+        function result = get.DisableHostSync(obj)
+            result = YoctoProxyAPI.EnumDisableHostSync(obj.GetPropInt32(2143161149));
+        end
+
+        function set.DisableHostSync(obj, newVal)
+            obj.DisableHostSync = newVal;
+            obj.SetPropInt32(2143161149, newVal);
         end
 
         % //--- (end of YRealTimeClock accessors declaration)

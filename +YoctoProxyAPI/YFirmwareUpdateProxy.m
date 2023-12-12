@@ -66,9 +66,7 @@ classdef YFirmwareUpdateProxy < matlab.System
         % //--- (YFirmwareUpdate accessors declaration)
 
         function result = GetAllBootLoaders(obj)
-            % Returns a list of all the modules in "firmware update" mode. Only devices
-            % connected over USB are listed. For devices connected to a YoctoHub, you
-            % must connect yourself to the YoctoHub web interface.
+            % Returns a list of all the modules in "firmware update" mode.
             %
             % @return an array of strings containing the serial numbers of devices in "firmware update" mode.
             result = obj.InvokeMethod_xS(649060993);

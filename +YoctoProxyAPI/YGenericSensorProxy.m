@@ -1,5 +1,5 @@
 % YGenericSensorProxy: GenericSensor control interface, available for instance in the Yocto-0-10V-Rx,
-% the Yocto-4-20mA-Rx, the Yocto-Serial or the Yocto-milliVolt-Rx
+% the Yocto-4-20mA-Rx, the Yocto-Bridge or the Yocto-milliVolt-Rx
 % 
 % The YGenericSensorProxy class allows you to read and configure Yoctopuce signal transducers. It
 % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
@@ -47,7 +47,7 @@
 % //--- (YGenericSensor declaration)
 classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
     % YGenericSensorProxy: GenericSensor control interface, available for instance in the Yocto-0-10V-Rx,
-    % the Yocto-4-20mA-Rx, the Yocto-Serial or the Yocto-milliVolt-Rx
+    % the Yocto-4-20mA-Rx, the Yocto-Bridge or the Yocto-milliVolt-Rx
     % 
     % The YGenericSensorProxy class allows you to read and configure Yoctopuce signal transducers. It
     % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
@@ -312,9 +312,8 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @return a value among YGenericSensor.SIGNALSAMPLING_HIGH_RATE,
             % YGenericSensor.SIGNALSAMPLING_HIGH_RATE_FILTERED, YGenericSensor.SIGNALSAMPLING_LOW_NOISE,
-            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED and
-            % YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE corresponding to the electric signal
-            % sampling method to use
+            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED, YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE
+            % and YGenericSensor.SIGNALSAMPLING_AC corresponding to the electric signal sampling method to use
             %
             % On failure, throws an exception or returns YGenericSensor.SIGNALSAMPLING_INVALID.
             result = YoctoProxyAPI.EnumSignalSampling(obj.InvokeMethod_D(1665292824));
@@ -332,9 +331,8 @@ classdef YGenericSensorProxy < YoctoProxyAPI.YSensorProxy
             %
             % @param newval : a value among YGenericSensor.SIGNALSAMPLING_HIGH_RATE,
             % YGenericSensor.SIGNALSAMPLING_HIGH_RATE_FILTERED, YGenericSensor.SIGNALSAMPLING_LOW_NOISE,
-            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED and
-            % YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE corresponding to the electric signal
-            % sampling method to use
+            % YGenericSensor.SIGNALSAMPLING_LOW_NOISE_FILTERED, YGenericSensor.SIGNALSAMPLING_HIGHEST_RATE
+            % and YGenericSensor.SIGNALSAMPLING_AC corresponding to the electric signal sampling method to use
             %
             % @return 0 if the call succeeds.
             %

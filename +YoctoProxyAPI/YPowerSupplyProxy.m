@@ -1,7 +1,7 @@
 % YPowerSupplyProxy: regulated power supply control interface
 % 
 % The YPowerSupplyProxy class allows you to drive a Yoctopuce power supply. It can be use to change
-% the voltage set point, the current limit and the enable/disable the output.
+% the voltage and current limits, and to enable/disable the output.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -46,13 +46,15 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
     % YPowerSupplyProxy: regulated power supply control interface
     % 
     % The YPowerSupplyProxy class allows you to drive a Yoctopuce power supply. It can be use to change
-    % the voltage set point, the current limit and the enable/disable the output.
+    % the voltage and current limits, and to enable/disable the output.
 
     properties (Transient, Nontunable)
-        % VoltageAtStartUp Selected voltage set point at device startup, in V
-        VoltageAtStartUp (1,1) double
-        % CurrentAtStartUp Selected current limit at device startup, in mA
-        CurrentAtStartUp (1,1) double
+        % VoltageLimitAtStartUp Selected voltage limit at device startup, in V
+        VoltageLimitAtStartUp (1,1) double
+        % CurrentLimitAtStartUp Selected current limit at device startup, in mA
+        CurrentLimitAtStartUp (1,1) double
+        % PowerOutputAtStartUp Power supply output switch state
+        PowerOutputAtStartUp (1,1) YoctoProxyAPI.EnumPowerOutputAtStartUp
     end
 
     properties (Transient, Nontunable, SetAccess = private)
@@ -108,7 +110,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'PowerSupply settings', ...
-                'PropertyList', {'VoltageAtStartUp','CurrentAtStartUp'});
+                'PropertyList', {'VoltageLimitAtStartUp','CurrentLimitAtStartUp','PowerOutputAtStartUp'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -133,24 +135,24 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
     methods
         % //--- (YPowerSupply accessors declaration)
 
-        function set_voltageSetPoint(obj, newVal)
-            % Changes the voltage set point, in V.
+        function set_voltageLimit(obj, newVal)
+            % Changes the voltage limit, in V.
             %
-            % @param newval : a floating point number corresponding to the voltage set point, in V
+            % @param newval : a floating point number corresponding to the voltage limit, in V
             %
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            obj.InvokeMethod_f(-120970154, newVal);
+            obj.InvokeMethod_f(-1785777960, newVal);
         end
 
-        function result = get_voltageSetPoint(obj)
-            % Returns the voltage set point, in V.
+        function result = get_voltageLimit(obj)
+            % Returns the voltage limit, in V.
             %
-            % @return a floating point number corresponding to the voltage set point, in V
+            % @return a floating point number corresponding to the voltage limit, in V
             %
-            % On failure, throws an exception or returns YPowerSupply.VOLTAGESETPOINT_INVALID.
-            result = obj.InvokeMethod_F(-1699147063);
+            % On failure, throws an exception or returns YPowerSupply.VOLTAGELIMIT_INVALID.
+            result = obj.InvokeMethod_F(-1947559154);
         end
 
         function set_currentLimit(obj, newVal)
@@ -195,28 +197,6 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             obj.InvokeMethod_d(-1044386632, newVal);
         end
 
-        function result = get_voltageSense(obj)
-            % Returns the output voltage control point.
-            %
-            % @return either YPowerSupply.VOLTAGESENSE_INT or YPowerSupply.VOLTAGESENSE_EXT,
-            % according to the output voltage control point
-            %
-            % On failure, throws an exception or returns YPowerSupply.VOLTAGESENSE_INVALID.
-            result = YoctoProxyAPI.EnumVoltageSense(obj.InvokeMethod_D(-430910958));
-        end
-
-        function set_voltageSense(obj, newVal)
-            % Changes the voltage control point.
-            %
-            % @param newval : either YPowerSupply.VOLTAGESENSE_INT or YPowerSupply.VOLTAGESENSE_EXT,
-            % according to the voltage control point
-            %
-            % @return 0 if the call succeeds.
-            %
-            % On failure, throws an exception or returns a negative error code.
-            obj.InvokeMethod_d(-130713148, newVal);
-        end
-
         function result = get_measuredVoltage(obj)
             % Returns the measured output voltage, in V.
             %
@@ -244,25 +224,7 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_F(-1879749387);
         end
 
-        function result = get_vInt(obj)
-            % Returns the internal voltage, in V.
-            %
-            % @return a floating point number corresponding to the internal voltage, in V
-            %
-            % On failure, throws an exception or returns YPowerSupply.VINT_INVALID.
-            result = obj.InvokeMethod_F(-1714977594);
-        end
-
-        function result = get_ldoTemperature(obj)
-            % Returns the LDO temperature, in Celsius.
-            %
-            % @return a floating point number corresponding to the LDO temperature, in Celsius
-            %
-            % On failure, throws an exception or returns YPowerSupply.LDOTEMPERATURE_INVALID.
-            result = obj.InvokeMethod_F(454228482);
-        end
-
-        function set_voltageAtStartUp(obj, newVal)
+        function set_voltageLimitAtStartUp(obj, newVal)
             % Changes the voltage set point at device start up. Remember to call the matching
             % module saveToFlash() method, otherwise this call has no effect.
             %
@@ -271,29 +233,28 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            obj.InvokeMethod_f(1729905413, newVal);
+            obj.InvokeMethod_f(358177402, newVal);
         end
 
-        function result = get_voltageAtStartUp(obj)
-            % Returns the selected voltage set point at device startup, in V.
+        function result = get_voltageLimitAtStartUp(obj)
+            % Returns the selected voltage limit at device startup, in V.
             %
-            % @return a floating point number corresponding to the selected voltage set point at
-            % device startup, in V
+            % @return a floating point number corresponding to the selected voltage limit at device startup, in V
             %
-            % On failure, throws an exception or returns YPowerSupply.VOLTAGEATSTARTUP_INVALID.
-            result = obj.InvokeMethod_F(-1457210740);
+            % On failure, throws an exception or returns YPowerSupply.VOLTAGELIMITATSTARTUP_INVALID.
+            result = obj.InvokeMethod_F(285391522);
         end
 
-        function result = get.VoltageAtStartUp(obj)
-            result = obj.GetPropDouble(-2107764019);
+        function result = get.VoltageLimitAtStartUp(obj)
+            result = obj.GetPropDouble(295995621);
         end
 
-        function set.VoltageAtStartUp(obj, newVal)
-            obj.VoltageAtStartUp = newVal;
-            obj.SetPropDouble(-2107764019, newVal);
+        function set.VoltageLimitAtStartUp(obj, newVal)
+            obj.VoltageLimitAtStartUp = newVal;
+            obj.SetPropDouble(295995621, newVal);
         end
 
-        function set_currentAtStartUp(obj, newVal)
+        function set_currentLimitAtStartUp(obj, newVal)
             % Changes the current limit at device start up. Remember to call the matching
             % module saveToFlash() method, otherwise this call has no effect.
             %
@@ -302,25 +263,58 @@ classdef YPowerSupplyProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %
             % On failure, throws an exception or returns a negative error code.
-            obj.InvokeMethod_f(1709375609, newVal);
+            obj.InvokeMethod_f(745862664, newVal);
         end
 
-        function result = get_currentAtStartUp(obj)
+        function result = get_currentLimitAtStartUp(obj)
             % Returns the selected current limit at device startup, in mA.
             %
             % @return a floating point number corresponding to the selected current limit at device startup, in mA
             %
-            % On failure, throws an exception or returns YPowerSupply.CURRENTATSTARTUP_INVALID.
-            result = obj.InvokeMethod_F(-1411646992);
+            % On failure, throws an exception or returns YPowerSupply.CURRENTLIMITATSTARTUP_INVALID.
+            result = obj.InvokeMethod_F(674174672);
         end
 
-        function result = get.CurrentAtStartUp(obj)
-            result = obj.GetPropDouble(-2136585727);
+        function result = get.CurrentLimitAtStartUp(obj)
+            result = obj.GetPropDouble(-1172706664);
         end
 
-        function set.CurrentAtStartUp(obj, newVal)
-            obj.CurrentAtStartUp = newVal;
-            obj.SetPropDouble(-2136585727, newVal);
+        function set.CurrentLimitAtStartUp(obj, newVal)
+            obj.CurrentLimitAtStartUp = newVal;
+            obj.SetPropDouble(-1172706664, newVal);
+        end
+
+        function result = get_powerOutputAtStartUp(obj)
+            % Returns the power supply output switch state.
+            %
+            % @return either YPowerSupply.POWEROUTPUTATSTARTUP_OFF or
+            % YPowerSupply.POWEROUTPUTATSTARTUP_ON, according to the power supply output switch state
+            %
+            % On failure, throws an exception or returns YPowerSupply.POWEROUTPUTATSTARTUP_INVALID.
+            result = YoctoProxyAPI.EnumPowerOutputAtStartUp(obj.InvokeMethod_D(1990658881));
+        end
+
+        function set_powerOutputAtStartUp(obj, newVal)
+            % Changes the power supply output switch state at device start up. Remember to call the matching
+            % module saveToFlash() method, otherwise this call has no effect.
+            %
+            % @param newval : either YPowerSupply.POWEROUTPUTATSTARTUP_OFF or
+            % YPowerSupply.POWEROUTPUTATSTARTUP_ON, according to the power supply output switch state
+            % at device start up
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-854596049, newVal);
+        end
+
+        function result = get.PowerOutputAtStartUp(obj)
+            result = YoctoProxyAPI.EnumPowerOutputAtStartUp(obj.GetPropInt32(427039869));
+        end
+
+        function set.PowerOutputAtStartUp(obj, newVal)
+            obj.PowerOutputAtStartUp = newVal;
+            obj.SetPropInt32(427039869, newVal);
         end
 
         function result = voltageMove(obj, V_target, ms_duration)

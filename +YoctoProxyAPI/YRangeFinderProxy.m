@@ -277,7 +277,7 @@ classdef YRangeFinderProxy < YoctoProxyAPI.YSensorProxy
 
         function result = triggerSpadCalibration(obj)
             % Triggers the photon detector hardware calibration.
-            % This function is part of the calibration procedure to compensate for the the effect
+            % This function is part of the calibration procedure to compensate for the effect
             % of a cover glass. Make sure to read the chapter about hardware calibration for details
             % on the calibration procedure for proper results.
             %
@@ -302,7 +302,7 @@ classdef YRangeFinderProxy < YoctoProxyAPI.YSensorProxy
 
         function result = triggerXTalkCalibration(obj, targetDist)
             % Triggers the hardware cross-talk calibration of the distance sensor.
-            % This function is part of the calibration procedure to compensate for the the effect
+            % This function is part of the calibration procedure to compensate for the effect
             % of a cover glass. Make sure to read the chapter about hardware calibration for details
             % on the calibration procedure for proper results.
             %

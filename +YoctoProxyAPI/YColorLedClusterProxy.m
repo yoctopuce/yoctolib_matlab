@@ -1,5 +1,5 @@
 % YColorLedClusterProxy: RGB LED cluster control interface, available for instance in the
-% Yocto-Color-V2 or the Yocto-MaxiBuzzer
+% Yocto-Color-V2, the Yocto-MaxiBuzzer or the Yocto-MaxiKnob
 % 
 % The YColorLedClusterProxy class allows you to drive a color LED cluster. Unlike the
 % <tt>ColorLed</tt> class, the YColorLedClusterProxy class allows to handle several LEDs at once.
@@ -49,7 +49,7 @@
 % //--- (YColorLedCluster declaration)
 classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
     % YColorLedClusterProxy: RGB LED cluster control interface, available for instance in the
-    % Yocto-Color-V2 or the Yocto-MaxiBuzzer
+    % Yocto-Color-V2, the Yocto-MaxiBuzzer or the Yocto-MaxiKnob
     % 
     % The YColorLedClusterProxy class allows you to drive a color LED cluster. Unlike the
     % <tt>ColorLed</tt> class, the YColorLedClusterProxy class allows to handle several LEDs at once.
@@ -68,6 +68,8 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
     properties (Transient, Nontunable, SetAccess = private)
         % MaxLedCount Maximum number of LEDs that the device can handle
         MaxLedCount (1,1) int32
+        % DynamicLedCount Maximum number of LEDs that can perform autonomous transitions and sequences
+        DynamicLedCount (1,1) int32
         % BlinkSeqMaxCount Maximum number of sequences that the device can handle
         BlinkSeqMaxCount (1,1) int32
         % BlinkSeqMaxSize Maximum length of sequences
@@ -124,7 +126,7 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'ColorLedCluster settings', ...
-                'PropertyList', {'ActiveLedCount','LedType','MaxLedCount','BlinkSeqMaxCount','BlinkSeqMaxSize'});
+                'PropertyList', {'ActiveLedCount','LedType','MaxLedCount','DynamicLedCount','BlinkSeqMaxCount','BlinkSeqMaxSize'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -183,8 +185,8 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_ledType(obj)
             % Returns the RGB LED type currently handled by the device.
             %
-            % @return either YColorLedCluster.LEDTYPE_RGB or YColorLedCluster.LEDTYPE_RGBW, according
-            % to the RGB LED type currently handled by the device
+            % @return a value among YColorLedCluster.LEDTYPE_RGB, YColorLedCluster.LEDTYPE_RGBW and
+            % YColorLedCluster.LEDTYPE_WS2811 corresponding to the RGB LED type currently handled by the device
             %
             % On failure, throws an exception or returns YColorLedCluster.LEDTYPE_INVALID.
             result = YoctoProxyAPI.EnumLedType(obj.InvokeMethod_D(-1658295125));
@@ -195,8 +197,9 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
             % Remember to call the matching module
             % saveToFlash() method to save the setting permanently.
             %
-            % @param newval : either YColorLedCluster.LEDTYPE_RGB or YColorLedCluster.LEDTYPE_RGBW,
-            % according to the RGB LED type currently handled by the device
+            % @param newval : a value among YColorLedCluster.LEDTYPE_RGB,
+            % YColorLedCluster.LEDTYPE_RGBW and YColorLedCluster.LEDTYPE_WS2811 corresponding to the
+            % RGB LED type currently handled by the device
             %
             % @return 0 if the call succeeds.
             %
@@ -224,6 +227,20 @@ classdef YColorLedClusterProxy < YoctoProxyAPI.YFunctionProxy
 
         function result = get.MaxLedCount(obj)
             result = obj.GetPropInt32(-1243181488);
+        end
+
+        function result = get_dynamicLedCount(obj)
+            % Returns the maximum number of LEDs that can perform autonomous transitions and sequences.
+            %
+            % @return an integer corresponding to the maximum number of LEDs that can perform
+            % autonomous transitions and sequences
+            %
+            % On failure, throws an exception or returns YColorLedCluster.DYNAMICLEDCOUNT_INVALID.
+            result = obj.InvokeMethod_D(-1963099763);
+        end
+
+        function result = get.DynamicLedCount(obj)
+            result = obj.GetPropInt32(-248476858);
         end
 
         function result = get_blinkSeqMaxCount(obj)

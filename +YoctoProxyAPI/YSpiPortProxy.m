@@ -328,8 +328,9 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a value among YSpiPort.VOLTAGELEVEL_OFF, YSpiPort.VOLTAGELEVEL_TTL3V,
             % YSpiPort.VOLTAGELEVEL_TTL3VR, YSpiPort.VOLTAGELEVEL_TTL5V,
-            % YSpiPort.VOLTAGELEVEL_TTL5VR, YSpiPort.VOLTAGELEVEL_RS232, YSpiPort.VOLTAGELEVEL_RS485
-            % and YSpiPort.VOLTAGELEVEL_TTL1V8 corresponding to the voltage level used on the serial line
+            % YSpiPort.VOLTAGELEVEL_TTL5VR, YSpiPort.VOLTAGELEVEL_RS232, YSpiPort.VOLTAGELEVEL_RS485,
+            % YSpiPort.VOLTAGELEVEL_TTL1V8 and YSpiPort.VOLTAGELEVEL_SDI12 corresponding to the
+            % voltage level used on the serial line
             %
             % On failure, throws an exception or returns YSpiPort.VOLTAGELEVEL_INVALID.
             result = YoctoProxyAPI.EnumVoltageLevel(obj.InvokeMethod_D(1576391098));
@@ -346,8 +347,9 @@ classdef YSpiPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @param newval : a value among YSpiPort.VOLTAGELEVEL_OFF, YSpiPort.VOLTAGELEVEL_TTL3V,
             % YSpiPort.VOLTAGELEVEL_TTL3VR, YSpiPort.VOLTAGELEVEL_TTL5V,
-            % YSpiPort.VOLTAGELEVEL_TTL5VR, YSpiPort.VOLTAGELEVEL_RS232, YSpiPort.VOLTAGELEVEL_RS485
-            % and YSpiPort.VOLTAGELEVEL_TTL1V8 corresponding to the voltage type used on the serial line
+            % YSpiPort.VOLTAGELEVEL_TTL5VR, YSpiPort.VOLTAGELEVEL_RS232, YSpiPort.VOLTAGELEVEL_RS485,
+            % YSpiPort.VOLTAGELEVEL_TTL1V8 and YSpiPort.VOLTAGELEVEL_SDI12 corresponding to the
+            % voltage type used on the serial line
             %
             % @return 0 if the call succeeds.
             %

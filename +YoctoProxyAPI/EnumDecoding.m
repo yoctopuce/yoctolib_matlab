@@ -43,7 +43,5 @@ classdef EnumDecoding < int32
         Decoding_INVALID (0)
         Decoding_OFF (1)
         Decoding_ON (2)
-        Decoding_DIV2 (3)
-        Decoding_DIV4 (4)
     end
 end

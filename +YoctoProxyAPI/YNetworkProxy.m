@@ -1,5 +1,5 @@
 % YNetworkProxy: network interface control interface, available for instance in the
-% YoctoHub-Ethernet, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+% YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR or the YoctoHub-Wireless-n
 % 
 % YNetworkProxy objects provide access to TCP/IP parameters of Yoctopuce devices that include a
 % built-in network interface.
@@ -45,7 +45,7 @@
 % //--- (YNetwork declaration)
 classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
     % YNetworkProxy: network interface control interface, available for instance in the
-    % YoctoHub-Ethernet, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+    % YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR or the YoctoHub-Wireless-n
     % 
     % YNetworkProxy objects provide access to TCP/IP parameters of Yoctopuce devices that include a
     % built-in network interface.
@@ -75,6 +75,8 @@ classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
         CallbackMethod (1,1) YoctoProxyAPI.EnumCallbackMethod
         % CallbackEncoding Encoding standard to use for representing notification values
         CallbackEncoding (1,1) YoctoProxyAPI.EnumCallbackEncoding
+        % CallbackTemplate Activation state of the custom template file to customize callback
+        CallbackTemplate (1,1) YoctoProxyAPI.EnumCallbackTemplate
         % CallbackCredentials Hashed version of the notification callback credentials if set,
         CallbackCredentials (1,:) char
         % CallbackInitialDelay Initial waiting time before first callback notifications, in seconds
@@ -147,7 +149,7 @@ classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {'Readiness','IpAddress'});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'Network settings', ...
-                'PropertyList', {'MacAddress','PrimaryDNS','SecondaryDNS','NtpServer','UserPassword','AdminPassword','HttpPort','DefaultPage','Discoverable','WwwWatchdogDelay','CallbackUrl','CallbackMethod','CallbackEncoding','CallbackCredentials','CallbackInitialDelay','CallbackSchedule','CallbackMinDelay','CallbackMaxDelay'});
+                'PropertyList', {'MacAddress','PrimaryDNS','SecondaryDNS','NtpServer','UserPassword','AdminPassword','HttpPort','DefaultPage','Discoverable','WwwWatchdogDelay','CallbackUrl','CallbackMethod','CallbackEncoding','CallbackTemplate','CallbackCredentials','CallbackInitialDelay','CallbackSchedule','CallbackMinDelay','CallbackMaxDelay'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -249,6 +251,15 @@ classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns YNetwork.ROUTER_INVALID.
             result = obj.InvokeMethod_S(70211729);
+        end
+
+        function result = get_currentDNS(obj)
+            % Returns the IP address of the DNS server currently used by the device.
+            %
+            % @return a string corresponding to the IP address of the DNS server currently used by the device
+            %
+            % On failure, throws an exception or returns YNetwork.CURRENTDNS_INVALID.
+            result = obj.InvokeMethod_S(-589221023);
         end
 
         function result = get_ipConfig(obj)
@@ -688,6 +699,45 @@ classdef YNetworkProxy < YoctoProxyAPI.YFunctionProxy
         function set.CallbackEncoding(obj, newVal)
             obj.CallbackEncoding = newVal;
             obj.SetPropInt32(1734391266, newVal);
+        end
+
+        function result = get_callbackTemplate(obj)
+            % Returns the activation state of the custom template file to customize callback
+            % format. If the custom callback template is disabled, it will be ignored even
+            % if present on the YoctoHub.
+            %
+            % @return either YNetwork.CALLBACKTEMPLATE_OFF or YNetwork.CALLBACKTEMPLATE_ON, according
+            % to the activation state of the custom template file to customize callback
+            %         format
+            %
+            % On failure, throws an exception or returns YNetwork.CALLBACKTEMPLATE_INVALID.
+            result = YoctoProxyAPI.EnumCallbackTemplate(obj.InvokeMethod_D(866259103));
+        end
+
+        function set_callbackTemplate(obj, newVal)
+            % Enable the use of a template file to customize callbacks format.
+            % When the custom callback template file is enabled, the template file
+            % will be loaded for each callback in order to build the data to post to the
+            % server. If template file does not exist on the YoctoHub, the callback will
+            % fail with an error message indicating the name of the expected template file.
+            % Remember to call the saveToFlash() method of the module if the
+            % modification must be kept.
+            %
+            % @param newval : either YNetwork.CALLBACKTEMPLATE_OFF or YNetwork.CALLBACKTEMPLATE_ON
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-40179434, newVal);
+        end
+
+        function result = get.CallbackTemplate(obj)
+            result = YoctoProxyAPI.EnumCallbackTemplate(obj.GetPropInt32(-1740090578));
+        end
+
+        function set.CallbackTemplate(obj, newVal)
+            obj.CallbackTemplate = newVal;
+            obj.SetPropInt32(-1740090578, newVal);
         end
 
         function result = get_callbackCredentials(obj)

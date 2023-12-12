@@ -46,5 +46,6 @@ classdef EnumSignalSampling < int32
         SignalSampling_LOW_NOISE (3)
         SignalSampling_LOW_NOISE_FILTERED (4)
         SignalSampling_HIGHEST_RATE (5)
+        SignalSampling_AC (6)
     end
 end

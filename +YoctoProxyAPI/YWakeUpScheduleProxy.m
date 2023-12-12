@@ -1,5 +1,5 @@
 % YWakeUpScheduleProxy: wake up schedule control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+% YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
 % 
 % The YWakeUpScheduleProxy class implements a wake up condition. The wake up time is specified as a
 % set of months and/or days and/or hours and/or minutes when the wake up should happen.
@@ -45,7 +45,7 @@
 % //--- (YWakeUpSchedule declaration)
 classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
     % YWakeUpScheduleProxy: wake up schedule control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
     % 
     % The YWakeUpScheduleProxy class implements a wake up condition. The wake up time is specified as a
     % set of months and/or days and/or hours and/or minutes when the wake up should happen.
@@ -63,6 +63,8 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
         MonthDays (1,1) int32
         % Months Months scheduled for wake up
         Months (1,1) int32
+        % SecondsBefore Number of seconds to anticipate wake-up time to allow
+        SecondsBefore (1,1) int32
     end
 
     properties (Transient, Nontunable, SetAccess = private)
@@ -120,7 +122,7 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'WakeUpSchedule settings', ...
-                'PropertyList', {'MinutesA','MinutesB','Hours','WeekDays','MonthDays','Months','NextOccurence'});
+                'PropertyList', {'MinutesA','MinutesB','Hours','WeekDays','MonthDays','Months','SecondsBefore','NextOccurence'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -333,6 +335,42 @@ classdef YWakeUpScheduleProxy < YoctoProxyAPI.YFunctionProxy
         function set.Months(obj, newVal)
             obj.Months = newVal;
             obj.SetPropInt32(-179316456, newVal);
+        end
+
+        function result = get_secondsBefore(obj)
+            % Returns the number of seconds to anticipate wake-up time to allow
+            % the system to power-up.
+            %
+            % @return an integer corresponding to the number of seconds to anticipate wake-up time to allow
+            %         the system to power-up
+            %
+            % On failure, throws an exception or returns YWakeUpSchedule.SECONDSBEFORE_INVALID.
+            result = obj.InvokeMethod_D(-119158058);
+        end
+
+        function set_secondsBefore(obj, newVal)
+            % Changes the number of seconds to anticipate wake-up time to allow
+            % the system to power-up.
+            % Remember to call the saveToFlash() method of the module if the
+            % modification must be kept.
+            %
+            % @param newval : an integer corresponding to the number of seconds to anticipate wake-up
+            % time to allow
+            %         the system to power-up
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(966909174, newVal);
+        end
+
+        function result = get.SecondsBefore(obj)
+            result = obj.GetPropInt32(-1849004517);
+        end
+
+        function set.SecondsBefore(obj, newVal)
+            obj.SecondsBefore = newVal;
+            obj.SetPropInt32(-1849004517, newVal);
         end
 
         function result = get_nextOccurence(obj)

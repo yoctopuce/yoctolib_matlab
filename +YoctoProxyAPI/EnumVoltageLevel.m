@@ -49,5 +49,6 @@ classdef EnumVoltageLevel < int32
         VoltageLevel_RS232 (6)
         VoltageLevel_RS485 (7)
         VoltageLevel_TTL1V8 (8)
+        VoltageLevel_SDI12 (9)
     end
 end

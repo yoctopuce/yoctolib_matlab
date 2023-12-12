@@ -1,5 +1,5 @@
 % YQuadratureDecoderProxy: quadrature decoder control interface, available for instance in the
-% Yocto-PWM-Rx
+% Yocto-MaxiKnob or the Yocto-PWM-Rx
 % 
 % The YQuadratureDecoderProxy class allows you to read and configure Yoctopuce quadrature decoders.
 % It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register
@@ -46,7 +46,7 @@
 % //--- (YQuadratureDecoder declaration)
 classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
     % YQuadratureDecoderProxy: quadrature decoder control interface, available for instance in the
-    % Yocto-PWM-Rx
+    % Yocto-MaxiKnob or the Yocto-PWM-Rx
     % 
     % The YQuadratureDecoderProxy class allows you to read and configure Yoctopuce quadrature decoders.
     % It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register
@@ -55,6 +55,8 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
     properties (Transient, Nontunable)
         % Decoding Current activation state of the quadrature decoder
         Decoding (1,1) YoctoProxyAPI.EnumDecoding
+        % EdgesPerCycle Edge count per full cycle configuration setting
+        EdgesPerCycle (1,1) int32
     end
 
     properties (Transient, Nontunable, SetAccess = private)
@@ -111,7 +113,7 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'QuadratureDecoder settings', ...
-                'PropertyList', {'Decoding'});
+                'PropertyList', {'Decoding','EdgesPerCycle'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -154,9 +156,9 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
         end
 
         function result = get_speed(obj)
-            % Returns the increments frequency, in Hz.
+            % Returns the cycle frequency, in Hz.
             %
-            % @return a floating point number corresponding to the increments frequency, in Hz
+            % @return a floating point number corresponding to the cycle frequency, in Hz
             %
             % On failure, throws an exception or returns YQuadratureDecoder.SPEED_INVALID.
             result = obj.InvokeMethod_F(1646620777);
@@ -165,9 +167,8 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
         function result = get_decoding(obj)
             % Returns the current activation state of the quadrature decoder.
             %
-            % @return a value among YQuadratureDecoder.DECODING_OFF, YQuadratureDecoder.DECODING_ON,
-            % YQuadratureDecoder.DECODING_DIV2 and YQuadratureDecoder.DECODING_DIV4 corresponding to
-            % the current activation state of the quadrature decoder
+            % @return either YQuadratureDecoder.DECODING_OFF or YQuadratureDecoder.DECODING_ON,
+            % according to the current activation state of the quadrature decoder
             %
             % On failure, throws an exception or returns YQuadratureDecoder.DECODING_INVALID.
             result = YoctoProxyAPI.EnumDecoding(obj.InvokeMethod_D(-676619192));
@@ -178,9 +179,8 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
             % Remember to call the saveToFlash()
             % method of the module if the modification must be kept.
             %
-            % @param newval : a value among YQuadratureDecoder.DECODING_OFF,
-            % YQuadratureDecoder.DECODING_ON, YQuadratureDecoder.DECODING_DIV2 and
-            % YQuadratureDecoder.DECODING_DIV4 corresponding to the activation state of the quadrature decoder
+            % @param newval : either YQuadratureDecoder.DECODING_OFF or
+            % YQuadratureDecoder.DECODING_ON, according to the activation state of the quadrature decoder
             %
             % @return 0 if the call succeeds.
             %
@@ -195,6 +195,37 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
         function set.Decoding(obj, newVal)
             obj.Decoding = newVal;
             obj.SetPropInt32(1603522429, newVal);
+        end
+
+        function result = get_edgesPerCycle(obj)
+            % Returns the edge count per full cycle configuration setting.
+            %
+            % @return an integer corresponding to the edge count per full cycle configuration setting
+            %
+            % On failure, throws an exception or returns YQuadratureDecoder.EDGESPERCYCLE_INVALID.
+            result = obj.InvokeMethod_D(1548374183);
+        end
+
+        function set_edgesPerCycle(obj, newVal)
+            % Changes the edge count per full cycle configuration setting.
+            % Remember to call the saveToFlash()
+            % method of the module if the modification must be kept.
+            %
+            % @param newval : an integer corresponding to the edge count per full cycle configuration setting
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-1660008825, newVal);
+        end
+
+        function result = get.EdgesPerCycle(obj)
+            result = obj.GetPropInt32(2125116694);
+        end
+
+        function set.EdgesPerCycle(obj, newVal)
+            obj.EdgesPerCycle = newVal;
+            obj.SetPropInt32(2125116694, newVal);
         end
 
         % //--- (end of YQuadratureDecoder accessors declaration)

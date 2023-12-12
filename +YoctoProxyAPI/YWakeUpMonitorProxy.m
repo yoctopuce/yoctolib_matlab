@@ -1,5 +1,5 @@
 % YWakeUpMonitorProxy: wake-up monitor control interface, available for instance in the
-% YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+% YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
 % 
 % The YWakeUpMonitorProxy class handles globally all wake-up sources, as well as automated sleep mode.
 
@@ -44,7 +44,7 @@
 % //--- (YWakeUpMonitor declaration)
 classdef YWakeUpMonitorProxy < YoctoProxyAPI.YFunctionProxy
     % YWakeUpMonitorProxy: wake-up monitor control interface, available for instance in the
-    % YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA, the YoctoHub-GSM-4G or the YoctoHub-Wireless-n
+    % YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n
     % 
     % The YWakeUpMonitorProxy class handles globally all wake-up sources, as well as automated sleep mode.
 
