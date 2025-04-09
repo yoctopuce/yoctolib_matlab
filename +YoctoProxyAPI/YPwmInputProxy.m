@@ -57,6 +57,8 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
         PwmReportMode (1,1) YoctoProxyAPI.EnumPwmReportMode
         % DebouncePeriod Shortest expected pulse duration, in ms
         DebouncePeriod (1,1) int32
+        % MinFrequency Minimum detected frequency, in Hz
+        MinFrequency (1,1) double
         % Bandwidth Input signal sampling rate, in kHz
         Bandwidth (1,1) int32
     end
@@ -115,7 +117,7 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
                 'PropertyList', {});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'PwmInput settings', ...
-                'PropertyList', {'PwmReportMode','DebouncePeriod','Bandwidth'});
+                'PropertyList', {'PwmReportMode','DebouncePeriod','MinFrequency','Bandwidth'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -296,6 +298,36 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             obj.SetPropInt32(-305491294, newVal);
         end
 
+        function set_minFrequency(obj, newVal)
+            % Changes the minimum detected frequency, in Hz. Slower signals will be consider as zero frequency.
+            % Remember to call the saveToFlash() method of the module if the modification must be kept.
+            %
+            % @param newval : a floating point number corresponding to the minimum detected frequency, in Hz
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_f(-255885209, newVal);
+        end
+
+        function result = get_minFrequency(obj)
+            % Returns the minimum detected frequency, in Hz. Slower signals will be consider as zero frequency.
+            %
+            % @return a floating point number corresponding to the minimum detected frequency, in Hz
+            %
+            % On failure, throws an exception or returns YPwmInput.MINFREQUENCY_INVALID.
+            result = obj.InvokeMethod_F(-287691855);
+        end
+
+        function result = get.MinFrequency(obj)
+            result = obj.GetPropDouble(1932116497);
+        end
+
+        function set.MinFrequency(obj, newVal)
+            obj.MinFrequency = newVal;
+            obj.SetPropDouble(1932116497, newVal);
+        end
+
         function result = get_bandwidth(obj)
             % Returns the input signal sampling rate, in kHz.
             %
@@ -339,8 +371,17 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
             result = obj.InvokeMethod_D(1472768428);
         end
 
+        function result = resetPeriodDetection(obj)
+            % Resets the periodicity detection algorithm.
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_D(1144754658);
+        end
+
         function result = resetCounter(obj)
-            % Returns the pulse counter value as well as its timer.
+            % Resets the pulse counter value as well as its timer.
             %
             % @return 0 if the call succeeds.
             %

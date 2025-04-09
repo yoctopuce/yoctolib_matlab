@@ -107,7 +107,7 @@ classdef YHubProxy < matlab.System
             % Modifies tthe network connection delay for this hub.
             % The default value is inherited from ySetNetworkTimeout
             % at the time when the hub is registered, but it can be updated
-            % afterwards for each specific hub if necessary.
+            % afterward for each specific hub if necessary.
             %
             % @param networkMsTimeout : the network connection delay in milliseconds.
             % @noreturn
@@ -118,7 +118,7 @@ classdef YHubProxy < matlab.System
             % Returns the network connection delay for this hub.
             % The default value is inherited from ySetNetworkTimeout
             % at the time when the hub is registered, but it can be updated
-            % afterwards for each specific hub if necessary.
+            % afterward for each specific hub if necessary.
             %
             % @return the network connection delay in milliseconds.
             result = obj.InvokeMethod_D(1507646231);

@@ -1883,6 +1883,108 @@ classdef YFunctionProxy < matlab.System
             end
         end
 
+        function result = InvokeMethod_xYdd(obj, methodHandle, arg2, arg3)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~ ] = calllib('ypa', 'ypaInvokeMethod_xYdd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    int32(arg2), int32(arg3));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_xYdd', errmsg);
+                    throw(ME)
+                end
+                result = 0;
+            end
+        end
+
+        function result = InvokeMethod_xXdd(obj, methodHandle, arg2, arg3)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~ ] = calllib('ypa', 'ypaInvokeMethod_xXdd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    int32(arg2), int32(arg3));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_xXdd', errmsg);
+                    throw(ME)
+                end
+                result = 0;
+            end
+        end
+
+        function result = InvokeMethod_xTdd(obj, methodHandle, arg2, arg3)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~, pRes, ~ ] = calllib('ypa', 'ypaInvokeMethod_xTdd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    blanks(4096), SizePtr(4096), int32(arg2), int32(arg3));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_xTdd', errmsg);
+                    throw(ME)
+                end
+                result = pRes;
+            end
+        end
+
+        function result = InvokeMethod_xZdd(obj, methodHandle, arg2, arg3)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~ ] = calllib('ypa', 'ypaInvokeMethod_xZdd', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    int32(arg2), int32(arg3));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_xZdd', errmsg);
+                    throw(ME)
+                end
+                result = 0;
+            end
+        end
+
+        function result = InvokeMethod_DsOP(obj, methodHandle, arg2)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_DsOP', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    libpointer('int32Ptr', int32(0)), arg2);
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_DsOP', errmsg);
+                    throw(ME)
+                end
+                result = pRes;
+            end
+        end
+
+        function result = InvokeMethod_DsdOP(obj, methodHandle, arg2, arg3)
+            import YoctoProxyAPI.YAPIProxy.*
+            LoadDLL();
+            if obj.funcHandle == 0
+                result = 0;
+            else
+                [ resCode, errmsg, ~, pRes ] = calllib('ypa', 'ypaInvokeMethod_DsdOP', ...
+                    obj.funcHandle, methodHandle, blanks(256), SizePtr(256), ...
+                    libpointer('int32Ptr', int32(0)), arg2, int32(arg3));
+                if resCode ~= 0
+                    ME = MException('YFunctionProxy:InvokeMethod_DsdOP', errmsg);
+                    throw(ME)
+                end
+                result = pRes;
+            end
+        end
+
         % //--- (end of generated code: YFunction yapiwrapper)
         
     end

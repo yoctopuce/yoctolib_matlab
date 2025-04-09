@@ -150,7 +150,7 @@ classdef YStepperMotorProxy < YoctoProxyAPI.YFunctionProxy
 
         function set_stepPos(obj, newVal)
             % Changes the current logical motor position, measured in steps.
-            % This command does not cause any motor move, as its purpose is only to setup
+            % This command does not cause any motor move, as its purpose is only to set up
             % the origin of the position counter. The fractional part of the position,
             % that corresponds to the physical position of the rotor, is not changed.
             % To trigger a motor move, use methods moveTo() or moveRel()

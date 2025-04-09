@@ -681,7 +681,7 @@ classdef YSdi12PortProxy < YoctoProxyAPI.YFunctionProxy
             % This function is intended to be used when the serial port is configured for 'SDI-12' protocol.
             % This function work when only one sensor is connected.
             %
-            % @return the reply returned by the sensor, as a YSdi12Sensor object.
+            % @return the reply returned by the sensor, as a YSdi12SensorInfo object.
             %
             % On failure, throws an exception or returns an empty string.
             result = obj.InvokeMethod_R(1299005087);
@@ -691,7 +691,7 @@ classdef YSdi12PortProxy < YoctoProxyAPI.YFunctionProxy
             % Sends a discovery command to the bus, and reads all sensors information reply.
             % This function is intended to be used when the serial port is configured for 'SDI-12' protocol.
             %
-            % @return all the information from every connected sensor, as an array of YSdi12Sensor object.
+            % @return all the information from every connected sensor, as an array of YSdi12SensorInfo object.
             %
             % On failure, throws an exception or returns an empty string.
             result = obj.InvokeMethod_xR(1064563653);
@@ -722,7 +722,7 @@ classdef YSdi12PortProxy < YoctoProxyAPI.YFunctionProxy
             % @param oldAddress : Actual sensor address, as a string
             % @param newAddress : New sensor address, as a string
             %
-            % @return the sensor address and information , as a YSdi12Sensor object.
+            % @return the sensor address and information , as a YSdi12SensorInfo object.
             %
             % On failure, throws an exception or returns an empty string.
             result = obj.InvokeMethod_Rss(654451080, oldAddress, newAddress);
@@ -762,6 +762,22 @@ classdef YSdi12PortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns an empty string.
             result = obj.InvokeMethod_Ds(94668784, sensorAddr);
+        end
+
+        function result = snoopMessagesEx(obj, maxWait, maxMsg)
+            % Retrieves messages (both direction) in the SDI12 port buffer, starting at current position.
+            %
+            % If no message is found, the search waits for one up to the specified maximum timeout
+            % (in milliseconds).
+            %
+            % @param maxWait : the maximum number of milliseconds to wait for a message if none is found
+            %         in the receive buffer.
+            % @param maxMsg : the maximum number of messages to be returned by the function; up to 254.
+            %
+            % @return an array of YSdi12SnoopingRecord objects containing the messages found, if any.
+            %
+            % On failure, throws an exception or returns an empty array.
+            result = obj.InvokeMethod_xXdd(-608541492, maxWait, maxMsg);
         end
 
         function result = snoopMessages(obj, maxWait)

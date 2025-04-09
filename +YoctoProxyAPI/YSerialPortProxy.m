@@ -713,6 +713,25 @@ classdef YSerialPortProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_D(-626264431);
         end
 
+        function result = snoopMessagesEx(obj, maxWait, maxMsg)
+            % Retrieves messages (both direction) in the serial port buffer, starting at current position.
+            % This function will only compare and return printable characters in the message strings.
+            % Binary protocols are handled as hexadecimal strings.
+            %
+            % If no message is found, the search waits for one up to the specified maximum timeout
+            % (in milliseconds).
+            %
+            % @param maxWait : the maximum number of milliseconds to wait for a message if none is found
+            %         in the receive buffer.
+            % @param maxMsg : the maximum number of messages to be returned by the function; up to 254.
+            %
+            % @return an array of YSnoopingRecord objects containing the messages found, if any.
+            %         Binary messages are converted to hexadecimal representation.
+            %
+            % On failure, throws an exception or returns an empty array.
+            result = obj.InvokeMethod_xTdd(-761225816, maxWait, maxMsg);
+        end
+
         function result = snoopMessages(obj, maxWait)
             % Retrieves messages (both direction) in the serial port buffer, starting at current position.
             % This function will only compare and return printable characters in the message strings.

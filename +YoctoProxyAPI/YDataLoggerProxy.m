@@ -50,7 +50,7 @@ classdef YDataLoggerProxy < YoctoProxyAPI.YFunctionProxy
     % A non-volatile memory for storing ongoing measured data is available on most Yoctopuce sensors.
     % Recording can happen automatically, without requiring a permanent connection to a computer. The
     % YDataLoggerProxy class controls the global parameters of the internal data logger. Recording
-    % control (start/stop) as well as data retreival is done at sensor objects level.
+    % control (start/stop) as well as data retrieval is done at sensor objects level.
 
     properties (Transient, Nontunable)
         % Recording Current activation state of the data logger

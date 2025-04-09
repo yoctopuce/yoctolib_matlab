@@ -1,6 +1,16 @@
 % YRfidReaderProxy: RfidReader function interface
 % 
-% The <tt>RfidReader</tt> class provides access detect, read and write RFID tags.
+% The YRfidReaderProxy class allows you to detect RFID tags, as well as read and write on these tags
+% if the security settings allow it.
+% 
+% Short reminder:<br> <ul> <li>A tag's memory is generally organized in fixed-size blocks.</li>
+% <li>At tag level, each block must be read and written in its entirety.</li> <li>Some blocks are
+% special configuration blocks, and may alter the tag's behavior if they are rewritten with arbitrary
+% data.</li> <li>Data blocks can be set to read-only mode, but on many tags, this operation is
+% irreversible.</li> </ul>
+% 
+% By default, the RfidReader class automatically manages these blocks so that arbitrary size data 
+% can be manipulated of  without risk and without knowledge of tag architecture.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -44,7 +54,17 @@
 classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
     % YRfidReaderProxy: RfidReader function interface
     % 
-    % The <tt>RfidReader</tt> class provides access detect, read and write RFID tags.
+    % The YRfidReaderProxy class allows you to detect RFID tags, as well as read and write on these tags
+    % if the security settings allow it.
+    % 
+    % Short reminder:<br> <ul> <li>A tag's memory is generally organized in fixed-size blocks.</li>
+    % <li>At tag level, each block must be read and written in its entirety.</li> <li>Some blocks are
+    % special configuration blocks, and may alter the tag's behavior if they are rewritten with arbitrary
+    % data.</li> <li>Data blocks can be set to read-only mode, but on many tags, this operation is
+    % irreversible.</li> </ul>
+    % 
+    % By default, the RfidReader class automatically manages these blocks so that arbitrary size data 
+    % can be manipulated of  without risk and without knowledge of tag architecture.
 
     properties (Transient, Nontunable)
         % RefreshRate Tag list refresh rate, measured in Hz
@@ -157,7 +177,8 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % Changes the present tag list refresh rate, measured in Hz. The reader will do
             % its best to respect it. Note that the reader cannot detect tag arrival or removal
             % while it is  communicating with a tag.  Maximum frequency is limited to 100Hz,
-            % but in real life it will be difficult to do better than 50Hz.
+            % but in real life it will be difficult to do better than 50Hz.  A zero value
+            % will power off the device radio.
             % Remember to call the saveToFlash() method of the module if the
             % modification must be kept.
             %
@@ -181,15 +202,15 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
         function result = get_tagIdList(obj)
             % Returns the list of RFID tags currently detected by the reader.
             %
-            % @return a list of strings, corresponding to each tag identifier.
+            % @return a list of strings, corresponding to each tag identifier (UID).
             %
             % On failure, throws an exception or returns an empty list.
             result = obj.InvokeMethod_xS(-1557816636);
         end
 
         function result = get_tagInfo(obj, tagId, status)
-            % Retourne la description des propriétés d'un tag RFID présent.
-            % Cette fonction peut causer des communications avec le tag.
+            % Returns a description of the properties of an existing RFID tag.
+            % This function can cause communications with the tag.
             %
             % @param tagId : identifier of the tag to check
             % @param status : an RfidStatus object that will contain
@@ -203,7 +224,7 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
         end
 
         function result = tagLockBlocks(obj, tagId, firstBlock, nBlocks, options, status)
-            % Change an RFID tag configuration to prevents any further write to
+            % Changes an RFID tag configuration to prevents any further write to
             % the selected blocks. This operation is definitive and irreversible.
             % Depending on the tag type and block index, adjascent blocks may become
             % read-only as well, based on the locking granularity.
@@ -273,7 +294,8 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % number of bytes is larger than the RFID tag block size. By default
             % firstBlock cannot be a special block, and any special block encountered
             % in the middle of the read operation will be skipped automatically.
-            % If you rather want to read special blocks, use EnableRawAccess option.
+            % If you rather want to read special blocks, use the EnableRawAccess
+            % field from the options parameter.
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where read should start
@@ -297,7 +319,8 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % is larger than the RFID tag block size.  By default
             % firstBlock cannot be a special block, and any special block encountered
             % in the middle of the read operation will be skipped automatically.
-            % If you rather want to read special blocks, use EnableRawAccess option.
+            % If you rather want to read special blocks, use the EnableRawAccess
+            % field frrm the options parameter.
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where read should start
@@ -321,7 +344,8 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % is larger than the RFID tag block size.  By default
             % firstBlock cannot be a special block, and any special block encountered
             % in the middle of the read operation will be skipped automatically.
-            % If you rather want to read special blocks, use EnableRawAccess option.
+            % If you rather want to read special blocks, use the EnableRawAccess
+            % field from the options parameter.
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where read should start
@@ -345,7 +369,8 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % is larger than the RFID tag block size.  By default
             % firstBlock cannot be a special block, and any special block encountered
             % in the middle of the read operation will be skipped automatically.
-            % If you rather want to read special blocks, use EnableRawAccess option.
+            % If you rather want to read special blocks, use the EnableRawAccess
+            % field from the options parameter.
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where read should start
@@ -369,8 +394,10 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % number of bytes to write is larger than the RFID tag block size.
             % By default firstBlock cannot be a special block, and any special block
             % encountered in the middle of the write operation will be skipped
-            % automatically. If you rather want to rewrite special blocks as well,
-            % use EnableRawAccess option.
+            % automatically. The last data block affected by the operation will
+            % be automatically padded with zeros if neccessary.  If you rather want
+            % to rewrite special blocks as well,
+            % use the EnableRawAccess field from the options parameter.
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where write should start
@@ -394,8 +421,10 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % number of bytes to write is larger than the RFID tag block size.
             % By default firstBlock cannot be a special block, and any special block
             % encountered in the middle of the write operation will be skipped
-            % automatically. If you rather want to rewrite special blocks as well,
-            % use EnableRawAccess option.
+            % automatically. The last data block affected by the operation will
+            % be automatically padded with zeros if neccessary.
+            % If you rather want to rewrite special blocks as well,
+            % use the EnableRawAccess field from the options parameter.
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where write should start
@@ -419,8 +448,10 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % number of bytes to write is larger than the RFID tag block size.
             % By default firstBlock cannot be a special block, and any special block
             % encountered in the middle of the write operation will be skipped
-            % automatically. If you rather want to rewrite special blocks as well,
-            % use EnableRawAccess option.
+            % automatically. The last data block affected by the operation will
+            % be automatically padded with zeros if neccessary.
+            % If you rather want to rewrite special blocks as well,
+            % use the EnableRawAccess field from the options parameter.
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where write should start
@@ -442,10 +473,22 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % Writes data provided as an ASCII string to an RFID tag memory.
             % The write operation may span accross multiple blocks if the
             % number of bytes to write is larger than the RFID tag block size.
+            % Note that only the characters present in the provided string
+            % will be written, there is no notion of string length. If your
+            % string data have variable length, you'll have to encode the
+            % string length yourself, with a terminal zero for instannce.
+            %
+            % This function only works with ISO-latin characters, if you wish to
+            % write strings encoded with alternate character sets, you'll have to
+            % use tagWriteBin() function.
+            %
             % By default firstBlock cannot be a special block, and any special block
             % encountered in the middle of the write operation will be skipped
-            % automatically. If you rather want to rewrite special blocks as well,
-            % use EnableRawAccess option.
+            % automatically. The last data block affected by the operation will
+            % be automatically padded with zeros if neccessary.
+            % If you rather want to rewrite special blocks as well,
+            % use the EnableRawAccess field from the options parameter
+            % (definitely not recommanded).
             %
             % @param tagId : identifier of the tag to use
             % @param firstBlock : block number where write should start
@@ -461,6 +504,112 @@ classdef YRfidReaderProxy < YoctoProxyAPI.YFunctionProxy
             % On failure, throws an exception or returns a negative error code. When it
             % happens, you can get more information from the status object.
             result = obj.InvokeMethod_DsdsOP(341208860, tagId, firstBlock, text, options, status);
+        end
+
+        function result = tagGetAFI(obj, tagId, options, status)
+            % Reads an RFID tag AFI byte (ISO 15693 only).
+            %
+            % @param tagId : identifier of the tag to use
+            % @param options : an YRfidOptions object with the optional
+            %         command execution parameters, such as security key
+            %         if required
+            % @param status : an RfidStatus object that will contain
+            %         the detailled status of the operation
+            %
+            % @return the AFI value (0...255)
+            %
+            % On failure, throws an exception or returns a negative error code. When it
+            % happens, you can get more information from the status object.
+            result = obj.InvokeMethod_DsOP(-963245929, tagId, options, status);
+        end
+
+        function result = tagSetAFI(obj, tagId, afi, options, status)
+            % Changes an RFID tag AFI byte (ISO 15693 only).
+            %
+            % @param tagId : identifier of the tag to use
+            % @param afi : the AFI value to write (0...255)
+            % @param options : an YRfidOptions object with the optional
+            %         command execution parameters, such as security key
+            %         if required
+            % @param status : an RfidStatus object that will contain
+            %         the detailled status of the operation
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code. When it
+            % happens, you can get more information from the status object.
+            result = obj.InvokeMethod_DsdOP(563634058, tagId, afi, options, status);
+        end
+
+        function result = tagLockAFI(obj, tagId, options, status)
+            % Locks the RFID tag AFI byte (ISO 15693 only).
+            % This operation is definitive and irreversible.
+            %
+            % @param tagId : identifier of the tag to use
+            % @param options : an YRfidOptions object with the optional
+            %         command execution parameters, such as security key
+            %         if required
+            % @param status : an RfidStatus object that will contain
+            %         the detailled status of the operation
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code. When it
+            % happens, you can get more information from the status object.
+            result = obj.InvokeMethod_DsOP(632400935, tagId, options, status);
+        end
+
+        function result = tagGetDSFID(obj, tagId, options, status)
+            % Reads an RFID tag DSFID byte (ISO 15693 only).
+            %
+            % @param tagId : identifier of the tag to use
+            % @param options : an YRfidOptions object with the optional
+            %         command execution parameters, such as security key
+            %         if required
+            % @param status : an RfidStatus object that will contain
+            %         the detailled status of the operation
+            %
+            % @return the DSFID value (0...255)
+            %
+            % On failure, throws an exception or returns a negative error code. When it
+            % happens, you can get more information from the status object.
+            result = obj.InvokeMethod_DsOP(1508083751, tagId, options, status);
+        end
+
+        function result = tagSetDSFID(obj, tagId, dsfid, options, status)
+            % Changes an RFID tag DSFID byte (ISO 15693 only).
+            %
+            % @param tagId : identifier of the tag to use
+            % @param dsfid : the DSFID value to write (0...255)
+            % @param options : an YRfidOptions object with the optional
+            %         command execution parameters, such as security key
+            %         if required
+            % @param status : an RfidStatus object that will contain
+            %         the detailled status of the operation
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code. When it
+            % happens, you can get more information from the status object.
+            result = obj.InvokeMethod_DsdOP(-1704526734, tagId, dsfid, options, status);
+        end
+
+        function result = tagLockDSFID(obj, tagId, options, status)
+            % Locks the RFID tag DSFID byte (ISO 15693 only).
+            % This operation is definitive and irreversible.
+            %
+            % @param tagId : identifier of the tag to use
+            % @param options : an YRfidOptions object with the optional
+            %         command execution parameters, such as security key
+            %         if required
+            % @param status : an RfidStatus object that will contain
+            %         the detailled status of the operation
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code. When it
+            % happens, you can get more information from the status object.
+            result = obj.InvokeMethod_DsOP(1822270025, tagId, options, status);
         end
 
         function result = get_lastEvents(obj)

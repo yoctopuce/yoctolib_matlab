@@ -1,7 +1,8 @@
-% YRfidOptionsProxy: Extra parameters for performing RFID tag operations
+% YRfidOptionsProxy: Additional parameters for operations on RFID tags.
 % 
-% YRfidOptionsProxy objects are used to provide optional parameters to RFID commands that interact
-% with tags, and in particular to provide security keys when required.
+% The YRfidOptionsProxy objects are used to specify additional optional parameters to RFID commands
+% that interact with tags, including security keys. When instantiated,the parameters of this object
+% are pre-initialized to a value  which corresponds to the most common usage.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -43,11 +44,13 @@
 
 % //--- (YRfidOptions declaration)
 classdef YRfidOptionsProxy
-    % YRfidOptionsProxy Extra parameters for performing RFID tag operations
+    % YRfidOptionsProxy Additional parameters for operations on RFID tags.
     %
-    % YRfidOptions objects are used to provide optional
-    % parameters to RFID commands that interact with tags, and in
-    % particular to provide security keys when required.
+    % The YRfidOptions objects are used to specify additional
+    % optional parameters to RFID commands that interact with tags,
+    % including security keys. When instantiated,the parameters of
+    % this object are pre-initialized to a value  which corresponds
+    % to the most common usage.
 
     properties (SetAccess = private)
     end

@@ -245,8 +245,10 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
 
         function set_rgbColorAtPowerOn(obj, newVal)
             % Changes the color that the LED displays by default when the module is turned on.
-            % Remember to call the saveToFlash()
-            % method of the module if the modification must be kept.
+            % Remember to call the saveLedsConfigAtPowerOn() method of the module if the modification
+            % must be kept.
+            % Note: for the original modules Yocto-Color (version 1) et Yocto-PowerColor, the  saveToFlash()
+            % method must be used instead.
             %
             % @param newval : an integer corresponding to the color that the LED displays by default
             % when the module is turned on
@@ -348,6 +350,15 @@ classdef YColorLedProxy < YoctoProxyAPI.YFunctionProxy
             % @return 0 if the call succeeds.
             %         On failure, throws an exception or returns a negative error code.
             result = obj.InvokeMethod_D(-1263599234);
+        end
+
+        function result = saveLedsConfigAtPowerOn(obj)
+            % Saves the LEDs power-on configuration.  Warning: this method is not supported by
+            % Yocto-Color (version 1) and Yocto-PowerColor modules. For these devices, the saveToFlash()
+            % method of the module must be used instead.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_D(1233425158);
         end
 
         % //--- (end of YColorLed accessors declaration)

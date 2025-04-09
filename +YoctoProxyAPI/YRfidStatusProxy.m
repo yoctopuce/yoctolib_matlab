@@ -1,9 +1,12 @@
-% YRfidStatusProxy: Detailled information about the result of RFID tag operations
+% YRfidStatusProxy: Detailled information about the result of RFID tag operations, allowing to find
+% out what happened exactly after a tag operation failure.
 % 
 % YRfidStatusProxy objects provide additional information about operations on RFID tags, including
 % the range of blocks affected by read/write operations and possible errors when communicating with
 % RFID tags. This makes it possible, for example, to distinguish communication errors that can be
-% recovered by an additional attempt, from security or other errors on the tag.
+% recovered by an additional attempt, from security or other errors on the tag. Combined with the
+% <tt>EnableDryRun</tt> option in <tt>RfidOptions</tt>, this structure can be used to predict which
+% blocks will be affected by a write operation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -45,7 +48,8 @@
 
 % //--- (YRfidStatus declaration)
 classdef YRfidStatusProxy
-    % YRfidStatusProxy Detailled information about the result of RFID tag operations
+    % YRfidStatusProxy Detailled information about the result of RFID tag operations,
+    % allowing to find out what happened exactly after a tag operation failure.
     %
     % YRfidStatus objects provide additional information about
     % operations on RFID tags, including the range of blocks affected
@@ -54,6 +58,9 @@ classdef YRfidStatusProxy
     % This makes it possible, for example, to distinguish communication
     % errors that can be recovered by an additional attempt, from
     % security or other errors on the tag.
+    % Combined with the EnableDryRun option in RfidOptions,
+    % this structure can be used to predict which blocks will be affected
+    % by a write operation.
 
     properties (SetAccess = private)
     end

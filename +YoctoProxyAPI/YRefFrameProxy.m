@@ -1,7 +1,7 @@
 % YRefFrameProxy: 3D reference frame configuration interface, available for instance in the
 % Yocto-3D-V2 or the Yocto-Inclinometer
 % 
-% The YRefFrameProxy class is used to setup the base orientation of the Yoctopuce inertial sensors.
+% The YRefFrameProxy class is used to set up the base orientation of the Yoctopuce inertial sensors.
 % Thanks to this, orientation functions relative to the earth surface plane can use the proper
 % reference frame. For some devices, the class also implements a tridimensional sensor calibration
 % process, which can compensate for local variations of standard gravity and improve the precision of
@@ -50,7 +50,7 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
     % YRefFrameProxy: 3D reference frame configuration interface, available for instance in the
     % Yocto-3D-V2 or the Yocto-Inclinometer
     % 
-    % The YRefFrameProxy class is used to setup the base orientation of the Yoctopuce inertial sensors.
+    % The YRefFrameProxy class is used to set up the base orientation of the Yoctopuce inertial sensors.
     % Thanks to this, orientation functions relative to the earth surface plane can use the proper
     % reference frame. For some devices, the class also implements a tridimensional sensor calibration
     % process, which can compensate for local variations of standard gravity and improve the precision of
@@ -151,7 +151,7 @@ classdef YRefFrameProxy < YoctoProxyAPI.YFunctionProxy
             % indicated by the compass is the difference between the measured magnetic
             % heading and the reference bearing indicated here.
             %
-            % For instance, if you setup as reference bearing the value of the earth
+            % For instance, if you set up as reference bearing the value of the earth
             % magnetic declination, the compass will provide the orientation relative
             % to the geographic North.
             %

@@ -154,6 +154,17 @@ classdef YOsControlProxy < YoctoProxyAPI.YFunctionProxy
             result = obj.InvokeMethod_Dd(-215746767, secBeforeShutDown);
         end
 
+        function result = reboot(obj, secBeforeReboot)
+            % Schedules an OS reboot after a given number of seconds.
+            %
+            % @param secBeforeReboot : number of seconds before reboot
+            %
+            % @return 0 when the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            result = obj.InvokeMethod_Dd(63512827, secBeforeReboot);
+        end
+
         % //--- (end of YOsControl accessors declaration)
     end
 end

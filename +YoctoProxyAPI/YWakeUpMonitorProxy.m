@@ -225,8 +225,9 @@ classdef YWakeUpMonitorProxy < YoctoProxyAPI.YFunctionProxy
             %
             % @return a value among YWakeUpMonitor.WAKEUPREASON_USBPOWER,
             % YWakeUpMonitor.WAKEUPREASON_EXTPOWER, YWakeUpMonitor.WAKEUPREASON_ENDOFSLEEP,
-            % YWakeUpMonitor.WAKEUPREASON_EXTSIG1, YWakeUpMonitor.WAKEUPREASON_SCHEDULE1 and
-            % YWakeUpMonitor.WAKEUPREASON_SCHEDULE2 corresponding to the latest wake up reason
+            % YWakeUpMonitor.WAKEUPREASON_EXTSIG1, YWakeUpMonitor.WAKEUPREASON_SCHEDULE1,
+            % YWakeUpMonitor.WAKEUPREASON_SCHEDULE2 and YWakeUpMonitor.WAKEUPREASON_SCHEDULE3
+            % corresponding to the latest wake up reason
             %
             % On failure, throws an exception or returns YWakeUpMonitor.WAKEUPREASON_INVALID.
             result = YoctoProxyAPI.EnumWakeUpReason(obj.InvokeMethod_D(1646271557));

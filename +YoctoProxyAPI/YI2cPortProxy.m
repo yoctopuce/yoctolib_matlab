@@ -600,8 +600,7 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
         end
 
         function result = writeLine(obj, codes)
-            % Sends a text-encoded I2C code stream to the I2C bus, and terminate
-            % the message en relâchant le bus.
+            % Sends a text-encoded I2C code stream to the I2C bus, and release the bus.
             % An I2C code stream is a string made of hexadecimal data bytes,
             % but that may also include the I2C state transitions code:
             % "{S}" to emit a start condition,
@@ -670,6 +669,22 @@ classdef YI2cPortProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns a negative error code.
             result = obj.InvokeMethod_Dxd(1790600172, byteList);
+        end
+
+        function result = snoopMessagesEx(obj, maxWait, maxMsg)
+            % Retrieves messages (both direction) in the I2C port buffer, starting at current position.
+            %
+            % If no message is found, the search waits for one up to the specified maximum timeout
+            % (in milliseconds).
+            %
+            % @param maxWait : the maximum number of milliseconds to wait for a message if none is found
+            %         in the receive buffer.
+            % @param maxMsg : the maximum number of messages to be returned by the function; up to 254.
+            %
+            % @return an array of YI2cSnoopingRecord objects containing the messages found, if any.
+            %
+            % On failure, throws an exception or returns an empty array.
+            result = obj.InvokeMethod_xYdd(-629666053, maxWait, maxMsg);
         end
 
         function result = snoopMessages(obj, maxWait)

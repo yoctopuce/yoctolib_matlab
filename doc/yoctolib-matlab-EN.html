@@ -1,0 +1,903 @@
+<HTML>
+<HEAD>
+<title>MATLAB API</title>
+<link rel="apple-touch-icon-precomposed" href="data:image/png;base64,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"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<style type="text/css">
+/*********************************************************************
+ * Searchable documentation browser for Yoctopuce Library
+ *
+ * (note: the reference file to edit is yoctolib-x-EN.html)
+ *
+ * - - - - - - - - - License information: - - - - - - - - -
+ *
+ * Copyright (C) 2011 and beyond by Yoctopuce Sarl, Switzerland.
+ *
+ * 1) If you have obtained this file from www.yoctopuce.com,
+ *    Yoctopuce Sarl licenses to you (hereafter Licensee) the
+ *    right to use, modify, copy, and integrate this source file
+ *    into your own solution for the sole purpose of interfacing
+ *    a Yoctopuce product with Licensee's solution.
+ *
+ *    The use of this file and all relationship between Yoctopuce
+ *    and Licensee are governed by Yoctopuce General Terms and
+ *    Conditions.
+ *
+ *    THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT
+ *    WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING
+ *    WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, FITNESS
+ *    FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO
+ *    EVENT SHALL LICENSOR BE LIABLE FOR ANY INCIDENTAL, SPECIAL,
+ *    INDIRECT OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA,
+ *    COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR
+ *    SERVICES, ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT
+ *    LIMITED TO ANY DEFENSE THEREOF), ANY CLAIMS FOR INDEMNITY OR
+ *    CONTRIBUTION, OR OTHER SIMILAR COSTS, WHETHER ASSERTED ON THE
+ *    BASIS OF CONTRACT, TORT (INCLUDING NEGLIGENCE), BREACH OF
+ *    WARRANTY, OR OTHERWISE.
+ *
+ * 2) If your intent is not to interface with Yoctopuce products,
+ *    you are not entitled to use, read or create any derived
+ *    material from this file.
+ *
+ *********************************************************************/
+BODY
+{ font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-align : justify;
+}
+
+div#BannerLayer
+{ position:absolute;
+  left:0px;
+  top:0px;
+  width:800px;
+  height:80px;
+  overflow:hidden;
+  Font-size:64px;
+  font-weight:bold;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABkCAIAAADITs03AAAALHRFWHRDcmVhdGlvbiBUaW1lAFR1ZSAxMyBEZWMgMjAxMSAwNzoyNjozNCArMDEwMCBiImgAAAAHdElNRQfbDA0GIhbUXPxTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAABGdBTUEAALGPC/xhBQAAAB9JREFUeNpjeP78ORMDAwPT////wTQ+NrHqRvWTrR8AfCxgH0BR2OYAAAAASUVORK5CYII=);
+  }
+div#MarginLayer
+{ position:absolute;
+  left:0px;
+  top:80px;
+  width:250px;
+  height:490px;
+  background-color:#f8f8f8;
+  overflow:auto;
+
+}
+
+div#FunctionsLayer
+{ position:absolute;
+  left:250px;
+  top:80px;
+  width:600px;
+  height:490px;
+  overflow:auto;
+}
+
+div#FooterLayer
+{ position:absolute;
+  left:0px;
+  top:570px;
+  width: 800px;
+  height:30px;
+  background-color: #E0E0E0 ;
+  overflow:hidden;
+}
+
+div#separatorLayer
+{ position:absolute;
+  width:10px;
+  height:470px;
+  border-left:2px solid #b0b0b0 ;
+  overflow:hidden;
+  cursor :col-resize;
+}
+
+div.container
+{ width:100%;
+  height:100%;
+}
+
+span.classheader
+{ display:inline-block;
+  width:100%;
+  background-color:#f0f0f0;
+  padding-top:3px;
+  padding-bottom:3px;
+  margin-bottom:3px;
+  margin-top:px;
+}
+
+A.extLink
+ { color : gray;
+   text-decoration:none;
+   font-size:10px;
+ }
+
+span.classheader A
+ { color: navy;
+   text-decoration:none;
+   font-weight:bold;
+ }
+
+hr
+ { margin-top: 0;
+   margin-bottom: 1px;
+   border-width: 3px;
+ }
+
+img.expandColapse
+ { vertical-align: middle;
+ }
+
+img.noExpand
+ { visibility: hidden;
+ }
+
+div.methodsList
+ { margin-top:0px;
+   padding-top:0px;
+   padding-left:10px;
+   margin-bottom:10px;
+ }
+
+div.methodsList A
+ { color: navy;
+   text-decoration:none;
+ }
+
+div#FunctionsLayerInner
+ { margin-left:10px;
+   margin-top:10px;
+   margin-right:20px;
+ }
+
+.center
+{ text-align:center;
+}
+
+.funcHeader
+{ color: navy;
+  text-decoration:none;
+  font-size:25px;
+  margin-botton:20px;
+  font-weight:bold;
+}
+
+.subHeader
+{ color: navy;
+  text-decoration:none;
+  font-size:18px;
+  margin-botton:15px;
+  font-weight:bold;
+}
+
+span#pn, td.pn { color: black; }
+span#int, td.int { color: #000099; }
+span#obj, td.obj { color: #008040; }
+span#dbl, td.dbl { color: #804600; }
+span#str, td.str { color: #800080; }
+span#arr, td.arr { color: #800080; }
+span#bool, td.bool { color: #196719; }
+
+tt { color: #000099; }
+
+tt a
+{ text-decoration:none;
+  font-weight:bold;
+}
+
+td.pn
+{ vertical-align:top;
+  font-weight:bold;
+}
+
+span.paramAndRet
+{ font-weight:bold;
+  color: navy;
+}
+
+table
+{ font-size:14px; }
+
+span.prototype
+{ margin-left:10px;
+  margin-right:10px;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:5px;
+  padding-right:5px;
+  font-weight:bold;
+  background-color: #f8f8f8;
+  -moz-border-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+}
+
+p.protolabel
+{ border-top:1px  solid #f0f0f0; }
+
+P.protoretval
+{ margin-left:20px;}
+
+.paramtable
+{ margin-left:20px; margin-top:0px;}
+
+P.protoretval
+{ margin-left:20px;}
+
+input
+{ border :  1px solid gray;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-top-left-radius:  2px;
+  -webkit-border-top-right-radius: 2px;
+  -webkit-border-bottom-right-radius:  2px;
+  -webkit-border-bottom-left-radius:  2px;
+}
+
+td#langdt
+{ vertical-align:bottom;
+  text-align:right;
+  color:#404040;
+}
+
+td#version
+{ text-align:right;
+  font-size:12px;
+  color:gray;
+}
+
+p.methodlist
+{ border-top:1px solid #e0e0e0;
+  margin-left:20px;
+}
+
+a.protoindex
+{ text-decoration:none;
+  font-weight:bold;
+  color:black;
+}
+
+span.synlist
+{ margin-left:20px;
+  display:block;
+}
+
+p.include
+{ font-weight:bold;
+  color:black;
+  margin-left:20px;
+}
+
+.noicon
+{ display: block; }
+
+.property
+{ display: block;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAF/SURBVDiNlZO9S0JRGMZ/99xL3C0XC/qAcuhrVISW1nBobuoPaHBzcRFviw6OTja1VktLlNHaoqIFJpJoEQ1SEBkNCXpOw7W6mt7wmc55v57zHJ5X4w+sKcAPXR/g6QXfQG8ARbCendXa7/FIh3IIRACkxlAoBXoBbrNw3AXQHc07wBqoEc0AmgZqFqbnwVuGijLsRDkELPRz7VkAzebHc6ejOrHY5fnBwfWjnZWLsLoJnBk9zQGQQ/jilhA6kcj6Ujq9tX1z09wvlZrvPYogJArC/rBRmkHKLqnU1V0+/1Td3Q2u9sv59AvAN1pzP5RCDYR8AuSkW5NpGiIa3VgOBudWMpl8dSDtMdwZ96xa7fXBNI2JcPj08Ff/N4QyQLRAeocN0LS45UYAsiWAhnuRG0RdAEXbYeNCKWiXhO1tvTD+AD0HyRdhX26zoO6d6X/0N4AL+NmFioLpMnhNUDO2SUY9W8+BdgKWhL5t/EbCC59+bIM51lnUoV2C5Iuz+gv6RYOR1pworgAAAABJRU5ErkJggg==);
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+.method, .static
+{ display: block;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAEXRFWHRTb2Z0d2FyZQBKVEwtRGV2J4CxQ84AAAAGYktHRAAAAAAAAPlDu38AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAGnSURBVHicnVM9SytRED17tzA2+UKjSIpkK7UzYmFjKdpKFo0RsREstBDzA7YQ/QEBsTRFEBMVC0E0jWDlmg+QREQxgiiGaJHI4/Heg9x9d966EqM+1IG7zM7HmTlz50pokAg0zx8gwFFThNNJNgOocMhFDmRXoZXr418AVCTkduSHANZrgL8BNoEMgSWnyyjsJ5GsvQBQsgf5CfHjwydEArsuoRAnEEYGqmwlL5YX5nvU7o7GJLKRz+yE+9vQNUg6I87UthVoszc5givDIV+/12XZSCcb+ero9M1hqZXRwBo5n8ROD6cSwfEWxd3s8tptk+sjodzG2dFrGpJk4FeAickqje3uRFKZG/3uYnp3dGzmIBy6zdxfbs7u6W9nAYWJ6o73BrWmbqd+PP58okP6ezGiuJN9NGnOa4gOxLbokP7BbRhMfKr4pkjgVZpBEd8WdkUAWXPDviZmzu8cM3dbTn8VQIasR7H88LzKqngHnWEDkv9TjQvabrC4Bo3/uwXa6RLO40LV/0eHfAzs2Ep+9RotofWkDaMl4c/PWVSp0MCIM7VdH/8X8mKjE5TTcYYAAAAASUVORK5CYII=);
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+.sourcecode
+{ color: #666;
+  background-color: #F8F8F8;
+  border: 1px solid #DDD;
+  text-align: left;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding:10px 5px;
+  font-family: 'Courier New', courier, sans-serif;
+  margin-bottom: 0px;
+}
+
+P.illustration
+{ text-align : center;
+  font-style : italic;
+  font-size  : 12px;
+}
+</style>
+<SCRIPT type="text/JavaScript">
+var WinW;
+var WinH;
+var plusimage="data:image/gif;base64,R0lGODlhEAAQAIAAAEJCQv///yH5BAAAAP8ALAAAAAAQABAAAAIlhI9pwe2+nmQRAllbpvft8IWdgnAcOXYWpmqt6b2gLE7TZ6N6AQA7";
+var minusimage="data:image/gif;base64,R0lGODlhEAAQAIAAAEJCQv///yH5BAAAAP8ALAAAAAAQABAAAAIihI9pwe2+nmRxvmobzmHnqCAUMIZkd3KjqqWqZ8GTLJl2AQA7";
+var marginSize=250;
+var resizeCallBacks= new Array();
+var doc = new Array();
+
+//--- (generated code: Module)
+var Language='MATLAB';
+var IncludeLabel='In order to use the functions described here, you should include:';
+var ParamLabel='Parameters :';
+var ReturnLabel='Returns :';
+var AbbrevHint='The API features two syntaxes : one is purely object oriented, the other is more compact.';
+var NotFound='No match found';
+var AbbrevLabel='Use abbreviated names';
+var UseShortcuts=null;
+var ShowIcons=false;
+var MethodTypes={'static': 'Static methods', 'property':'Properties', 'method':'Methods'};
+var MethodExtra={'static': 'This class should not be instantiated manually. Instead, use the static methods below to obtain objects referring to your desired devices.',
+    'property':'Properties are the most effective way to interact with Yoctopuce devices. They can safely be read at any time, and will never cause any I/O delay as their value is updated automatically by a background thread.',
+    'method':'Methods provide access to all features of this class. However be aware that invoking these methods may in some cases cause I/O delays and rise exceptions.'};
+var sub={'YAPI_SUCCESS':'YAPI::SUCCESS','YAPI_NOT_INITIALIZED':'YAPI::NOT_INITIALIZED','YAPI_INVALID_ARGUMENT':'YAPI::INVALID_ARGUMENT','YAPI_NOT_SUPPORTED':'YAPI::NOT_SUPPORTED','YAPI_DEVICE_NOT_FOUND':'YAPI::DEVICE_NOT_FOUND','YAPI_VERSION_MISMATCH':'YAPI::VERSION_MISMATCH','YAPI_DEVICE_BUSY':'YAPI::DEVICE_BUSY','YAPI_TIMEOUT':'YAPI::TIMEOUT','YAPI_IO_ERROR':'YAPI::IO_ERROR','YAPI_NO_MORE_DATA':'YAPI::NO_MORE_DATA','YAPI_EXHAUSTED':'YAPI::EXHAUSTED','YAPI_DOUBLE_ACCES':'YAPI::DOUBLE_ACCES','YAPI_UNAUTHORIZED':'YAPI::UNAUTHORIZED','YAPI_RTC_NOT_READY':'YAPI::RTC_NOT_READY','YAPI_FILE_NOT_FOUND':'YAPI::FILE_NOT_FOUND','YAPI_SSL_ERROR':'YAPI::SSL_ERROR','YAPI_RFID_SOFT_ERROR':'YAPI::RFID_SOFT_ERROR','YAPI_RFID_HARD_ERROR':'YAPI::RFID_HARD_ERROR','YAPI_BUFFER_TOO_SMALL':'YAPI::BUFFER_TOO_SMALL','YAPI_DNS_ERROR':'YAPI::DNS_ERROR','YAPI_SSL_UNK_CERT':'YAPI::SSL_UNK_CERT','null':'NULL','true':'true','false':'false'};
+doc['Module']={'':{syn:'Global parameters control interface for all Yoctopuce devices',inc:'import YoctoProxyAPI.YModuleProxy&quot;',cmt:'<p>The <tt>YModule</tt> class can be used with all Yoctopuce USB devices. It can be used to control the module global parameters, and to enumerate the functions provided by each module.</p>'}
+};
+var dm = doc.Module;
+//--- (end of generated code: Module)
+//--- (generated code: Sensor)
+doc['Sensor']={'':{syn:'Sensor function interface.',inc:'import YoctoProxyAPI.YSensorProxy',cmt:'<p>The <tt>YSensor</tt> class is the parent class for all Yoctopuce sensor types. It can be used to read the current value and unit of any sensor, read the min/max value, configure autonomous recording frequency and access recorded data. It also provides a function to register a callback invoked each time the observed value changes, or at a predefined interval. Using this class rather than a specific subclass makes it possible to create generic applications that work with any Yoctopuce sensor, even those that do not yet exist. Note: The <tt>YAnButton</tt> class is the only analog input which does not inherit from <tt>YSensor</tt>.</p>'}
+};
+var ds = doc.Sensor;
+//--- (end of generated code: Sensor)
+//--- (generated code: Accelerometer)
+doc['Accelerometer']={'':{syn:'Accelerometer control interface, available for instance in the Yocto-3D-V2 or the Yocto-Inclinometer',inc:'import YoctoProxyAPI.YAccelerometerProxy',cmt:'<p>The <tt>YAccelerometer</tt> class allows you to read and configure Yoctopuce accelerometers. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the possibility to access x, y and z components of the acceleration vector separately.</p>'}
+};
+//--- (end of generated code: Accelerometer)
+//--- (generated code: Altitude)
+doc['Altitude']={'':{syn:'Altimeter control interface, available for instance in the Yocto-Altimeter-V2 or the Yocto-GPS-V2',inc:'import YoctoProxyAPI.YAltitudeProxy',cmt:'<p>The <tt>YAltitude</tt> class allows you to read and configure Yoctopuce altimeters. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to configure the barometric pressure adjusted to sea level (QNH) for barometric sensors.</p>'}
+};
+//--- (end of generated code: Altitude)
+//--- (generated code: AnButton)
+doc['AnButton']={'':{syn:'Analog input control interface, available for instance in the Yocto-Buzzer, the Yocto-Knob, the Yocto-MaxiBuzzer or the Yocto-MaxiDisplay',inc:'import YoctoProxyAPI.YAnButtonProxy',cmt:'<p>The <tt>YAnButton</tt> class provide access to basic resistive inputs. Such inputs can be used to measure the state of a simple button as well as to read an analog potentiometer (variable resistance). This can be use for instance with a continuous rotating knob, a throttle grip or a joystick. The module is capable to calibrate itself on min and max values, in order to compute a calibrated value that varies proportionally with the potentiometer position, regardless of its total resistance.</p>'}
+};
+//--- (end of generated code: AnButton)
+//--- (generated code: ArithmeticSensor)
+doc['ArithmeticSensor']={'':{syn:'Arithmetic sensor control interface, available for instance in the Yocto-MaxiMicroVolt-Rx',inc:'import YoctoProxyAPI.YArithmeticSensorProxy',cmt:'<p>The <tt>YArithmeticSensor</tt> class allows some Yoctopuce devices to compute in real-time values based on an arithmetic formula involving one or more measured signals as well as the temperature. As for any physical sensor, the computed values can be read by callback and stored in the built-in datalogger.</p>'}
+};
+//--- (end of generated code: ArithmeticSensor)
+//--- (generated code: AudioIn)
+doc['AudioIn']={'':{syn:'Audio input control interface',inc:'import YoctoProxyAPI.YAudioInProxy',cmt:'<p>The <tt>YAudioIn</tt> class allows you to configure the volume of an audio input.</p>'}
+};
+//--- (end of generated code: AudioIn)
+//--- (generated code: AudioOut)
+doc['AudioOut']={'':{syn:'Audio output control interface',inc:'import YoctoProxyAPI.YAudioOutProxy',cmt:'<p>The <tt>YAudioOut</tt> class allows you to configure the volume of an audio output.</p>'}
+};
+//--- (end of generated code: AudioOut)
+//--- (generated code: Buzzer)
+doc['Buzzer']={'':{syn:'Buzzer control interface, available for instance in the Yocto-Buzzer, the Yocto-MaxiBuzzer or the Yocto-MaxiKnob',inc:'import YoctoProxyAPI.YBuzzerProxy',cmt:'<p>The <tt>YBuzzer</tt> class allows you to drive a buzzer. You can choose the frequency and the volume at which the buzzer must sound. You can also pre-program a play sequence.</p>'}
+};
+//--- (end of generated code: Buzzer)
+//--- (generated code: CarbonDioxide)
+doc['CarbonDioxide']={'':{syn:'CO2 sensor control interface, available for instance in the Yocto-CO2-V2',inc:'import YoctoProxyAPI.YCarbonDioxideProxy',cmt:'<p>The <tt>YCarbonDioxide</tt> class allows you to read and configure Yoctopuce CO2 sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to perform manual calibration if required.</p>'}
+};
+//--- (end of generated code: CarbonDioxide)
+//--- (generated code: CellRecord)
+doc['CellRecord']={'':{syn:'Cellular antenna description, returned by <tt>cellular.quickCellSurvey</tt> method',inc:'import YoctoProxyAPI.YCellRecordProxy',cmt:'<p><tt>YCellRecord</tt> objects are used to describe a wireless network. These objects are used in particular in conjunction with the <tt>YCellular</tt> class.</p>'}
+};
+//--- (end of generated code: CellRecord)
+//--- (generated code: Cellular)
+doc['Cellular']={'':{syn:'Cellular interface control interface, available for instance in the YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-GSM-4G',inc:'import YoctoProxyAPI.YCellularProxy',cmt:'<p>The <tt>YCellular</tt> class provides control over cellular network parameters and status for devices that are GSM-enabled. Note that TCP/IP parameters are configured separately, using class <tt>YNetwork</tt>.</p>'}
+};
+//--- (end of generated code: Cellular)
+//--- (generated code: ColorLed)
+doc['ColorLed']={'':{syn:'RGB LED control interface, available for instance in the Yocto-Color-V2, the Yocto-MaxiBuzzer or the Yocto-PowerColor',inc:'import YoctoProxyAPI.YColorLedProxy',cmt:'<p>The <tt>ColorLed</tt> class allows you to drive a color LED. The color can be specified using RGB coordinates as well as HSL coordinates. The module performs all conversions form RGB to HSL automatically. It is then self-evident to turn on a LED with a given hue and to progressively vary its saturation or lightness. If needed, you can find more information on the difference between RGB and HSL in the section following this one.</p>'}
+};
+//--- (end of generated code: ColorLed)
+//--- (generated code: ColorLedCluster)
+doc['ColorLedCluster']={'':{syn:'RGB LED cluster control interface, available for instance in the Yocto-Color-V2, the Yocto-MaxiBuzzer or the Yocto-MaxiKnob',inc:'import YoctoProxyAPI.YColorLedClusterProxy',cmt:'<p>The <tt>YColorLedCluster</tt> class allows you to drive a color LED cluster. Unlike the <tt>ColorLed</tt> class, the <tt>YColorLedCluster</tt> class allows to handle several LEDs at once. Color changes can be done using RGB coordinates as well as HSL coordinates. The module performs all conversions form RGB to HSL automatically. It is then self-evident to turn on a LED with a given hue and to progressively vary its saturation or lightness. If needed, you can find more information on the difference between RGB and HSL in the section following this one.</p>'}
+};
+//--- (end of generated code: ColorLedCluster)
+//--- (generated code: ColorSensor)
+doc['ColorSensor']={'':{syn:'Color sensor control interface',inc:'import YoctoProxyAPI.YColorSensorProxy',cmt:'<p>The <tt>YColorSensor</tt> class allows you to read and configure Yoctopuce color sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: ColorSensor)
+//--- (generated code: Compass)
+doc['Compass']={'':{syn:'Compass function control interface, available for instance in the Yocto-3D-V2',inc:'import YoctoProxyAPI.YCompassProxy',cmt:'<p>The <tt>YCompass</tt> class allows you to read and configure Yoctopuce compass functions. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Compass)
+//--- (generated code: ConsolidatedDataSet)
+doc['ConsolidatedDataSet']={'':{syn:'Cross-sensor consolidated data sequence.',cmt:'<p><tt>YConsolidatedDataSet</tt> objects make it possible to retrieve a set of recorded measures from multiple sensors, for a specified time interval. They can be used to load data points progressively, and to receive data records by timestamp, one by one..</p>'}
+};
+//--- (end of generated code: ConsolidatedDataSet)
+//--- (generated code: Current)
+doc['Current']={'':{syn:'Current sensor control interface, available for instance in the Yocto-Amp, the Yocto-Motor-DC or the Yocto-Watt',inc:'import YoctoProxyAPI.YCurrentProxy',cmt:'<p>The <tt>YCurrent</tt> class allows you to read and configure Yoctopuce current sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Current)
+//--- (generated code: CurrentLoopOutput)
+doc['CurrentLoopOutput']={'':{syn:'4-20mA output control interface, available for instance in the Yocto-4-20mA-Tx',inc:'import YoctoProxyAPI.YCurrentLoopOutputProxy',cmt:'<p>The <tt>YCurrentLoopOutput</tt> class allows you to drive a 4-20mA output by regulating the current flowing through the current loop. It can also provide information about the power state of the current loop.</p>'}
+};
+//--- (end of generated code: CurrentLoopOutput)
+//--- (generated code: DaisyChain)
+doc['DaisyChain']={'':{syn:'Module chain configuration interface',inc:'import YoctoProxyAPI.YDaisyChainProxy',cmt:'<p>The <tt>YDaisyChain</tt> class can be used to verify that devices that are daisy-chained directly from device to device, without a hub, are detected properly.</p>'}
+};
+//--- (end of generated code: DaisyChain)
+//--- (generated code: DataLogger)
+doc['DataLogger']={'':{syn:'DataLogger control interface, available on most Yoctopuce sensors.',inc:'import YoctoProxyAPI.YDataLoggerProxy',cmt:'<p>A non-volatile memory for storing ongoing measured data is available on most Yoctopuce sensors. Recording can happen automatically, without requiring a permanent connection to a computer. The <tt>YDataLogger</tt> class controls the global parameters of the internal data logger. Recording control (start/stop) as well as data retrieval is done at sensor objects level.</p>'}
+};
+//--- (end of generated code: DataLogger)
+//--- (generated code: DataSet)
+doc['DataSet']={'':{syn:'Recorded data sequence, as returned by <tt>sensor.get_recordedData()</tt>',inc:'import YoctoProxyAPI.YDataSetProxy',cmt:'<p><tt>YDataSet</tt> objects make it possible to retrieve a set of recorded measures for a given sensor and a specified time interval. They can be used to load data points with a progress report. When the <tt>YDataSet</tt> object is instantiated by the <tt>sensor.get_recordedData()</tt> function, no data is yet loaded from the module. It is only when the <tt>loadMore()</tt> method is called over and over than data will be effectively loaded from the dataLogger.</p><p> A preview of available measures is available using the function <tt>get_preview()</tt> as soon as <tt>loadMore()</tt> has been called once. Measures themselves are available using function <tt>get_measures()</tt> when loaded by subsequent calls to <tt>loadMore()</tt>.</p><p> This class can only be used on devices that use a relatively recent firmware, as <tt>YDataSet</tt> objects are not supported by firmwares older than version 13000.</p>'}
+};
+//--- (end of generated code: DataSet)
+//--- (generated code: DigitalIO)
+doc['DigitalIO']={'':{syn:'Digital IO port control interface, available for instance in the Yocto-IO or the Yocto-Maxi-IO-V2',inc:'import YoctoProxyAPI.YDigitalIOProxy',cmt:'<p>The <tt>YDigitalIO</tt> class allows you drive a Yoctopuce digital input/output port. It can be used to set up the direction of each channel, to read the state of each channel and to switch the state of each channel configures as an output. You can work on all channels at once, or one by one. Most functions \x09 use a binary representation for channels where bit 0 matches channel #0 , bit 1 matches channel \x09 #1 and so on. If you are not familiar with numbers binary representation, you will find more \x09 information here: <tt>https://en.wikipedia.org/wiki/Binary_number#Representation</tt>. It is also possible to automatically generate short pulses of a determined duration. Electrical behavior of each I/O can be modified (open drain and reverse polarity).</p>'}
+};
+//--- (end of generated code: DigitalIO)
+//--- (generated code: Display)
+doc['Display']={'':{syn:'Display control interface, available for instance in the Yocto-Display, the Yocto-MaxiDisplay, the Yocto-MaxiDisplay-G or the Yocto-MiniDisplay',inc:'import YoctoProxyAPI.YDisplayProxy',cmt:'<p>The <tt>YDisplay</tt> class allows to drive Yoctopuce displays. Yoctopuce display interface has been designed to easily show information and images. The device provides built-in multi-layer rendering. Layers can be drawn offline, individually, and freely moved on the display. It can also replay recorded sequences (animations).</p><p> In order to draw on the screen, you should use the <tt>display.get_displayLayer</tt> method to retrieve the layer(s) on which you want to draw, and then use methods defined in <tt>YDisplayLayer</tt> to draw on the layers.</p>'}
+};
+//--- (end of generated code: Display)
+//--- (generated code: DisplayLayer)
+doc['DisplayLayer']={'':{syn:'Interface for drawing into display layers, obtained by calling <tt>display.get_displayLayer</tt>.',inc:'import YoctoProxyAPI.YDisplayLayerProxy',cmt:'<p>Each <tt>DisplayLayer</tt> represents an image layer containing objects to display (bitmaps, text, etc.). The content is displayed only when the layer is active on the screen (and not masked by other overlapping layers).</p>'}
+};
+//--- (end of generated code: DisplayLayer)
+//--- (generated code: DualPower)
+doc['DualPower']={'':{syn:'Dual power switch control interface, available for instance in the Yocto-Servo',inc:'import YoctoProxyAPI.YDualPowerProxy',cmt:'<p>The <tt>YDualPower</tt> class allows you to control the power source to use for module functions that require high current. The module can also automatically disconnect the external power when a voltage drop is observed on the external power source (external battery running out of power).</p>'}
+};
+//--- (end of generated code: DualPower)
+//--- (generated code: FileRecord)
+doc['FileRecord']={'':{syn:'Description of a file on the device filesystem, returned by <tt>files.get_list</tt>',inc:'import YoctoProxyAPI.YFileRecordProxy',cmt:'<p><tt>YFileRecord</tt> objects are used to describe a file that is stored on a Yoctopuce device. These objects are used in particular in conjunction with the <tt>YFiles</tt> class.</p>'}
+};
+//--- (end of generated code: FileRecord)
+//--- (generated code: Files)
+doc['Files']={'':{syn:'Filesystem control interface, available for instance in the Yocto-Color-V2, the Yocto-SPI, the YoctoHub-Ethernet or the YoctoHub-GSM-4G',inc:'import YoctoProxyAPI.YFilesProxy',cmt:'<p>The YFiles class is used to access the filesystem embedded on some Yoctopuce devices. This filesystem makes it possible for instance to design a custom web UI (for networked devices) or to add fonts (on display devices).</p>'}
+};
+//--- (end of generated code: Files)
+//--- (generated code: FirmwareUpdate)
+doc['FirmwareUpdate']={'':{syn:'Firmware update process control interface, returned by <tt>module.updateFirmware</tt> method.',inc:'import YoctoProxyAPI.YFirmwareUpdateProxy',cmt:'<p>The <tt>YFirmwareUpdate</tt> class let you control the firmware update of a Yoctopuce module. This class should not be instantiate directly, but instances should be retrieved using the <tt>YModule</tt> method <tt>module.updateFirmware</tt>.</p>'}
+};
+//--- (end of generated code: FirmwareUpdate)
+//--- (generated code: GenericSensor)
+doc['GenericSensor']={'':{syn:'GenericSensor control interface, available for instance in the Yocto-0-10V-Rx, the Yocto-4-20mA-Rx, the Yocto-Bridge or the Yocto-milliVolt-Rx',inc:'import YoctoProxyAPI.YGenericSensorProxy',cmt:'<p>The <tt>YGenericSensor</tt> class allows you to read and configure Yoctopuce signal transducers. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, to access the autonomous datalogger. This class adds the ability to configure the automatic conversion between the measured signal and the corresponding engineering unit.</p>'}
+};
+//--- (end of generated code: GenericSensor)
+//--- (generated code: Gps)
+doc['Gps']={'':{syn:'Geolocalization control interface (GPS, GNSS, ...), available for instance in the Yocto-GPS-V2',inc:'import YoctoProxyAPI.YGpsProxy',cmt:'<p>The <tt>YGps</tt> class allows you to retrieve positioning data from a GPS/GNSS sensor. This class can provides complete positioning information. However, if you wish to define callbacks on position changes or record the position in the datalogger, you should use the <tt>YLatitude</tt> et <tt>YLongitude</tt> classes.</p>'}
+};
+//--- (end of generated code: Gps)
+//--- (generated code: GroundSpeed)
+doc['GroundSpeed']={'':{syn:'Ground speed sensor control interface, available for instance in the Yocto-GPS-V2',inc:'import YoctoProxyAPI.YGroundSpeedProxy',cmt:'<p>The <tt>YGroundSpeed</tt> class allows you to read and configure Yoctopuce ground speed sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: GroundSpeed)
+//--- (generated code: Gyro)
+doc['Gyro']={'':{syn:'Gyroscope control interface, available for instance in the Yocto-3D-V2',inc:'import YoctoProxyAPI.YGyroProxy',cmt:'<p>The <tt>YGyro</tt> class allows you to read and configure Yoctopuce gyroscopes. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the possibility to access x, y and z components of the rotation vector separately, as well as the possibility to deal with quaternion-based orientation estimates.</p>'}
+};
+//--- (end of generated code: Gyro)
+//--- (generated code: HubPort)
+doc['HubPort']={'':{syn:'YoctoHub slave port control interface, available for instance in the YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Shield or the YoctoHub-Wireless-n',inc:'import YoctoProxyAPI.YHubPortProxy',cmt:'<p>The <tt>YHubPort</tt> class provides control over the power supply for slave ports on a YoctoHub. It provide information about the device connected to it. The logical name of a YHubPort is always automatically set to the unique serial number of the Yoctopuce device connected to it.</p>'}
+};
+//--- (end of generated code: HubPort)
+//--- (generated code: Humidity)
+doc['Humidity']={'':{syn:'Humidity sensor control interface, available for instance in the Yocto-CO2-V2, the Yocto-Meteo-V2 or the Yocto-VOC-V3',inc:'import YoctoProxyAPI.YHumidityProxy',cmt:'<p>The <tt>YHumidity</tt> class allows you to read and configure Yoctopuce humidity sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Humidity)
+//--- (generated code: I2cPort)
+doc['I2cPort']={'':{syn:'I2C port control interface, available for instance in the Yocto-I2C',inc:'import YoctoProxyAPI.YI2cPortProxy',cmt:'<p>The <tt>YI2cPort</tt> classe allows you to fully drive a Yoctopuce I2C port. It can be used to send and receive data, and to configure communication parameters (baud rate, etc). Note that Yoctopuce I2C ports are not exposed as virtual COM ports. They are meant to be used in the same way as all Yoctopuce devices.</p>'}
+};
+//--- (end of generated code: I2cPort)
+//--- (generated code: I2cSnoopingRecord)
+doc['I2cSnoopingRecord']={'':{syn:'Intercepted I2C message description, returned by <tt>i2cPort.snoopMessages</tt> method',inc:'import YoctoProxyAPI.YI2cSnoopingRecordProxy'}
+};
+//--- (end of generated code: I2cSnoopingRecord)
+//--- (generated code: InputCapture)
+doc['InputCapture']={'':{syn:'Instant snapshot trigger control interface',inc:'import YoctoProxyAPI.YInputCaptureProxy',cmt:'<p>The <tt>YInputCapture</tt> class allows you to access data samples measured by a Yoctopuce electrical sensor. The data capture can be triggered manually, or be configured to detect specific events.</p>'}
+};
+//--- (end of generated code: InputCapture)
+//--- (generated code: InputCaptureData)
+doc['InputCaptureData']={'':{syn:'Sampled data from a Yoctopuce electrical sensor',inc:'import YoctoProxyAPI.YInputCaptureDataProxy',cmt:'<p><tt>InputCaptureData</tt> objects represent raw data sampled by the analog/digital converter present in a Yoctopuce electrical sensor. When several inputs are samples simultaneously, their data are provided as distinct series.</p>'}
+};
+//--- (end of generated code: InputCaptureData)
+//--- (generated code: InputChain)
+doc['InputChain']={'':{syn:'InputChain function interface',inc:'import YoctoProxyAPI.YInputChainProxy',cmt:'<p>The <tt>YInputChain</tt> class provides access to separate digital inputs connected in a chain.</p>'}
+};
+//--- (end of generated code: InputChain)
+//--- (generated code: Introduction)
+doc['*0.Introduction']={'':{syn:'',inc:'',cmt:'<p>The Yoctopuce library for MATLAB will let you use Yoctopuce devices in your own software, written in MATLAB.</p><h3>Further information</h3><p>For more details on the use of the various objects found in the Yoctopuce library, you can click on the class names on the left column. But if you are just getting started with Yoctopuce devices, we recommend that you start by reading our tutorials on <a target="_blank" href="https://www.yoctopuce.com/EN/tutorials.php">www.yoctopuce.com/EN/tutorials.php</a>, and in particular the article named <a target="_blank" href="https://www.yoctopuce.com/EN/article/how-to-start-in-c-with-yoctopuce-modules">How to start in C++ with Yoctopuce modules</a>.</p><p>In case of problem, don\'t hesitate to contact support by e-mail: <tt>support@yoctopuce.com</tt></p>'}};
+//--- (end of generated code: Introduction)
+//--- (generated code: Latitude)
+doc['Latitude']={'':{syn:'Latitude sensor control interface, available for instance in the Yocto-GPS-V2',inc:'import YoctoProxyAPI.YLatitudeProxy',cmt:'<p>The <tt>YLatitude</tt> class allows you to read and configure Yoctopuce latitude sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Latitude)
+//--- (generated code: Led)
+doc['Led']={'':{syn:'Monochrome LED control interface, available for instance in the Yocto-Buzzer, the YoctoBox-Short-Thin-Black-Prox, the YoctoBox-Short-Thin-Transp or the YoctoBox-Short-Thin-Transp-Prox',inc:'import YoctoProxyAPI.YLedProxy',cmt:'<p>The <tt>YLed</tt> class allows you to drive a monocolor LED. You can not only to drive the intensity of the LED, but also to have it blink at various preset frequencies.</p>'}
+};
+//--- (end of generated code: Led)
+//--- (generated code: LightSensor)
+doc['LightSensor']={'':{syn:'Light sensor control interface, available for instance in the Yocto-Light-V4, the Yocto-Proximity or the Yocto-RangeFinder',inc:'import YoctoProxyAPI.YLightSensorProxy',cmt:'<p>The <tt>YLightSensor</tt> class allows you to read and configure Yoctopuce light sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to easily perform a one-point linear calibration to compensate the effect of a glass or filter placed in front of the sensor. For some light sensors with several working modes, this class can select the desired working mode.</p>'}
+};
+//--- (end of generated code: LightSensor)
+//--- (generated code: Longitude)
+doc['Longitude']={'':{syn:'Longitude sensor control interface, available for instance in the Yocto-GPS-V2',inc:'import YoctoProxyAPI.YLongitudeProxy',cmt:'<p>The <tt>YLongitude</tt> class allows you to read and configure Yoctopuce longitude sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Longitude)
+//--- (generated code: Magnetometer)
+doc['Magnetometer']={'':{syn:'Magnetometer control interface, available for instance in the Yocto-3D-V2',inc:'import YoctoProxyAPI.YMagnetometerProxy',cmt:'<p>The <tt>YSensor</tt> class is the parent class for all Yoctopuce sensor types. It can be used to read the current value and unit of any sensor, read the min/max value, configure autonomous recording frequency and access recorded data. It also provides a function to register a callback invoked each time the observed value changes, or at a predefined interval. Using this class rather than a specific subclass makes it possible to create generic applications that work with any Yoctopuce sensor, even those that do not yet exist. Note: The <tt>YAnButton</tt> class is the only analog input which does not inherit from <tt>YSensor</tt>.</p>'}
+};
+//--- (end of generated code: Magnetometer)
+//--- (generated code: Measure)
+doc['Measure']={'':{syn:'Measured value, returned in particular by the methods of the <tt>YDataSet</tt> class.',cmt:'<p><tt>YMeasure</tt> objects are used within the API to represent a value measured at a specified time. These objects are used in particular in conjunction with the <tt>YDataSet</tt> class, but also for sensors periodic timed reports (see <tt>sensor.registerTimedReportCallback</tt>).</p>'}
+};
+//--- (end of generated code: Measure)
+//--- (generated code: MessageBox)
+doc['MessageBox']={'':{syn:'SMS message box interface control interface, available for instance in the YoctoHub-GSM-2G, the YoctoHub-GSM-3G-EU, the YoctoHub-GSM-3G-NA or the YoctoHub-GSM-4G',inc:'import YoctoProxyAPI.YMessageBoxProxy',cmt:'<p>The <tt>YMessageBox</tt> class provides SMS sending and receiving capability for GSM-enabled Yoctopuce devices.</p>'}
+};
+//--- (end of generated code: MessageBox)
+//--- (generated code: MicroPython)
+doc['MicroPython']={'':{syn:'MicroPython interpreter control interface',inc:'import YoctoProxyAPI.YMicroPythonProxy',cmt:'<p>The <tt>YMicroPython</tt> class provides control of the MicroPython interpreter that can be found on some Yoctopuce devices.</p>'}
+};
+//--- (end of generated code: MicroPython)
+//--- (generated code: Motor)
+doc['Motor']={'':{syn:'Motor control interface, available for instance in the Yocto-Motor-DC',inc:'import YoctoProxyAPI.YMotorProxy',cmt:'<p>The <tt>YMotor</tt> class allows you to drive a DC motor. It can be used to configure the power sent to the motor to make it turn both ways, but also to drive accelerations and decelerations. The motor will then accelerate automatically: you will not have to monitor it. The API also allows to slow down the motor by shortening its terminals: the motor will then act as an electromagnetic brake.</p>'}
+};
+//--- (end of generated code: Motor)
+//--- (generated code: MultiAxisController)
+doc['MultiAxisController']={'':{syn:'MultiAxisController function interface',inc:'import YoctoProxyAPI.YMultiAxisControllerProxy',cmt:'<p>The <tt>YMultiAxisController</tt> class allows you to drive multiple stepper motors synchronously.</p>'}
+};
+//--- (end of generated code: MultiAxisController)
+//--- (generated code: MultiCellWeighScale)
+doc['MultiCellWeighScale']={'':{syn:'Multi-cell weighing scale sensor control interface, available for instance in the Yocto-MaxiBridge',inc:'import YoctoProxyAPI.YMultiCellWeighScaleProxy',cmt:'<p>The <tt>YMultiCellWeighScale</tt> class provides a weight measurement from a set of ratiometric sensors. It can be used to control the bridge excitation parameters, in order to avoid measure shifts caused by temperature variation in the electronics, and can also automatically apply an additional correction factor based on temperature to compensate for offsets in the load cells themselves.</p>'}
+};
+//--- (end of generated code: MultiCellWeighScale)
+//--- (generated code: MultiSensController)
+doc['MultiSensController']={'':{syn:'Sensor chain configuration interface, available for instance in the Yocto-Temperature-IR',inc:'import YoctoProxyAPI.YMultiSensControllerProxy',cmt:'<p>The <tt>YMultiSensController</tt> class allows you to set up a customized sensor chain on devices featuring that functionality.</p>'}
+};
+//--- (end of generated code: MultiSensController)
+//--- (generated code: Network)
+doc['Network']={'':{syn:'Network interface control interface, available for instance in the YoctoHub-Ethernet, the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR or the YoctoHub-Wireless-n',inc:'import YoctoProxyAPI.YNetworkProxy',cmt:'<p><tt>YNetwork</tt> objects provide access to TCP/IP parameters of Yoctopuce devices that include a built-in network interface.</p>'}
+};
+//--- (end of generated code: Network)
+//--- (generated code: OsControl)
+doc['OsControl']={'':{syn:'Operating system control interface via the VirtualHub application',inc:'import YoctoProxyAPI.YOsControlProxy',cmt:'<p>The <tt>YOScontrol</tt> class provides some control over the operating system running a VirtualHub. YOsControl is available on VirtualHub software only. This feature must be activated at the VirtualHub start up with -o option.</p>'}
+};
+//--- (end of generated code: OsControl)
+//--- (generated code: Power)
+doc['Power']={'':{syn:'Electrical power sensor control interface, available for instance in the Yocto-Watt',inc:'import YoctoProxyAPI.YPowerProxy',cmt:'<p>The <tt>YPower</tt> class allows you to read and configure Yoctopuce electrical power sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to access the energy counter and the power factor.</p>'}
+};
+//--- (end of generated code: Power)
+//--- (generated code: PowerOutput)
+doc['PowerOutput']={'':{syn:'Power output control interface, available for instance in the Yocto-I2C, the Yocto-MaxiMicroVolt-Rx, the Yocto-SPI or the Yocto-Serial',inc:'import YoctoProxyAPI.YPowerOutputProxy',cmt:'<p>The <tt>YPowerOutput</tt> class allows you to control the power output featured on some Yoctopuce devices.</p>'}
+};
+//--- (end of generated code: PowerOutput)
+//--- (generated code: PowerSupply)
+doc['PowerSupply']={'':{syn:'Regulated power supply control interface',inc:'import YoctoProxyAPI.YPowerSupplyProxy',cmt:'<p>The <tt>YPowerSupply</tt> class allows you to drive a Yoctopuce power supply. It can be use to change the voltage and current limits, and to enable/disable the output.</p>'}
+};
+//--- (end of generated code: PowerSupply)
+//--- (generated code: Pressure)
+doc['Pressure']={'':{syn:'Pressure sensor control interface, available for instance in the Yocto-Altimeter-V2, the Yocto-CO2-V2, the Yocto-Meteo-V2 or the Yocto-Pressure',inc:'import YoctoProxyAPI.YPressureProxy',cmt:'<p>The <tt>YPressure</tt> class allows you to read and configure Yoctopuce pressure sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Pressure)
+//--- (generated code: Proximity)
+doc['Proximity']={'':{syn:'Proximity sensor control interface, available for instance in the Yocto-Proximity',inc:'import YoctoProxyAPI.YProximityProxy',cmt:'<p>The <tt>YProximity</tt> class allows you to read and configure Yoctopuce proximity sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to set up a detection threshold and to count the number of detected state changes.</p>'}
+};
+//--- (end of generated code: Proximity)
+//--- (generated code: PwmInput)
+doc['PwmInput']={'':{syn:'PWM input control interface, available for instance in the Yocto-PWM-Rx',inc:'import YoctoProxyAPI.YPwmInputProxy',cmt:'<p>The <tt>YPwmInput</tt> class allows you to read and configure Yoctopuce PWM inputs. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to configure the signal parameter used to transmit information: the duty cycle, the frequency or the pulse width.</p>'}
+};
+//--- (end of generated code: PwmInput)
+//--- (generated code: PwmOutput)
+doc['PwmOutput']={'':{syn:'PWM generator control interface, available for instance in the Yocto-PWM-Tx',inc:'import YoctoProxyAPI.YPwmOutputProxy',cmt:'<p>The <tt>YPwmOutput</tt> class allows you to drive a pulse-width modulated output (PWM). You can configure the frequency as well as the duty cycle, and set up progressive transitions.</p>'}
+};
+//--- (end of generated code: PwmOutput)
+//--- (generated code: PwmPowerSource)
+doc['PwmPowerSource']={'':{syn:'PWM generator power source control interface, available for instance in the Yocto-PWM-Tx',inc:'import YoctoProxyAPI.YPwmPowerSourceProxy',cmt:'<p>The <tt>YPwmPowerSource</tt> class allows you to configure the voltage source used by all PWM outputs on the same device.</p>'}
+};
+//--- (end of generated code: PwmPowerSource)
+//--- (generated code: Qt)
+doc['Qt']={'':{syn:'Base interface to access quaternion components, available for instance in the Yocto-3D-V2',inc:'import YoctoProxyAPI.YQtProxy',cmt:'<p>The <tt>YQt</tt> class provides direct access to the 3D attitude estimation provided by Yoctopuce inertial sensors. The four instances of <tt>YQt</tt> provide direct access to the individual quaternion components representing the orientation. It is usually not needed to use the <tt>YQt</tt> class directly, as the <tt>YGyro</tt> class provides a more convenient higher-level interface.</p>'}
+};
+//--- (end of generated code: Qt)
+//--- (generated code: QuadratureDecoder)
+doc['QuadratureDecoder']={'':{syn:'Quadrature decoder control interface, available for instance in the Yocto-MaxiKnob or the Yocto-PWM-Rx',inc:'import YoctoProxyAPI.YQuadratureDecoderProxy',cmt:'<p>The <tt>YQuadratureDecoder</tt> class allows you to read and configure Yoctopuce quadrature decoders. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: QuadratureDecoder)
+//--- (generated code: RangeFinder)
+doc['RangeFinder']={'':{syn:'Range finder control interface, available for instance in the Yocto-RangeFinder',inc:'import YoctoProxyAPI.YRangeFinderProxy',cmt:'<p>The <tt>YRangeFinder</tt> class allows you to read and configure Yoctopuce range finders. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to easily perform a one-point linear calibration to compensate the effect of a glass or filter placed in front of the sensor.</p>'}
+};
+//--- (end of generated code: RangeFinder)
+//--- (generated code: RealTimeClock)
+doc['RealTimeClock']={'':{syn:'Real-time clock control interface, available for instance in the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n',inc:'import YoctoProxyAPI.YRealTimeClockProxy',cmt:'<p>The <tt>YRealTimeClock</tt> class provide access to the embedded real-time clock available on some Yoctopuce devices. It can provide current date and time, even after a power outage lasting several days. It is the base for automated wake-up functions provided by the WakeUpScheduler. The current time may represent a local time as well as an UTC time, but no automatic time change will occur to account for daylight saving time.</p>'}
+};
+//--- (end of generated code: RealTimeClock)
+//--- (generated code: RefFrame)
+doc['RefFrame']={'':{syn:'3D reference frame configuration interface, available for instance in the Yocto-3D-V2 or the Yocto-Inclinometer',inc:'import YoctoProxyAPI.YRefFrameProxy',cmt:'<p>The <tt>YRefFrame</tt> class is used to set up the base orientation of the Yoctopuce inertial sensors. Thanks to this, orientation functions relative to the earth surface plane can use the proper reference frame. For some devices, the class also implements a tridimensional sensor calibration process, which can compensate for local variations of standard gravity and improve the precision of the tilt sensors.</p>'}
+};
+//--- (end of generated code: RefFrame)
+//--- (generated code: Relay)
+doc['Relay']={'':{syn:'Relay control interface, available for instance in the Yocto-LatchedRelay, the Yocto-MaxiPowerRelay, the Yocto-PowerRelay-V3 or the Yocto-Relay',inc:'import YoctoProxyAPI.YRelayProxy',cmt:'<p>The <tt>YRelay</tt> class allows you to drive a Yoctopuce relay or optocoupled output. It can be used to simply switch the output on or off, but also to automatically generate short pulses of determined duration. On devices with two output for each relay (double throw), the two outputs are named A and B, with output A corresponding to the idle position (normally closed) and the output B corresponding to the active state (normally open).</p>'}
+};
+//--- (end of generated code: Relay)
+//--- (generated code: RfidOptions)
+doc['RfidOptions']={'':{syn:'Additional parameters for operations on RFID tags.',inc:'import YoctoProxyAPI.YRfidOptionsProxy',cmt:'<p>The <tt>YRfidOptions</tt> objects are used to specify additional optional parameters to RFID commands that interact with tags, including security keys. When instantiated,the parameters of this object are pre-initialized to a value which corresponds to the most common usage.</p>'}
+,'DisableBoundaryChecks':{syn:'Disables the tag memory overflow test.',lib:'YRfidOptions.DisableBoundaryChecks',pro:'<span id=bool>bool</span> <span class=\x27propname\x27>DisableBoundaryChecks</span>',cmt:'<p>Disables the tag memory overflow test. By default, the Yoctopuce library\x27s read/write functions detect overruns and do not run commands that are likely to fail. If you nevertheless wish to try to access more memory than the tag announces, you can try to use this option.</p>'}
+,'EnableDryRun':{syn:'Enables simulation mode to check the affected block range as well as access rights.',lib:'YRfidOptions.EnableDryRun',pro:'<span id=bool>bool</span> <span class=\x27propname\x27>EnableDryRun</span>',cmt:'<p>Enables simulation mode to check the affected block range as well as access rights. When this option is active, the operation is not fully applied to the RFID tag but the affected block range is determined and the optional access key is tested on these blocks. The access key rights are not tested though. This option applies to write / configure operations only, it is ignored for read operations.</p>'}
+,'EnableRawAccess':{syn:'Enables direct access to RFID tag control blocks.',lib:'YRfidOptions.EnableRawAccess',pro:'<span id=bool>bool</span> <span class=\x27propname\x27>EnableRawAccess</span>',cmt:'<p>Enables direct access to RFID tag control blocks. By default, Yoctopuce library read and write functions only work on data blocks and automatically skip special blocks, as specific functions are provided to configure security parameters found in control blocks. If you need to access control blocks in your own way using read/write functions, enable this option. Use this option wisely, as overwriting a special block migth very well irreversibly alter your tag behavior.</p>'}
+,'ForceMultiBlockAccess':{syn:'Forces the use of multi-block commands to access RFID tag memory blocks.',lib:'YRfidOptions.ForceMultiBlockAccess',pro:'<span id=bool>bool</span> <span class=\x27propname\x27>ForceMultiBlockAccess</span>',cmt:'<p>Forces the use of multi-block commands to access RFID tag memory blocks. By default, the Yoctopuce library uses the most efficient access strategy generally available for each tag type, but you can force the use of multi-block commands if you know for sure that the RFID tags you are using do support multi-block commands. Be aware that even if a tag allows multi-block operations, the maximum number of blocks that can be written or read at the same time can be (very) limited. If the tag does not support multi-block mode for the wanted operation, the option will be ignored.</p>'}
+,'ForceSingleBlockAccess':{syn:'Forces the use of single-block commands to access RFID tag memory blocks.',lib:'YRfidOptions.ForceSingleBlockAccess',pro:'<span id=bool>bool</span> <span class=\x27propname\x27>ForceSingleBlockAccess</span>',cmt:'<p>Forces the use of single-block commands to access RFID tag memory blocks. By default, the Yoctopuce library uses the most efficient access strategy generally available for each tag type, but you can force the use of single-block commands if the RFID tags you are using do not support multi-block commands. If operation speed is not a priority, choose single-block mode as it will work with any mode.</p>'}
+,'HexKey':{syn:'Security key to be used to access the RFID tag, as an hexadecimal string.',lib:'YRfidOptions.HexKey',pro:'<span id=str>string</span> <span class=\x27propname\x27>HexKey</span>',cmt:'<p>Security key to be used to access the RFID tag, as an hexadecimal string. The key will only be used if you also specify which type of key it is, using property <tt>KeyType</tt>.</p>'}
+,'KeyType':{syn:'Type of security key to be used to access the RFID tag.',lib:'YRfidOptions.KeyType',pro:'<span id=int>int</span> <span class=\x27propname\x27>KeyType</span>',cmt:'<p>Type of security key to be used to access the RFID tag. For MIFARE Classic tags, allowed values are <tt>Y_MIFARE_KEY_A</tt> or <tt>Y_MIFARE_KEY_B</tt>. The default value is <tt>Y_NO_RFID_KEY</tt>, in that case the reader will use the most common default key for the tag type. When a security key is required, it must be provided using property <tt>HexKey</tt>.</p>'}
+};
+//--- (end of generated code: RfidOptions)
+//--- (generated code: RfidReader)
+doc['RfidReader']={'':{syn:'RfidReader function interface',inc:'import YoctoProxyAPI.YRfidReaderProxy',cmt:'<p>The <tt>YRfidReader</tt> class allows you to detect RFID tags, as well as read and write on these tags if the security settings allow it. Short reminder:<br> <ul> <li>A tag\x27s memory is generally organized in fixed-size blocks.</li> <li>At tag level, each block must be read and written in its entirety.</li> <li>Some blocks are special configuration blocks, and may alter the tag\x27s behavior if they are rewritten with arbitrary data.</li> <li>Data blocks can be set to read-only mode, but on many tags, this operation is irreversible.</li> </ul> By default, the RfidReader class automatically manages these blocks so that arbitrary size data can be manipulated of without risk and without knowledge of tag architecture.</p>'}
+};
+//--- (end of generated code: RfidReader)
+//--- (generated code: RfidStatus)
+doc['RfidStatus']={'':{syn:'Detailled information about the result of RFID tag operations, allowing to find out what happened exactly after a tag operation failure.',inc:'import YoctoProxyAPI.YRfidStatusProxy',cmt:'<p><tt>YRfidStatus</tt> objects provide additional information about operations on RFID tags, including the range of blocks affected by read/write operations and possible errors when communicating with RFID tags. This makes it possible, for example, to distinguish communication errors that can be recovered by an additional attempt, from security or other errors on the tag. Combined with the <tt>EnableDryRun</tt> option in <tt>RfidOptions</tt>, this structure can be used to predict which blocks will be affected by a write operation.</p>'}
+};
+//--- (end of generated code: RfidStatus)
+//--- (generated code: RfidTagInfo)
+doc['RfidTagInfo']={'':{syn:'RFID tag description, used by class <tt>YRfidReader</tt>',inc:'import YoctoProxyAPI.YRfidTagInfoProxy',cmt:'<p><tt>YRfidTagInfo</tt> objects are used to describe RFID tag attributes, such as the tag type and its storage size. These objects are returned by method <tt>get_tagInfo()</tt> of class <tt>YRfidReader</tt>.</p>'}
+};
+//--- (end of generated code: RfidTagInfo)
+//--- (generated code: Sdi12Port)
+doc['Sdi12Port']={'':{syn:'SDI12 port control interface',inc:'import YoctoProxyAPI.YSdi12PortProxy',cmt:'<p>The <tt>YSdi12Port</tt> class allows you to fully drive a Yoctopuce SDI12 port. It can be used to send and receive data, and to configure communication parameters (baud rate, bit count, parity, flow control and protocol). Note that Yoctopuce SDI12 ports are not exposed as virtual COM ports. They are meant to be used in the same way as all Yoctopuce devices.</p>'}
+};
+//--- (end of generated code: Sdi12Port)
+//--- (generated code: Sdi12SensorInfo)
+doc['Sdi12SensorInfo']={'':{syn:'Description of a discovered SDI12 sensor, returned by <tt>sdi12Port.discoverSingleSensor</tt> and <tt>sdi12Port.discoverAllSensors</tt> methods',inc:'import YoctoProxyAPI.YSdi12SensorInfoProxy'}
+};
+//--- (end of generated code: Sdi12SensorInfo)
+//--- (generated code: Sdi12SnoopingRecord)
+doc['Sdi12SnoopingRecord']={'':{syn:'Intercepted SDI12 message description, returned by <tt>sdi12Port.snoopMessages</tt> method',inc:'import YoctoProxyAPI.YSdi12SnoopingRecordProxy'}
+};
+//--- (end of generated code: Sdi12SnoopingRecord)
+//--- (generated code: SegmentedDisplay)
+doc['SegmentedDisplay']={'':{syn:'Segmented display control interface',inc:'import YoctoProxyAPI.YSegmentedDisplayProxy',cmt:'<p>The <tt>SegmentedDisplay</tt> class allows you to drive segmented displays.</p>'}
+};
+//--- (end of generated code: SegmentedDisplay)
+//--- (generated code: SerialPort)
+doc['SerialPort']={'':{syn:'Serial port control interface, available for instance in the Yocto-RS232, the Yocto-RS485-V2 or the Yocto-Serial',inc:'import YoctoProxyAPI.YSerialPortProxy',cmt:'<p>The <tt>YSerialPort</tt> class allows you to fully drive a Yoctopuce serial port. It can be used to send and receive data, and to configure communication parameters (baud rate, bit count, parity, flow control and protocol). Note that Yoctopuce serial ports are not exposed as virtual COM ports. They are meant to be used in the same way as all Yoctopuce devices.</p>'}
+};
+//--- (end of generated code: SerialPort)
+//--- (generated code: Servo)
+doc['Servo']={'':{syn:'RC servo motor control interface, available for instance in the Yocto-Servo',inc:'import YoctoProxyAPI.YServoProxy',cmt:'<p>The <tt>YServo</tt> class is designed to drive remote-control servo motors outputs. This class allows you not only to move a servo to a given position, but also to specify the time interval in which the move should be performed. This makes it possible to synchronize two servos involved in a same move.</p>'}
+};
+//--- (end of generated code: Servo)
+//--- (generated code: Sms)
+doc['Sms']={'':{syn:'SMS message sent or received, returned by <tt>messageBox.get_messages</tt> or <tt>messageBox.newMessage</tt>',inc:'import YoctoProxyAPI.YSmsProxy',cmt:'<p><tt>YSms</tt> objects are used to describe an SMS message, received or to be sent. These objects are used in particular in conjunction with the <tt>YMessageBox</tt> class.</p>'}
+};
+//--- (end of generated code: Sms)
+//--- (generated code: SnoopingRecord)
+doc['SnoopingRecord']={'':{syn:'Intercepted serial message description, returned by <tt>serialPort.snoopMessages</tt> method',inc:'import YoctoProxyAPI.YSnoopingRecordProxy'}
+};
+//--- (end of generated code: SnoopingRecord)
+//--- (generated code: SpectralChannel)
+doc['SpectralChannel']={'':{syn:'Spectral analysis channel control interface',inc:'import YoctoProxyAPI.YSpectralChannelProxy',cmt:'<p>The <tt>YSpectralChannel</tt> class allows you to read and configure Yoctopuce spectral analysis channels. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: SpectralChannel)
+//--- (generated code: SpectralSensor)
+doc['SpectralSensor']={'':{syn:'Spectral sensor control interface',inc:'import YoctoProxyAPI.YSpectralSensorProxy',cmt:'<p>The <tt>YSpectralSensor</tt> class allows you to read and configure Yoctopuce spectral sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: SpectralSensor)
+//--- (generated code: SpiPort)
+doc['SpiPort']={'':{syn:'SPI port control interface, available for instance in the Yocto-SPI',inc:'import YoctoProxyAPI.YSpiPortProxy',cmt:'<p>The <tt>YSpiPort</tt> class allows you to fully drive a Yoctopuce SPI port. It can be used to send and receive data, and to configure communication parameters (baud rate, bit count, parity, flow control and protocol). Note that Yoctopuce SPI ports are not exposed as virtual COM ports. They are meant to be used in the same way as all Yoctopuce devices.</p>'}
+};
+//--- (end of generated code: SpiPort)
+//--- (generated code: SpiSnoopingRecord)
+doc['SpiSnoopingRecord']={'':{syn:'Intercepted SPI message description, returned by <tt>spiPort.snoopMessages</tt> method',inc:'import YoctoProxyAPI.YSpiSnoopingRecordProxy'}
+};
+//--- (end of generated code: SpiSnoopingRecord)
+//--- (generated code: StepperMotor)
+doc['StepperMotor']={'':{syn:'Stepper motor control interface',inc:'import YoctoProxyAPI.YStepperMotorProxy',cmt:'<p>The <tt>YStepperMotor</tt> class allows you to drive a stepper motor.</p>'}
+};
+//--- (end of generated code: StepperMotor)
+//--- (generated code: Temperature)
+doc['Temperature']={'':{syn:'Temperature sensor control interface, available for instance in the Yocto-Meteo-V2, the Yocto-PT100, the Yocto-Temperature or the Yocto-Thermocouple',inc:'import YoctoProxyAPI.YTemperatureProxy',cmt:'<p>The <tt>YTemperature</tt> class allows you to read and configure Yoctopuce temperature sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger. This class adds the ability to configure some specific parameters for some sensors (connection type, temperature mapping table).</p>'}
+};
+//--- (end of generated code: Temperature)
+//--- (generated code: Threshold)
+doc['Threshold']={'':{syn:'Control interface to define a threshold',inc:'import YoctoProxyAPI.YThresholdProxy',cmt:'<p>The <tt>Threshold</tt> class allows you define a threshold on a Yoctopuce sensor to trigger a predefined action, on specific devices where this is implemented.</p>'}
+};
+//--- (end of generated code: Threshold)
+//--- (generated code: Tilt)
+doc['Tilt']={'':{syn:'Tilt sensor control interface, available for instance in the Yocto-3D-V2 or the Yocto-Inclinometer',inc:'import YoctoProxyAPI.YTiltProxy',cmt:'<p>The <tt>YSensor</tt> class is the parent class for all Yoctopuce sensor types. It can be used to read the current value and unit of any sensor, read the min/max value, configure autonomous recording frequency and access recorded data. It also provides a function to register a callback invoked each time the observed value changes, or at a predefined interval. Using this class rather than a specific subclass makes it possible to create generic applications that work with any Yoctopuce sensor, even those that do not yet exist. Note: The <tt>YAnButton</tt> class is the only analog input which does not inherit from <tt>YSensor</tt>.</p>'}
+};
+//--- (end of generated code: Tilt)
+//--- (generated code: Tvoc)
+doc['Tvoc']={'':{syn:'Total Volatile Organic Compound sensor control interface, available for instance in the Yocto-VOC-V3',inc:'import YoctoProxyAPI.YTvocProxy',cmt:'<p>The <tt>YTvoc</tt> class allows you to read and configure Yoctopuce Total Volatile Organic Compound sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Tvoc)
+//--- (generated code: Voc)
+doc['Voc']={'':{syn:'Volatile Organic Compound sensor control interface, available for instance in the Yocto-VOC-V3',inc:'import YoctoProxyAPI.YVocProxy',cmt:'<p>The <tt>YVoc</tt> class allows you to read and configure Yoctopuce Volatile Organic Compound sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Voc)
+//--- (generated code: Voltage)
+doc['Voltage']={'':{syn:'Voltage sensor control interface, available for instance in the Yocto-Motor-DC, the Yocto-Volt or the Yocto-Watt',inc:'import YoctoProxyAPI.YVoltageProxy',cmt:'<p>The <tt>YVoltage</tt> class allows you to read and configure Yoctopuce voltage sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and to access the autonomous datalogger.</p>'}
+};
+//--- (end of generated code: Voltage)
+//--- (generated code: VoltageOutput)
+doc['VoltageOutput']={'':{syn:'Voltage output control interface, available for instance in the Yocto-0-10V-Tx',inc:'import YoctoProxyAPI.YVoltageOutputProxy',cmt:'<p>The <tt>YVoltageOutput</tt> class allows you to drive a voltage output.</p>'}
+};
+//--- (end of generated code: VoltageOutput)
+//--- (generated code: WakeUpMonitor)
+doc['WakeUpMonitor']={'':{syn:'Wake-up monitor control interface, available for instance in the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n',inc:'import YoctoProxyAPI.YWakeUpMonitorProxy',cmt:'<p>The <tt>YWakeUpMonitor</tt> class handles globally all wake-up sources, as well as automated sleep mode.</p>'}
+};
+//--- (end of generated code: WakeUpMonitor)
+//--- (generated code: WakeUpSchedule)
+doc['WakeUpSchedule']={'':{syn:'Wake up schedule control interface, available for instance in the YoctoHub-GSM-4G, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n',inc:'import YoctoProxyAPI.YWakeUpScheduleProxy',cmt:'<p>The <tt>YWakeUpSchedule</tt> class implements a wake up condition. The wake up time is specified as a set of months and/or days and/or hours and/or minutes when the wake up should happen.</p>'}
+};
+//--- (end of generated code: WakeUpSchedule)
+//--- (generated code: Watchdog)
+doc['Watchdog']={'':{syn:'Watchdog control interface, available for instance in the Yocto-WatchdogDC',inc:'import YoctoProxyAPI.YWatchdogProxy',cmt:'<p>The <tt>YWatchdog</tt> class allows you to drive a Yoctopuce watchdog. A watchdog works like a relay, with an extra timer that can automatically trigger a brief power cycle to an appliance after a preset delay, to force this appliance to reset if a problem occurs. During normal use, the watchdog timer is reset periodically by the application to prevent the automated power cycle. Whenever the application dies, the watchdog will automatically trigger the power cycle. The watchdog can also be driven directly with <tt>pulse</tt> and <tt>delayedPulse</tt> methods to switch off an appliance for a given duration.</p>'}
+};
+//--- (end of generated code: Watchdog)
+//--- (generated code: WeighScale)
+doc['WeighScale']={'':{syn:'Weighing scale sensor control interface, available for instance in the Yocto-Bridge or the Yocto-MaxiBridge',inc:'import YoctoProxyAPI.YWeighScaleProxy',cmt:'<p>The <tt>YWeighScale</tt> class provides a weight measurement from a ratiometric sensor. It can be used to control the bridge excitation parameters, in order to avoid measure shifts caused by temperature variation in the electronics, and can also automatically apply an additional correction factor based on temperature to compensate for offsets in the load cell itself.</p>'}
+};
+//--- (end of generated code: WeighScale)
+//--- (generated code: Wireless)
+doc['Wireless']={'':{syn:'Wireless LAN interface control interface, available for instance in the YoctoHub-Wireless, the YoctoHub-Wireless-SR, the YoctoHub-Wireless-g or the YoctoHub-Wireless-n',inc:'import YoctoProxyAPI.YWirelessProxy',cmt:'<p>The YWireless class provides control over wireless network parameters and status for devices that are wireless-enabled. Note that TCP/IP parameters are configured separately, using class <tt>YNetwork</tt>.</p>'}
+};
+//--- (end of generated code: Wireless)
+//--- (generated code: WlanRecord)
+doc['WlanRecord']={'':{syn:'Wireless network description, returned by <tt>wireless.get_detectedWlans</tt> method',inc:'import YoctoProxyAPI.YWlanRecordProxy',cmt:'<p><tt>YWlanRecord</tt> objects are used to describe a wireless network. These objects are used in particular in conjunction with the <tt>YWireless</tt> class.</p>'}
+};
+//--- (end of generated code: WlanRecord)
+//--- (generated code: YAPI)
+doc['YAPI']={'':{syn:'General functions',inc:'import YoctoProxyAPI.YAPIProxy&quot;',cmt:'<p>These general functions should be used to initialize and configure the Yoctopuce library. In most cases, a simple call to function <tt>yRegisterHub()</tt> should be enough. The module-specific functions <tt>yFind...()</tt> or <tt>yFirst...()</tt> should then be used to retrieve an object that provides interaction with the module.</p>'}
+};
+//--- (end of generated code: YAPI)
+
+function isProperty(clname,m){return doc[clname][m].lib.indexOf('(')==-1&&Language!='Objective-C';}
+function isClassMethod(clname,m){return(clname=='YAPI'&&doc[clname][m].pro?doc[clname][m].pro.indexOf('static')>=0:/^[A-Z].*/.test(m));}
+function MethodType(clname,m){return(isProperty(clname,m)?'property':isClassMethod(clname,m)?'static':'method');}
+var isCmdLine=(Language.substr(0,3)=='Cmd');var isProxy=(Language.substr(-5)=='Proxy');function ApplySub(text,clname,attrname){var pos,endpos=0,key,rep,prefix,skip,cname,aprefix;if(!text)return'';prefix=(clname.substr(0,1)!='Y'?'Y'+clname:clname);if(/^[gs]et_.*/.test(attrname))attrname=attrname.substr(4);skip=2;if(isProxy){prefix=clname.toLowerCase()+'._';if(attrname!='mountPosition'&&attrname!='drawText'){skip+=attrname.length;prefix+=attrname.substr(0,1).toUpperCase()+attrname.substr(1);}}else if(sub['YAPI_SUCCESS']&&!isCmdLine){prefix=sub['YAPI_SUCCESS'].replace('YAPI',prefix).replace('SUCCESS','');}else{prefix+='.';}
+while((pos=text.toLowerCase().indexOf('<tt>',endpos))>=endpos){pos+=4;endpos=text.indexOf('</',pos);inside=text.substr(pos,endpos-pos);rep=false;if(isCmdLine&&inside.startsWith('YDisplayLayer.ALIGN')){rep=inside.replace(/YDisplayLayer.ALIGN(_)*/,'');}else if(sub[inside]){rep=sub[inside];}else if((key=inside.match(/^(\w+_)+\w+$/))!==null){key=key[0];rep=sub[key];if(!rep&&key.substr(0,2)=='Y_'&&!UseShortcuts){if(isCmdLine){rep=key.substr(2+attrname.length,key.length);}else{rep=prefix+key.substr(skip,key.length);}}}else if(isCmdLine&&inside.startsWith(prefix+attrname.toUpperCase()+'_')){rep=inside.substr(prefix.length+attrname.length+1);}else if((key=inside.match(/^Y[A-Za-z0-9]+$/))!==null){key=key[0].substr(1);if(doc[key]){cname='Y'+key;if(doc.Files.get_module&&doc.Files.get_module.pro.indexOf('Proxy')>0&&text.substr(pos-7,2)!='VI'&&text.substr(endpos+6,2)!='VI'){cname+='Proxy';}
+rep='<a href="javascript:Show(\''+key+'\',\'\')">'+cname+'</a>';}}else if((key=inside.match(/^y([A-Z][A-Za-z0-9]+).*/))!==null){ident=key[1];key=key[0].substr(1);if(key.match(/(First|Find)[A-Za-z0-9]+.*/)){if(!UseShortcuts)rep=inside.substr(1);}else{if(!UseShortcuts){rep=sub['YAPI_SUCCESS'].replace('SUCCESS',inside.substr(1));if(doc['YAPI'][ident]){rep='<a href="javascript:Show(\'YAPI\',\''+ident+'\')">'+rep+'</a>';}}else{if(doc['YAPI'][ident]){rep='<a href="javascript:Show(\'YAPI\',\''+ident+'\')">'+inside+'</a>';}}}}else if((key=inside.match(/^([A-Za-z][A-Za-z0-9]+)(\.|::)([A-Za-z_0-9]+).*/))!==null){cident=key[1].substr(0,1).toUpperCase()+key[1].substr(1);mident=key[3];if(cident.substr(0,4)!='YAPI'&&cident[0]=='Y')cident=cident.substr(1);if(cident.match(/.*Proxy$/))cident=cident.slice(0,-5);if(!UseShortcuts){rep=inside;}else if(mident.match(/(First|Find)[A-Za-z0-9]+.*/)||cident=='YAPI'){rep='y'+mident;}
+if(doc[cident]&&doc[cident][mident]){rep='<a href="javascript:Show(\''+cident+'\',\''+mident+'\')">'+rep+'</a>';}}else if((key=inside.match(/^(saveToFlash|isOnline).*/))!==null){rep='<a href="javascript:Show(\'Module\',\''+key[1]+'\')">'+inside+'</a>';}
+if(rep!==false){text=text.substr(0,pos)+rep+text.substr(endpos);endpos=pos+rep.length;}}
+return text;}
+function wdg(n){return document.getElementById(n);}
+function SetPosition(o,x,y){var it=wdg(o);it.style.top=y;it.style.left=x;}
+function GetPositionX(o){var it=wdg(o);return parseInt(it.style.left);}
+function GetPositionY(o){var it=wdg(o);return parseInt(it.style.top);}
+function GetWidth(o){var it=wdg(o);return parseInt(it.style.width);}
+function GetHeight(o){var it=wdg(o);return parseInt(it.style.height);}
+function SetHeight(o,h){var it=wdg(o);h=parseInt(h);if(h<0)h=0;it.style.height=h+"px";}
+function SetWidth(o,w){var it=wdg(o);w=parseInt(w);if(w<0)w=0;it.style.width=parseInt(w)+"px";}
+function SetLeft(o,l){var it=wdg(o);it.style.left=parseInt(l)+"px";}
+function SetTop(o,t){var it=wdg(o);it.style.top=parseInt(t)+"px";}
+function SetSize(o,w,h){var it=wdg(o);w=parseInt(w);if(w<0)w=0;h=parseInt(h);if(h<0)h=0;it.style.width=w;it.style.height=h;}
+function GetWindowWidth(){return parseInt(document.body.clientWidth);}
+function GetWindowHeight(){return parseInt(document.body.clientHeight);}
+function computeWinWH(){WinW=GetWindowWidth()-2;if(WinW<600)WinW=600;WinH=GetWindowHeight()-2;if(WinH<400)WinH=400;}
+function getInnerHeight(){var D=document;return Math.max(Math.max(D.body.scrollHeight,D.documentElement.scrollHeight),Math.max(D.body.offsetHeight,D.documentElement.offsetHeight),Math.max(D.body.clientHeight,D.documentElement.clientHeight));}
+function getInnerWidth(){var D=document;return Math.max(Math.max(D.body.scrollWidth,D.documentElement.scrollWidth),Math.max(D.body.offsetWidth,D.documentElement.offsetWidth),Math.max(D.body.clientWidth,D.documentElement.clientWidth));}
+function onResize(fct){fct();resizeCallBacks[resizeCallBacks.length]=fct;}
+function windowResized(){computeWinWH()
+for(var i=0;i<resizeCallBacks.length;i++)
+resizeCallBacks[i]();}
+function jsQuote(str_in){str_in=str_in+'';var str_out='';for(i=0;i<str_in.length;i++){var ascii=str_in.charCodeAt(i);if((ascii>=32)&&(ascii<=127)&&(ascii!=34)&&(ascii!=39))str_out=str_out+str_in.charAt(i);else{var hex=ascii.toString(16).toUpperCase();if(hex.length==1)hex='0'+hex;str_out=str_out+String.fromCharCode(92)+'x'+hex;}}
+return str_out;}
+function resizeMargin(){SetSize("MarginLayer",marginSize,WinH-110);SetLeft("FunctionsLayer",marginSize);SetSize("FunctionsLayer",WinW-marginSize,WinH-110);}
+function resizeSeparator(){SetHeight("separatorLayer",WinH-110);}
+function positionObject(int_x,int_y){this.x=int_x;this.y=int_y;}
+function GetEventPosition(event){var x,y;if(event.changedTouches){x=event.changedTouches[0].pageX;y=event.changedTouches[0].pageY;}
+else{x=event.PageX;y=event.PageY;if(!x){x=event.clientX+document.body.scrollLeft;y=event.clientY+document.body.scrollTop;}}
+return new positionObject(x,y);}
+function EnableDrag(var_element,onDragMove,onDragEnd){if(document.addEventListener){var_element.addEventListener("mousedown",Drag_start,false);var_element.addEventListener("touchstart",Drag_start,false);}
+else
+if(document.attachEvent)
+var_element.attachEvent("onmousedown",Drag_start);if(onDragMove)var_element.onDragMove=onDragMove;if(onDragEnd)var_element.onDragEnd=onDragEnd;}
+var LastDraggedObject=null;function DraggedObject(obj_element,obj_elmtInitialPos,obj_mouseInitalPos){this.element=obj_element;this.elmtInitialPos=obj_elmtInitialPos;this.elmtCurrentPos=new positionObject(obj_elmtInitialPos.x,obj_elmtInitialPos.y);this.mouseInitialPos=obj_mouseInitalPos;}
+function Drag_start(event){if(!event)event=window.event;var source=event.srcElement;if(event.button!=undefined){if((event.button!=1)&&(document.attachEvent))return;if((event.button!=0)&&(document.addEventListener))return;}
+if(!source)source=this;if(!source)return;var originalsource=source;while(source.tagName!="DIV"){if(source.tagName=="A")return false;source=source.parentNode;}
+if(event.preventDefault)event.preventDefault();source.style.cursor="col-resize";lastDraggedObject=new DraggedObject(source,new positionObject(parseInt(source.style.left),parseInt(source.style.top)),GetEventPosition(event));if(document.addEventListener){document.addEventListener("mousemove",Drag_mouseCapture,false);document.addEventListener("mouseup",Drag_stopMouseCapture,false);document.addEventListener("touchmove",Drag_mouseCapture,false);document.addEventListener("touchend",Drag_stopMouseCapture,false);}
+else
+if(document.attachEvent){document.attachEvent("onmousemove",Drag_mouseCapture);document.attachEvent("onmouseup",Drag_stopMouseCapture);}
+document.onmouseup=Drag_stopMouseCapture;}
+function Drag_mouseCapture(event){if(!event)event=window.event;var position=GetEventPosition(event);if(event.preventDefault)event.preventDefault();var x=(lastDraggedObject.elmtInitialPos.x+position.x-lastDraggedObject.mouseInitialPos.x);var y=(lastDraggedObject.elmtInitialPos.y+position.y-lastDraggedObject.mouseInitialPos.y);var iw=getInnerWidth()
+var ih=getInnerHeight();var w=lastDraggedObject.element.offsetWidth;var h=lastDraggedObject.element.offsetHeight;if(x>iw-w)x=iw-w;if(y>ih-h)y=ih-h;if(x<0)x=0;if(y<0)y=0;var p={x:x,y:y};if(lastDraggedObject.element.onDragMove)
+lastDraggedObject.element.onDragMove(lastDraggedObject.element,p);lastDraggedObject.elmtCurrentPos.x=p.x;lastDraggedObject.elmtCurrentPos.y=p.y;lastDraggedObject.element.style.left=p.x+"px";lastDraggedObject.element.style.top=p.y+"px";}
+function Drag_stopMouseCapture(){if(document.removeEventListener){document.removeEventListener("mousemove",Drag_mouseCapture,false);document.removeEventListener("mouseup",Drag_stopMouseCapture,false);document.removeEventListener("touchmove",Drag_mouseCapture,false);document.removeEventListener("touchend",Drag_stopMouseCapture,false);}
+else
+if(document.detachEvent){document.detachEvent("onmousemove",Drag_mouseCapture);document.detachEvent("onmouseup",Drag_stopMouseCapture);}
+if(lastDraggedObject){lastDraggedObject.element.style.cursor='col-resize';if(lastDraggedObject.element.onDragEnd)
+lastDraggedObject.element.onDragEnd(lastDraggedObject.element,{x:lastDraggedObject.elmtCurrentPos.x,y:lastDraggedObject.elmtCurrentPos.y});}
+lastDraggedObject=null;}
+function marginMove(el,pos){pos.y=80;if(pos.x<100)pos.x=100;if(pos.x>WinW-100)pos.x=WinW-100;marginSize=pos.x;resizeMargin()}
+function proto(clname,m){var funcproto=doc[clname][m].pro;if(isClassMethod(clname,m)){if(UseShortcuts){funcproto=funcproto.replace(m,'y'+m);}else if(doc[clname][m].lib.substr(0,1)=='['&&funcproto.substr(0,1)!='+'){var params=doc[clname][m].par;var methodpos=funcproto.search(m);var endrettype=methodpos;while(endrettype>0&&funcproto.substr(endrettype-1,1)==' ')endrettype--;var newproto="+("+funcproto.substr(0,endrettype)+") "+m;var pos=methodpos+m.length;for(var p in params){pos+=funcproto.slice(pos).search(/[A-Za-z]/);var argpos=pos+funcproto.slice(pos).search('<span');var endargtype=argpos;while(endargtype>pos&&funcproto.substr(endargtype-1,1)==' ')endargtype--;var endarg=argpos+funcproto.slice(argpos).search(/[,)]/);newproto+=": ("+funcproto.slice(pos,endargtype)+") "+funcproto.slice(argpos,endarg)+" ";pos=endarg;}
+funcproto=newproto;}}
+return funcproto}
+var lastindex_shown="";var lastname_shown=null;function Show(clname,str_name,nohist){if(!clname&&!str_name){wdg("FunctionsLayerInner").innerHTML=NotFound;return;}
+var fcthtml=NotFound;lastindex_shown=clname;if(clname&&str_name&&doc[clname]&&doc[clname][str_name]){lastname_shown=str_name;var fct=doc[clname][str_name];var funcname=fct.lib.replace('%',clname.toLowerCase());var funcproto=proto(clname,str_name);if(UseShortcuts&&isClassMethod(clname,str_name)){funcname='y'+str_name+'()';}
+fcthtml="<a class='funcHeader' href='#"+clname+"."+str_name+"'>"+funcname+'</a>'
++"<br><br><span class='prototype'>"+funcproto+'</span>'
++'<br><br>'+ApplySub(fct.cmt,clname,str_name);if(fct.par){fcthtml+="<span class='paramAndRet'>"+ParamLabel+'</span><br>\n';fcthtml+='<table class="paramtable">'
+for(var p in fct.par)
+fcthtml+='<tr><td class="pn">'+p+'</td><td> : '+ApplySub(fct.par[p],clname,str_name)+'</td></tr>\n';fcthtml+='</table><br>'}
+if(fct.ret){fcthtml+="<span class='paramAndRet'>"+ReturnLabel+'</span><br>\n';fcthtml+='<p class="paramtable">'+ApplySub(fct.ret,clname,str_name)+'</p>\n';}
+if(fct.ext)fcthtml+=ApplySub(fct.ext,clname,str_name);var newstate=clname+'.'+str_name;if(newstate!=history.state&&!nohist){history.pushState(newstate,newstate,'#'+newstate);}}
+else
+if(clname&&doc[clname]){fcthtml="<a class='funcHeader' href='#"+clname+"'>"+clname+'</a><br>'
++"<p>"+ApplySub(doc[clname][''].syn,clname,str_name)+"</p>"
++(doc[clname][''].inc!=""?"<p>"+IncludeLabel+"</p><p class='include'>"+doc[clname][''].inc+"</p>":"")
++"<p>"+ApplySub(doc[clname][''].cmt,clname,str_name)+"</p>";var prevmtype='';for(m in doc[clname]){if(m!=''){var funcproto=proto(clname,m);var mtype=MethodType(clname,m);if(prevmtype!=mtype){prevmtype=mtype;fcthtml+="<span class='subHeader'>"+MethodTypes[mtype]+"</span>";if(clname!='YAPI'){fcthtml+="<p>"+MethodExtra[mtype]+"</p>";}}
+fcthtml+="<p class='methodlist'><a class='protoindex' href='javascript:Show(\""+clname+"\",\""+m+"\")'>"+funcproto+'</a><br>'
++"<span class='synlist'>"+ApplySub(doc[clname][m].syn,clname,str_name)+'</span></p>';}}
+var newstate=clname;if(newstate!=history.state&&!nohist){history.pushState(newstate,newstate,'#'+newstate);}}
+wdg("FunctionsLayerInner").innerHTML=fcthtml;setTimeout("wdg('FunctionsLayer').scrollTop=0;",20);}
+function expand(source,openonly){if(wdg(source.id+"List").style.display==''&&!openonly){wdg(source.id+"List").style.display='none';wdg(source.id).src=plusimage;}
+else{wdg(source.id+"List").style.display='';wdg(source.id).src=minusimage;}}
+function ShowFunctions(str_currentclname){var marginhtml="";for(var clname in doc){var icon=plusimage;var onck=" onclick='expand(this";var iclass="expandColapse";var display="none";var methodlist="";for(var method in doc[clname]){if(method!=''){var funcname=doc[clname][method].lib.replace('%',clname.toLowerCase());var mclass=(ShowIcons?MethodType(clname,method):'noicon');if(UseShortcuts&&mclass=='static')funcname='y'+method+'()';methodlist+="<a id="+clname+'.'+method+" class='"+mclass+"' href='javascript:Show(\""+clname+"\",\""+method+"\");'>"+funcname+'</a>';}}
+if(methodlist==""){iclass="noExpand";onck=" ony='(";}else if(str_currentclname==clname){icon=minusimage;onck=" onclick='expand(this";display=""}
+marginhtml+="<span class='classheader'> <img class='"+iclass+"' id='"+clname+"' "+onck+")'' src='"+icon+"'/> ";marginhtml+="<a href='javascript:Show(\""+clname+"\",\"\");' id='"+clname+"' "+onck+",true)'>"+clname+'</a></span><br>';if(methodlist!="")marginhtml+="<div id='"+clname+"List' class='methodsList' style='display:"+display+"'>"+methodlist+"</div>";if(clname=='YAPI'||clname=='FreeAPI')marginhtml+='<hr>';}
+wdg("MarginLayer").innerHTML=marginhtml;}
+function fctMatch(clname,method,values){var found=new Array()
+var tosearch=new Array()
+for(var i=0;i<values.length;i++)
+if(values[i]!=''&&values[i]!='y'){if(values[i].substr(0,3)=='[y]')
+tosearch[tosearch.length]=values[i].substr(3,values[i].length);else
+tosearch[tosearch.length]=values[i];}
+for(var i=0;i<tosearch.length;i++){var expr=new RegExp(tosearch[i],"i");var fct=doc[clname][method]
+var found=clname.search(expr)>=0;if(!found)found=method.search(expr)>=0;if(!found&&fct.inc){if(!found&&fct.syn)found=fct.syn.search(expr)>=0;if(!found)found=fct.inc.search(expr)>=0;}
+if(!found&&fct.pro)found=fct.pro.search(expr)>=0;if(fct.par)
+for(var p in fct.par){if(!found)found=p.search(expr)>=0;if(!found)found=fct.par[p].search(expr)>=0;}
+if(fct.ret){if(!found)found=fct.ret.search(expr)>=0;}
+if(!found&&fct.cmt)found=fct.cmt.search(expr)>=0;if(!found&&fct.ext)found=fct.ext.search(expr)>=0;if(!found)return false;}
+return true;}
+var searchTimer=null;function doSearch(){searchTimer=null;var value=document.forms['yoctoForm'].elements['search'].value;if(value==''){for(var clname in doc){var container=wdg(clname+"List");for(var method in doc[clname])
+if(method!=''){var it=wdg(clname+'.'+method);if(it)it.style.display="block";}
+wdg(clname).style.visibility='visible';var container=wdg(clname+"List");if(container["originalDisplay"]!=""){wdg(clname+"List").style.display='none';wdg(clname).src=plusimage;}
+else{wdg(clname+"List").style.display='';wdg(clname).src=minusimage;}
+container["originalDisplay"]=null;}
+Show(lastindex_shown,lastname_shown);return;}
+var firstindex='';var firstname='';qvalue=value;value='';for(var i=0;i<qvalue.length;i++){var c=qvalue.charAt(i);if(c=='\\'||c=='['||c==']'||c=='('||c==')'){value+='.';}else{if(c!=' ')value+='['+qvalue.charAt(i)+']';else value+=' ';}}
+for(var clname in doc){var matchfound=false;var container=wdg(clname+"List");if(!container["originalDisplay"])container["originalDisplay"]=null;if(container["originalDisplay"]==null)container["originalDisplay"]=container.style.display;values=value.split(' ');for(var method in doc[clname]){var it=wdg(clname+'.'+method);var match=fctMatch(clname,method,values);if(match){if(it)it.style.display="block";matchfound=true;if(firstindex==''){firstindex=clname;firstname=method;}}
+else{if(it)it.style.display="none";}}
+if(matchfound){wdg(clname+"List").style.display='';wdg(clname).src=minusimage;wdg(clname).style.visibility='visible';}
+else{wdg(clname+"List").style.display='none';wdg(clname).style.visibility='hidden';wdg(clname).src=plusimage;}}
+Show(firstindex,firstname);}
+function initSearch(){if(searchTimer!=null)clearTimeout(searchTimer);searchTimer=setTimeout('doSearch()',500);}
+function sortObject(o){var sorted={},key,newkey,a=[];for(key in o){if(o.hasOwnProperty(key))a.push(key);}
+a.sort();for(key=0;key<a.length;key++){newkey=a[key];if(newkey.substr(0,1)=='*'){newkey=newkey.substr(3);}
+sorted[newkey]=o[a[key]];}
+return sorted;}
+function OOcheckboxChange(){UseShortcuts=document.forms["yoctoForm"].elements["OOcheckbox"].checked;ShowFunctions(lastindex_shown);Show(lastindex_shown,lastname_shown);}
+function parseHash(arg){var defclass="Introduction";var defmethod="";if(window.location.hash.length>1){var words=window.location.hash.substr(1).split('.');var cname=words[0];if(cname!="YAPI"&&cname[0]=='Y')cname=cname.substr(1);if(doc[cname]){defclass=words[0];ShowFunctions(defclass);if(words.length>1&&doc[defclass][words[1]]){defmethod=words[1];var idxwdg=wdg('MarginLayer');var itemwdg=wdg(defclass+'.'+defmethod);var scrollTop=Math.max(itemwdg.offsetTop-(idxwdg.clientHeight>>1),0);setTimeout("wdg('MarginLayer').scrollTop="+scrollTop+";",20);}}else{ShowFunctions();}}else{ShowFunctions();}
+Show(defclass,defmethod,(arg==='NoH'));}
+function InitHTMLRef(){wdg('langdt').innerHTML=Language;computeWinWH();onResize(function(){SetWidth("BannerLayer",WinW)});onResize(resizeMargin);onResize(function(){SetWidth("FooterLayer",WinW);SetTop("FooterLayer",WinH-30);});onResize(resizeSeparator);EnableDrag(wdg("separatorLayer"),marginMove,marginMove);if(UseShortcuts!=null){var td=wdg("oosyntax");var widget='<input type="checkbox" id="OOcheckbox" onclick="OOcheckboxChange(this);"> '+AbbrevLabel;td.innerHTML=widget;td.title=AbbrevHint;td.alt=AbbrevHint;}
+if(Language!='LabVIEW'){var rule='';var types=['int','obj','dbl','str','arr','bool'];for(var i=0;i<types.length;i++){rule+=', span#'+types[i]+', td.'+types[i];}
+if(isCmdLine){rule+=', span#pn, td.pn';}
+rule=rule.substr(2)+'{ color: #196719 !important;}';document.styleSheets[0].insertRule(rule,1);doc['*Y.YAPI']=doc['YAPI'];delete doc['YAPI'];}
+var specialClasses=[];for(clname in doc){if(!doc[clname].isReadOnly){specialClasses.push(clname);}
+for(funcname in doc[clname]){if(isClassMethod(clname,funcname)){sub['y'+funcname]=doc[clname][funcname].lib;}}}
+if(isCmdLine){for(funcname in doc['DisplayLayer']){if(!doc['Display'][funcname]){doc['Display'][funcname]=doc['DisplayLayer'][funcname];}}
+for(clname of specialClasses){if(clname.substr(0,2)!='*0'){delete doc[clname];}}}
+doc=sortObject(doc);parseHash('NoH');window.onresize=windowResized;window.onhashchange=parseHash;}
+</SCRIPT>
+</HEAD>
+<BODY>
+<div id="BannerLayer">
+<table width=100% >
+<tr><td rowspan=2>
+<img alt="Yocto-Api :-)" style='margin-left:5px;'src="data:image/png;base64,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" />
+</td><td style='vertical-align:top;text-align:right'>
+<a class='extLink' href='http://www.yoctopuce.com'>www.yoctopuce.com</a>
+</td>
+</tr>
+<tr><td  id='langdt'></td></TR>
+</table>
+</div>
+<div id="MarginLayer"></div>
+<div id="FunctionsLayer"><div id="FunctionsLayerInner"></div></div>
+<div id="FooterLayer"><form name='yoctoForm'>
+<table width=100% style='margin-top:3px;'>
+<tr><td>
+<img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAANwAAADcBYx2BhQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGgSURBVCiRjdC9a1NhFAbw8973ed7bewm859KKc4oFwUUwk0uMkICC4gfYIjSDQhaH+ge4BOFCwEUpQsCtEEkHURCHigQjcQo4FFyKHYWsflGaq9elStVr9Yzn4cf5MHmeS1G12+1gNBrdJLkMYIHkNoD+ZDLpDAaDzBRBY4yp1+tPSZ4los0QhzYEH0+RcgLAq3K5fLoQNhqNGwBWY3d85fBM+vxHf8fdPWnc5gOSt4KiNUkukuHb/UhEZGZ35TVs/MZau1gIrbXzLph7UZTBzL4EMF8IAWwZfjrz9duu+T0L3Ic6gK2/rboGmCM77vbF/Rizqw1SjgFY++M5lUqF4/F42mw2HwJYAsJ3sHMb5JcaKEcBPIvj+NwvsFqtni+VSj3vfb/X611vtVrXACxbaxecc9sk+51O536e5/lPWKvVLkRRtJ4kCVX1c5ZlSbfbnRadIiIS7E26FEXRuqpSVafe+6sHIREROxwOL8dx3FdVJkky9d5fSdP0yUFIRCQIw/CeqkJVM+/9Upqmj/+FREQCVb2jqu/30KP/QSIi3wFqcn4o9hAuDAAAAABJRU5ErkJggg==" />
+<input name='search' onkeyup='initSearch()'></form>
+</td><td id ='oosyntax' ></td><td id='version'>2.1.654</td>
+</table>
+</div>
+<div id="separatorLayer" style='top:80px;left:250px'></div>
+<SCRIPT type="text/JavaScript" >
+InitHTMLRef();
+</SCRIPT>
+</BODY>
+</HTML>

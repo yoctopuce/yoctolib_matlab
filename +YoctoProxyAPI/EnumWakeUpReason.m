@@ -47,5 +47,6 @@ classdef EnumWakeUpReason < int32
         WakeUpReason_EXTSIG1 (4)
         WakeUpReason_SCHEDULE1 (5)
         WakeUpReason_SCHEDULE2 (6)
+        WakeUpReason_SCHEDULE3 (7)
     end
 end

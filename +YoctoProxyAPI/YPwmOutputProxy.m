@@ -1,7 +1,7 @@
 % YPwmOutputProxy: PWM generator control interface, available for instance in the Yocto-PWM-Tx
 % 
 % The YPwmOutputProxy class allows you to drive a pulse-width modulated output (PWM). You can
-% configure the frequency as well as the duty cycle, and setup progressive transitions.
+% configure the frequency as well as the duty cycle, and set up progressive transitions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -46,7 +46,7 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
     % YPwmOutputProxy: PWM generator control interface, available for instance in the Yocto-PWM-Tx
     % 
     % The YPwmOutputProxy class allows you to drive a pulse-width modulated output (PWM). You can
-    % configure the frequency as well as the duty cycle, and setup progressive transitions.
+    % configure the frequency as well as the duty cycle, and set up progressive transitions.
 
     properties (Transient, Nontunable)
         % Frequency PWM frequency in Hz
@@ -57,6 +57,8 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
         DutyCycle (1,1) double
         % Enabled True if the port output is enabled
         Enabled (1,1) YoctoProxyAPI.EnumEnabled
+        % InvertedOutput True if the output signal is configured as inverted, and false otherwise
+        InvertedOutput (1,1) YoctoProxyAPI.EnumInvertedOutput
         % EnabledAtPowerOn State of the PWM at device power on
         EnabledAtPowerOn (1,1) YoctoProxyAPI.EnumEnabledAtPowerOn
         % DutyCycleAtPowerOn PWM generators duty cycle at device power on as a floating point number between 0 and 100
@@ -117,7 +119,7 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
                 'PropertyList', {'Frequency','DutyCycle','Enabled'});
             thisGroup = matlab.system.display.SectionGroup(...
                 'Title', 'PwmOutput settings', ...
-                'PropertyList', {'Period','EnabledAtPowerOn','DutyCycleAtPowerOn'});
+                'PropertyList', {'Period','InvertedOutput','EnabledAtPowerOn','DutyCycleAtPowerOn'});
             others(1).Sections = [others(1).Sections section];
             groups = [others thisGroup];
         end
@@ -297,6 +299,39 @@ classdef YPwmOutputProxy < YoctoProxyAPI.YFunctionProxy
             %
             % On failure, throws an exception or returns YPwmOutput.PULSEDURATION_INVALID.
             result = obj.InvokeMethod_F(1322923076);
+        end
+
+        function result = get_invertedOutput(obj)
+            % Returns true if the output signal is configured as inverted, and false otherwise.
+            %
+            % @return either YPwmOutput.INVERTEDOUTPUT_FALSE or YPwmOutput.INVERTEDOUTPUT_TRUE,
+            % according to true if the output signal is configured as inverted, and false otherwise
+            %
+            % On failure, throws an exception or returns YPwmOutput.INVERTEDOUTPUT_INVALID.
+            result = YoctoProxyAPI.EnumInvertedOutput(obj.InvokeMethod_D(1141697669));
+        end
+
+        function set_invertedOutput(obj, newVal)
+            % Changes the inversion mode of the output signal.
+            % Remember to call the matching module saveToFlash() method if you want
+            % the change to be kept after power cycle.
+            %
+            % @param newval : either YPwmOutput.INVERTEDOUTPUT_FALSE or
+            % YPwmOutput.INVERTEDOUTPUT_TRUE, according to the inversion mode of the output signal
+            %
+            % @return 0 if the call succeeds.
+            %
+            % On failure, throws an exception or returns a negative error code.
+            obj.InvokeMethod_d(-783709135, newVal);
+        end
+
+        function result = get.InvertedOutput(obj)
+            result = YoctoProxyAPI.EnumInvertedOutput(obj.GetPropInt32(-503052120));
+        end
+
+        function set.InvertedOutput(obj, newVal)
+            obj.InvertedOutput = newVal;
+            obj.SetPropInt32(-503052120, newVal);
         end
 
         function result = get_enabledAtPowerOn(obj)

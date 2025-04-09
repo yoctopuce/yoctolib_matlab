@@ -1,7 +1,7 @@
 % YMultiSensControllerProxy: Sensor chain configuration interface, available for instance in the
 % Yocto-Temperature-IR
 % 
-% The YMultiSensControllerProxy class allows you to setup a customized sensor chain on devices
+% The YMultiSensControllerProxy class allows you to set up a customized sensor chain on devices
 % featuring that functionality.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,7 +47,7 @@ classdef YMultiSensControllerProxy < YoctoProxyAPI.YFunctionProxy
     % YMultiSensControllerProxy: Sensor chain configuration interface, available for instance in the
     % Yocto-Temperature-IR
     % 
-    % The YMultiSensControllerProxy class allows you to setup a customized sensor chain on devices
+    % The YMultiSensControllerProxy class allows you to set up a customized sensor chain on devices
     % featuring that functionality.
 
     properties (Transient, Nontunable)

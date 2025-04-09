@@ -478,7 +478,7 @@ classdef YModuleProxy < YoctoProxyAPI.YFunctionProxy
 
         function result = get_icon2d(obj)
             % Returns the icon of the module. The icon is a PNG image and does not
-            % exceeds 1536 bytes.
+            % exceed 1536 bytes.
             %
             % @return a binary buffer with module icon, in png format.
             %         On failure, throws an exception or returns  YAPI_INVALID_STRING.

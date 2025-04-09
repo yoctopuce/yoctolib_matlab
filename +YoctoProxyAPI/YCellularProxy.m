@@ -530,7 +530,7 @@ classdef YCellularProxy < YoctoProxyAPI.YFunctionProxy
 
         function result = sendPUK(obj, puk, newPin)
             % Sends a PUK code to unlock the SIM card after three failed PIN code attempts, and
-            % setup a new PIN into the SIM card. Only ten consecutive tentatives are permitted:
+            % set up a new PIN into the SIM card. Only ten consecutive tentatives are permitted:
             % after that, the SIM card will be blocked permanently without any mean of recovery
             % to use it again. Note that after calling this method, you have usually to invoke
             % method set_pin() to tell the YoctoHub which PIN to use in the future.
@@ -601,7 +601,7 @@ classdef YCellularProxy < YoctoProxyAPI.YFunctionProxy
         end
 
         function result = decodePLMN(obj, mccmnc)
-            % Returns the cell operator brand for a given MCC/MNC pair.
+            % Returns the cell operator brand for a given MCC/MNC pair (DEPRECATED).
             %
             % @param mccmnc : a string starting with a MCC code followed by a MNC code,
             %

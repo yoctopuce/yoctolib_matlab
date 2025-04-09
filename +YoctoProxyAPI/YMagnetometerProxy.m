@@ -2,7 +2,7 @@
 % 
 % The <tt>YSensor</tt> class is the parent class for all Yoctopuce sensor types. It can be used to
 % read the current value and unit of any sensor, read the min/max value, configure autonomous
-% recording frequency and access recorded data. It also provide a function to register a callback
+% recording frequency and access recorded data. It also provides a function to register a callback
 % invoked each time the observed value changes, or at a predefined interval. Using this class rather
 % than a specific subclass makes it possible to create generic applications that work with any
 % Yoctopuce sensor, even those that do not yet exist. Note: The <tt>YAnButton</tt> class is the only
@@ -52,7 +52,7 @@ classdef YMagnetometerProxy < YoctoProxyAPI.YSensorProxy
     % 
     % The <tt>YSensor</tt> class is the parent class for all Yoctopuce sensor types. It can be used to
     % read the current value and unit of any sensor, read the min/max value, configure autonomous
-    % recording frequency and access recorded data. It also provide a function to register a callback
+    % recording frequency and access recorded data. It also provides a function to register a callback
     % invoked each time the observed value changes, or at a predefined interval. Using this class rather
     % than a specific subclass makes it possible to create generic applications that work with any
     % Yoctopuce sensor, even those that do not yet exist. Note: The <tt>YAnButton</tt> class is the only

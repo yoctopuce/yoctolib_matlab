@@ -2,7 +2,7 @@
 % 
 % The YProximityProxy class allows you to read and configure Yoctopuce proximity sensors. It inherits
 % from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-% functions, and to access the autonomous datalogger. This class adds the ability to setup a
+% functions, and to access the autonomous datalogger. This class adds the ability to set up a
 % detection threshold and to count the number of detected state changes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,7 +49,7 @@ classdef YProximityProxy < YoctoProxyAPI.YSensorProxy
     % 
     % The YProximityProxy class allows you to read and configure Yoctopuce proximity sensors. It inherits
     % from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-    % functions, and to access the autonomous datalogger. This class adds the ability to setup a
+    % functions, and to access the autonomous datalogger. This class adds the ability to set up a
     % detection threshold and to count the number of detected state changes.
 
     properties (Transient, Nontunable)
