@@ -278,6 +278,7 @@ typedef int32_t ypaHandle;
 #define YPA_NSamples                    ((ypaHandle)309771811)      // Int32
 #define YPA_NSensors                    ((ypaHandle)-617147452)     // Int32
 #define YPA_NTags                       ((ypaHandle)-819202767)     // Int32
+#define YPA_NearSimpleColor             ((ypaHandle)1534711407)     // String
 #define YPA_NearSimpleColorIndex        ((ypaHandle)1535154588)     // Int32
 #define YPA_Neutral                     ((ypaHandle)1805245548)     // Int32
 #define YPA_NextOccurence               ((ypaHandle)1140328534)     // Int64
