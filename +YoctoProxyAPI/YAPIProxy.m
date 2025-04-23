@@ -125,7 +125,7 @@ classdef YAPIProxy
             import YoctoProxyAPI.YAPIProxy.*
             LoadDLL();
             [ ~, pRes, ~ ] = calllib('ypa', 'ypaGetAPIVersion', blanks(32), SizePtr(32));
-            result = [ '2.1.5866 (' pRes ')'];
+            result = [ '2.1.5996 (' pRes ')'];
         end
 
         function result = GetDllArchitecture()

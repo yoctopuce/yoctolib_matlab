@@ -2,8 +2,8 @@
 % Yocto-VOC-V3
 % 
 % The YTvocProxy class allows you to read and configure Yoctopuce Total Volatile Organic Compound
-% sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to
-% register callback functions, and to access the autonomous datalogger.
+% sensors. It inherits from <tt>YSensor</tt> class the core functions to read measures, to register
+% callback functions, and to access the autonomous datalogger.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -49,8 +49,8 @@ classdef YTvocProxy < YoctoProxyAPI.YSensorProxy
     % Yocto-VOC-V3
     % 
     % The YTvocProxy class allows you to read and configure Yoctopuce Total Volatile Organic Compound
-    % sensors. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to
-    % register callback functions, and to access the autonomous datalogger.
+    % sensors. It inherits from <tt>YSensor</tt> class the core functions to read measures, to register
+    % callback functions, and to access the autonomous datalogger.
 
     properties (Transient, Nontunable)
     end

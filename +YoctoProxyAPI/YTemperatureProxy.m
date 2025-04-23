@@ -2,7 +2,7 @@
 % Yocto-Meteo-V2, the Yocto-PT100, the Yocto-Temperature or the Yocto-Thermocouple
 % 
 % The YTemperatureProxy class allows you to read and configure Yoctopuce temperature sensors. It
-% inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
+% inherits from <tt>YSensor</tt> class the core functions to read measures, to register callback
 % functions, and to access the autonomous datalogger. This class adds the ability to configure some
 % specific parameters for some sensors (connection type, temperature mapping table).
 
@@ -50,7 +50,7 @@ classdef YTemperatureProxy < YoctoProxyAPI.YSensorProxy
     % Yocto-Meteo-V2, the Yocto-PT100, the Yocto-Temperature or the Yocto-Thermocouple
     % 
     % The YTemperatureProxy class allows you to read and configure Yoctopuce temperature sensors. It
-    % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
+    % inherits from <tt>YSensor</tt> class the core functions to read measures, to register callback
     % functions, and to access the autonomous datalogger. This class adds the ability to configure some
     % specific parameters for some sensors (connection type, temperature mapping table).
 

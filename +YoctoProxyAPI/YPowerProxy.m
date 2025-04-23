@@ -1,7 +1,7 @@
 % YPowerProxy: electrical power sensor control interface, available for instance in the Yocto-Watt
 % 
 % The YPowerProxy class allows you to read and configure Yoctopuce electrical power sensors. It
-% inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
+% inherits from <tt>YSensor</tt> class the core functions to read measures, to register callback
 % functions, and to access the autonomous datalogger. This class adds the ability to access the
 % energy counter and the power factor.
 
@@ -48,7 +48,7 @@ classdef YPowerProxy < YoctoProxyAPI.YSensorProxy
     % YPowerProxy: electrical power sensor control interface, available for instance in the Yocto-Watt
     % 
     % The YPowerProxy class allows you to read and configure Yoctopuce electrical power sensors. It
-    % inherits from <tt>YSensor</tt> class the core functions to read measurements, to register callback
+    % inherits from <tt>YSensor</tt> class the core functions to read measures, to register callback
     % functions, and to access the autonomous datalogger. This class adds the ability to access the
     % energy counter and the power factor.
 

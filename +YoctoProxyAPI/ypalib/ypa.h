@@ -528,6 +528,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_cellOperator_S          ((ypaHandle)-345966488)     // e.g. Cellular: char* resPtr, size_t* resSize
 #define YPA_get_cellType_D              ((ypaHandle)174582765)      // e.g. Cellular: int32_t* resPtr
 #define YPA_get_chainDiags_D            ((ypaHandle)-1109019444)    // e.g. InputChain: int32_t* resPtr
+#define YPA_get_channelName_S           ((ypaHandle)2122390473)     // e.g. SpectralChannel: char* resPtr, size_t* resSize
 #define YPA_get_channel_D               ((ypaHandle)-1801753993)    // e.g. Wireless: int32_t* resPtr
 #define YPA_get_childCount_D            ((ypaHandle)-1950607263)    // e.g. DaisyChain: int32_t* resPtr
 #define YPA_get_communicationProfiles_xS ((ypaHandle)1599782398)     // e.g. Cellular: char* resPtr, size_t* resSize
@@ -748,6 +749,7 @@ typedef int32_t ypaHandle;
 #define YPA_get_parentHub_S             ((ypaHandle)1327720150)     // e.g. Module: char* resPtr, size_t* resSize
 #define YPA_get_pduReceived_D           ((ypaHandle)1086857769)     // e.g. MessageBox: int32_t* resPtr
 #define YPA_get_pduSent_D               ((ypaHandle)-806819334)     // e.g. MessageBox: int32_t* resPtr
+#define YPA_get_peakWavelength_D        ((ypaHandle)298230923)      // e.g. SpectralChannel: int32_t* resPtr
 #define YPA_get_period_F                ((ypaHandle)2110044260)     // e.g. PwmOutput: double* resPtr
 #define YPA_get_persistentSettings_D    ((ypaHandle)-1370941034)    // e.g. Module: int32_t* resPtr
 #define YPA_get_pin_S                   ((ypaHandle)-1861490753)    // e.g. Cellular: char* resPtr, size_t* resSize

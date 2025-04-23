@@ -1,8 +1,8 @@
 % YSpectralChannelProxy: spectral analysis channel control interface
 % 
 % The YSpectralChannelProxy class allows you to read and configure Yoctopuce spectral analysis
-% channels. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to
-% register callback functions, and to access the autonomous datalogger.
+% channels. It inherits from <tt>YSensor</tt> class the core functions to read measures, to register
+% callback functions, and to access the autonomous datalogger.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -47,8 +47,8 @@ classdef YSpectralChannelProxy < YoctoProxyAPI.YSensorProxy
     % YSpectralChannelProxy: spectral analysis channel control interface
     % 
     % The YSpectralChannelProxy class allows you to read and configure Yoctopuce spectral analysis
-    % channels. It inherits from <tt>YSensor</tt> class the core functions to read measurements, to
-    % register callback functions, and to access the autonomous datalogger.
+    % channels. It inherits from <tt>YSensor</tt> class the core functions to read measures, to register
+    % callback functions, and to access the autonomous datalogger.
 
     properties (Transient, Nontunable)
     end
@@ -137,13 +137,31 @@ classdef YSpectralChannelProxy < YoctoProxyAPI.YSensorProxy
         % //--- (YSpectralChannel accessors declaration)
 
         function result = get_rawCount(obj)
-            % Retrieves the raw cspectral intensity value as measured by the sensor, without any
+            % Retrieves the raw spectral intensity value as measured by the sensor, without any
             % scaling or calibration.
             %
             % @return an integer
             %
             % On failure, throws an exception or returns YSpectralChannel.RAWCOUNT_INVALID.
             result = obj.InvokeMethod_D(-2119383109);
+        end
+
+        function result = get_channelName(obj)
+            % Returns the target spectral band name.
+            %
+            % @return a string corresponding to the target spectral band name
+            %
+            % On failure, throws an exception or returns YSpectralChannel.CHANNELNAME_INVALID.
+            result = obj.InvokeMethod_S(2122390473);
+        end
+
+        function result = get_peakWavelength(obj)
+            % Returns the target spectral band peak wavelenght, in nm.
+            %
+            % @return an integer corresponding to the target spectral band peak wavelenght, in nm
+            %
+            % On failure, throws an exception or returns YSpectralChannel.PEAKWAVELENGTH_INVALID.
+            result = obj.InvokeMethod_D(298230923);
         end
 
         % //--- (end of YSpectralChannel accessors declaration)

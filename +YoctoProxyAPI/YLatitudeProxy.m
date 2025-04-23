@@ -1,8 +1,8 @@
 % YLatitudeProxy: latitude sensor control interface, available for instance in the Yocto-GPS-V2
 % 
 % The YLatitudeProxy class allows you to read and configure Yoctopuce latitude sensors. It inherits
-% from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-% functions, and to access the autonomous datalogger.
+% from <tt>YSensor</tt> class the core functions to read measures, to register callback functions,
+% and to access the autonomous datalogger.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -47,8 +47,8 @@ classdef YLatitudeProxy < YoctoProxyAPI.YSensorProxy
     % YLatitudeProxy: latitude sensor control interface, available for instance in the Yocto-GPS-V2
     % 
     % The YLatitudeProxy class allows you to read and configure Yoctopuce latitude sensors. It inherits
-    % from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-    % functions, and to access the autonomous datalogger.
+    % from <tt>YSensor</tt> class the core functions to read measures, to register callback functions,
+    % and to access the autonomous datalogger.
 
     properties (Transient, Nontunable)
     end

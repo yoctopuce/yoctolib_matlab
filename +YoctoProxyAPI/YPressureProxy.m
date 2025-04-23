@@ -2,8 +2,8 @@
 % Yocto-Altimeter-V2, the Yocto-CO2-V2, the Yocto-Meteo-V2 or the Yocto-Pressure
 % 
 % The YPressureProxy class allows you to read and configure Yoctopuce pressure sensors. It inherits
-% from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-% functions, and to access the autonomous datalogger.
+% from <tt>YSensor</tt> class the core functions to read measures, to register callback functions,
+% and to access the autonomous datalogger.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -49,8 +49,8 @@ classdef YPressureProxy < YoctoProxyAPI.YSensorProxy
     % Yocto-Altimeter-V2, the Yocto-CO2-V2, the Yocto-Meteo-V2 or the Yocto-Pressure
     % 
     % The YPressureProxy class allows you to read and configure Yoctopuce pressure sensors. It inherits
-    % from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-    % functions, and to access the autonomous datalogger.
+    % from <tt>YSensor</tt> class the core functions to read measures, to register callback functions,
+    % and to access the autonomous datalogger.
 
     properties (Transient, Nontunable)
     end

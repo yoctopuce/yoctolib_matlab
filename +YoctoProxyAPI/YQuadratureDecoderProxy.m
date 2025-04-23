@@ -2,8 +2,8 @@
 % Yocto-MaxiKnob or the Yocto-PWM-Rx
 % 
 % The YQuadratureDecoderProxy class allows you to read and configure Yoctopuce quadrature decoders.
-% It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register
-% callback functions, and to access the autonomous datalogger.
+% It inherits from <tt>YSensor</tt> class the core functions to read measures, to register callback
+% functions, and to access the autonomous datalogger.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -49,8 +49,8 @@ classdef YQuadratureDecoderProxy < YoctoProxyAPI.YSensorProxy
     % Yocto-MaxiKnob or the Yocto-PWM-Rx
     % 
     % The YQuadratureDecoderProxy class allows you to read and configure Yoctopuce quadrature decoders.
-    % It inherits from <tt>YSensor</tt> class the core functions to read measurements, to register
-    % callback functions, and to access the autonomous datalogger.
+    % It inherits from <tt>YSensor</tt> class the core functions to read measures, to register callback
+    % functions, and to access the autonomous datalogger.
 
     properties (Transient, Nontunable)
         % Decoding Current activation state of the quadrature decoder

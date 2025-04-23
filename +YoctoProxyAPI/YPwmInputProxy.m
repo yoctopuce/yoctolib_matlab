@@ -1,8 +1,8 @@
 % YPwmInputProxy: PWM input control interface, available for instance in the Yocto-PWM-Rx
 % 
 % The YPwmInputProxy class allows you to read and configure Yoctopuce PWM inputs. It inherits from
-% <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and
-% to access the autonomous datalogger. This class adds the ability to configure the signal parameter
+% <tt>YSensor</tt> class the core functions to read measures, to register callback functions, and to
+% access the autonomous datalogger. This class adds the ability to configure the signal parameter
 % used to transmit information: the duty cycle, the frequency or the pulse width.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,8 +48,8 @@ classdef YPwmInputProxy < YoctoProxyAPI.YSensorProxy
     % YPwmInputProxy: PWM input control interface, available for instance in the Yocto-PWM-Rx
     % 
     % The YPwmInputProxy class allows you to read and configure Yoctopuce PWM inputs. It inherits from
-    % <tt>YSensor</tt> class the core functions to read measurements, to register callback functions, and
-    % to access the autonomous datalogger. This class adds the ability to configure the signal parameter
+    % <tt>YSensor</tt> class the core functions to read measures, to register callback functions, and to
+    % access the autonomous datalogger. This class adds the ability to configure the signal parameter
     % used to transmit information: the duty cycle, the frequency or the pulse width.
 
     properties (Transient, Nontunable)

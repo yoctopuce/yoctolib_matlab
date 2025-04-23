@@ -743,7 +743,7 @@ doc['WlanRecord']={'':{syn:'Description d\x27un r\xE9seau wireless, retourn\xE9e
 doc['YAPI']={'':{syn:'Fonctions g\xE9n\xE9rales',inc:'import YoctoProxyAPI.YAPIProxy&quot;',cmt:'<p>Ces quelques fonctions g\xE9n\xE9rales permettent l\x27initialisation et la configuration de la librairie Yoctopuce. Dans la plupart des cas, un appel \xE0 <tt>yRegisterHub()</tt> suffira en tout et pour tout. Ensuite, vous pourrez appeler la fonction globale <tt>yFind...()</tt> ou <tt>yFirst...()</tt> correspondant \xE0 votre module pour pouvoir interagir avec lui.</p>'}
 };
 //--- (end of generated code: YAPI)
-
+//--- (end of generated code)
 function isProperty(clname,m){return doc[clname][m].lib.indexOf('(')==-1&&Language!='Objective-C';}
 function isClassMethod(clname,m){return(clname=='YAPI'&&doc[clname][m].pro?doc[clname][m].pro.indexOf('static')>=0:/^[A-Z].*/.test(m));}
 function MethodType(clname,m){return(isProperty(clname,m)?'property':isClassMethod(clname,m)?'static':'method');}
@@ -751,7 +751,7 @@ var isCmdLine=(Language.substr(0,3)=='Cmd');var isProxy=(Language.substr(-5)=='P
 while((pos=text.toLowerCase().indexOf('<tt>',endpos))>=endpos){pos+=4;endpos=text.indexOf('</',pos);inside=text.substr(pos,endpos-pos);rep=false;if(isCmdLine&&inside.startsWith('YDisplayLayer.ALIGN')){rep=inside.replace(/YDisplayLayer.ALIGN(_)*/,'');}else if(sub[inside]){rep=sub[inside];}else if((key=inside.match(/^(\w+_)+\w+$/))!==null){key=key[0];rep=sub[key];if(!rep&&key.substr(0,2)=='Y_'&&!UseShortcuts){if(isCmdLine){rep=key.substr(2+attrname.length,key.length);}else{rep=prefix+key.substr(skip,key.length);}}}else if(isCmdLine&&inside.startsWith(prefix+attrname.toUpperCase()+'_')){rep=inside.substr(prefix.length+attrname.length+1);}else if((key=inside.match(/^Y[A-Za-z0-9]+$/))!==null){key=key[0].substr(1);if(doc[key]){cname='Y'+key;if(doc.Files.get_module&&doc.Files.get_module.pro.indexOf('Proxy')>0&&text.substr(pos-7,2)!='VI'&&text.substr(endpos+6,2)!='VI'){cname+='Proxy';}
 rep='<a href="javascript:Show(\''+key+'\',\'\')">'+cname+'</a>';}}else if((key=inside.match(/^y([A-Z][A-Za-z0-9]+).*/))!==null){ident=key[1];key=key[0].substr(1);if(key.match(/(First|Find)[A-Za-z0-9]+.*/)){if(!UseShortcuts)rep=inside.substr(1);}else{if(!UseShortcuts){rep=sub['YAPI_SUCCESS'].replace('SUCCESS',inside.substr(1));if(doc['YAPI'][ident]){rep='<a href="javascript:Show(\'YAPI\',\''+ident+'\')">'+rep+'</a>';}}else{if(doc['YAPI'][ident]){rep='<a href="javascript:Show(\'YAPI\',\''+ident+'\')">'+inside+'</a>';}}}}else if((key=inside.match(/^([A-Za-z][A-Za-z0-9]+)(\.|::)([A-Za-z_0-9]+).*/))!==null){cident=key[1].substr(0,1).toUpperCase()+key[1].substr(1);mident=key[3];if(cident.substr(0,4)!='YAPI'&&cident[0]=='Y')cident=cident.substr(1);if(cident.match(/.*Proxy$/))cident=cident.slice(0,-5);if(!UseShortcuts){rep=inside;}else if(mident.match(/(First|Find)[A-Za-z0-9]+.*/)||cident=='YAPI'){rep='y'+mident;}
 if(doc[cident]&&doc[cident][mident]){rep='<a href="javascript:Show(\''+cident+'\',\''+mident+'\')">'+rep+'</a>';}}else if((key=inside.match(/^(saveToFlash|isOnline).*/))!==null){rep='<a href="javascript:Show(\'Module\',\''+key[1]+'\')">'+inside+'</a>';}
-if(rep!==false){text=text.substr(0,pos)+rep+text.substr(endpos);endpos=pos+rep.length;}}
+if(rep){text=text.substr(0,pos)+rep+text.substr(endpos);endpos=pos+rep.length;}}
 return text;}
 function wdg(n){return document.getElementById(n);}
 function SetPosition(o,x,y){var it=wdg(o);it.style.top=y;it.style.left=x;}
@@ -827,7 +827,7 @@ function expand(source,openonly){if(wdg(source.id+"List").style.display==''&&!op
 else{wdg(source.id+"List").style.display='';wdg(source.id).src=minusimage;}}
 function ShowFunctions(str_currentclname){var marginhtml="";for(var clname in doc){var icon=plusimage;var onck=" onclick='expand(this";var iclass="expandColapse";var display="none";var methodlist="";for(var method in doc[clname]){if(method!=''){var funcname=doc[clname][method].lib.replace('%',clname.toLowerCase());var mclass=(ShowIcons?MethodType(clname,method):'noicon');if(UseShortcuts&&mclass=='static')funcname='y'+method+'()';methodlist+="<a id="+clname+'.'+method+" class='"+mclass+"' href='javascript:Show(\""+clname+"\",\""+method+"\");'>"+funcname+'</a>';}}
 if(methodlist==""){iclass="noExpand";onck=" ony='(";}else if(str_currentclname==clname){icon=minusimage;onck=" onclick='expand(this";display=""}
-marginhtml+="<span class='classheader'> <img class='"+iclass+"' id='"+clname+"' "+onck+")'' src='"+icon+"'/> ";marginhtml+="<a href='javascript:Show(\""+clname+"\",\"\");' id='"+clname+"' "+onck+",true)'>"+clname+'</a></span><br>';if(methodlist!="")marginhtml+="<div id='"+clname+"List' class='methodsList' style='display:"+display+"'>"+methodlist+"</div>";if(clname=='YAPI'||clname=='FreeAPI')marginhtml+='<hr>';}
+marginhtml+="<span class='classheader'> <img class='"+iclass+"' id='"+clname+"' "+onck+")'' src='"+icon+"'/> ";marginhtml+="<a href='javascript:Show(\""+clname+"\",\"\");' id='"+clname+"' "+onck+",true)'>"+clname+'</a></span><br>';if(methodlist!="")marginhtml+="<div id='"+clname+"List' class='methodsList' style='display:"+display+"'>"+methodlist+"</div>";if(clname=='YAPI'||clname=='FreeAPI')marginhtml+='<hr>';}
 wdg("MarginLayer").innerHTML=marginhtml;}
 function fctMatch(clname,method,values){var found=new Array()
 var tosearch=new Array()
@@ -892,7 +892,7 @@ doc=sortObject(doc);parseHash('NoH');window.onresize=windowResized;window.onhash
 <tr><td>
 <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAANwAAADcBYx2BhQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGgSURBVCiRjdC9a1NhFAbw8973ed7bewm859KKc4oFwUUwk0uMkICC4gfYIjSDQhaH+ge4BOFCwEUpQsCtEEkHURCHigQjcQo4FFyKHYWsflGaq9elStVr9Yzn4cf5MHmeS1G12+1gNBrdJLkMYIHkNoD+ZDLpDAaDzBRBY4yp1+tPSZ4los0QhzYEH0+RcgLAq3K5fLoQNhqNGwBWY3d85fBM+vxHf8fdPWnc5gOSt4KiNUkukuHb/UhEZGZ35TVs/MZau1gIrbXzLph7UZTBzL4EMF8IAWwZfjrz9duu+T0L3Ic6gK2/rboGmCM77vbF/Rizqw1SjgFY++M5lUqF4/F42mw2HwJYAsJ3sHMb5JcaKEcBPIvj+NwvsFqtni+VSj3vfb/X611vtVrXACxbaxecc9sk+51O536e5/lPWKvVLkRRtJ4kCVX1c5ZlSbfbnRadIiIS7E26FEXRuqpSVafe+6sHIREROxwOL8dx3FdVJkky9d5fSdP0yUFIRCQIw/CeqkJVM+/9Upqmj/+FREQCVb2jqu/30KP/QSIi3wFqcn4o9hAuDAAAAABJRU5ErkJggg==" />
 <input name='search' onkeyup='initSearch()'></form>
-</td><td id ='oosyntax' ></td><td id='version'>2.1.5866</td>
+</td><td id ='oosyntax' ></td><td id='version'>2.1.5996</td>
 </table>
 </div>
 <div id="separatorLayer" style='top:80px;left:250px'></div>

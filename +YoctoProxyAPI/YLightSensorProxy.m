@@ -2,11 +2,10 @@
 % the Yocto-Proximity or the Yocto-RangeFinder
 % 
 % The YLightSensorProxy class allows you to read and configure Yoctopuce light sensors. It inherits
-% from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-% functions, and to access the autonomous datalogger. This class adds the ability to easily perform a
-% one-point linear calibration to compensate the effect of a glass or filter placed in front of the
-% sensor. For some light sensors with several working modes, this class can select the desired
-% working mode.
+% from <tt>YSensor</tt> class the core functions to read measures, to register callback functions,
+% and to access the autonomous datalogger. This class adds the ability to easily perform a one-point
+% linear calibration to compensate the effect of a glass or filter placed in front of the sensor. For
+% some light sensors with several working modes, this class can select the desired working mode.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -52,11 +51,10 @@ classdef YLightSensorProxy < YoctoProxyAPI.YSensorProxy
     % the Yocto-Proximity or the Yocto-RangeFinder
     % 
     % The YLightSensorProxy class allows you to read and configure Yoctopuce light sensors. It inherits
-    % from <tt>YSensor</tt> class the core functions to read measurements, to register callback
-    % functions, and to access the autonomous datalogger. This class adds the ability to easily perform a
-    % one-point linear calibration to compensate the effect of a glass or filter placed in front of the
-    % sensor. For some light sensors with several working modes, this class can select the desired
-    % working mode.
+    % from <tt>YSensor</tt> class the core functions to read measures, to register callback functions,
+    % and to access the autonomous datalogger. This class adds the ability to easily perform a one-point
+    % linear calibration to compensate the effect of a glass or filter placed in front of the sensor. For
+    % some light sensors with several working modes, this class can select the desired working mode.
 
     properties (Transient, Nontunable)
         % MeasureType Type of light measure
